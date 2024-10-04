@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
 
+    //Value must be below the normal size for it to be a crouch
+    [SerializeField] float crouchSizeYAxis;
+
     Vector3 moveDir;
     Vector3 playerVel;
 
@@ -26,10 +29,15 @@ public class PlayerController : MonoBehaviour
 
     bool isSprinting;
     bool isShooting;
+    bool isCrouching;
+
+    float normYSize;
 
     // Start is called before the first frame update
     void Start()
-    {}
+    {
+        normYSize = transform.localScale.y;
+    }
 
     // Update is called once per frame
     void Update()
@@ -51,7 +59,14 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        controller.Move(moveDir * speed * Time.deltaTime);
+        if (isCrouching)
+        {
+            controller.Move(moveDir * (speed / 3) * Time.deltaTime);
+        }
+        else if (!isCrouching)
+        {
+            controller.Move(moveDir * speed * Time.deltaTime);
+        }
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
@@ -66,6 +81,12 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(shoot());
         }
+
+        if(Input.GetButtonDown("Crouch") && isSprinting != true)
+        {
+            isCrouching = !isCrouching;
+            crouch();
+        }
     }
 
     void sprint()
@@ -77,6 +98,18 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+        }
+    }
+
+    void crouch()
+    {
+        if (isCrouching)
+        {
+            transform.localScale =  new Vector3 (1, crouchSizeYAxis, 1);
+
+        }else if (!isCrouching)
+        {
+            transform.localScale = new Vector3(1, normYSize, 1);
         }
     }
 
