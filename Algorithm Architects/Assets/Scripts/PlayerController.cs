@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move(playerVel * Time.deltaTime);
 
-        if (Input.GetButton("Fire1") && !isShooting)
+        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting) //added code so it doesnt shoot when clicking in menu
         {
             StartCoroutine(shoot());
         }
