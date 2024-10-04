@@ -31,11 +31,13 @@ public class PlayerController : MonoBehaviour
     bool isShooting;
     bool isCrouching;
 
+    //stores the normal Y size of the player capsule
     float normYSize;
 
     // Start is called before the first frame update
     void Start()
     {
+        //initiates the normal size
         normYSize = transform.localScale.y;
     }
 
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+
+        //if the player is crouching, then dive the speed by 3, to make the player move slower
         if (isCrouching)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
@@ -105,10 +109,12 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouching)
         {
+            //changes the player Y size to the crouch size
             transform.localScale =  new Vector3 (1, crouchSizeYAxis, 1);
 
         }else if (!isCrouching)
         {
+            //changes the player Y size to the normal size
             transform.localScale = new Vector3(1, normYSize, 1);
         }
     }
