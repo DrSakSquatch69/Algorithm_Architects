@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] Renderer model;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Transform headPosition;
+    [SerializeField] int rotateSpeed;
 
     [SerializeField] int HP;
 
     Color colorOrig;
+    Vector3 playerDirection;
+
+    bool playerSighted;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +28,16 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        playerDirection = gameManager.instance.player.transform.position - transform.position;
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
+        if(playerSighted)
+        {
+            if(agent.remainingDistance <= agent.stoppingDistance)
+            {
+                faceTarget();
+            }
+        }
     }
 
     public void takeDamage(int amount)
@@ -43,4 +60,31 @@ public class EnemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
     }
+
+    void faceTarget()
+    {
+        Quaternion rotate = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotate, Time.deltaTime * rotateSpeed);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerSighted = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerSighted = false;
+        }
+    }
+
+
+
 }
+
+

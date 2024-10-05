@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive, menuPause;
 
     float timeScaleOrig; // original timeScale
+    public GameObject player;
 
     public bool isPaused;
     public bool getIsPaused() //getter for our is paused bool
@@ -20,10 +21,11 @@ public class gameManager : MonoBehaviour
     {
         isPaused = paused;
     }
-    void Start()
+    void Awake()
     {
         instance = this;
         timeScaleOrig = Time.timeScale; // setting the original time scale to reset after pause
+        player = GameObject.FindWithTag("Player"); //Tracks player's location
     }
 
     // Update is called once per frame
