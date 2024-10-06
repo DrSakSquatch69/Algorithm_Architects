@@ -80,6 +80,8 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    public void youLose()
+    {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
