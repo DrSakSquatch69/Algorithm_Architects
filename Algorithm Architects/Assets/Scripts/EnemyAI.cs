@@ -14,6 +14,9 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
 
+    //checks to see if an enemy is melee based or can shoot
+    [SerializeField] bool canShoot;
+
     [SerializeField] int HP;
 
     Color colorOrig;
@@ -27,6 +30,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //stores the original color
         colorOrig = model.material.color;
+
     }
 
     // Update is called once per frame
@@ -42,7 +46,7 @@ public class EnemyAI : MonoBehaviour, IDamage
                 faceTarget();
             }
 
-            if(!isShooting)
+            if(!isShooting && canShoot)
             {
                 StartCoroutine(Shoot());
             }
