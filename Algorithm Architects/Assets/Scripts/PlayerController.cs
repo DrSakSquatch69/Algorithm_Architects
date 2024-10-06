@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         //initiates the normal size
         normYSize = transform.localScale.y;
+        jumpCount = 0;
     }
 
     // Update is called once per frame
@@ -55,6 +56,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void movement()
     {
+        if(!controller.isGrounded && jumpCount == 0)
+        {
+            jumpCount = 1;
+        }
         //checks if the player is on the ground, if yes then reset jump count and player velocity
         if (controller.isGrounded)
         {
