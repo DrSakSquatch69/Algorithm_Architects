@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //stores the original color
         colorOrig = model.material.color;
+        gameManager.instance.updateGameGoal(1);
 
     }
 
@@ -62,6 +63,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
