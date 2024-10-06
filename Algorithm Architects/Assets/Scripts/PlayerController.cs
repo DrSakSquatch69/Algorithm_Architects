@@ -168,11 +168,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void WallRunInput()
     {
-        if(isWallRight && !isCrouching)
+        if(isWallRight && !isCrouching && !controller.isGrounded)
         {
             StartWallRun();
         }
-        if (isWallLeft && !isCrouching)
+        if (isWallLeft && !isCrouching && !controller.isGrounded)
         {
             StartWallRun();
         }
