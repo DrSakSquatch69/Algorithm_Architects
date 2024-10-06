@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int wallRunGrav;
     [SerializeField] int wallRunSpeed;
     int origGrav;
-    int origSpeed;
     bool isWallRunning;
 
     //stores the normal Y size of the player capsule
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour, IDamage
         normYSize = transform.localScale.y;
         jumpCount = 0;
         origGrav = gravity;
-        origSpeed = speed;
     }
 
     // Update is called once per frame
@@ -61,13 +59,13 @@ public class PlayerController : MonoBehaviour, IDamage
         //Used to see where the player is looking
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-        movement();
+        Movement();
         sprint();
         CheckForWall();
         WallRunInput();
     }
 
-    void movement()
+    void Movement()
     {
         //checks if the player is on the ground, if yes then reset jump count and player velocity
         if (controller.isGrounded)
@@ -82,6 +80,9 @@ public class PlayerController : MonoBehaviour, IDamage
         if (isCrouching)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
+        }else if (isWallRunning)
+        {
+            controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
         }
         else if (!isCrouching)
         {
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour, IDamage
             isCrouching = !isCrouching;
             crouch();
         }
-    }
+        }
 
     void sprint()
     {
@@ -181,7 +182,6 @@ public class PlayerController : MonoBehaviour, IDamage
     void StartWallRun()
     {
         jumpCount = 0;
-        speed = wallRunSpeed;
 
         //Resets fall speed when player first starts wall running
         if (!isWallRunning) 
@@ -197,7 +197,6 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         isWallRunning = false;
         gravity = origGrav;
-        speed = origSpeed;
     }
 
     void CheckForWall()

@@ -147,6 +147,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 218583308}
     - target: {fileID: -7404400915967936726, guid: 2872493758e871545ba6b9de33d1de1d, type: 3}
+      propertyPath: wallRunGrav
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7404400915967936726, guid: 2872493758e871545ba6b9de33d1de1d, type: 3}
       propertyPath: maxWallSpeed
       value: 30
       objectReference: {fileID: 0}
@@ -324,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8787615184890979516, guid: 00b25dd90e914294696467fca6bf0ef9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.15
+      value: 28.29
       objectReference: {fileID: 0}
     - target: {fileID: 8787615184890979516, guid: 00b25dd90e914294696467fca6bf0ef9, type: 3}
       propertyPath: m_LocalPosition.y
