@@ -41,7 +41,7 @@ public class gameManager : MonoBehaviour
                 menuActive = menuPause; // setting active menu variable
                 menuActive.SetActive(isPaused); //setting menu active via our variable
             }
-            else if (menuActive != null) //if we have an active menu
+            else if (menuActive == menuPause) //if we are in the pause menu
             {
                 stateUnpause(); //change game state
             }
