@@ -54,7 +54,7 @@ public class damage : MonoBehaviour
     {
         if(type == damageTypes.chaser)
         {
-            rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * bulletSpeed * Time.deltaTime;
+            rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position).normalized * bulletSpeed * Time.deltaTime;
         }
     }
 }

@@ -37,8 +37,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        playerDirection = gameManager.instance.player.transform.position - transform.position;
-        agent.SetDestination(gameManager.instance.player.transform.position);
+        playerDirection = gameManager.instance.getPlayer().transform.position - transform.position;
+        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
         if(playerSighted)
         {
