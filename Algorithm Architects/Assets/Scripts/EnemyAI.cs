@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int rotateSpeed;
 
     [SerializeField] int HP;
+    [SerializeField] GameObject enemyPrefab; // Refrence to the enemy prefab
 
     Color colorOrig;
     Vector3 playerDirection;
@@ -61,6 +62,11 @@ public class EnemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
+
+            //Creates two new enemies when this one dies
+            Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
+            Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
+
             Destroy(gameObject);
         }
     }
