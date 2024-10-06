@@ -53,6 +53,7 @@ MonoBehaviour:
   ignoreMask:
     serializedVersion: 2
     m_Bits: 8
+  HealthPoints: 100
   speed: 10
   sprintMod: 2
   jumpSpeed: 12
@@ -61,7 +62,6 @@ MonoBehaviour:
   shootDamage: 10
   shootRate: 0.25
   shootDist: 100
-  model: {fileID: 0}
   crouchSizeYAxis: 0.5
 --- !u!143 &-2842705219402115491
 CharacterController:

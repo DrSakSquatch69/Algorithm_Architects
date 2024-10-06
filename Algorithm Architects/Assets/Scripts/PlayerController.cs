@@ -145,5 +145,10 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HealthPoints -= amount;
+
+        if(HealthPoints <= 0)
+        {
+            gameManager.instance.youLose();
+        }
     }
 }
