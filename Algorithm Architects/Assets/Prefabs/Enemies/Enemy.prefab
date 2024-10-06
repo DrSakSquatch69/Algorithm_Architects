@@ -48,6 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7986622124195327587}
+  agent: {fileID: 0}
+  headPosition: {fileID: 0}
+  shootPosition: {fileID: 0}
+  bullet: {fileID: 0}
+  firerate: 0
+  rotateSpeed: 0
   HP: 50
 --- !u!33 &3287292989060770704
 MeshFilter:
