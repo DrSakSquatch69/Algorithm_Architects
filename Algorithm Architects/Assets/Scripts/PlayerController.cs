@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
+    [SerializeField] float slideDistance;
+    [SerializeField] float slideSpeedMod;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isSprinting;
     bool isShooting;
     bool isCrouching;
+    bool isSliding;
 
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
@@ -40,6 +44,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int wallRunSpeed;
     int origGrav;
     bool isWallRunning;
+
+    //used to see if the player is grounded in debug mode
 
     //stores the normal Y size of the player capsule
     float normYSize;
@@ -77,12 +83,16 @@ public class PlayerController : MonoBehaviour, IDamage
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
 
         //if the player is crouching, then dive the speed by 3, to make the player move slower
-        if (isCrouching)
+        if (isCrouching && !isSliding)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
         }else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
+        }else if (isSliding)
+        {
+            //starts the slide
+            StartCoroutine(Slide());
         }
         else if (!isCrouching)
         {
@@ -103,33 +113,54 @@ public class PlayerController : MonoBehaviour, IDamage
             StartCoroutine(shoot());
         }
 
-        if(Input.GetButtonDown("Crouch") && isSprinting != true)
+        if(Input.GetButtonDown("Crouch"))
         {
             isCrouching = !isCrouching;
             crouch();
         }
         }
 
+    IEnumerator Slide()
+    {
+        //slide speed
+        controller.Move(moveDir * (speed * slideSpeedMod) * Time.deltaTime);
+        //slide duration
+        yield return new WaitForSeconds(slideDistance);
+        isCrouching = false;
+        isSliding = false;
+        //calls crouch to bring player back to normal size
+        crouch();
+    }
+
     void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
+            isSprinting = true;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+            isSprinting = false;
         }
     }
 
     void crouch()
     {
-        if (isCrouching)
+        if (isCrouching && !isSprinting)
         {
             //changes the player Y size to the crouch size
             transform.localScale =  new Vector3 (1, crouchSizeYAxis, 1);
 
-        }else if (!isCrouching)
+        }
+        //if sprinting then start slide
+        else if (isCrouching && isSprinting)
+        {
+            isSliding = true;
+            transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
+        }
+        else if (!isCrouching)
         {
             //changes the player Y size to the normal size
             transform.localScale = new Vector3(1, normYSize, 1);
