@@ -7,11 +7,13 @@ public class gameManager : MonoBehaviour
     public static gameManager instance; //how we will access game manager
     // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose;
 
     float timeScaleOrig; // original timeScale
     public GameObject player; //player object so we can access our player through the game manager
- 
+
+    int enemyCount;
+
     public bool isPaused; //variable to store wether we are paused or not
     public bool getIsPaused() //getter for our is paused bool
     {
@@ -62,4 +64,17 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(false);//setting the active menu to inactive
         menuActive = null;//and changes our var back to null
     }
+
+    public void updateGameGoal(int amount)
+    {
+        enemyCount += amount;
+
+        if (enemyCount <= 0)
+        {
+            statePause();
+            menuActive = menuWin;
+            menuActive.SetActive(isPaused);
+        }
+    }
+
 }
