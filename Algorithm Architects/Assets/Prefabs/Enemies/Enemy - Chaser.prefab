@@ -90,6 +90,8 @@ MonoBehaviour:
   firerate: 1.25
   rotateSpeed: 32
   HP: 50
+  enemyPrefab: {fileID: 2514469933649856281}
+  maxRespawns: 1
 --- !u!195 &6322465505402849357
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -106,7 +108,7 @@ NavMeshAgent:
   m_AngularSpeed: 800
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1

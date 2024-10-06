@@ -15,12 +15,17 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int rotateSpeed;
 
     [SerializeField] int HP;
+    [SerializeField] GameObject enemyPrefab; // Refrence to the enemy prefab
+    [SerializeField] int maxRespawns = 1; // adjust to limit the amound of respawns the enemy has
+
 
     Color colorOrig;
     Vector3 playerDirection;
 
     bool isShooting;
     bool playerSighted;
+
+    int currentRespawnCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +56,11 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
+    public void SetRespawnCount(int respawnCount)
+    {
+        currentRespawnCount = respawnCount;
+    }
+
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -60,7 +70,32 @@ public class EnemyAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
+            // Check if enemy can respawn
+            if (currentRespawnCount < maxRespawns)
+            {
+                //gameManager.instance.updateGameGoal(2);
+
+                //Creates two new enemies when this one dies
+                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
+                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
+
+                // Set the respawn count of the new enemies to be 1 more than the current enemy
+                enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+
+                //Increment the game goal by 1 for each new enemy
+                gameManager.instance.updateGameGoal(2);
+
+                // Increase the respawn count
+                //currentRespawnCount++;
+            }
+            else
+            {
+                // No more respawns allowed, decrement the game goal
+                gameManager.instance.updateGameGoal(-1);
+            }
+
+            // Destroys current enemy
             Destroy(gameObject);
         }
     }
