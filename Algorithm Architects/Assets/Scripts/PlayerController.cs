@@ -33,6 +33,15 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isShooting;
     bool isCrouching;
 
+    public LayerMask whatIsWall;
+    bool isWallRight, isWallLeft;
+    [SerializeField] Transform orientation;
+    [SerializeField] int wallRunGrav;
+    [SerializeField] int wallRunSpeed;
+    int origGrav;
+    int origSpeed;
+    bool isWallRunning;
+
     //stores the normal Y size of the player capsule
     float normYSize;
 
@@ -41,6 +50,9 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         //initiates the normal size
         normYSize = transform.localScale.y;
+        jumpCount = 0;
+        origGrav = gravity;
+        origSpeed = speed;
     }
 
     // Update is called once per frame
@@ -51,6 +63,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
         movement();
         sprint();
+        CheckForWall();
+        WallRunInput();
     }
 
     void movement()
@@ -150,5 +164,52 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             gameManager.instance.youLose();
         }
+    }
+
+    void WallRunInput()
+    {
+        if(isWallRight && !isCrouching && !controller.isGrounded)
+        {
+            StartWallRun();
+        }
+        if (isWallLeft && !isCrouching && !controller.isGrounded)
+        {
+            StartWallRun();
+        }
+    }
+
+    void StartWallRun()
+    {
+        jumpCount = 0;
+        speed = wallRunSpeed;
+
+        //Resets fall speed when player first starts wall running
+        if (!isWallRunning) 
+        { 
+            playerVel = Vector3.zero; 
+        }
+
+        gravity = wallRunGrav;
+        isWallRunning = true;
+    }
+
+    void StopWallRun()
+    {
+        isWallRunning = false;
+        gravity = origGrav;
+        speed = origSpeed;
+    }
+
+    void CheckForWall()
+    {
+        //Uses a raycast to check for wall on left and wall on right
+        isWallRight = Physics.Raycast(transform.position, orientation.right, 1f, whatIsWall);
+        isWallLeft = Physics.Raycast(transform.position, -orientation.right, 1f, whatIsWall);
+
+        if(!isWallLeft && !isWallRight)
+        {
+            StopWallRun();
+        }
+
     }
 }
