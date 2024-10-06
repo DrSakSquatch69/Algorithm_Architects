@@ -14,9 +14,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
 
-    //checks to see if an enemy is melee based or can shoot
-    [SerializeField] bool canShoot;
-
     [SerializeField] int HP;
 
     Color colorOrig;
@@ -47,7 +44,7 @@ public class EnemyAI : MonoBehaviour, IDamage
                 faceTarget();
             }
 
-            if(!isShooting && canShoot)
+            if(!isShooting)
             {
                 StartCoroutine(Shoot());
             }
