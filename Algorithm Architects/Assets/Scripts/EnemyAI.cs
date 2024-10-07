@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //stores the original color
         colorOrig = model.material.color;
-        gameManager.instance.updateGameGoal(1);
+        //gameManager.instance.updateGameGoal(1);
 
     }
 
@@ -70,19 +70,19 @@ public class EnemyAI : MonoBehaviour, IDamage
             // Check if enemy can respawn
             if (currentRespawnCount < maxRespawns)
             {
-                //gameManager.instance.updateGameGoal(-1);
+                
 
                 //Creates two new enemies when this one dies
                 GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
                 GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
-
+                
                 // Set the respawn count of the new enemies to be 1 more than the current enemy
                 enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
                 enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
-
+                
                 //Increment the game goal by 1 for each new enemy
                 gameManager.instance.updateGameGoal(+1);
-
+                
             }
             else
             {
