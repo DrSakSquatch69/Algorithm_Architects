@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
-
+    
     //Fields for shooting
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
@@ -86,10 +86,12 @@ public class PlayerController : MonoBehaviour, IDamage
         if (isCrouching && !isSliding)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
-        }else if (isWallRunning)
+        }
+        else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
-        }else if (isSliding)
+        }
+        else if (isSliding)
         {
             //starts the slide
             StartCoroutine(Slide());
@@ -113,12 +115,12 @@ public class PlayerController : MonoBehaviour, IDamage
             StartCoroutine(shoot());
         }
 
-        if(Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch"))
         {
             isCrouching = !isCrouching;
             crouch();
         }
-        }
+    }
 
     IEnumerator Slide()
     {
@@ -151,7 +153,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (isCrouching && !isSprinting)
         {
             //changes the player Y size to the crouch size
-            transform.localScale =  new Vector3 (1, crouchSizeYAxis, 1);
+            transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
 
         }
         //if sprinting then start slide
@@ -192,7 +194,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         HealthPoints -= amount;
 
-        if(HealthPoints <= 0)
+        if (HealthPoints <= 0)
         {
             gameManager.instance.youLose();
         }
@@ -200,7 +202,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void WallRunInput()
     {
-        if(isWallRight && !isCrouching && !controller.isGrounded)
+        if (isWallRight && !isCrouching && !controller.isGrounded)
         {
             StartWallRun();
         }
@@ -215,9 +217,9 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpCount = 0;
 
         //Resets fall speed when player first starts wall running
-        if (!isWallRunning) 
-        { 
-            playerVel = Vector3.zero; 
+        if (!isWallRunning)
+        {
+            playerVel = Vector3.zero;
         }
 
         gravity = wallRunGrav;
@@ -236,10 +238,11 @@ public class PlayerController : MonoBehaviour, IDamage
         isWallRight = Physics.Raycast(transform.position, orientation.right, 1f, whatIsWall);
         isWallLeft = Physics.Raycast(transform.position, -orientation.right, 1f, whatIsWall);
 
-        if(!isWallLeft && !isWallRight)
+        if (!isWallLeft && !isWallRight)
         {
             StopWallRun();
         }
 
     }
 }
+
