@@ -22,4 +22,16 @@ public class ButtonFns : MonoBehaviour
         Application.Quit(); //if not in editor just quit application
 #endif
     }
+
+    public void MainGame()
+    {
+
+        //if in unity editor it just quits, but if in actual game, then it loads the main game
+    #if UNITY_EDITOR
+        quit();
+    #else
+         SceneManager.LoadScene("Main Game Scene");
+        resume();;
+    #endif
+    }
 }

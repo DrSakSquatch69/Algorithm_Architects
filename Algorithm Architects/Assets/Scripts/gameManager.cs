@@ -9,9 +9,11 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
+
+    [SerializeField] bool isTutorial;                                         //Only put true if on tutorial level
 
     float timeScaleOrig;                                                    // original timeScale
     GameObject player;                                                     //player object so we can access our player through the game manager
@@ -82,9 +84,18 @@ public class gameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(isPaused);
+            if (isTutorial)
+            {
+                statePause();
+                menuActive = menuTutorialComplete;
+                menuActive.SetActive(isPaused);
+            }
+            else
+            {
+                statePause();
+                menuActive = menuWin;
+                menuActive.SetActive(isPaused);
+            }
         }
     }
 

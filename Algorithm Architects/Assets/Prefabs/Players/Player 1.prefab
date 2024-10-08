@@ -164,17 +164,17 @@ MonoBehaviour:
     m_Bits: 8
   HealthPoints: 100
   speed: 10
-  sprintMod: 2
-  jumpSpeed: 14
+  sprintMod: 1.7
+  jumpSpeed: 12
   jumpMax: 2
   gravity: 28
   shootDamage: 10
   shootRate: 0.25
   shootDist: 100
   crouchSizeYAxis: 0.5
-  slideDistance: 0.5
-  slideSpeedMod: 2.2
-  slideDelay: 1
+  slideDistance: 0.4
+  slideSpeedMod: 2
+  slideDelay: 0.4
   bouncePad:
     serializedVersion: 2
     m_Bits: 2048

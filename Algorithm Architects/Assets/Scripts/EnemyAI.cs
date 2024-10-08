@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //stores the original color
         colorOrig = model.material.color;
-        //gameManager.instance.updateGameGoal(1);
+        gameManager.instance.updateGameGoal(1);
 
     }
 

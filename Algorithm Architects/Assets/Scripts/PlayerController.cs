@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int HealthPoints;
 
     //Fields for movement
-    [SerializeField] int speed;
-    [SerializeField] int sprintMod;
+    [SerializeField] float speed;
+    [SerializeField] float sprintMod;
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
