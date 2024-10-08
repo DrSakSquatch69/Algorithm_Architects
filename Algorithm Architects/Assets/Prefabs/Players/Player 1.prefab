@@ -165,7 +165,7 @@ MonoBehaviour:
   HealthPoints: 100
   speed: 10
   sprintMod: 2
-  jumpSpeed: 12
+  jumpSpeed: 14
   jumpMax: 2
   gravity: 28
   shootDamage: 10
@@ -175,6 +175,10 @@ MonoBehaviour:
   slideDistance: 0.5
   slideSpeedMod: 2.2
   slideDelay: 1
+  bouncePad:
+    serializedVersion: 2
+    m_Bits: 2048
+  bouncePadForce: 30
   whatIsWall:
     serializedVersion: 2
     m_Bits: 512
