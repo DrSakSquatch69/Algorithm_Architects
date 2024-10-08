@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canSlide;
     bool crouching;
 
+    public LayerMask bouncePad;
+    [SerializeField] float bouncePadForce;
+    bool isBouncePad;
+
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
     [SerializeField] Transform orientation;
@@ -74,6 +78,7 @@ public class PlayerController : MonoBehaviour, IDamage
         sprint();
         CheckForWall();
         WallRunInput();
+        CheckForBouncePad();
     }
 
     void Movement()
@@ -279,6 +284,20 @@ public class PlayerController : MonoBehaviour, IDamage
             StopWallRun();
         }
 
+    }
+
+    void CheckForBouncePad()
+    {
+        //uses a raycast to see if there is a bounce pad underneath the player.
+        isBouncePad = Physics.Raycast(transform.position, -orientation.up, 1.7f, bouncePad);
+
+        //gave the player the option to not bounce if crouching
+        if (isBouncePad && !crouching)
+        {
+            playerVel = Vector3.zero;
+            playerVel.y = bouncePadForce;
+            jumpCount = 0;
+        }
     }
 }
 
