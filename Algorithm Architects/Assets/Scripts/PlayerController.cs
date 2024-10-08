@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isCrouching;
     bool isSliding;
     bool canSlide;
+    bool crouching;
 
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour, IDamage
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
 
         //if the player is crouching, then dive the speed by 3, to make the player move slower
-        if (isCrouching && !isSliding)
+        if (crouching && !isSliding)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
         }
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour, IDamage
             //starts the slide
             StartCoroutine(Slide());
         }
-        else if (!isCrouching)
+        else if (!crouching)
         {
             controller.Move(moveDir * speed * Time.deltaTime);
         }
@@ -173,14 +174,15 @@ public class PlayerController : MonoBehaviour, IDamage
     void crouch()
     {
 
-        if (isCrouching && !isSprinting)
+        if (isCrouching && !isSprinting && !isSliding)
         {
             //changes the player Y size to the crouch size
             transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
+            crouching = true;
 
         }
         //if sprinting then start slide
-        else if (isCrouching && isSprinting)
+        else if (isCrouching && isSprinting && !isSliding)
         {
             holdingSprintTime = Time.time - startTimer;
 
@@ -189,13 +191,17 @@ public class PlayerController : MonoBehaviour, IDamage
                 isSliding = true;
                 transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
                 canSlide = false;
-                
+            }
+            else
+            {
+                isCrouching = false;
             }
         }
         else if (!isCrouching)
         {
             //changes the player Y size to the normal size
             transform.localScale = new Vector3(1, normYSize, 1);
+            crouching = false;
         }
     }
 
