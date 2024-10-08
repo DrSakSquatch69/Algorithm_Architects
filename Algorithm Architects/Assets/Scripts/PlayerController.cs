@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
-    
+
     //Fields for shooting
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
@@ -26,16 +26,20 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float crouchSizeYAxis;
     [SerializeField] float slideDistance;
     [SerializeField] float slideSpeedMod;
+    [SerializeField] float slideDelay;
 
     Vector3 moveDir;
     Vector3 playerVel;
 
     int jumpCount;
+    float startTimer;
+    float holdingSprintTime;
 
     bool isSprinting;
     bool isShooting;
     bool isCrouching;
     bool isSliding;
+    bool canSlide;
 
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
@@ -124,20 +128,36 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator Slide()
     {
-        //slide speed
-        controller.Move(moveDir * (speed * slideSpeedMod) * Time.deltaTime);
-        //slide duration
-        yield return new WaitForSeconds(slideDistance);
-        isCrouching = false;
-        isSliding = false;
-        //calls crouch to bring player back to normal size
-        crouch();
+        if (canSlide && holdingSprintTime >= slideDelay)
+        {
+            //slide speed
+            controller.Move(moveDir * (speed * slideSpeedMod) * Time.deltaTime);
+            //slide duration
+            yield return new WaitForSeconds(slideDistance);
+            isCrouching = false;
+            isSliding = false;
+            //calls crouch to bring player back to normal size
+            crouch();
+            holdingSprintTime = 0;
+
+        }
+    }
+
+    IEnumerator slidingDelay()
+    {
+        canSlide = false;
+        yield return new WaitForSeconds(slideDelay);
+        canSlide = true;
     }
 
     void sprint()
     {
+        StartCoroutine(slidingDelay());
+
+
         if (Input.GetButtonDown("Sprint"))
         {
+            startTimer = Time.time; //Timer for slide delays
             speed *= sprintMod;
             isSprinting = true;
         }
@@ -145,11 +165,14 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             speed /= sprintMod;
             isSprinting = false;
+            holdingSprintTime = 0;
         }
+
     }
 
     void crouch()
     {
+
         if (isCrouching && !isSprinting)
         {
             //changes the player Y size to the crouch size
@@ -159,8 +182,15 @@ public class PlayerController : MonoBehaviour, IDamage
         //if sprinting then start slide
         else if (isCrouching && isSprinting)
         {
-            isSliding = true;
-            transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
+            holdingSprintTime = Time.time - startTimer;
+
+            if (canSlide && holdingSprintTime >= slideDelay) //checking if the player can slide and also if they held the key for the correct amount of time
+            { 
+                isSliding = true;
+                transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
+                canSlide = false;
+                
+            }
         }
         else if (!isCrouching)
         {
