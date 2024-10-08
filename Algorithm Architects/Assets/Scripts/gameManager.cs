@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class gameManager : MonoBehaviour
                                                                             // Start is called before the first frame update
 
     [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose;
+    //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
 
     float timeScaleOrig;                                                    // original timeScale
     GameObject player;                                                     //player object so we can access our player through the game manager
 
     int enemyCount;
+   // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
 
     public bool isPaused;                                                   //variable to store wether we are paused or not
     
@@ -35,7 +38,12 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        //if (hasDialogueRun == false)
+        //{
+        //    dialogue();
+        //}
+
+        if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
             {
@@ -86,4 +94,12 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
+
+    //public void dialogue()
+    //{
+    //    statePause();
+    //    menuActive = dialogueBox;
+    //    menuActive.SetActive(isPaused);
+    //    hasDialogueRun = true;
+    //}
 }
