@@ -132,6 +132,6 @@ public class gameManager : MonoBehaviour
 
     public void UpdateAmmoCounter(int ammo, int remainingAmmo)
     {
-        remainingAmmoText.text = ammo.ToString("0f") + "/" + remainingAmmo.ToString("0f");
+        remainingAmmoText.text = ammo.ToString("F0") + " / " + remainingAmmo.ToString("F0");
     }
 }

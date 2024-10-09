@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float slideSpeedMod;
     [SerializeField] float slideDelay;
 
+    int ammo;
+    [SerializeField] int ammoremaining;
+    [SerializeField] int magSize;
+
     Vector3 moveDir;
     Vector3 playerVel;
 
@@ -66,6 +70,9 @@ public class PlayerController : MonoBehaviour, IDamage
         normYSize = transform.localScale.y;
         jumpCount = 0;
         origGrav = gravity;
+        ammo = magSize;
+
+        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
     }
 
     // Update is called once per frame
@@ -213,6 +220,7 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+        ammo--;
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
