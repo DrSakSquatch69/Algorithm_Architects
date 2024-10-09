@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreMask;
     //Field for Health
-    [SerializeField] int HealthPoints;
+    int HealthPoints;
+    [SerializeField] int maxHP;
 
     //Fields for movement
     [SerializeField] float speed;
@@ -73,8 +74,10 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpCount = 0;
         origGrav = gravity;
         ammo = magSize;
+        HealthPoints = maxHP;
 
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -259,11 +262,17 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         HealthPoints -= amount;
         StartCoroutine(gameManager.instance.hitFlash());
+        updatePlayerUI(); 
 
         if (HealthPoints <= 0)
         {
             gameManager.instance.youLose();
         }
+    }
+
+    public void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
     }
 
     void WallRunInput()
