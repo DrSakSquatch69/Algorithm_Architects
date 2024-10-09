@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
+    [SerializeField] TMP_Text remainingAmmoText;
 
     [SerializeField] bool isTutorial;                                         //Only put true if on tutorial level
 
@@ -128,4 +129,9 @@ public class gameManager : MonoBehaviour
     //    menuActive.SetActive(isPaused);
     //    hasDialogueRun = true;
     //}
+
+    public void UpdateAmmoCounter(int ammo, int remainingAmmo)
+    {
+        remainingAmmoText.text = ammo.ToString("0f") + "/" + remainingAmmo.ToString("0f");
+    }
 }
