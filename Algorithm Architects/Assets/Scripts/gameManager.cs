@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
 
@@ -112,6 +112,13 @@ public class gameManager : MonoBehaviour
         hitMarker.SetActive(true);
         yield return new WaitForSeconds(.08f);
         hitMarker.SetActive(false);
+    }
+
+    public IEnumerator hitFlash()
+    {
+        screenFlash.SetActive(true);
+        yield return new WaitForSeconds(.08f);
+        screenFlash.SetActive(false);
     }
 
     //public void dialogue()

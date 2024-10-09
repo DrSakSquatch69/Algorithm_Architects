@@ -235,6 +235,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HealthPoints -= amount;
+        StartCoroutine(gameManager.instance.hitFlash());
 
         if (HealthPoints <= 0)
         {
