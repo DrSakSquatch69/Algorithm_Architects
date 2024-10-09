@@ -221,6 +221,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         isShooting = true;
         ammo--;
+        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
