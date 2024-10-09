@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SearchService;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour, IDamage
             crouch();
         }
 
-        if (Input.GetButton("Reload") && !isReloading && ammo < magSize)
+        if (Input.GetButton("Reload") && !isReloading)
         {
             StartCoroutine(reload());
         }
@@ -326,13 +327,57 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator reload()
     {
-        isReloading = true;
-        gameManager.instance.reloadingOnOff();
-        yield return new WaitForSeconds(0.5f);
-        ammo = magSize;
-        isReloading = false;
-        gameManager.instance.reloadingOnOff();
+        if (ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
+        {
+            isReloading = true;
+            gameManager.instance.NoAmmoOnOff();
+            yield return new WaitForSeconds(0.5f);
+            isReloading = false;
+            gameManager.instance.NoAmmoOnOff();
 
+        }
+        else if (!isReloading && ammo <= 0 && ammoremaining >= magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
+        {
+            isReloading = true;
+            gameManager.instance.reloadingOnOff();
+            yield return new WaitForSeconds(0.5f);
+            ammo = magSize;
+            ammoremaining -= magSize;
+            isReloading = false;
+            gameManager.instance.reloadingOnOff();
+        }
+        else if (!isReloading && ammo >= 0 && ammoremaining >= magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
+        {
+            isReloading = true;
+            gameManager.instance.reloadingOnOff();
+            yield return new WaitForSeconds(0.5f);
+            ammoremaining -= magSize - ammo;
+            ammo += magSize - ammo;
+            isReloading = false;
+            gameManager.instance.reloadingOnOff();
+        }
+        else if (!isReloading && ammo >= 0 && ammoremaining <= magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
+        {
+            if ((ammo + ammoremaining) <= magSize) //if the ammo left is equal to the mag size then add them together
+            {
+                isReloading = true;
+                gameManager.instance.reloadingOnOff();
+                yield return new WaitForSeconds(0.5f);
+                ammo += ammoremaining;
+                ammoremaining -= ammoremaining;
+                isReloading = false;
+                gameManager.instance.reloadingOnOff();
+            }else if((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            {
+                isReloading = true;
+                gameManager.instance.reloadingOnOff();
+                yield return new WaitForSeconds(0.5f);
+                ammoremaining -= magSize - ammo;
+                ammo += magSize - ammo;
+                isReloading = false;
+                gameManager.instance.reloadingOnOff();
+            }
+        }
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
     }
 }

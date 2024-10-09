@@ -145,6 +145,6 @@ public class gameManager : MonoBehaviour
     public void NoAmmoOnOff()
     {
         isNoAmmo = !isNoAmmo;
-        reloading.SetActive(isNoAmmo);
+        noAmmo.SetActive(isNoAmmo);
     }
 }
