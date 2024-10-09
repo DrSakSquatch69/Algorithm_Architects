@@ -138,6 +138,11 @@ public class PlayerController : MonoBehaviour, IDamage
             isCrouching = !isCrouching;
             crouch();
         }
+
+        if (Input.GetButton("Reload") && !isReloading && ammo < magSize)
+        {
+            StartCoroutine(reload());
+        }
     }
 
     IEnumerator Slide()
@@ -327,6 +332,8 @@ public class PlayerController : MonoBehaviour, IDamage
         ammo = magSize;
         isReloading = false;
         gameManager.instance.reloadingOnOff();
+
+        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
     }
 }
 
