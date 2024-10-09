@@ -162,7 +162,7 @@ MonoBehaviour:
   ignoreMask:
     serializedVersion: 2
     m_Bits: 8
-  HealthPoints: 100
+  maxHP: 100
   speed: 10
   sprintMod: 1.7
   jumpSpeed: 12
@@ -175,6 +175,10 @@ MonoBehaviour:
   slideDistance: 0.4
   slideSpeedMod: 2
   slideDelay: 0.4
+  ammoremaining: 300
+  magSize: 30
+  healDelayTime: 5
+  healRate: 1
   bouncePad:
     serializedVersion: 2
     m_Bits: 2048

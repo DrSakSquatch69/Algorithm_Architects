@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SearchService;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreMask;
     //Field for Health
-    [SerializeField] int HealthPoints;
+    int HealthPoints;
+    [SerializeField] int maxHP;
 
     //Fields for movement
     [SerializeField] float speed;
@@ -27,6 +29,15 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float slideDistance;
     [SerializeField] float slideSpeedMod;
     [SerializeField] float slideDelay;
+
+    int ammo;
+    [SerializeField] int ammoremaining;
+    [SerializeField] int magSize;
+    bool isReloading;
+
+    [SerializeField] float healDelayTime; //how long the player needs to not take damage
+    [SerializeField] float healRate; //the healrate of the player
+    bool isTakingDamage; //checks if the player is taking damage
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -66,6 +77,11 @@ public class PlayerController : MonoBehaviour, IDamage
         normYSize = transform.localScale.y;
         jumpCount = 0;
         origGrav = gravity;
+        ammo = magSize;
+        HealthPoints = maxHP;
+
+        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -120,7 +136,7 @@ public class PlayerController : MonoBehaviour, IDamage
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move(playerVel * Time.deltaTime);
 
-        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting) //added code so it doesnt shoot when clicking in menu
+        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading) //added code so it doesnt shoot when clicking in menu
         {
             StartCoroutine(shoot());
         }
@@ -129,6 +145,11 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             isCrouching = !isCrouching;
             crouch();
+        }
+
+        if (Input.GetButton("Reload") && !isReloading)
+        {
+            StartCoroutine(reload());
         }
     }
 
@@ -212,35 +233,52 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        isShooting = true;
-
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
+        if (ammo > 0)
         {
-            // Debug.Log(hit.collider.name);
+            isShooting = true;
+            ammo--;
+            gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-            if (dmg != null)
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
             {
-                dmg.takeDamage(shootDamage);
-                StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
-            }
-        }
+                // Debug.Log(hit.collider.name);
 
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (dmg != null)
+                {
+                    dmg.takeDamage(shootDamage);
+                    StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
+                }
+            }
+
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+        }
+        else
+        {
+            StartCoroutine(reload());
+        }
     }
 
     public void takeDamage(int amount)
     {
         HealthPoints -= amount;
         StartCoroutine(gameManager.instance.hitFlash());
+        updatePlayerUI();
+        isTakingDamage = true;
+        StartCoroutine(healDelay());
 
         if (HealthPoints <= 0)
         {
             gameManager.instance.youLose();
         }
+    }
+
+    public void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
     }
 
     void WallRunInput()
@@ -300,6 +338,79 @@ public class PlayerController : MonoBehaviour, IDamage
             playerVel.y = bouncePadForce;
             jumpCount = 0;
         }
+    }
+
+    IEnumerator reload()
+    {
+        if (ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
+        {
+            isReloading = true;
+            gameManager.instance.NoAmmoOnOff();
+            yield return new WaitForSeconds(0.5f);
+            isReloading = false;
+            gameManager.instance.NoAmmoOnOff();
+
+        }
+        else if (!isReloading && ammo <= 0 && ammoremaining >= magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
+        {
+            isReloading = true;
+            gameManager.instance.reloadingOnOff();
+            yield return new WaitForSeconds(0.5f);
+            ammo = magSize;
+            ammoremaining -= magSize;
+            isReloading = false;
+            gameManager.instance.reloadingOnOff();
+        }
+        else if (!isReloading && ammo >= 0 && ammoremaining >= magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
+        {
+            isReloading = true;
+            gameManager.instance.reloadingOnOff();
+            yield return new WaitForSeconds(0.5f);
+            ammoremaining -= magSize - ammo;
+            ammo += magSize - ammo;
+            isReloading = false;
+            gameManager.instance.reloadingOnOff();
+        }
+        else if (!isReloading && ammo >= 0 && ammoremaining <= magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
+        {
+            if ((ammo + ammoremaining) <= magSize) //if the ammo left is equal to the mag size then add them together
+            {
+                isReloading = true;
+                gameManager.instance.reloadingOnOff();
+                yield return new WaitForSeconds(0.5f);
+                ammo += ammoremaining;
+                ammoremaining -= ammoremaining;
+                isReloading = false;
+                gameManager.instance.reloadingOnOff();
+            }else if((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            {
+                isReloading = true;
+                gameManager.instance.reloadingOnOff();
+                yield return new WaitForSeconds(0.5f);
+                ammoremaining -= magSize - ammo;
+                ammo += magSize - ammo;
+                isReloading = false;
+                gameManager.instance.reloadingOnOff();
+            }
+        }
+        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
+    }
+
+    IEnumerator healPlayer()
+    {
+        if (!isTakingDamage && HealthPoints != maxHP) //if the player is not taking damage and is not at full health, then heal player
+        {
+            HealthPoints++;
+            yield return new WaitForSeconds(healRate); //used to slowly heal the player
+            StartCoroutine(healPlayer()); //restart function call
+            updatePlayerUI(); //updates player ui
+        }
+    }
+    IEnumerator healDelay()
+    {
+        yield return new WaitForSeconds(healDelayTime); //Waits before calling the healplayer function
+        isTakingDamage = false;
+        StartCoroutine(healPlayer());
     }
 }
 
