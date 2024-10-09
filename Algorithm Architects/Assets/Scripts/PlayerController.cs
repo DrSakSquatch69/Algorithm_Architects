@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int magSize;
     bool isReloading;
 
+    [SerializeField] float healDelayTime; //how long the player needs to not take damage
+    [SerializeField] float healRate; //the healrate of the player
+    bool isTakingDamage; //checks if the player is taking damage
+
     Vector3 moveDir;
     Vector3 playerVel;
 
@@ -262,7 +266,9 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         HealthPoints -= amount;
         StartCoroutine(gameManager.instance.hitFlash());
-        updatePlayerUI(); 
+        updatePlayerUI();
+        isTakingDamage = true;
+        StartCoroutine(healDelay());
 
         if (HealthPoints <= 0)
         {
@@ -388,6 +394,23 @@ public class PlayerController : MonoBehaviour, IDamage
             }
         }
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
+    }
+
+    IEnumerator healPlayer()
+    {
+        if (!isTakingDamage && HealthPoints != maxHP) //if the player is not taking damage and is not at full health, then heal player
+        {
+            HealthPoints++;
+            yield return new WaitForSeconds(healRate); //used to slowly heal the player
+            StartCoroutine(healPlayer()); //restart function call
+            updatePlayerUI(); //updates player ui
+        }
+    }
+    IEnumerator healDelay()
+    {
+        yield return new WaitForSeconds(healDelayTime); //Waits before calling the healplayer function
+        isTakingDamage = false;
+        StartCoroutine(healPlayer());
     }
 }
 
