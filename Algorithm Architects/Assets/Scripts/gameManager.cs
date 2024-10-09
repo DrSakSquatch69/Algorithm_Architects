@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
 
@@ -19,17 +19,17 @@ public class gameManager : MonoBehaviour
     GameObject player;                                                     //player object so we can access our player through the game manager
 
     int enemyCount;
-   // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
+    // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
 
-    public bool isPaused;                                                   //variable to store wether we are paused or not
-    
+    public bool isPaused;                                                    //variable to store wether we are paused or not
+
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
     public GameObject getPlayer() { return player; }                        // getter for player to use in DamageReciever Class
 
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
-    
+
     void Awake()                                                            //awake always happens first  
     {
         instance = this;
@@ -104,6 +104,14 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+    }
+
+    public IEnumerator ActivateDeactivateHitMarker()
+    {
+        //turns on and off hitmarker
+        hitMarker.SetActive(true);
+        yield return new WaitForSeconds(.08f);
+        hitMarker.SetActive(false);
     }
 
     //public void dialogue()

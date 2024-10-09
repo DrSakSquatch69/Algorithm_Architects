@@ -224,6 +224,7 @@ public class PlayerController : MonoBehaviour, IDamage
             if (dmg != null)
             {
                 dmg.takeDamage(shootDamage);
+                StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
             }
         }
 
