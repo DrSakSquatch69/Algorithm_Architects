@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash, reloading, noAmmo;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text remainingAmmoText;
@@ -56,10 +56,17 @@ public class gameManager : MonoBehaviour
             if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
             {
                 statePause();                                               // calling Fn to create the paused state
-                menuActive = menuPause;                                     // setting active menu variable
+                if (isTutorial)                                             //If in tutorial level, then open tutorial pause menu
+                {
+                    menuActive = menuTutorialPause;                         // setting active menu variable
+                }
+                else
+                {
+                    menuActive = menuPause;                              // setting active menu variable
+                }                                  
                 menuActive.SetActive(isPaused);                         //setting menu active via our variable
             }
-            else if (menuActive == menuPause)                           //if we are in the pause menu
+            else if (menuActive == menuPause || menuActive == menuTutorialPause)                           //if we are in the pause menu
             {
                 stateUnpause();                                         //change game state
             }
