@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IDamage
     int ammo;
     [SerializeField] int ammoremaining;
     [SerializeField] int magSize;
+    bool isReloading;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -127,7 +128,7 @@ public class PlayerController : MonoBehaviour, IDamage
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move(playerVel * Time.deltaTime);
 
-        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting) //added code so it doesnt shoot when clicking in menu
+        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading) //added code so it doesnt shoot when clicking in menu
         {
             StartCoroutine(shoot());
         }
@@ -219,26 +220,33 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        isShooting = true;
-        ammo--;
-        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
-
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
+        if (ammo > 0)
         {
-            // Debug.Log(hit.collider.name);
+            isShooting = true;
+            ammo--;
+            gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-            if (dmg != null)
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
             {
-                dmg.takeDamage(shootDamage);
-                StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
-            }
-        }
+                // Debug.Log(hit.collider.name);
 
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (dmg != null)
+                {
+                    dmg.takeDamage(shootDamage);
+                    StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
+                }
+            }
+
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+        }
+        else
+        {
+            StartCoroutine(reload());
+        }
     }
 
     public void takeDamage(int amount)
@@ -309,6 +317,16 @@ public class PlayerController : MonoBehaviour, IDamage
             playerVel.y = bouncePadForce;
             jumpCount = 0;
         }
+    }
+
+    IEnumerator reload()
+    {
+        isReloading = true;
+        gameManager.instance.reloadingOnOff();
+        yield return new WaitForSeconds(0.5f);
+        ammo = magSize;
+        isReloading = false;
+        gameManager.instance.reloadingOnOff();
     }
 }
 

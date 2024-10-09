@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash, reloading, noAmmo;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text remainingAmmoText;
@@ -22,7 +22,9 @@ public class gameManager : MonoBehaviour
     int enemyCount;
     // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
 
-    public bool isPaused;                                                    //variable to store wether we are paused or not
+    public bool isPaused;                                                   //variable to store wether we are paused or not
+    bool isReloading;
+    bool isNoAmmo;
 
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
@@ -133,5 +135,16 @@ public class gameManager : MonoBehaviour
     public void UpdateAmmoCounter(int ammo, int remainingAmmo)
     {
         remainingAmmoText.text = ammo.ToString("F0") + " / " + remainingAmmo.ToString("F0");
+    }
+
+    public void reloadingOnOff()
+    {
+        isReloading = !isReloading;
+        reloading.SetActive(isReloading);
+    }
+    public void NoAmmoOnOff()
+    {
+        isNoAmmo = !isNoAmmo;
+        reloading.SetActive(isNoAmmo);
     }
 }
