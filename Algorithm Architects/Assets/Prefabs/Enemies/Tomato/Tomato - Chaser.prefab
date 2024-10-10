@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 8981023894868784723}
   - component: {fileID: 7965812494811146099}
   - component: {fileID: 26094119098489408}
-  - component: {fileID: 510407730086631182}
   - component: {fileID: 3996845925846052613}
+  - component: {fileID: 1126034469656817267}
   m_Layer: 7
   m_Name: Tomato - Chaser
   m_TagString: Untagged
@@ -164,29 +164,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &510407730086631182
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385458644281793592}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.0526179
-  m_Height: 1.8231345
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.00000035762787}
 --- !u!135 &3996845925846052613
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -208,6 +185,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &1126034469656817267
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385458644281793592}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1340541719380434750, guid: f58e122f95f9fda4c80da1e95a2f7883, type: 3}
 --- !u!1 &4453238719425924478
 GameObject:
   m_ObjectHideFlags: 0
