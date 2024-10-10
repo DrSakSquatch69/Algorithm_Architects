@@ -34,35 +34,35 @@ public class ButtonFns : MonoBehaviour
         {
             SceneManager.LoadScene("Level 1");
         }
-        else if(SceneManager.GetActiveScene().name == "Level 1 Growth")
+        else if(SceneManager.GetActiveScene().name == "Level 1")
         {
             SceneManager.LoadScene("Level 2");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 2 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 2")
         {
             SceneManager.LoadScene("Level 3");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 3 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 3")
         {
             SceneManager.LoadScene("Level 4");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 4 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 4")
         {
             SceneManager.LoadScene("Level 5");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 5 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 5")
         {
             SceneManager.LoadScene("Level 6");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 6 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 6")
         {
             SceneManager.LoadScene("Level 7");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 7 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 7")
         {
             SceneManager.LoadScene("Level 8");
         }
-        else if (SceneManager.GetActiveScene().name == "Level 8 Growth")
+        else if (SceneManager.GetActiveScene().name == "Level 8")
         {
             SceneManager.LoadScene("Final Level");
         }
