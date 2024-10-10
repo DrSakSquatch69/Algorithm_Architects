@@ -30,7 +30,7 @@ public class ButtonFns : MonoBehaviour
 #if  UNITY_EDITOR
         quit();
 #else
-        if (SceneManager.GetActiveScene().name == "Tutorial") //Checks to see what level the player is in, and then loads the next level.
+        if (SceneManager.GetActiveScene().name == "Tutorial Scene") //Checks to see what level the player is in, and then loads the next level.
         {
             SceneManager.LoadScene("Level 1");
         }
