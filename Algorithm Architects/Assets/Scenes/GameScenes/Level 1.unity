@@ -965,6 +965,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabbage - Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 298262840080286639, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 522757865484513611, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.4496
@@ -1023,12 +1027,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3316016302477038432, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
       propertyPath: m_WalkableMask
-      value: 1
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955891936578967529, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
+      propertyPath: HP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955891936578967529, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
+      propertyPath: firerate
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5955891936578967529, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 298262840080286639, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
+    - target: {fileID: 5955891936578967529, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
+      propertyPath: maxRespawns
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958123931020559655, guid: b2e0163b2945ebd45bbab579a94a1b6d, type: 3}
+      propertyPath: m_Radius
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
