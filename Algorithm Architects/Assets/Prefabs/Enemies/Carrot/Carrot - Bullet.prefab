@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 4244652547881346319}
   - component: {fileID: 4218641011275825457}
   - component: {fileID: 371326822921125553}
-  - component: {fileID: 5321418963194646105}
   - component: {fileID: 7357496228302882194}
   m_Layer: 7
   m_Name: Carrot - Bullet
@@ -164,29 +163,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5321418963194646105
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2826268895386468269}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.67596745
-  m_Height: 2.9303892
-  m_Direction: 1
-  m_Center: {x: 0.00000023841858, y: 0, z: 0}
 --- !u!135 &7357496228302882194
 SphereCollider:
   m_ObjectHideFlags: 0

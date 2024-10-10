@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8314681664398686720}
   - component: {fileID: -2336473509143679045}
   m_Layer: 12
-  m_Name: Bullet - Chaser
+  m_Name: Little Bullet - Chaser 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 5223472228960464512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 1.53, z: 14.16}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 4.68, y: 1.53, z: 12.4}
+  m_LocalScale: {x: 0.22305, y: 0.22305, z: 0.22305}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,8 +148,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.63143647
+        time: 0.004201689
+        value: 0.20205627
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -157,8 +157,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.051717885
-        value: 0.6633355
+        time: 0.21138203
+        value: 0.14356011
         inSlope: -0.43348294
         outSlope: -0.43348294
         tangentMode: 0
