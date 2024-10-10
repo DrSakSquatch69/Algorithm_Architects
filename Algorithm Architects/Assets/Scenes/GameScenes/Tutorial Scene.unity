@@ -28968,6 +28968,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4433580648560872421, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
+      propertyPath: bouncePadForce
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 8285463931171290141, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -46252,7 +46256,7 @@ Transform:
   m_GameObject: {fileID: 1975769655}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.1457568, z: -0, w: 0.98932046}
-  m_LocalPosition: {x: -14.67, y: 11.16, z: -101.54}
+  m_LocalPosition: {x: -14.67, y: 7.86, z: -101.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
