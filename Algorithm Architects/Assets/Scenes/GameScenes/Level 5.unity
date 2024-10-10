@@ -907,6 +907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 8152853291033651922, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1429,6 +1433,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8958123931020559655, guid: 1ffba768ee711f34ca2b3130f18beaf4, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1442,6 +1450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1546701083}
     m_Modifications:
+    - target: {fileID: 496821035272343338, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee
