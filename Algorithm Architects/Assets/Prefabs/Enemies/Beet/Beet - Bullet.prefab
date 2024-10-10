@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5009148138520161672}
   - component: {fileID: 265923315230664079}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beet - Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.32, y: 1.105154, z: 10.58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.7619, y: 2.7619, z: 2.7619}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1443006214548317331}
@@ -43,7 +43,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -67,8 +67,8 @@ GameObject:
   - component: {fileID: 1535533810489095510}
   - component: {fileID: 5971728097911750692}
   - component: {fileID: 3197923220101233062}
-  - component: {fileID: 2112293514754888364}
   - component: {fileID: 496821035272343338}
+  - component: {fileID: 8855208404524683673}
   m_Layer: 7
   m_Name: Beet Enemy
   m_TagString: Untagged
@@ -110,11 +110,11 @@ MonoBehaviour:
   headPosition: {fileID: 180612143167969765}
   shootPosition: {fileID: 7014898671092834034}
   bullet: {fileID: 5223472228960464512, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
-  firerate: 2
+  firerate: 0.4
   rotateSpeed: 32
-  HP: 10
-  enemyPrefab: {fileID: 5261893305261296824, guid: f3c10c5a330019d4fa52fe6dd06e7278, type: 3}
-  maxRespawns: 1
+  HP: 80
+  enemyPrefab: {fileID: 695450990797585724}
+  maxRespawns: 0
 --- !u!33 &5971728097911750692
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -165,29 +165,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2112293514754888364
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4629103506992571775}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.04
-  m_Height: 0.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!135 &496821035272343338
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -209,6 +186,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &8855208404524683673
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629103506992571775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 3f18a9925aef4b141b5ed39333229851, type: 3}
 --- !u!1 &8149532795146801643
 GameObject:
   m_ObjectHideFlags: 0

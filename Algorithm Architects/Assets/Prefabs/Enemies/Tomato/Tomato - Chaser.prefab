@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4385458644281793592}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.0876617, y: 5, z: 4.311016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -87,11 +87,11 @@ MonoBehaviour:
   headPosition: {fileID: 6070145975188740408}
   shootPosition: {fileID: 2248716075298661119}
   bullet: {fileID: 5223472228960464512, guid: a268cd8ea04fac0428be2e4f008bb76e, type: 3}
-  firerate: 2
+  firerate: 0.8
   rotateSpeed: 32
-  HP: 10
-  enemyPrefab: {fileID: 5261893305261296824, guid: f3c10c5a330019d4fa52fe6dd06e7278, type: 3}
-  maxRespawns: 1
+  HP: 50
+  enemyPrefab: {fileID: 4385458644281793592}
+  maxRespawns: 0
 --- !u!195 &8981023894868784723
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -101,8 +101,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 4385458644281793592}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 1.2
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800

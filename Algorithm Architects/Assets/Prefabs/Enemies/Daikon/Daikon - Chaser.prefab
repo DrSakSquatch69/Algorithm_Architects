@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8269271504688115646}
   - component: {fileID: 3949695829296060461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Daikon - Chaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.65
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -129,8 +129,8 @@ GameObject:
   - component: {fileID: 6760962780544307092}
   - component: {fileID: 1045521434442276057}
   - component: {fileID: 5472888733546428939}
-  - component: {fileID: 7447659276352398657}
   - component: {fileID: 5827208219828423410}
+  - component: {fileID: 1231638418278775820}
   m_Layer: 7
   m_Name: Daikon Enemy
   m_TagString: Untagged
@@ -172,11 +172,11 @@ MonoBehaviour:
   headPosition: {fileID: 4036538904350358587}
   shootPosition: {fileID: 1874355212184968714}
   bullet: {fileID: 5223472228960464512, guid: a268cd8ea04fac0428be2e4f008bb76e, type: 3}
-  firerate: 2
+  firerate: 0.8
   rotateSpeed: 32
-  HP: 10
-  enemyPrefab: {fileID: 5261893305261296824, guid: f3c10c5a330019d4fa52fe6dd06e7278, type: 3}
-  maxRespawns: 1
+  HP: 50
+  enemyPrefab: {fileID: 4498683362734329830}
+  maxRespawns: 0
 --- !u!33 &1045521434442276057
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -227,29 +227,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7447659276352398657
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5547908730902899622}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Height: 0.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!135 &5827208219828423410
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -271,3 +248,25 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &1231638418278775820
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5547908730902899622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 468c66a7649ca034598f94a301b60ba0, type: 3}

@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.894946, y: 5, z: 5.29}
-  m_LocalScale: {x: 2.4496, y: 2.4496, z: 2.4496}
+  m_LocalScale: {x: 1.9299662, y: 1.9299662, z: 1.9299662}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 377025696380226146}
@@ -58,7 +58,7 @@ MonoBehaviour:
   bullet: {fileID: 5223472228960464512, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
   firerate: 0.4
   rotateSpeed: 32
-  HP: 100
+  HP: 80
   enemyPrefab: {fileID: 298262840080286639}
   maxRespawns: 0
 --- !u!195 &3316016302477038432
@@ -70,8 +70,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 298262840080286639}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 10
+  m_Radius: 1.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -79,8 +79,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
+  m_Height: 2.6
+  m_BaseOffset: 1.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!33 &8999471631003026414
@@ -152,7 +152,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &7293697446076084327
 MeshCollider:

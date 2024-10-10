@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5009148138520161672}
   - component: {fileID: 265923315230664079}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beet - Melee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.32, y: 1.105154, z: 10.58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.3993626, y: 3.3993626, z: 3.3993626}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1443006214548317331}
@@ -43,7 +43,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -109,11 +109,11 @@ MonoBehaviour:
   headPosition: {fileID: 180612143167969765}
   shootPosition: {fileID: 7014898671092834034}
   bullet: {fileID: 1892089946900536754, guid: 272cacb7c658bda4e9c09fa7aec36ce8, type: 3}
-  firerate: 2
+  firerate: 1
   rotateSpeed: 32
-  HP: 10
-  enemyPrefab: {fileID: 5261893305261296824, guid: f3c10c5a330019d4fa52fe6dd06e7278, type: 3}
-  maxRespawns: 1
+  HP: 100
+  enemyPrefab: {fileID: 695450990797585724}
+  maxRespawns: 0
 --- !u!33 &5971728097911750692
 MeshFilter:
   m_ObjectHideFlags: 0

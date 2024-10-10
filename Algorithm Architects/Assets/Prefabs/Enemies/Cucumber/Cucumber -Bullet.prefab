@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8288055622173806138}
   - component: {fileID: 554902659975585204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cucumber -Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,9 +240,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8722091623857926074}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.042957, y: -1.68, z: 32.648613}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.54038, y: 0.54038, z: 0.54038}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6308238598529697005}
@@ -258,7 +258,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.4
-  m_Speed: 10
+  m_Speed: 8
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 800
