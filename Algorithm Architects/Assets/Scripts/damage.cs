@@ -19,7 +19,8 @@ public class damage : MonoBehaviour
     {
         if(type == damageTypes.bullet)
         {
-            rb.velocity = transform.forward * bulletSpeed;
+            //rb.velocity = transform.forward * bulletSpeed;
+            rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position) * bulletSpeed;
             Destroy(gameObject, despawnTimer);
         }
 
