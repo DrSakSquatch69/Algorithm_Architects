@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int wallRunSpeed;
     int origGrav;
     bool isWallRunning;
+    bool isSpawnProtection;
 
     //used to see if the player is grounded in debug mode
 
@@ -82,6 +83,14 @@ public class PlayerController : MonoBehaviour, IDamage
 
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
         updatePlayerUI();
+        isSpawnProtection = true;
+        StartCoroutine(spawnProtection());
+    }
+
+    IEnumerator spawnProtection()
+    {
+        yield return new WaitForSeconds(1);
+        isSpawnProtection = false;
     }
 
     // Update is called once per frame
@@ -271,15 +280,22 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
-        HealthPoints -= amount;
-        StartCoroutine(gameManager.instance.hitFlash());
-        updatePlayerUI();
-        isTakingDamage = true;
-        StartCoroutine(healDelay());
-
-        if (HealthPoints <= 0)
+        if (!isSpawnProtection)
         {
-            gameManager.instance.youLose();
+            HealthPoints -= amount;
+            StartCoroutine(gameManager.instance.hitFlash());
+            updatePlayerUI();
+            isTakingDamage = true;
+            StartCoroutine(healDelay());
+
+            if (HealthPoints <= 0)
+            {
+                gameManager.instance.youLose();
+            }
+        }
+        else
+        {
+            return;
         }
     }
 
