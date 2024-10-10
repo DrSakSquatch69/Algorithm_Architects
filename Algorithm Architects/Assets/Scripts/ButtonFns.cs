@@ -32,39 +32,39 @@ public class ButtonFns : MonoBehaviour
 #else
         if (SceneManager.GetActiveScene().name == "Tutorial") //Checks to see what level the player is in, and then loads the next level.
         {
-            SceneManager.LoadScene("Level 1 Growth");
+            SceneManager.LoadScene("Level 1");
         }
         else if(SceneManager.GetActiveScene().name == "Level 1 Growth")
         {
-            SceneManager.LoadScene("Level 2 Growth");
+            SceneManager.LoadScene("Level 2");
         }
         else if (SceneManager.GetActiveScene().name == "Level 2 Growth")
         {
-            SceneManager.LoadScene("Level 3 Growth");
+            SceneManager.LoadScene("Level 3");
         }
         else if (SceneManager.GetActiveScene().name == "Level 3 Growth")
         {
-            SceneManager.LoadScene("Level 4 Growth");
+            SceneManager.LoadScene("Level 4");
         }
         else if (SceneManager.GetActiveScene().name == "Level 4 Growth")
         {
-            SceneManager.LoadScene("Level 5 Growth");
+            SceneManager.LoadScene("Level 5");
         }
         else if (SceneManager.GetActiveScene().name == "Level 5 Growth")
         {
-            SceneManager.LoadScene("Level 6 Growth");
+            SceneManager.LoadScene("Level 6");
         }
         else if (SceneManager.GetActiveScene().name == "Level 6 Growth")
         {
-            SceneManager.LoadScene("Level 7 Growth");
+            SceneManager.LoadScene("Level 7");
         }
         else if (SceneManager.GetActiveScene().name == "Level 7 Growth")
         {
-            SceneManager.LoadScene("Level 8 Growth");
+            SceneManager.LoadScene("Level 8");
         }
         else if (SceneManager.GetActiveScene().name == "Level 8 Growth")
         {
-            SceneManager.LoadScene("Final Growth");
+            SceneManager.LoadScene("Final Level");
         }
         resume();;
 #endif
