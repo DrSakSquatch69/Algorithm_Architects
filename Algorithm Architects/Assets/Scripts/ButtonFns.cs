@@ -27,11 +27,47 @@ public class ButtonFns : MonoBehaviour
     {
 
         //if in unity editor it just quits, but if in actual game, then it loads the main game
-    #if UNITY_EDITOR
+#if  UNITY_EDITOR
         quit();
-    #else
-         SceneManager.LoadScene("Main Game Scene");
+#else
+        if (SceneManager.GetActiveScene().name == "Tutorial") //Checks to see what level the player is in, and then loads the next level.
+        {
+            SceneManager.LoadScene("Level 1 Growth");
+        }
+        else if(SceneManager.GetActiveScene().name == "Level 1 Growth")
+        {
+            SceneManager.LoadScene("Level 2 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 2 Growth")
+        {
+            SceneManager.LoadScene("Level 3 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 3 Growth")
+        {
+            SceneManager.LoadScene("Level 4 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 4 Growth")
+        {
+            SceneManager.LoadScene("Level 5 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 5 Growth")
+        {
+            SceneManager.LoadScene("Level 6 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 6 Growth")
+        {
+            SceneManager.LoadScene("Level 7 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 7 Growth")
+        {
+            SceneManager.LoadScene("Level 8 Growth");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 8 Growth")
+        {
+            SceneManager.LoadScene("Final Growth");
+        }
         resume();;
-    #endif
+#endif
+ 
     }
 }

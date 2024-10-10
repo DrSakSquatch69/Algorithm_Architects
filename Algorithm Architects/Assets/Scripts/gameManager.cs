@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuTutorialComplete, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text remainingAmmoText;
@@ -18,6 +18,7 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
 
     [SerializeField] bool isTutorial;                                         //Only put true if on tutorial level
+    [SerializeField] bool isFinalLevel;
 
     float timeScaleOrig;                                                    // original timeScale
     GameObject player;                                                     //player object so we can access our player through the game manager
@@ -97,16 +98,17 @@ public class gameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            if (isTutorial)
+           
+            if (isFinalLevel)
             {
                 statePause();
-                menuActive = menuTutorialComplete;
+                menuActive = menuWin;
                 menuActive.SetActive(isPaused);
             }
             else
             {
                 statePause();
-                menuActive = menuWin;
+                menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);
             }
         }
