@@ -9,13 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470164870884174514}
+  - component: {fileID: 8701054151884350758}
   - component: {fileID: 1050562069397511582}
   - component: {fileID: 258413241415950456}
   - component: {fileID: 8980919767999909230}
   - component: {fileID: 4181149989653813136}
   - component: {fileID: 9106096539545287709}
   - component: {fileID: 8314681664398686720}
-  m_Layer: 8
+  - component: {fileID: -2336473509143679045}
+  m_Layer: 12
   m_Name: Bullet - Chaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,6 +39,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8701054151884350758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223472228960464512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc28dbe9ce0c890468d43bc4f7df9df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 10
+  model: {fileID: 8980919767999909230}
 --- !u!114 &1050562069397511582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,7 +68,7 @@ MonoBehaviour:
   type: 1
   rb: {fileID: 258413241415950456}
   damageAmount: 15
-  bulletSpeed: 1800
+  bulletSpeed: 1200
   despawnTimer: 8
 --- !u!54 &258413241415950456
 Rigidbody:
@@ -273,4 +289,25 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &-2336473509143679045
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223472228960464512}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.45
   m_Center: {x: 0, y: 0, z: 0}
