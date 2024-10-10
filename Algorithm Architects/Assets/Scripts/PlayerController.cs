@@ -245,10 +245,17 @@ public class PlayerController : MonoBehaviour, IDamage
                 // Debug.Log(hit.collider.name);
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
+                DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
                 if (dmg != null)
                 {
                     dmg.takeDamage(shootDamage);
+                    StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
+                }
+
+                if (damage != null)
+                {
+                    damage.takeDamage(shootDamage);
                     StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
                 }
             }
