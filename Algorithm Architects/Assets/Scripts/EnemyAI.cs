@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         playerDirection = gameManager.instance.getPlayer().transform.position - transform.position;
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        agent.SetDestination(new Vector3(gameManager.instance.getPlayer().transform.position.x, gameObject.transform.position.y, gameManager.instance.getPlayer().transform.position.z));
 
         if(playerSighted)
         {
