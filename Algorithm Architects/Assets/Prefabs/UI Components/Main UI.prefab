@@ -665,7 +665,7 @@ MonoBehaviour:
   menuPause: {fileID: 3002116785270571869}
   menuWin: {fileID: 7302874814289471796}
   menuLose: {fileID: 7402720636824840885}
-  menuTutorialComplete: {fileID: 6518688195141474662}
+  menuNextLevel: {fileID: 6518688195141474662}
   hitMarker: {fileID: 2852310766139106036}
   screenFlash: {fileID: 6530351650902494349}
   reloading: {fileID: 6634472249645809948}
@@ -675,6 +675,7 @@ MonoBehaviour:
   remainingAmmoText: {fileID: 8323474644342541130}
   playerHPBar: {fileID: 6513100319581162860}
   isTutorial: 0
+  isFinalLevel: 0
   isPaused: 0
 --- !u!1 &2411961645057288431
 GameObject:
@@ -4694,7 +4695,7 @@ PrefabInstance:
       objectReference: {fileID: 6125736214354427041}
     - target: {fileID: 5508993307801927631, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainGame
+      value: NextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5667083349252165943, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4845,6 +4846,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906802048294967453}
     m_Modifications:
+    - target: {fileID: 1614969569540317618, guid: 978015738aa03e248a2171c20af53b88, type: 3}
+      propertyPath: m_text
+      value: Next Level
+      objectReference: {fileID: 0}
     - target: {fileID: 3935345372851074267, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4927,7 +4932,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4307134423788772951, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_Name
-      value: Menu - TutorialComplete
+      value: Menu - NextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307134423788772951, guid: 978015738aa03e248a2171c20af53b88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5443277778391533633, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4943,7 +4952,11 @@ PrefabInstance:
       objectReference: {fileID: 6125736214354427041}
     - target: {fileID: 5508993307801927631, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainGame
+      value: NextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7369237321290683047, guid: 978015738aa03e248a2171c20af53b88, type: 3}
+      propertyPath: m_Name
+      value: NextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 7824954248892473059, guid: 978015738aa03e248a2171c20af53b88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

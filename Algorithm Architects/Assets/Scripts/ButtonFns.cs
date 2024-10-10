@@ -23,7 +23,7 @@ public class ButtonFns : MonoBehaviour
 #endif
     }
 
-    public void MainGame()
+    public void NextLevel()
     {
 
         //if in unity editor it just quits, but if in actual game, then it loads the main game
