@@ -224,7 +224,7 @@ MonoBehaviour:
   headPosition: {fileID: 1254169219541499536}
   shootPosition: {fileID: 6193911881193966938}
   bullet: {fileID: 5223472228960464512, guid: a268cd8ea04fac0428be2e4f008bb76e, type: 3}
-  firerate: 0.6
+  firerate: 0.8
   rotateSpeed: 32
   HP: 50
   enemyPrefab: {fileID: 5261893305261296824}
@@ -343,5 +343,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 35
   m_Center: {x: 0, y: 0, z: 0}
