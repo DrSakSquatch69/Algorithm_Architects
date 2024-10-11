@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
+    
 
     [SerializeField] int HP;
     [SerializeField] GameObject enemyPrefab;    //Refrence to the enemy prefab
@@ -26,14 +28,19 @@ public class EnemyAI : MonoBehaviour, IDamage
     bool playerSighted;
 
     int currentRespawnCount = 1;
+    int activeEnemiesAI; //Used for tracking the active enemies 
+
+   
+    
 
     // Start is called before the first frame update
     void Start()
     {
         //stores the original color
         colorOrig = model.material.color;
-        gameManager.instance.updateGameGoal(1);
-
+        //gameManager.instance.updateGameGoal(1);
+       
+    
     }
 
     // Update is called once per frame
@@ -41,6 +48,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         playerDirection = gameManager.instance.getPlayer().transform.position - transform.position;
         agent.SetDestination(new Vector3(gameManager.instance.getPlayer().transform.position.x, gameObject.transform.position.y, gameManager.instance.getPlayer().transform.position.z));
+        activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+                                                                             
 
         if(playerSighted)
         {
@@ -67,6 +76,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
+            --activeEnemiesAI;
+            gameManager.instance.ActiveCheck(activeEnemiesAI);
+
             // Check if enemy can respawn
             if (currentRespawnCount < maxRespawns)
             {
@@ -84,14 +96,20 @@ public class EnemyAI : MonoBehaviour, IDamage
                 gameManager.instance.updateGameGoal(+1);
                 
             }
-            else
+            else 
             {
                 // No more respawns allowed, decrement the game goal
                 gameManager.instance.updateGameGoal(-1);
+               
             }
             
             // Destroys current enemy
             Destroy(gameObject);
+            
+            if (gameManager.instance.ActiveCheck(activeEnemiesAI))
+            {
+                gameManager.instance.Waves();
+            }
         }
     }
 
@@ -138,6 +156,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         isShooting = false;
     }
 
+  
 }
 
 

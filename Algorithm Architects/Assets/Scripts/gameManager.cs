@@ -14,6 +14,11 @@ public class gameManager : MonoBehaviour
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text remainingAmmoText;
+    [SerializeField] int nextWaveTimer;
+    [SerializeField] GameObject toRespawn;
+    [SerializeField] int maxEnemiesAtOnce;
+    [SerializeField] Transform respawnPoint;
+    [SerializeField] int enemyCountForCurrentLevel;
 
     public Image playerHPBar;
 
@@ -24,6 +29,7 @@ public class gameManager : MonoBehaviour
     GameObject player;                                                     //player object so we can access our player through the game manager
 
     int enemyCount;
+    int activeEnemies;
     // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
 
     public bool isPaused;                                                   //variable to store wether we are paused or not
@@ -42,6 +48,8 @@ public class gameManager : MonoBehaviour
         instance = this;
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location
+        updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
+        Waves();                                                            //Spawns in the first wave of enemies
     }
 
     // Update is called once per frame
@@ -159,4 +167,47 @@ public class gameManager : MonoBehaviour
         isNoAmmo = !isNoAmmo;
         noAmmo.SetActive(isNoAmmo);
     }
+
+    public bool ActiveCheck(int amount) //Checks to see if there are no active enemies left 
+    {
+        activeEnemies = amount;
+
+        if(activeEnemies == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Waves() //Responsible for spawning in the correct amount of enemies per wave at a specific location
+    {
+        if(ActiveCheck(activeEnemies))
+        {
+           
+            while(activeEnemies < maxEnemiesAtOnce && activeEnemies < enemyCount) //Makes enemies until the max at a time is reached
+            {
+                //StartCoroutine(GradualSpawning());
+                //if (activeEnemies > enemyCountForCurrentLevel)
+                //{
+                //    return;
+                //}
+                ++activeEnemies;
+                GameObject.Instantiate(toRespawn, respawnPoint.position, transform.rotation);
+         
+            }
+        }
+    }
+
+    public int GetEnemyCountCurrent()
+    {
+        return enemyCountForCurrentLevel;
+    }
+
+   //public IEnumerator GradualSpawning()
+   // {
+   //     yield return new WaitForSeconds(nextWaveTimer);
+       
+   // }
+
 }
