@@ -212,8 +212,8 @@ public class PlayerController : MonoBehaviour, IDamage
         if (isCrouching && !isSprinting && !isSliding)
         {
             //changes the player Y size to the crouch size
-            transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
-            crouching = true;
+            transform.localScale = new Vector3(1, crouchSizeYAxis, 1); //Change character controller instead of actual model size
+            crouching = true;                                         //Make enemies easier to see (try making them bigger first)
 
         }
         //if sprinting then start slide

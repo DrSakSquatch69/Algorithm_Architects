@@ -7363,6 +7363,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3297456991704742142, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297456991704742142, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5418252668002604541, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: isTutorial
       value: 1
@@ -28016,6 +28024,22 @@ PrefabInstance:
     - target: {fileID: 2490473820224051722, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995409304780824033, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166499922762519431, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
+      propertyPath: m_Height
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166499922762519431, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166499922762519431, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8285463931171290141, guid: 984a9e3f2448c044396bf33eee6be51d, type: 3}
       propertyPath: m_Name

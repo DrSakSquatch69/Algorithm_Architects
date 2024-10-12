@@ -26,48 +26,51 @@ public class ButtonFns : MonoBehaviour
     public void NextLevel()
     {
 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); //CUrrently doesn't bring player from tutorial to level one after clicking next level
+        
+
         //if in unity editor it just quits, but if in actual game, then it loads the main game
-#if  UNITY_EDITOR
-        quit();
-#else
-        if (SceneManager.GetActiveScene().name == "Tutorial Scene") //Checks to see what level the player is in, and then loads the next level.
-        {
-            SceneManager.LoadScene("Level 1");
-        }
-        else if(SceneManager.GetActiveScene().name == "Level 1")
-        {
-            SceneManager.LoadScene("Level 2");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 2")
-        {
-            SceneManager.LoadScene("Level 3");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 3")
-        {
-            SceneManager.LoadScene("Level 4");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 4")
-        {
-            SceneManager.LoadScene("Level 5");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 5")
-        {
-            SceneManager.LoadScene("Level 6");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 6")
-        {
-            SceneManager.LoadScene("Level 7");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 7")
-        {
-            SceneManager.LoadScene("Level 8");
-        }
-        else if (SceneManager.GetActiveScene().name == "Level 8")
-        {
-            SceneManager.LoadScene("Final Level");
-        }
-        resume();;
-#endif
+//#if  UNITY_EDITOR
+  //      quit();
+//#else
+        //if (SceneManager.GetActiveScene().name == "Tutorial Scene") //Checks to see what level the player is in, and then loads the next level.
+        //{
+        //    SceneManager.LoadScene("Level 1");
+        //}
+        //else if(SceneManager.GetActiveScene().name == "Level 1")
+        //{
+        //    SceneManager.LoadScene("Level 2");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 2")
+        //{
+        //    SceneManager.LoadScene("Level 3");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 3")
+        //{
+        //    SceneManager.LoadScene("Level 4");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 4")
+        //{
+        //    SceneManager.LoadScene("Level 5");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 5")
+        //{
+        //    SceneManager.LoadScene("Level 6");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 6")
+        //{
+        //    SceneManager.LoadScene("Level 7");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 7")
+        //{
+        //    SceneManager.LoadScene("Level 8");
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level 8")
+        //{
+        //    SceneManager.LoadScene("Final Level");
+        //}
+        resume();
+//#endif
  
     }
 }
