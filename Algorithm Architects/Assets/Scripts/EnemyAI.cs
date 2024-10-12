@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     bool playerSighted;
 
     int currentRespawnCount = 1;
-    int activeEnemiesAI; //Used for tracking the active enemies 
+    //int activeEnemiesAI; //Used for tracking the active enemies 
 
    
     
@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //stores the original color
         colorOrig = model.material.color;
-        //gameManager.instance.updateGameGoal(1);
+        gameManager.instance.updateGameGoal(1);
        
     
     }
@@ -48,7 +48,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         playerDirection = gameManager.instance.getPlayer().transform.position - transform.position;
         agent.SetDestination(new Vector3(gameManager.instance.getPlayer().transform.position.x, gameObject.transform.position.y, gameManager.instance.getPlayer().transform.position.z));
-        activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+       // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
                                                                              
 
         if(playerSighted)
@@ -76,8 +76,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
-            --activeEnemiesAI;
-            gameManager.instance.ActiveCheck(activeEnemiesAI);
+           // --activeEnemiesAI;
+           // gameManager.instance.ActiveCheck(activeEnemiesAI);
 
             // Check if enemy can respawn
             if (currentRespawnCount < maxRespawns)
@@ -106,10 +106,10 @@ public class EnemyAI : MonoBehaviour, IDamage
             // Destroys current enemy
             Destroy(gameObject);
             
-            if (gameManager.instance.ActiveCheck(activeEnemiesAI))
-            {
-                gameManager.instance.Waves();
-            }
+            //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
+            //{
+            //    gameManager.instance.Waves();
+            //}
         }
     }
 

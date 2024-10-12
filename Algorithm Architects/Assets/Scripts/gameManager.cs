@@ -48,8 +48,8 @@ public class gameManager : MonoBehaviour
         instance = this;
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location
-        updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
-        Waves();                                                            //Spawns in the first wave of enemies
+        //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
+        //Waves();                                                            //Spawns in the first wave of enemies
     }
 
     // Update is called once per frame
