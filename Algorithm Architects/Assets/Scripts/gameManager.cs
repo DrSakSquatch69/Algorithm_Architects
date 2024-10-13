@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause;
+    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause, muzzleFlash;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text remainingAmmoText;

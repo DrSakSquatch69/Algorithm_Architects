@@ -89,7 +89,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8191
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   slideDistance: 0.4
   slideSpeedMod: 2
   slideDelay: 0.4
+  crouchHeight: 0
   ammoremaining: 2000
   magSize: 30
   healDelayTime: 5
