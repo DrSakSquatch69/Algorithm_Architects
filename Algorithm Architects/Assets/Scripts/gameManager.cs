@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;                                     //how we will access game manager
-      //test for push                                                                      // Start is called before the first frame update
+                                                                            // Start is called before the first frame update
 
     [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
