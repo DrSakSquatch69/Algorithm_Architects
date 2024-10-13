@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9430809, y: 5, z: 6.0484505}
-  m_LocalScale: {x: 1.4832, y: 1.4832, z: 1.4832}
+  m_LocalScale: {x: 2.6058216, y: 2.6058216, z: 2.6058216}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 97476607665496469}
@@ -71,7 +71,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -80,7 +80,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 1.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!33 &4736221711153953976

@@ -82,14 +82,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1076670724006874393}
-  agent: {fileID: 0}
+  agent: {fileID: 5110778331610287905}
   headPosition: {fileID: 178781630089125151}
   shootPosition: {fileID: 1452247662049672956}
   bullet: {fileID: 5223472228960464512, guid: a268cd8ea04fac0428be2e4f008bb76e, type: 3}
   firerate: 0.8
   rotateSpeed: 32
   HP: 50
-  enemyPrefab: {fileID: 1095534646312505382, guid: c13a40d24e4af954f91712c9fd865505, type: 3}
+  enemyPrefab: {fileID: 4634034312883299649}
   maxRespawns: 0
 --- !u!33 &9191958644527708785
 MeshFilter:
@@ -242,7 +242,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -31.964485, y: 0.2329117, z: -80.109024}
-  m_LocalScale: {x: 1.5716, y: 1.5716, z: 1.5716}
+  m_LocalScale: {x: 1.7105294, y: 1.7105294, z: 1.7105294}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6806106621463569665}

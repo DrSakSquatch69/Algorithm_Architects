@@ -89,7 +89,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.028, y: 1.23, z: 0.72}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1340716, y: 2.1340716, z: 2.1340716}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 629910638367136937}
@@ -105,7 +105,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.65
-  m_Speed: 3.5
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 1045521434442276057}
   - component: {fileID: 5472888733546428939}
   - component: {fileID: 5827208219828423410}
+  - component: {fileID: 923825545553138063}
   m_Layer: 7
   m_Name: Daikon Enemy
   m_TagString: Untagged
@@ -171,11 +172,11 @@ MonoBehaviour:
   headPosition: {fileID: 4036538904350358587}
   shootPosition: {fileID: 1874355212184968714}
   bullet: {fileID: 1892089946900536754, guid: 272cacb7c658bda4e9c09fa7aec36ce8, type: 3}
-  firerate: 2
+  firerate: 1
   rotateSpeed: 32
-  HP: 10
-  enemyPrefab: {fileID: 5261893305261296824, guid: f3c10c5a330019d4fa52fe6dd06e7278, type: 3}
-  maxRespawns: 1
+  HP: 100
+  enemyPrefab: {fileID: 4498683362734329830}
+  maxRespawns: 0
 --- !u!33 &1045521434442276057
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -245,5 +246,27 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &923825545553138063
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5547908730902899622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 468c66a7649ca034598f94a301b60ba0, type: 3}
