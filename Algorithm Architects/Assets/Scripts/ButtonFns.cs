@@ -26,7 +26,7 @@ public class ButtonFns : MonoBehaviour
     public void NextLevel()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); //CUrrently doesn't bring player from tutorial to level one after clicking next level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); //Gets the index of the current level and loads the next scene after it
         
 
         //if in unity editor it just quits, but if in actual game, then it loads the main game
