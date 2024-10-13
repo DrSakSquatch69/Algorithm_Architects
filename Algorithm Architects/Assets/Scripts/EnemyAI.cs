@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
@@ -14,8 +15,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
-    
 
+    int hpOrig;                                 //Original HP
     [SerializeField] int HP;
     [SerializeField] GameObject enemyPrefab;    //Refrence to the enemy prefab
     [SerializeField] int maxRespawns = 0;       //limit the amound of respawns the enemy has
@@ -23,6 +24,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     Color colorOrig;
     Vector3 playerDirection;
+    GameObject playerObj;
 
     bool isShooting;
     bool playerSighted;
@@ -30,7 +32,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     int currentRespawnCount = 1;
     //int activeEnemiesAI; //Used for tracking the active enemies 
 
-   
+    public Image enemyHp;
+    Image enemyHpBar;
     
 
     // Start is called before the first frame update
@@ -38,14 +41,17 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //stores the original color
         colorOrig = model.material.color;
+        hpOrig = HP;                                //set original hp
+        enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
         gameManager.instance.updateGameGoal(1);
-       
-    
+
+        updateEnemyUI();
     }
 
     // Update is called once per frame
     void Update()
     {
+        updateEnemyUI();
         playerDirection = gameManager.instance.getPlayer().transform.position - transform.position;
         agent.SetDestination(new Vector3(gameManager.instance.getPlayer().transform.position.x, gameObject.transform.position.y, gameManager.instance.getPlayer().transform.position.z));
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
@@ -70,6 +76,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        updateEnemyUI();
 
         StartCoroutine(flashColor());
 
@@ -111,6 +118,19 @@ public class EnemyAI : MonoBehaviour, IDamage
             //    gameManager.instance.Waves();
             //}
         }
+    }
+   
+    public void updateEnemyUI()
+    {
+        enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
+        enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
+        float dist = 1/Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) * 2f;  //get the distance between the player and enemy
+        if(dist > 1f)                                                                                                   //so that dist does not get larger the further away you get
+        {
+            dist = 0.25f;
+        }
+        dist = Mathf.Clamp(dist, 0.25f, 1f);                                                                            //set min and max for what dist can be
+        enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
     }
 
     public void SetRespawnCount(int respawnCount)
