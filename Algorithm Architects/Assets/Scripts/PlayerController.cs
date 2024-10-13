@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float slideDistance;
     [SerializeField] float slideSpeedMod;
     [SerializeField] float slideDelay;
+    [SerializeField] float crouchHeight;
+    [SerializeField] float normalHeight;
+
 
     int ammo;
     [SerializeField] int ammoremaining;
@@ -212,7 +215,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (isCrouching && !isSprinting && !isSliding)
         {
             //changes the player Y size to the crouch size
-            transform.localScale = new Vector3(1, crouchSizeYAxis, 1); //Change character controller instead of actual model size
+            controller.height = crouchHeight; //Change character controller instead of actual model size
             crouching = true;                                         //Make enemies easier to see (try making them bigger first)
 
         }
@@ -224,7 +227,7 @@ public class PlayerController : MonoBehaviour, IDamage
             if (canSlide && holdingSprintTime >= slideDelay) //checking if the player can slide and also if they held the key for the correct amount of time
             { 
                 isSliding = true;
-                transform.localScale = new Vector3(1, crouchSizeYAxis, 1);
+                controller.height = crouchHeight;
                 canSlide = false;
             }
             else
@@ -235,7 +238,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (!isCrouching)
         {
             //changes the player Y size to the normal size
-            transform.localScale = new Vector3(1, normYSize, 1);
+            controller.height = normalHeight;
             crouching = false;
         }
     }
