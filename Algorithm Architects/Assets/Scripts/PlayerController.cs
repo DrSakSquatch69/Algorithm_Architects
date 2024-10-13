@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float slideSpeedMod;
     [SerializeField] float slideDelay;
     [SerializeField] float crouchHeight;
-    [SerializeField] float normalHeight;
+    float normalHeight;
 
 
     int ammo;
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour, IDamage
         origGrav = gravity;
         ammo = magSize;
         HealthPoints = maxHP;
+        normalHeight = controller.height;
 
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
         updatePlayerUI();
