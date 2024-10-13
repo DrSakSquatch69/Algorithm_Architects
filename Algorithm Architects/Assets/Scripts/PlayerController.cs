@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreMask;
+
     //Field for Health
     int HealthPoints;
     [SerializeField] int maxHP;
@@ -30,14 +31,16 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float slideSpeedMod;
     [SerializeField] float slideDelay;
     [SerializeField] float crouchHeight;
-    [SerializeField] float normalHeight;
+    float normalHeight;
 
-
+    //Shooting Fields
     int ammo;
     [SerializeField] int ammoremaining;
     [SerializeField] int magSize;
     bool isReloading;
+    bool isShooting;
 
+    //Player Health Fields
     [SerializeField] float healDelayTime; //how long the player needs to not take damage
     [SerializeField] float healRate; //the healrate of the player
     bool isTakingDamage; //checks if the player is taking damage
@@ -47,19 +50,23 @@ public class PlayerController : MonoBehaviour, IDamage
 
     int jumpCount;
     float startTimer;
-    float holdingSprintTime;
 
+    //Sprint Fields
+    float holdingSprintTime;
     bool isSprinting;
-    bool isShooting;
+
+    //Crouching Fields
     bool isCrouching;
     bool isSliding;
     bool canSlide;
     bool crouching;
 
+    //BouncePad Fields
     public LayerMask bouncePad;
     [SerializeField] float bouncePadForce;
     bool isBouncePad;
 
+    //WallRunning Fields
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
     [SerializeField] Transform orientation;
@@ -71,18 +78,15 @@ public class PlayerController : MonoBehaviour, IDamage
 
     //used to see if the player is grounded in debug mode
 
-    //stores the normal Y size of the player capsule
-    float normYSize;
-
     // Start is called before the first frame update
     void Start()
     {
         //initiates the normal size
-        normYSize = transform.localScale.y;
         jumpCount = 0;
         origGrav = gravity;
         ammo = magSize;
         HealthPoints = maxHP;
+        normalHeight = controller.height;
 
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
         updatePlayerUI();
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(spawnProtection());
     }
 
+    //Function for spawn protection
     IEnumerator spawnProtection()
     {
         yield return new WaitForSeconds(1);
@@ -109,6 +114,7 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForBouncePad();
     }
 
+    //Function for player movement
     void Movement()
     {
         //checks if the player is on the ground, if yes then reset jump count and player velocity
@@ -125,20 +131,24 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
         }
+        //If player is wallrunning increase player speed
         else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
         }
+        //If player is sliding, call the slide function
         else if (isSliding)
         {
             //starts the slide
             StartCoroutine(Slide());
         }
+        //if player is not crouching, then player speed is set to default
         else if (!crouching)
         {
             controller.Move(moveDir * speed * Time.deltaTime);
         }
 
+        //if player jumps, then increase players Y velocity
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             jumpCount++;
@@ -165,6 +175,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //Function for slide distance
     IEnumerator Slide()
     {
         if (canSlide && holdingSprintTime >= slideDelay)
@@ -182,6 +193,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //function for delay between slides
     IEnumerator slidingDelay()
     {
         canSlide = false;
@@ -189,6 +201,7 @@ public class PlayerController : MonoBehaviour, IDamage
         canSlide = true;
     }
 
+    //sprint function
     void sprint()
     {
         StartCoroutine(slidingDelay());
@@ -209,9 +222,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
     }
 
+    //crouch function
     void crouch()
     {
-
+        //if the player is crouching and not running or sliding then set the players height to crouch height
         if (isCrouching && !isSprinting && !isSliding)
         {
             //changes the player Y size to the crouch size
@@ -225,7 +239,7 @@ public class PlayerController : MonoBehaviour, IDamage
             holdingSprintTime = Time.time - startTimer;
 
             if (canSlide && holdingSprintTime >= slideDelay) //checking if the player can slide and also if they held the key for the correct amount of time
-            { 
+            {
                 isSliding = true;
                 controller.height = crouchHeight;
                 canSlide = false;
@@ -235,6 +249,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 isCrouching = false;
             }
         }
+        //if the player is not crouching, then set the player height back to the normal height
         else if (!isCrouching)
         {
             //changes the player Y size to the normal size
@@ -243,6 +258,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //function for shooting
     IEnumerator shoot()
     {
         if (ammo > 0)
@@ -281,6 +297,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //function for taking damage
     public void takeDamage(int amount)
     {
         if (!isSpawnProtection)
@@ -302,11 +319,13 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //function for updating the player UI
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
     }
 
+    //function for the wallrun input
     void WallRunInput()
     {
         if (isWallRight && !isCrouching && !controller.isGrounded)
@@ -319,6 +338,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //function that starts the wallrun
     void StartWallRun()
     {
         jumpCount = 0;
@@ -333,12 +353,14 @@ public class PlayerController : MonoBehaviour, IDamage
         isWallRunning = true;
     }
 
+    //function that stops the wallrun
     void StopWallRun()
     {
         isWallRunning = false;
         gravity = origGrav;
     }
 
+    //function that checks for a wall with a raycast
     void CheckForWall()
     {
         //Uses a raycast to check for wall on left and wall on right
@@ -352,6 +374,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     }
 
+    //function that checks for a bouncepad with a raycast
     void CheckForBouncePad()
     {
         //uses a raycast to see if there is a bounce pad underneath the player.
@@ -366,6 +389,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    //function for reloading
     IEnumerator reload()
     {
         if (ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
@@ -408,7 +432,8 @@ public class PlayerController : MonoBehaviour, IDamage
                 ammoremaining -= ammoremaining;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
-            }else if((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            }
+            else if ((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
@@ -422,6 +447,7 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
     }
 
+    //function that heals the player
     IEnumerator healPlayer()
     {
         if (!isTakingDamage && HealthPoints != maxHP) //if the player is not taking damage and is not at full health, then heal player
@@ -432,6 +458,8 @@ public class PlayerController : MonoBehaviour, IDamage
             updatePlayerUI(); //updates player ui
         }
     }
+
+    //function that checks if the player hasnt received damage for a certain amount of time.
     IEnumerator healDelay()
     {
         yield return new WaitForSeconds(healDelayTime); //Waits before calling the healplayer function
