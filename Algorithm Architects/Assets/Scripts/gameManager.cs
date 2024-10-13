@@ -137,6 +137,14 @@ public class gameManager : MonoBehaviour
         hitMarker.SetActive(false);
     }
 
+    public IEnumerator MuzzleFlash()
+    {
+        //turns on and off muzzle flash
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(.08f);
+        muzzleFlash.SetActive(false);
+    }
+
     public IEnumerator hitFlash()
     {
         screenFlash.SetActive(true);
