@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour, IDamage
             crouch();
         }
 
-        if (Input.GetButton("Reload") && !isReloading)
+        if (Input.GetButton("Reload") && !isReloading && ammo != magSize)
         {
             StartCoroutine(reload());
         }
