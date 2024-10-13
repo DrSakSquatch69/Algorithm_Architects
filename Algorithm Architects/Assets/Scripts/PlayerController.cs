@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour, IDamage
     int HealthPoints;
     [SerializeField] int maxHP;
 
+    //Fields for flashlight
+    [SerializeField] GameObject flashLight;
+    bool isFlashlight;
+
     //Fields for movement
     [SerializeField] float speed;
     [SerializeField] float sprintMod;
@@ -162,6 +166,12 @@ public class PlayerController : MonoBehaviour, IDamage
         if (Input.GetButton("Reload") && !isReloading)
         {
             StartCoroutine(reload());
+        }
+
+        if (Input.GetButtonDown("FlashLight"))
+        {
+            isFlashlight = !isFlashlight;
+            flashLight.SetActive(isFlashlight);
         }
     }
 
