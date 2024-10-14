@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
+    [SerializeField] int viewAngle;
+    float angleToPlayer;
+
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform headPosition;
@@ -52,26 +55,38 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         updateEnemyUI();
-        playerDirection = gameManager.instance.getPlayer().transform.position - transform.position;
-        agent.SetDestination(new Vector3(gameManager.instance.getPlayer().transform.position.x, gameObject.transform.position.y, gameManager.instance.getPlayer().transform.position.z));
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
                                                                              
-
-        if(playerSighted)
+        if(playerSighted && canSeePlayer())
         {
-            if(agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
-
-            if(!isShooting)
-            {
-                StartCoroutine(Shoot());
-            }
+            
         }
     }
+    bool canSeePlayer()
+    {
+        playerDirection = gameManager.instance.getPlayer().transform.position - headPosition.position;
+        angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+        Debug.DrawRay(headPosition.position, playerDirection);
 
-    
+        RaycastHit hit;
+        if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                if (!isShooting)
+                {
+                    StartCoroutine(Shoot());
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void takeDamage(int amount)
     {
@@ -124,8 +139,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
         enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
-        float dist = 1/Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) * 2f;  //get the distance between the player and enemy
-        if(dist > 1f)                                                                                                   //so that dist does not get larger the further away you get
+        float dist = 1 / Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) * 2f;  //get the distance between the player and enemy
+        if (dist > 1f)                                                                                                   //so that dist does not get larger the further away you get
         {
             dist = 0.25f;
         }
