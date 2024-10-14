@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6689768580973366425
 Transform:
   m_ObjectHideFlags: 0
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba02aa19c1cb0d94e813de63a50443cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewAngle: 90
   model: {fileID: 858758306286663306}
   agent: {fileID: 4546764878722826671}
   headPosition: {fileID: 1781426517386558513}
