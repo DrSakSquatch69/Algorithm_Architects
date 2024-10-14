@@ -27,6 +27,8 @@ public class gameManager : MonoBehaviour
 
     float timeScaleOrig;                                                    // original timeScale
     GameObject player;                                                     //player object so we can access our player through the game manager
+    float playerSpeed;
+    float originalPlayerSpeed;
 
     int enemyCount;
     int activeEnemies;
@@ -35,19 +37,27 @@ public class gameManager : MonoBehaviour
     public bool isPaused;                                                   //variable to store wether we are paused or not
     bool isReloading;
     bool isNoAmmo;
+    bool IsButtered;
 
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
     public GameObject getPlayer() { return player; }                        // getter for player to use in DamageReciever Class
+    public bool getIsButtered() { return IsButtered; }
+    public float getPlayerSpeed() { return playerSpeed; }
+    public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
+
 
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
+    public void setIsButtered(bool butter) { IsButtered = butter; }
+    public void setPlayerSpeed(float speed) { playerSpeed = speed; }
+    public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
 
     void Awake()                                                            //awake always happens first  
     {
         instance = this;
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
-        player = GameObject.FindWithTag("Player");                          //Tracks player's location
+        player = GameObject.FindWithTag("Player");                          //Tracks player's location 
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
     }
@@ -72,7 +82,7 @@ public class gameManager : MonoBehaviour
                 else
                 {
                     menuActive = menuPause;                              // setting active menu variable
-                }                                  
+                }
                 menuActive.SetActive(isPaused);                         //setting menu active via our variable
             }
             else if (menuActive == menuPause || menuActive == menuTutorialPause)                           //if we are in the pause menu
@@ -106,7 +116,7 @@ public class gameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-           
+
             if (isFinalLevel)
             {
                 statePause();
@@ -180,7 +190,7 @@ public class gameManager : MonoBehaviour
     {
         activeEnemies = amount;
 
-        if(activeEnemies == 0)
+        if (activeEnemies == 0)
         {
             return true;
         }
@@ -190,10 +200,10 @@ public class gameManager : MonoBehaviour
 
     public void Waves() //Responsible for spawning in the correct amount of enemies per wave at a specific location
     {
-        if(ActiveCheck(activeEnemies))
+        if (ActiveCheck(activeEnemies))
         {
-           
-            while(activeEnemies < maxEnemiesAtOnce && activeEnemies < enemyCount) //Makes enemies until the max at a time is reached
+
+            while (activeEnemies < maxEnemiesAtOnce && activeEnemies < enemyCount) //Makes enemies until the max at a time is reached
             {
                 //StartCoroutine(GradualSpawning());
                 //if (activeEnemies > enemyCountForCurrentLevel)
@@ -202,7 +212,7 @@ public class gameManager : MonoBehaviour
                 //}
                 ++activeEnemies;
                 GameObject.Instantiate(toRespawn, respawnPoint.position, transform.rotation);
-         
+
             }
         }
     }
@@ -212,10 +222,10 @@ public class gameManager : MonoBehaviour
         return enemyCountForCurrentLevel;
     }
 
-   //public IEnumerator GradualSpawning()
-   // {
-   //     yield return new WaitForSeconds(nextWaveTimer);
-       
-   // }
+    //public IEnumerator GradualSpawning()
+    // {
+    //     yield return new WaitForSeconds(nextWaveTimer);
+
+    // }
 
 }

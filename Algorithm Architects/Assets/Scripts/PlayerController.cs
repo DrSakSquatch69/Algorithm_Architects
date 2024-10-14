@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
+    [SerializeField] float butterSlowTimer;
+    float originalSpeed;
 
     //Fields for shooting
     [SerializeField] int shootDamage;
@@ -88,11 +90,16 @@ public class PlayerController : MonoBehaviour, IDamage
         ammo = magSize;
         HealthPoints = maxHP;
         normalHeight = controller.height;
+        originalSpeed = speed;
+        gameManager.instance.setOriginalPlayerSpeed(speed);
+        gameManager.instance.setPlayerSpeed(speed);
+
 
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
         updatePlayerUI();
         isSpawnProtection = true;
         StartCoroutine(spawnProtection());
+
     }
 
     IEnumerator spawnProtection()
@@ -116,6 +123,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void Movement()
     {
+        if (gameManager.instance.getIsButtered())
+        {
+            StartCoroutine(ButterSlow());
+        }
+
         //checks if the player is on the ground, if yes then reset jump count and player velocity
         if (controller.isGrounded)
         {
@@ -450,6 +462,16 @@ public class PlayerController : MonoBehaviour, IDamage
         yield return new WaitForSeconds(healDelayTime); //Waits before calling the healplayer function
         isTakingDamage = false;
         StartCoroutine(healPlayer());
+    }
+
+     IEnumerator ButterSlow()
+    {
+        //Sets the speed to the slowed down speed, starts the timer, marks the player as no longer buttered, and then gives the player their speed back
+        speed = gameManager.instance.getPlayerSpeed();
+        yield return new WaitForSeconds(butterSlowTimer);
+        gameManager.instance.setIsButtered(false);
+        speed = originalSpeed;
+        gameManager.instance.setPlayerSpeed(originalSpeed);
     }
 }
 
