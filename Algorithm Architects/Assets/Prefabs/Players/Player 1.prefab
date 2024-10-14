@@ -184,7 +184,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8191
+    m_Bits: 24575
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -264,6 +264,7 @@ MonoBehaviour:
   jumpSpeed: 12
   jumpMax: 2
   gravity: 28
+  butterSlowTimer: 5
   shootDamage: 20
   shootRate: 0.1
   shootDist: 100
@@ -280,6 +281,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   bouncePadForce: 40
+  mud:
+    serializedVersion: 2
+    m_Bits: 16384
+  mudSpeedMod: 2
   whatIsWall:
     serializedVersion: 2
     m_Bits: 512

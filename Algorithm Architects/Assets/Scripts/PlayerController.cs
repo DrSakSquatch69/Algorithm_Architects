@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int gravity;
     [SerializeField] float butterSlowTimer;
     float originalSpeed;
+    bool isSlowedByButter;
+    bool cantSprint;
 
     //Fields for shooting
     [SerializeField] int shootDamage;
@@ -62,9 +64,15 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canSlide;
     bool crouching;
 
+    //bouncepad fields
     public LayerMask bouncePad;
     [SerializeField] float bouncePadForce;
     bool isBouncePad;
+
+    //Mud fields
+    public LayerMask mud;
+    [SerializeField] float mudSpeedMod;
+    bool isMud;
 
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
@@ -119,11 +127,12 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForWall();
         WallRunInput();
         CheckForBouncePad();
+        CheckForMud();
     }
 
     void Movement()
     {
-        if (gameManager.instance.getIsButtered())
+        if (gameManager.instance.getIsButtered() && !isSpawnProtection)
         {
             StartCoroutine(ButterSlow());
         }
@@ -138,7 +147,7 @@ public class PlayerController : MonoBehaviour, IDamage
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
 
         //if the player is crouching, then dive the speed by 3, to make the player move slower
-        if (crouching && !isSliding)
+        if(crouching && !isSliding)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
         }
@@ -214,20 +223,27 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void sprint()
     {
-        StartCoroutine(slidingDelay());
-
-
-        if (Input.GetButtonDown("Sprint"))
+        if (cantSprint)
         {
-            startTimer = Time.time; //Timer for slide delays
-            speed *= sprintMod;
-            isSprinting = true;
+            return;
         }
-        else if (Input.GetButtonUp("Sprint"))
-        {
-            speed /= sprintMod;
-            isSprinting = false;
-            holdingSprintTime = 0;
+        else {
+            StartCoroutine(slidingDelay());
+
+
+            if (Input.GetButtonDown("Sprint"))
+            {
+                startTimer = Time.time; //Timer for slide delays
+                speed *= sprintMod;
+                isSprinting = true;
+            }
+            else if (Input.GetButtonUp("Sprint"))
+            {
+                // speed /= sprintMod;
+                speed = originalSpeed;
+                isSprinting = false;
+                holdingSprintTime = 0;
+            }
         }
 
     }
@@ -391,6 +407,23 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    void CheckForMud()
+    {
+        isMud = Physics.Raycast(transform.position, -orientation.up, 1.7f, mud); //A raycast to detect mud
+
+        if (isMud) //if there is mud then slow down player and remove the ability to sprint
+        {
+            cantSprint = true;
+            isSprinting = false;
+            speed = originalSpeed / mudSpeedMod;
+        }else if(!isMud && !isSlowedByButter && speed == originalSpeed / mudSpeedMod) //if no mud then reset player speed and grant the ability back to sprint
+        {
+            speed = originalSpeed;
+            isSprinting = false;
+            cantSprint = false;
+        }
+    }
+
     IEnumerator reload()
     {
         if (ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
@@ -467,11 +500,15 @@ public class PlayerController : MonoBehaviour, IDamage
      IEnumerator ButterSlow()
     {
         //Sets the speed to the slowed down speed, starts the timer, marks the player as no longer buttered, and then gives the player their speed back
+        cantSprint = true;
+        isSlowedByButter = true;
+        isSprinting = false;
         speed = gameManager.instance.getPlayerSpeed();
         yield return new WaitForSeconds(butterSlowTimer);
         gameManager.instance.setIsButtered(false);
-        speed = originalSpeed;
         gameManager.instance.setPlayerSpeed(originalSpeed);
+        isSlowedByButter = false;
+        cantSprint = false;
     }
 }
 
