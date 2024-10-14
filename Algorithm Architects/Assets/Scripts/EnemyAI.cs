@@ -56,7 +56,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-                                                                             
+        agent.SetDestination(gameManager.instance.playerHPBar.transform.position);
+        
         if(playerSighted && canSeePlayer())
         {
             
