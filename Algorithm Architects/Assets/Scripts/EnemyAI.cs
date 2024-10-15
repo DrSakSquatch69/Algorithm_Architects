@@ -24,6 +24,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject enemyPrefab;    //Refrence to the enemy prefab
     [SerializeField] int maxRespawns = 0;       //limit the amound of respawns the enemy has
 
+    [SerializeField] float minHPSize;
+    [SerializeField] float maxHPSize;
+    [SerializeField] float renderDistance;
+
 
     Color colorOrig;
     Vector3 playerDirection;
@@ -141,17 +145,15 @@ public class EnemyAI : MonoBehaviour, IDamage
    
     public void updateEnemyUI()
     {
-        if (render.isVisible) {                                                                                             //see if enemy model is on screen
+        float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
+
+        if (render.isVisible && dist <= renderDistance) {                                                                                             //see if enemy model is on screen
             enemyHpBar.enabled = true;
             isImgOn = true;
             enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
             enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
-            float dist = 1 / Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) * 2f;  //get the distance between the player and enemy
-            if (dist > 1f)                                                                                                   //so that dist does not get larger the further away you get
-            {
-                dist = 0.25f;
-            }
-            dist = Mathf.Clamp(dist, 0.25f, 1f);                                                                            //set min and max for what dist can be
+            dist = 1 / dist * 10f;
+            dist = Mathf.Clamp(dist, minHPSize, maxHPSize);                                                                            //set min and max for what dist can be
             enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
         } else
         {

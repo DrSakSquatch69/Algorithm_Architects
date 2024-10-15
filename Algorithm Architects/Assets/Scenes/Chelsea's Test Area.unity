@@ -676,7 +676,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114462081659490927, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: maxHPSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114462081659490927, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: minHPSize
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114462081659490927, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: renderDistance
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
