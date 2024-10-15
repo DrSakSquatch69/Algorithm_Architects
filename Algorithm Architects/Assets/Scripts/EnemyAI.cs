@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] float minHPSize;
     [SerializeField] float maxHPSize;
     [SerializeField] float renderDistance;
-
+    LayerMask ignoreMask;
 
     Color colorOrig;
     Vector3 playerDirection;
@@ -56,6 +56,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
+        ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
     }
 
@@ -78,7 +79,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         Debug.DrawRay(headPosition.position, playerDirection);
 
         RaycastHit hit;
-        if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+        if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000 ,~ignoreMask))
         {
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
