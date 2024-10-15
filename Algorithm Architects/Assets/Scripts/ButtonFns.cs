@@ -33,6 +33,11 @@ public class ButtonFns : MonoBehaviour
 
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+
+    public void PlayTutorial() //goes to the tutorial
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
