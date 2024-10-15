@@ -110,6 +110,14 @@ public class gameManager : MonoBehaviour
         menuActive = null;                                              //and changes our var back to null
     }
 
+    public void stateUnpauseMainMenu()                                  //unpauses the game for the main menu
+    {
+        isPaused = !isPaused;                                           // toggles on and off
+        Time.timeScale = timeScaleOrig;                                 // sets our time scale to active using our variable we stored orig timescale in 
+        menuActive.SetActive(false);                                    //setting the active menu to inactive
+        menuActive = null;
+    }
+
     public void updateGameGoal(int amount)
     {
         enemyCount += amount;                                           //updating enemy count
