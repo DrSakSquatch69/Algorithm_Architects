@@ -19,6 +19,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] int maxEnemiesAtOnce;
     [SerializeField] Transform respawnPoint;
     [SerializeField] int enemyCountForCurrentLevel;
+    public GameObject enemyHpParent;
 
     public Image playerHPBar;
 

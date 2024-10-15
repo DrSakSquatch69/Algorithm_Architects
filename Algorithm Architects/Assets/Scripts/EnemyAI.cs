@@ -53,6 +53,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
         enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
+        enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
         updateEnemyUI();
