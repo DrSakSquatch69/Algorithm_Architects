@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4181149989653813136}
   - component: {fileID: 9106096539545287709}
   - component: {fileID: 8314681664398686720}
-  - component: {fileID: 7349761534793085585}
+  - component: {fileID: 4731281965417090773}
   m_Layer: 12
   m_Name: Bullet - Chaser
   m_TagString: Untagged
@@ -70,6 +70,7 @@ MonoBehaviour:
   damageAmount: 15
   bulletSpeed: 1000
   despawnTimer: 8
+  butterSlowAmount: 0
 --- !u!54 &258413241415950456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -290,8 +291,8 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!64 &7349761534793085585
-MeshCollider:
+--- !u!135 &4731281965417090773
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -308,7 +309,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
