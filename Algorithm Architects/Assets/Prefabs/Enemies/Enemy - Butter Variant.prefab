@@ -24,17 +24,29 @@ PrefabInstance:
       propertyPath: firerate
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3421446380921722925, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
+      propertyPath: maxHPSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421446380921722925, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
+      propertyPath: minHPSize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421446380921722925, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
+      propertyPath: renderDistance
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4130217680532918416, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.669807
+      value: -39.642075
       objectReference: {fileID: 0}
     - target: {fileID: 4130217680532918416, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.999998
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4130217680532918416, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13315392
+      value: 12.714424
       objectReference: {fileID: 0}
     - target: {fileID: 4130217680532918416, guid: 0b4a87eaecf33ba4fb9cca30d7983faf, type: 3}
       propertyPath: m_LocalRotation.w

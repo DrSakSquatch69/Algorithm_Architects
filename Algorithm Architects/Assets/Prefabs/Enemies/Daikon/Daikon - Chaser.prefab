@@ -179,7 +179,11 @@ MonoBehaviour:
   HP: 50
   enemyPrefab: {fileID: 4498683362734329830}
   maxRespawns: 0
+  minHPSize: 0.1
+  maxHPSize: 1
+  renderDistance: 35
   enemyHp: {fileID: 2604551625235104534}
+  isImgOn: 0
 --- !u!33 &1045521434442276057
 MeshFilter:
   m_ObjectHideFlags: 0
