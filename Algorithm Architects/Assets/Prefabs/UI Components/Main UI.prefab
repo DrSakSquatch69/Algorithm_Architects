@@ -618,7 +618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 6
+  m_text: Final Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -963,7 +963,7 @@ MonoBehaviour:
   enemyHpParent: {fileID: 823098752036720756}
   playerHPBar: {fileID: 7302883950130769779}
   isTutorial: 0
-  isFinalLevel: 0
+  isFinalLevel: 1
   isPaused: 0
 --- !u!1 &2411961645057288431
 GameObject:
@@ -2196,17 +2196,17 @@ RectTransform:
   - {fileID: 3793756828574514856}
   - {fileID: 802962939698574651}
   - {fileID: 3808325907338617039}
+  - {fileID: 7531264437490587793}
+  - {fileID: 4497893680597663765}
+  - {fileID: 8465378850023442025}
+  - {fileID: 2876069096716080885}
+  - {fileID: 7309064679691504749}
+  - {fileID: 7841590772618553966}
   - {fileID: 5582388828124284888}
   - {fileID: 1563564477425763165}
   - {fileID: 5750086318207548948}
-  - {fileID: 7841590772618553966}
-  - {fileID: 7309064679691504749}
-  - {fileID: 7531264437490587793}
   - {fileID: 6281444321048277994}
   - {fileID: 3214610576434750360}
-  - {fileID: 2876069096716080885}
-  - {fileID: 4497893680597663765}
-  - {fileID: 8465378850023442025}
   - {fileID: 3689186418006498241}
   - {fileID: 2276200031395983727}
   m_Father: {fileID: 0}
@@ -4034,7 +4034,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 906802048294967453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5273,6 +5273,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3688532447173823238, guid: 9c32f2e3b18a3a94fa0cb90a4ac1c2fd, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688532447173823238, guid: 9c32f2e3b18a3a94fa0cb90a4ac1c2fd, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
@@ -5363,6 +5367,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906802048294967453}
     m_Modifications:
+    - target: {fileID: 2912720643157613099, guid: 84911164dd9dba64f90e649306a7a17b, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.881
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912720643157613099, guid: 84911164dd9dba64f90e649306a7a17b, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5954794872123573303, guid: 84911164dd9dba64f90e649306a7a17b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
