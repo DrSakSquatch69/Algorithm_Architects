@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     Color colorOrig;
     Vector3 playerDirection;
     GameObject playerObj;
+    Renderer render;
 
     bool isShooting;
     bool playerSighted;
@@ -37,6 +38,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public Image enemyHp;
     Image enemyHpBar;
+    public bool isImgOn;
     
 
     // Start is called before the first frame update
@@ -45,6 +47,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         //stores the original color
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
+        render = GetComponent<Renderer>();        //getting the renderer of the game object
         enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
         gameManager.instance.updateGameGoal(1);
 
@@ -72,7 +75,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         RaycastHit hit;
         if (Physics.Raycast(headPosition.position, playerDirection, out hit))
         {
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -138,15 +141,23 @@ public class EnemyAI : MonoBehaviour, IDamage
    
     public void updateEnemyUI()
     {
-        enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
-        enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
-        float dist = 1 / Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) * 2f;  //get the distance between the player and enemy
-        if (dist > 1f)                                                                                                   //so that dist does not get larger the further away you get
+        if (render.isVisible) {                                                                                             //see if enemy model is on screen
+            enemyHpBar.enabled = true;
+            isImgOn = true;
+            enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
+            enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
+            float dist = 1 / Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) * 2f;  //get the distance between the player and enemy
+            if (dist > 1f)                                                                                                   //so that dist does not get larger the further away you get
+            {
+                dist = 0.25f;
+            }
+            dist = Mathf.Clamp(dist, 0.25f, 1f);                                                                            //set min and max for what dist can be
+            enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
+        } else
         {
-            dist = 0.25f;
+            enemyHpBar.enabled = false;                                                                         //turn off health bar if enemy is not on screen
+            isImgOn = false;
         }
-        dist = Mathf.Clamp(dist, 0.25f, 1f);                                                                            //set min and max for what dist can be
-        enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
     }
 
     public void SetRespawnCount(int respawnCount)
