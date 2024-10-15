@@ -40,4 +40,10 @@ public class ButtonFns : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        gameManager.instance.stateUnpauseMainMenu();
+    }
 }
