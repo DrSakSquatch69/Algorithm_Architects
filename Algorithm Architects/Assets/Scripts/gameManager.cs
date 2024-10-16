@@ -4,13 +4,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
 
-    [SerializeField] GameObject menuActive, menuPause, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause, muzzleFlash;
+    [SerializeField] GameObject menuActive, menuPause, menuSettings, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, menuTutorialPause, muzzleFlash;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text remainingAmmoText;
@@ -33,12 +34,14 @@ public class gameManager : MonoBehaviour
 
     int enemyCount;
     int activeEnemies;
+    float Sensitivity;
     // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
 
     public bool isPaused;                                                   //variable to store wether we are paused or not
     bool isReloading;
     bool isNoAmmo;
     bool IsButtered;
+    bool inSettings;
 
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
@@ -46,6 +49,8 @@ public class gameManager : MonoBehaviour
     public bool getIsButtered() { return IsButtered; }
     public float getPlayerSpeed() { return playerSpeed; }
     public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
+    public bool getInSettings() { return inSettings; }
+    public float getSens() { return Sensitivity; }
 
 
     //SETTERS
@@ -53,6 +58,8 @@ public class gameManager : MonoBehaviour
     public void setIsButtered(bool butter) { IsButtered = butter; }
     public void setPlayerSpeed(float speed) { playerSpeed = speed; }
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
+    public void setInSettings(bool settings) { inSettings = settings; }
+    public void setSens(float sensitivity) { Sensitivity = sensitivity; }
 
     void Awake()                                                            //awake always happens first  
     {
@@ -86,10 +93,20 @@ public class gameManager : MonoBehaviour
                 }
                 menuActive.SetActive(isPaused);                         //setting menu active via our variable
             }
+
+            else if (inSettings) //Checks if the player is in the settings menu when escape is pressed so it can close the settings menu
+            {
+                menuActive.SetActive(false);
+                menuActive = menuPause;
+                menuActive.SetActive(true);
+                inSettings = false;
+            }
+
             else if (menuActive == menuPause || menuActive == menuTutorialPause)                           //if we are in the pause menu
             {
                 stateUnpause();                                         //change game state
             }
+
         }
     }
     public void statePause()                                            // changes game state to a paused state
@@ -98,6 +115,13 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;                                             //sets the game time to zero so nothing can happen while paused
         Cursor.visible = true;                                          //make cursor visible
         Cursor.lockState = CursorLockMode.Confined;                     //confine cursor to game screen
+    }
+
+    public void settingsMenuUp() //Method for bringing menu up here so it can get called in ButtonFns
+    {
+        menuActive.SetActive(false);
+        menuActive = menuSettings;
+        menuActive.SetActive(true);
     }
 
     public void stateUnpause()                                          //changes game state to un paused

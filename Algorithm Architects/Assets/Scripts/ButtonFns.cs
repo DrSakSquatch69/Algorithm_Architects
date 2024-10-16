@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement; //need this to access scene manager
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; //need this to access scene manager
 
 public class ButtonFns : MonoBehaviour
 {
@@ -21,6 +23,18 @@ public class ButtonFns : MonoBehaviour
 #else
         Application.Quit(); //if not in editor just quit application
 #endif
+    }
+
+    public void settings() //Tells gameManager the settings menu is up and brings the menu up
+    {
+        gameManager.instance.setInSettings(true);
+        gameManager.instance.settingsMenuUp();
+    }
+
+    public void sensitivitySlider(float sensitivity) //Gets the slider info to send to gameManager which sends it to camera controller
+    {
+        //Debug.Log(sensitivity);
+        gameManager.instance.setSens(sensitivity);
     }
 
     public void NextLevel()

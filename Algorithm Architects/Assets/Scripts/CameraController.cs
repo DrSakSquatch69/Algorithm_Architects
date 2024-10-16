@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] int sens;
+    [SerializeField] float sens;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY;
 
@@ -16,11 +16,14 @@ public class CameraController : MonoBehaviour
         //Locks the cursor 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        gameManager.instance.setSens(sens);
     }
 
     // Update is called once per frame
     void Update()
     {
+        sens = gameManager.instance.getSens(); //Gets the sens set from the settings menu
+
         // get input
         float mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
         float mouseX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
