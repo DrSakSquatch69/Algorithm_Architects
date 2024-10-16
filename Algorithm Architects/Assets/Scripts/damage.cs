@@ -13,11 +13,10 @@ public class damage : MonoBehaviour
     [SerializeField] int bulletSpeed;
     [SerializeField] int despawnTimer;
     [SerializeField] float butterSlowAmount;
-
+    [SerializeField] float damageInterval;
 
     float playerSpeedChange;
-
-
+    IDamage dmg;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +43,9 @@ public class damage : MonoBehaviour
             return;
         }
 
-        IDamage dmg = other.GetComponent<IDamage>();
+        dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null)
+        if (dmg != null && type != damageTypes.stationary)
         {
             dmg.takeDamage(damageAmount);
 
@@ -59,10 +58,33 @@ public class damage : MonoBehaviour
                 playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
             }
         }
+        else if(type == damageTypes.stationary)
+        {
+            if(dmg != null)
+            {
+                InvokeRepeating("ApplyStationaryDamageFog", 0f, damageInterval);
+            }
+        }
 
         if (type == damageTypes.bullet || type == damageTypes.chaser || type == damageTypes.butter)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(type == damageTypes.stationary)
+        {
+            CancelInvoke("ApplyStationaryDamageFog");
+        }
+    }
+
+    private void ApplyStationaryDamageFog()
+    {
+        if(dmg != null)
+        {
+            dmg.takeDamage(damageAmount);
         }
     }
 
