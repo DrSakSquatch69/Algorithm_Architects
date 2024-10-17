@@ -98,7 +98,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         return false;
     }
 
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, Vector3 dir)
     {
         HP -= amount;
         updateEnemyUI();

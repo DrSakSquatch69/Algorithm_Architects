@@ -50,8 +50,10 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float healRate; //the healrate of the player
     bool isTakingDamage; //checks if the player is taking damage
 
+    [SerializeField] int pushTimer;
     Vector3 moveDir;
     Vector3 playerVel;
+    Vector3 pushDirection;
 
     int jumpCount;
     float startTimer;
@@ -132,6 +134,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void Movement()
     {
+        pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushTimer * Time.deltaTime);
+
         if (gameManager.instance.getIsButtered() && !isSpawnProtection)
         {
             StartCoroutine(ButterSlow());
@@ -172,7 +176,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
 
         playerVel.y -= gravity * Time.deltaTime;
-        controller.Move(playerVel * Time.deltaTime);
+        controller.Move((playerVel + pushDirection) * Time.deltaTime);
 
         if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading) //added code so it doesnt shoot when clicking in menu
         {
@@ -302,13 +306,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
                 if (dmg != null)
                 {
-                    dmg.takeDamage(shootDamage);
+                    dmg.takeDamage(shootDamage, Vector3.zero);
                     StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
                 }
 
                 if (damage != null)
                 {
-                    damage.takeDamage(shootDamage);
+                    damage.takeDamage(shootDamage, Vector3.zero);
                     StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
                 }
             }
@@ -322,11 +326,12 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, Vector3 dir)
     {
         if (!isSpawnProtection)
         {
             HealthPoints -= amount;
+            pushDirection = dir; 
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;

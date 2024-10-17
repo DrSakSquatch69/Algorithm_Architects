@@ -20,7 +20,7 @@ public class DestroyableBullet : MonoBehaviour, IDamage
     {
         
     }
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, Vector3 dir)
     {
         HP -= amount;
 

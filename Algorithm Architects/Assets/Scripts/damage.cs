@@ -47,7 +47,7 @@ public class damage : MonoBehaviour
 
         if (dmg != null && type != damageTypes.stationary)
         {
-            dmg.takeDamage(damageAmount);
+            dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2));
 
             if (type == damageTypes.butter)
             {
@@ -84,7 +84,7 @@ public class damage : MonoBehaviour
     {
         if(dmg != null)
         {
-            dmg.takeDamage(damageAmount);
+            dmg.takeDamage(damageAmount, Vector3.zero);
         }
     }
 
