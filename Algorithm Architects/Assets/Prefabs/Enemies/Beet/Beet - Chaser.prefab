@@ -53,7 +53,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 6.3
-  m_BaseOffset: 1.6
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &4629103506992571775
@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 3197923220101233062}
   - component: {fileID: 496821035272343338}
   - component: {fileID: 6143252701874879420}
+  - component: {fileID: 2176391704006711068}
   m_Layer: 7
   m_Name: Beet Enemy
   m_TagString: Untagged
@@ -86,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 4629103506992571775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.63704795, z: -0, w: 0.77082425}
-  m_LocalPosition: {x: 0.12086487, y: -0.72300017, z: 0.050498962}
+  m_LocalPosition: {x: 0.12086487, y: -0.01, z: 0.050498962}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -194,6 +195,28 @@ SphereCollider:
   m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &6143252701874879420
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629103506992571775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 3f18a9925aef4b141b5ed39333229851, type: 3}
+--- !u!64 &2176391704006711068
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

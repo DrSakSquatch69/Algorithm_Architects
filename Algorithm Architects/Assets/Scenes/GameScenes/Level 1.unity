@@ -421,7 +421,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8805031, g: 0.55896014, b: 0.10798612, a: 1}
+  m_Color: {r: 1, g: 0.97552615, b: 0.040880322, a: 1}
   m_Intensity: 0.15
   m_Range: 10
   m_SpotAngle: 30
@@ -947,6 +947,10 @@ PrefabInstance:
     - target: {fileID: 7362152500490263200, guid: 4c5cb13fd1973d24ea33e9f771045779, type: 3}
       propertyPath: m_Name
       value: Radish - Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912296046523709371, guid: 4c5cb13fd1973d24ea33e9f771045779, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.378
       objectReference: {fileID: 0}
     - target: {fileID: 8152853291033651922, guid: 4c5cb13fd1973d24ea33e9f771045779, type: 3}
       propertyPath: m_Radius
