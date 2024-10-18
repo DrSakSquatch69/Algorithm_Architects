@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class damage : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class damage : MonoBehaviour
             Destroy(gameObject, despawnTimer);
         }
 
-        playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
+        playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed(); 
     }
 
     private void OnTriggerEnter(Collider other)

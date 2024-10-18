@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
+    public ParticleSystem hitEffect;
+    public AudioClip shootSound;
+    public AudioSource shootSoundSource;
+    [SerializeField] float volume;
 
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour, IDamage
         HealthPoints = maxHP;
         normalHeight = controller.height;
         originalSpeed = speed;
+        shootSoundSource.volume = volume;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
 
@@ -289,6 +294,8 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         StartCoroutine(gameManager.instance.MuzzleFlash());
+        shootSoundSource.PlayOneShot(shootSound);
+        
 
         if (ammo > 0)
         {
@@ -303,6 +310,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
                 DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
+
+                Instantiate(hitEffect, hit.point, Quaternion.identity);
 
                 if (dmg != null)
                 {

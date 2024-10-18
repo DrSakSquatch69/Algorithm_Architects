@@ -24,7 +24,6 @@ public class gameManager : MonoBehaviour
 
     public Image playerHPBar;
 
-    [SerializeField] bool isTutorial;                                         //Only put true if on tutorial level
     [SerializeField] bool isFinalLevel;
 
     float timeScaleOrig;                                                    // original timeScale
@@ -83,14 +82,8 @@ public class gameManager : MonoBehaviour
             if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
             {
                 statePause();                                               // calling Fn to create the paused state
-                if (isTutorial)                                             //If in tutorial level, then open tutorial pause menu
-                {
-                    menuActive = menuTutorialPause;                         // setting active menu variable
-                }
-                else
-                {
-                    menuActive = menuPause;                              // setting active menu variable
-                }
+                menuActive = menuPause;                              // setting active menu variable
+                
                 menuActive.SetActive(isPaused);                         //setting menu active via our variable
             }
 
