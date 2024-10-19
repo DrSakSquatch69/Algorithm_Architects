@@ -32,9 +32,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
     public ParticleSystem hitEffect;
-    //public AudioClip shootSound;
-    //public AudioSource shootSoundSource;
-    //[SerializeField] float volume;
+    public AudioSource audioSource;
 
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
@@ -108,6 +106,7 @@ public class PlayerController : MonoBehaviour, IDamage
         //shootSoundSource.volume = volume;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
+        gameManager.instance.setSound(audioSource);
 
 
         gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);

@@ -398,13 +398,14 @@ MonoBehaviour:
   shootRate: 0.1
   shootDist: 100
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
+  audioSource: {fileID: 4197209578921676288}
   crouchSizeYAxis: 0.5
   slideDistance: 5
   slideSpeedMod: 2.2
-  slideDelay: 3
+  slideDelay: 0.5
   crouchHeight: 0
   ammoremaining: 2000
-  magSize: 1000
+  magSize: 30
   healDelayTime: 5
   healRate: 1
   pushTimer: 3
