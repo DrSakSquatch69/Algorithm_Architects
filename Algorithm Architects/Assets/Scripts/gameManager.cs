@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour
 
     public Image playerHPBar;
 
+    [SerializeField] bool isTutorial;                                         //Only put true if on tutorial level
     [SerializeField] bool isFinalLevel;
 
     float timeScaleOrig;                                                    // original timeScale
@@ -42,6 +43,8 @@ public class gameManager : MonoBehaviour
     bool IsButtered;
     bool inSettings;
 
+    AudioSource playerAudioSource;
+
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
     public GameObject getPlayer() { return player; }                        // getter for player to use in DamageReciever Class
@@ -50,6 +53,7 @@ public class gameManager : MonoBehaviour
     public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
     public bool getInSettings() { return inSettings; }
     public float getSens() { return Sensitivity; }
+    public AudioSource getSound() { return playerAudioSource; }
 
 
     //SETTERS
@@ -59,6 +63,7 @@ public class gameManager : MonoBehaviour
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
     public void setInSettings(bool settings) { inSettings = settings; }
     public void setSens(float sensitivity) { Sensitivity = sensitivity; }
+    public void setSound(AudioSource audio) { playerAudioSource = audio; }
 
     void Awake()                                                            //awake always happens first  
     {
@@ -82,8 +87,14 @@ public class gameManager : MonoBehaviour
             if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
             {
                 statePause();                                               // calling Fn to create the paused state
-                menuActive = menuPause;                              // setting active menu variable
-                
+                if (isTutorial)                                             //If in tutorial level, then open tutorial pause menu
+                {
+                    menuActive = menuTutorialPause;                         // setting active menu variable
+                }
+                else
+                {
+                    menuActive = menuPause;                              // setting active menu variable
+                }
                 menuActive.SetActive(isPaused);                         //setting menu active via our variable
             }
 

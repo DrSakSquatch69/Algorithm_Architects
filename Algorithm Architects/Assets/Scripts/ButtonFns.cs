@@ -4,9 +4,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; //need this to access scene manager
+using UnityEngine.Audio;
+
+
+        
 
 public class ButtonFns : MonoBehaviour
 {
+    [SerializeField] AudioMixer audioMixer;
+    [SerializeField] AudioSource audioSource;
+
+    private void Start()
+    {
+        gameManager.instance.setSound(audioSource);
+    }
+
     public void resume() // resume fn
     {
         gameManager.instance.stateUnpause(); //just call gamemanager and call our unpause state fn
@@ -36,6 +48,13 @@ public class ButtonFns : MonoBehaviour
         //Debug.Log(sensitivity);
         gameManager.instance.setSens(sensitivity);
     }
+
+    public void volumeSlider(float volume)
+    {
+        audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
+       // audioSource.Play(); //Issue was I was never playing the audio clip in the first place so set it to play when the player shoots
+    }
+
 
     public void NextLevel()
     {
