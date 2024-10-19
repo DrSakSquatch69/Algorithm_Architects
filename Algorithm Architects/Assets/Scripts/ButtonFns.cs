@@ -12,12 +12,8 @@ using UnityEngine.Audio;
 public class ButtonFns : MonoBehaviour
 {
     [SerializeField] AudioMixer audioMixer;
-    //[SerializeField] AudioSource audioSource;
 
-    private void Start()
-    {
-       // gameManager.instance.setSound(audioSource);
-    }
+    private void Start(){}
 
     public void resume() // resume fn
     {

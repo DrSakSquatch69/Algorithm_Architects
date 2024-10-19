@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour, IDamage
         HealthPoints = maxHP;
         normalHeight = controller.height;
         originalSpeed = speed;
-        //shootSoundSource.volume = volume;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
         gameManager.instance.setSound(audioSource);
@@ -294,7 +293,6 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         StartCoroutine(gameManager.instance.MuzzleFlash());
         gameManager.instance.getSound().Play();
-        //shootSoundSource.PlayOneShot(shootSound);
 
         if (ammo > 0)
         {
