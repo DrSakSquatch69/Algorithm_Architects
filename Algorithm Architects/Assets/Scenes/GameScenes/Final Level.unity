@@ -121,7 +121,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: f062c15550bb1bb48beb0c1b7033ec9a, type: 2}
 --- !u!1 &6424858
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.03076
@@ -325,6 +329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -345,6 +353,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,17 +419,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.649853
+      value: -17.98
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0286853
+      value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 73.60337
+      value: 80.16
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -467,6 +483,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,6 +549,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.920002
@@ -585,6 +609,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -647,6 +675,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80.98388
@@ -707,6 +739,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -769,6 +805,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.009995
@@ -825,6 +865,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -887,6 +931,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.06983
@@ -943,6 +991,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1001,6 +1053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.121382
@@ -1057,6 +1113,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1115,6 +1175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.311392
@@ -1171,6 +1235,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1233,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.78671
@@ -1289,6 +1361,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1351,6 +1427,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -73.40571
@@ -1407,6 +1487,10 @@ PrefabInstance:
     - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_Name
       value: Tomato - Melee (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675416798382557608, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1505,6 +1589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1521,6 +1609,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1579,6 +1671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.06398
@@ -1635,6 +1731,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1697,6 +1797,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.06983
@@ -1754,6 +1858,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.758608
@@ -1810,6 +1918,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1908,6 +2020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1925,9 +2041,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.014496
+      value: -17.06
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1935,7 +2055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.380085
+      value: -8.77
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1981,6 +2101,10 @@ PrefabInstance:
     - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_Name
       value: Tomato - Melee (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675416798382557608, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2039,6 +2163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.598822
@@ -2095,6 +2223,10 @@ PrefabInstance:
     - target: {fileID: 4634034312883299649, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
       propertyPath: m_Name
       value: Cucumber- Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634034312883299649, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6885656382389096860, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2153,6 +2285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.06398
@@ -2209,6 +2345,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2267,6 +2407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.560356
@@ -2324,6 +2468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cucumber- Chaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4634034312883299649, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6885656382389096860, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.4712
@@ -2380,6 +2528,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2478,6 +2630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2494,6 +2650,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2556,6 +2716,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.159996
@@ -2612,6 +2776,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
       propertyPath: m_Name
       value: Pepper - Chaser (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2673,6 +2841,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2771,6 +2943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2791,6 +2967,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2853,6 +3033,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.168236
@@ -2914,17 +3098,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.55145
+      value: -40.59
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0286853
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 73.60337
+      value: 81.15
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2974,6 +3162,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3032,6 +3224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 75.75903
@@ -3088,6 +3284,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3146,6 +3346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4477768
@@ -3202,6 +3406,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3321,6 +3529,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.69053
@@ -3382,17 +3594,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.55145
+      value: -31.7
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0286853
+      value: 1.27
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 78.26337
+      value: 85.22
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3438,6 +3654,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3499,6 +3719,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3597,6 +3821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3613,6 +3841,10 @@ PrefabInstance:
     - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_Name
       value: Tomato - Melee (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675416798382557608, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3670,6 +3902,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3732,6 +3968,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.168236
@@ -3789,6 +4029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.371382
@@ -3845,6 +4089,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3943,6 +4191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Chaser (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: c39e4843f5678a54e8274b098428980f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3963,6 +4215,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4020,6 +4276,10 @@ PrefabInstance:
     - target: {fileID: 4385458644281793592, guid: 272d17523964b1c42b97bd129246927e, type: 3}
       propertyPath: m_Name
       value: Tomato - Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385458644281793592, guid: 272d17523964b1c42b97bd129246927e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675416798382557608, guid: 272d17523964b1c42b97bd129246927e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4082,6 +4342,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 54.820076
@@ -4142,6 +4406,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4240,6 +4508,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4253,9 +4525,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1915647213}
     m_Modifications:
+    - target: {fileID: 496821035272343338, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4314,9 +4594,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.485504
+      value: 8.17
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4324,7 +4608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.130085
+      value: -10.39
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4370,6 +4654,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4432,6 +4720,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60.940002
@@ -4493,6 +4785,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.90059
@@ -4549,6 +4845,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
       propertyPath: m_Name
       value: Pepper - Chaser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: 1bf5dba5d213b264c8de11bc1d5e02dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4607,6 +4907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.65256
@@ -4663,6 +4967,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4725,6 +5033,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.737965
@@ -4786,6 +5098,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: -72.26388
@@ -4843,9 +5159,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Chaser (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8878932
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4853,7 +5173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7223015
+      value: -6.35
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4899,6 +5219,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_Name
       value: Carrot - Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4957,6 +5281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.93443
@@ -5013,6 +5341,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5071,6 +5403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.560356
@@ -5128,9 +5464,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7644954
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5138,7 +5478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.630085
+      value: -17.88
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5225,6 +5565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5241,6 +5585,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5298,6 +5646,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5360,6 +5712,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80.307304
@@ -5417,6 +5773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Daikon - Chaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalPosition.x
       value: -76.15024
@@ -5473,6 +5833,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5535,6 +5899,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.836369
@@ -5592,6 +5960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
       value: -85.54819
@@ -5648,6 +6020,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_Name
       value: Daikon - Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5746,6 +6122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: c39e4843f5678a54e8274b098428980f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5762,6 +6142,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5819,6 +6203,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5880,6 +6268,10 @@ PrefabInstance:
     - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5978,6 +6370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6035,6 +6431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6051,6 +6451,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6113,6 +6517,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80.307304
@@ -6170,17 +6578,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Daikon - Chaser (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.394382
+      value: -48.99
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37845898
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70.951584
+      value: 79.77
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6226,6 +6638,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6324,6 +6740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Chaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: c39e4843f5678a54e8274b098428980f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6340,6 +6760,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6398,9 +6822,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.514496
+      value: -10.25
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6408,7 +6836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.130085
+      value: -14.08
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6454,6 +6882,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6511,6 +6943,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6572,6 +7008,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6670,6 +7110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6691,17 +7135,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.649853
+      value: -14.33
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0286853
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 68.41337
+      value: 70.64
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6747,6 +7195,10 @@ PrefabInstance:
     - target: {fileID: 4634034312883299649, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
       propertyPath: m_Name
       value: Cucumber- Chaser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634034312883299649, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6885656382389096860, guid: 73f58afa2e2125245bf0c16dd2ccad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6845,6 +7297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6861,6 +7317,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6919,17 +7379,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.058607
+      value: -11.98
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7100005
+      value: 4.39
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.41571
+      value: -0.82
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6979,6 +7443,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7037,6 +7505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomato - Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4675416798382557608, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.234608
@@ -7093,6 +7565,10 @@ PrefabInstance:
     - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_Name
       value: Pepper - Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7190,6 +7666,10 @@ PrefabInstance:
     - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
       propertyPath: m_Name
       value: Radish - Melee (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7375,6 +7855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet - Melee (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 75.75903
@@ -7436,6 +7920,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2086786092240162338, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283688583382586232, guid: 38fb8520f39769b4ab4aa841ab405653, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.179993
@@ -7492,6 +7980,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7679,6 +8171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Chaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.997984
@@ -7776,6 +8272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7792,6 +8292,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_Name
       value: Carrot - Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7850,9 +8354,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2355042
+      value: 6.49
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7860,7 +8368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.630085
+      value: 2.06
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7911,17 +8419,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.649853
+      value: -21.27
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0286853
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 65.82213
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7967,6 +8479,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_Name
       value: Beet - Melee (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: 53f397941d5514b4c8cdcb7d04905eba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8025,6 +8541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pepper - Melee (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1802799307687461438, guid: b207982cb8475bc42ab5db3778614367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: b207982cb8475bc42ab5db3778614367, type: 3}
       propertyPath: m_LocalPosition.x
       value: -95.92819
@@ -8082,6 +8602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot - Melee (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: fd4ca753e936fad4082f8fc4fe4f5a86, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.523535
@@ -8138,6 +8662,10 @@ PrefabInstance:
     - target: {fileID: 4498683362734329830, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_Name
       value: Daikon - Chaser (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 99b2c70307defff4ebfd9234005c1322, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8236,6 +8764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radish - Melee (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7362152500490263200, guid: 82331dd228e73724a92b6910daee146f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8252,6 +8784,10 @@ PrefabInstance:
     - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_Name
       value: Tomato - Melee (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385458644281793592, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675416798382557608, guid: 401c9adb5f1ce174a9cbeb7b371b9809, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8314,6 +8850,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4498683362734329830, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 1e1f794bc00c3f64a8d474902f6e835d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.737965
@@ -8370,6 +8910,10 @@ PrefabInstance:
     - target: {fileID: 2826268895386468269, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_Name
       value: Carrot - Chaser (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826268895386468269, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 9458c95046511264bbe0862ce459ea00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8431,6 +8975,10 @@ PrefabInstance:
     - target: {fileID: 695450990797585724, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 695450990797585724, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009148138520161672, guid: b981001b2684ef34e8bbfb69c94fa63b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8777,6 +9325,10 @@ PrefabInstance:
     - target: {fileID: 4809396152611778802, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601156074550864905, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
+      propertyPath: damageInterval
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4939,24 +4939,56 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.exit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: TriggerModule.enter
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: CollisionModule.type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      propertyPath: TriggerModule.enabled
+      propertyPath: TriggerModule.inside
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: CollisionModule.enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 35465
+      value: 32905
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.size
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7988686208914083591, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: m_LocalScale.x
@@ -5014,40 +5046,35 @@ PrefabInstance:
       propertyPath: damageInterval
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 853750964401740645, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1311352432891626965, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7683020995226178137}
+      insertIndex: 1
+      addedObject: {fileID: 8601156074550864905}
   m_SourcePrefab: {fileID: 100100000, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
 --- !u!1 &509432307248435969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1311352432891626965, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
   m_PrefabInstance: {fileID: 1523063216391788244}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &7683020995226178137
-SphereCollider:
+--- !u!114 &8601156074550864905
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509432307248435969}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 15.771309
-  m_Center: {x: 0, y: 0, z: 0.12032941}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c73b4f65d5edbf4699dadb60bfd99ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 5
+  damageInterval: 1
+  detectionRadius: 15
 --- !u!4 &8934721832064244179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7988686208914083591, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
@@ -7597,24 +7624,96 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      propertyPath: TriggerModule.enter
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: CollisionModule.type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      propertyPath: TriggerModule.enabled
-      value: 0
+      propertyPath: TriggerModule.primitives.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 0
+      propertyPath: TriggerModule.primitives.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 35465
+      propertyPath: TriggerModule.primitives.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[9]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[10]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[11]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[12]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[13]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[14]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[15]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[16]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[17]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[18]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[19]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[20]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697417205726262978, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[21]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7988686208914083591, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7664,40 +7763,36 @@ PrefabInstance:
       propertyPath: damageInterval
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8949891028044657414, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
+    - {fileID: 853750964401740645, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1311352432891626965, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5189925231196544468}
+      insertIndex: 1
+      addedObject: {fileID: 5627237685924627287}
   m_SourcePrefab: {fileID: 100100000, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
 --- !u!1 &4113409925512093418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1311352432891626965, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
   m_PrefabInstance: {fileID: 3109481141324700479}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &5189925231196544468
-SphereCollider:
+--- !u!114 &5627237685924627287
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4113409925512093418}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 15.771309
-  m_Center: {x: 0, y: 0, z: 0.12032941}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c73b4f65d5edbf4699dadb60bfd99ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 5
+  damageInterval: 0.5
+  detectionRadius: 15
 --- !u!4 &5042513536799839288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7988686208914083591, guid: fef474c8e9e1bef4b859aae18eb228b2, type: 3}
