@@ -58,6 +58,14 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
+    public void stopWallRun()
+    {
+        if(wallRun.isPlaying)
+        {
+            wallRun.Stop();
+        }
+    }
+
     public void PlayDoubleJump()
     {
         if(!doubleJump.isPlaying)

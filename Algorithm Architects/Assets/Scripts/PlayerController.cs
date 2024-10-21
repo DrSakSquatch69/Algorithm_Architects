@@ -162,7 +162,6 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
-            soundManager.PlayWallRun();
         }
         else if (isSliding)
         {
@@ -211,6 +210,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (canSlide && holdingSprintTime >= slideDelay)
         {
             //slide speed
+            soundManager.playSliding();
             controller.Move(moveDir * (speed * slideSpeedMod) * Time.deltaTime);
             //slide duration
             yield return new WaitForSeconds(slideDistance);
@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour, IDamage
             //calls crouch to bring player back to normal size
             crouch();
             holdingSprintTime = 0;
-
+            soundManager.stopSliding();
         }
     }
 
@@ -377,7 +377,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void StartWallRun()
     {
         jumpCount = 0;
-
+        soundManager.PlayWallRun();
         //Resets fall speed when player first starts wall running
         if (!isWallRunning)
         {
@@ -392,6 +392,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         isWallRunning = false;
         gravity = origGrav;
+        soundManager.stopWallRun();
     }
 
     void CheckForWall()
