@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerSoundManager : MonoBehaviour
 {
-    [SerializeField] AudioSource footsteps;
+    public static PlayerSoundManager Instance;
+
+    [SerializeField] AudioSource footstepSource;
+    public AudioClip[] footstepClips;
+
     [SerializeField] AudioSource wallRun;
     [SerializeField] AudioSource doubleJump;
     [SerializeField] AudioSource landing;
@@ -13,15 +17,38 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource healthRecovery;
     [SerializeField] AudioSource interaction;
 
-    void PlayFootsteps()
+    [SerializeField] float runPitch;
+    [SerializeField] float walkPitch;
+    [SerializeField] float crouchPitch;
+    [SerializeField] float crouchVolume;
+
+    private void Awake()
     {
-        if(!footsteps.isPlaying)
+        if(Instance == null)
         {
-            footsteps.Play();
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    public void PlayFootsteps(bool isRunning, bool isCrouched)
+    {
+        footstepSource.pitch = isRunning ? runPitch : walkPitch;
+        if(!footstepSource.isPlaying && isCrouched == false)
+        {
+            footstepSource.Play();
+        }
+        else if(isCrouched == true)
+        {
+            footstepSource.pitch = crouchPitch;
+            footstepSource.volume = crouchVolume;
+            footstepSource.Play();
         }
     }
 
-    void PlayWallRun()
+    public void PlayWallRun()
     {
         if(!wallRun.isPlaying)
         {
@@ -29,7 +56,7 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
-    void PlayDoubleJump()
+    public void PlayDoubleJump()
     {
         if(!doubleJump.isPlaying)
         {
@@ -37,7 +64,7 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
-    void PlayLanding()
+    public void PlayLanding()
     {
         if(!landing.isPlaying)
         {
@@ -45,7 +72,7 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
     
-    void PlayBreathing()
+    public void PlayBreathing()
     {
         if(!breathing.isPlaying)
         {
@@ -53,7 +80,7 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
-    void PlayTakingDamage()
+    public void PlayTakingDamage()
     {
         if(!takingDamage.isPlaying)
         {
@@ -61,7 +88,7 @@ public class PlayerSoundManager : MonoBehaviour
         }    
     }
 
-    void PlayHealthRecovery()
+    public void PlayHealthRecovery()
     {
         if(!healthRecovery.isPlaying)
         {
@@ -69,7 +96,7 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
-    void playInteraction()
+    public void playInteraction()
     {
         if(interaction.isPlaying)
         {

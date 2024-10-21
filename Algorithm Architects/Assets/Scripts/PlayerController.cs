@@ -7,6 +7,7 @@ using UnityEngine.SearchService;
 public class PlayerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
+    [SerializeField] PlayerSoundManager soundManager;
     [SerializeField] LayerMask ignoreMask;
     //Field for Health
     int HealthPoints;
@@ -120,7 +121,6 @@ public class PlayerController : MonoBehaviour, IDamage
         yield return new WaitForSeconds(1);
         isSpawnProtection = false;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -149,18 +149,24 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             jumpCount = 0;
             playerVel = Vector3.zero;
+            bool isMoving = controller.velocity.magnitude > 0.1f;
+            if (isMoving)
+            {
+                soundManager.PlayFootsteps(isSprinting, crouching);
+            }
         }
 
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
 
         //if the player is crouching, then dive the speed by 3, to make the player move slower
-        if(crouching && !isSliding)
+        if (crouching && !isSliding)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
         }
         else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
+            soundManager.PlayWallRun();
         }
         else if (isSliding)
         {
@@ -170,6 +176,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (!crouching)
         {
             controller.Move(moveDir * speed * Time.deltaTime);
+
         }
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
@@ -234,7 +241,8 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             return;
         }
-        else {
+        else
+        {
             StartCoroutine(slidingDelay());
 
 
@@ -271,7 +279,7 @@ public class PlayerController : MonoBehaviour, IDamage
             holdingSprintTime = Time.time - startTimer;
 
             if (canSlide && holdingSprintTime >= slideDelay) //checking if the player can slide and also if they held the key for the correct amount of time
-            { 
+            {
                 isSliding = true;
                 controller.height = crouchHeight;
                 canSlide = false;
@@ -338,7 +346,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (!isSpawnProtection)
         {
             HealthPoints -= amount;
-            pushDirection = dir; 
+            pushDirection = dir;
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;
@@ -428,7 +436,8 @@ public class PlayerController : MonoBehaviour, IDamage
             cantSprint = true;
             isSprinting = false;
             speed = originalSpeed / mudSpeedMod;
-        }else if(!isMud && !isSlowedByButter && speed == originalSpeed / mudSpeedMod) //if no mud then reset player speed and grant the ability back to sprint
+        }
+        else if (!isMud && !isSlowedByButter && speed == originalSpeed / mudSpeedMod) //if no mud then reset player speed and grant the ability back to sprint
         {
             speed = originalSpeed;
             isSprinting = false;
@@ -478,7 +487,8 @@ public class PlayerController : MonoBehaviour, IDamage
                 ammoremaining -= ammoremaining;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
-            }else if((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            }
+            else if ((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
@@ -509,7 +519,7 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(healPlayer());
     }
 
-     IEnumerator ButterSlow()
+    IEnumerator ButterSlow()
     {
         //Sets the speed to the slowed down speed, starts the timer, marks the player as no longer buttered, and then gives the player their speed back
         cantSprint = true;
