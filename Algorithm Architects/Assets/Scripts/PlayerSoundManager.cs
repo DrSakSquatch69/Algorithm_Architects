@@ -16,6 +16,8 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource takingDamage;
     [SerializeField] AudioSource healthRecovery;
     [SerializeField] AudioSource interaction;
+    [SerializeField] AudioSource Sliding;
+
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
@@ -101,6 +103,21 @@ public class PlayerSoundManager : MonoBehaviour
         if(interaction.isPlaying)
         {
             interaction.Play();
+        }
+    }
+
+    public void playSliding()
+    {
+        if(!Sliding.isPlaying)
+        {
+            Sliding.Play();
+        }
+    }
+    public void stopSliding()
+    {
+        if(Sliding.isPlaying)
+        {
+            Sliding.Stop();
         }
     }
 }
