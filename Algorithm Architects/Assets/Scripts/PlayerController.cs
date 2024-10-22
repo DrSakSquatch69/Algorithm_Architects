@@ -595,8 +595,6 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             IDamage dmg = hit.collider.GetComponent<IDamage>();
 
-            Instantiate(hitEffect, hit.point, Quaternion.identity);
-
             if (dmg != null)
             {
                 dmg.takeDamage(meleeDamage, Vector3.zero, damageType.bullet);
