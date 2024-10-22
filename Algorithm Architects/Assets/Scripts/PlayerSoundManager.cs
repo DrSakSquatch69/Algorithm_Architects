@@ -7,8 +7,6 @@ public class PlayerSoundManager : MonoBehaviour
     public static PlayerSoundManager Instance;
 
     [SerializeField] AudioSource footstepSource;
-    public AudioClip[] footstepClips;
-
     [SerializeField] AudioSource wallRun;
     [SerializeField] AudioSource doubleJump;
     [SerializeField] AudioSource landing;
@@ -17,13 +15,15 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource healthRecovery;
     [SerializeField] AudioSource interaction;
     [SerializeField] AudioSource Sliding;
-
+    [SerializeField] AudioSource Bounce;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
     [SerializeField] float crouchPitch;
     [SerializeField] float crouchVolume;
 
+    private float audioOrigVolume;
+    private float audioOrigPitch;
     private void Awake()
     {
         if(Instance == null)
@@ -35,21 +35,49 @@ public class PlayerSoundManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void PlayFootsteps(bool isRunning, bool isCrouched)
+    public void PlayWalking()
     {
-        footstepSource.pitch = isRunning ? runPitch : walkPitch;
-        if(!footstepSource.isPlaying && isCrouched == false)
+        footstepSource.pitch = walkPitch;
+        footstepSource.volume = audioOrigVolume;
+        if(!footstepSource.isPlaying)
         {
-            footstepSource.Play();
-        }
-        else if(isCrouched == true)
-        {
-            footstepSource.pitch = crouchPitch;
-            footstepSource.volume = crouchVolume;
             footstepSource.Play();
         }
     }
+    public void StopWalking()
+    {
+        if(footstepSource.isPlaying)
+        {
+            footstepSource.Stop();
+        }
+    }
 
+    public void PlayCrouch()
+    {
+        audioOrigVolume = footstepSource.volume;
+        audioOrigPitch = footstepSource.pitch;
+        footstepSource.pitch = crouchPitch;
+        footstepSource.volume = crouchVolume;
+        footstepSource.Play();
+    }
+
+    public void StopCrouch()
+    {
+        footstepSource.Stop();
+        footstepSource.volume = audioOrigVolume;
+        footstepSource.pitch = audioOrigPitch;
+    }
+    public void PlayRun()
+    {
+        footstepSource.pitch = runPitch;
+        footstepSource.Play();
+    }
+
+    public void StopRun()
+    {
+        footstepSource.Stop();
+        footstepSource.pitch = audioOrigPitch;
+    }
     public void PlayWallRun()
     {
         if(!wallRun.isPlaying)
@@ -128,4 +156,12 @@ public class PlayerSoundManager : MonoBehaviour
             Sliding.Stop();
         }
     }
+
+    public void PlayBounce()
+    {
+        if (!Bounce.isPlaying)
+        {
+            Bounce.Play();
+        }
+    }    
 }

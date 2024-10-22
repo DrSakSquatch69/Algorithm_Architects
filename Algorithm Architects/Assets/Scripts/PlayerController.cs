@@ -136,6 +136,10 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForMud();
     }
 
+    bool isMoving()
+    {
+        return controller.velocity.magnitude > 0.1f;
+    }
     void Movement()
     {
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushTimer * Time.deltaTime);
@@ -202,6 +206,24 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             isFlashlight = !isFlashlight;
             flashLight.SetActive(isFlashlight);
+        }
+
+        if (controller.isGrounded && isMoving())
+        {
+            if (isCrouching && !isSliding)
+                soundManager.PlayCrouch();
+            else if (!isCrouching)
+                soundManager.StopCrouch();
+
+            if (isMoving() && !isSprinting)
+                soundManager.PlayWalking();
+            else if (!isMoving())
+                soundManager.StopWalking();
+
+            if (isSprinting && !isCrouching && !isSliding)
+                soundManager.PlayRun();
+            else if (!isSprinting)
+                soundManager.StopRun();
         }
     }
 
@@ -419,6 +441,7 @@ public class PlayerController : MonoBehaviour, IDamage
             playerVel = Vector3.zero;
             playerVel.y = bouncePadForce;
             jumpCount = 0;
+            soundManager.PlayBounce();
         }
     }
 
