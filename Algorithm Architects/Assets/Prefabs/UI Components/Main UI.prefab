@@ -1736,7 +1736,6 @@ MonoBehaviour:
   screenFlash: {fileID: 266398148970563486}
   reloading: {fileID: 4780087970496517697}
   noAmmo: {fileID: 5836558648795607778}
-  menuTutorialPause: {fileID: 0}
   muzzleFlash: {fileID: 8216445595590605870}
   enemyCountText: {fileID: 618311326169530451}
   remainingAmmoText: {fileID: 3763612025123718774}
@@ -1747,7 +1746,6 @@ MonoBehaviour:
   enemyCountForCurrentLevel: 0
   enemyHpParent: {fileID: 5505115280491241602}
   playerHPBar: {fileID: 3573110129170579603}
-  isTutorial: 0
   isFinalLevel: 0
   isPaused: 0
 --- !u!1 &2304945573219447500
@@ -4374,9 +4372,9 @@ RectTransform:
   - {fileID: 6682377502538123462}
   m_Father: {fileID: 167160950897431738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1752, y: -49.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 309, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5016741788373935268
@@ -6717,7 +6715,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 587aedb20bbaf494eb496195f38a8ab6, type: 2}
-  audioSource: {fileID: 0}
 --- !u!1 &6769285124718683151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7411,7 +7408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 173.5, y: -49.5}
+  m_AnchoredPosition: {x: 191, y: -49.5}
   m_SizeDelta: {x: 309, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7455087999253618278
@@ -8109,9 +8106,9 @@ RectTransform:
   - {fileID: 5627527246274401438}
   m_Father: {fileID: 167160950897431738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 464}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 139, y: 108}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4852061205473407601
@@ -8135,7 +8132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.88235295}
+  m_Color: {r: 0.3490566, g: 0.031283367, b: 0.031283367, a: 0.83137256}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
