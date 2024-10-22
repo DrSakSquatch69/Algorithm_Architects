@@ -409,7 +409,7 @@ Transform:
   m_GameObject: {fileID: 1371503572913748924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.192, y: 0.46, z: 0.494}
+  m_LocalPosition: {x: -0.051, y: 0.46, z: 0.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1180,9 +1180,11 @@ MonoBehaviour:
   shootDamage: 20
   shootRate: 0.1
   shootDist: 100
-  MeleeCooldown: 5
+  MeleeCooldown: 0.3
   meleeObject: {fileID: 3531885363742123715, guid: 34be3df99676db94f96314c086cb4b25, type: 3}
   meleeLocation: {fileID: 1371503572913748924}
+  meleeDamage: 60
+  meleeDist: 5
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   audioSource: {fileID: 1256739297679942886}
   crouchSizeYAxis: 0.5

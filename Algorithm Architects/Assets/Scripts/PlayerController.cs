@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
     [SerializeField] float MeleeCooldown;
-    [SerializeField] GameObject meleeObject;
-    [SerializeField] GameObject meleeLocation;
+    [SerializeField] int meleeDamage;
+    [SerializeField] float meleeDist;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
 
@@ -589,10 +589,23 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator meleeCooldown()
     {
-        Instantiate(meleeObject, meleeLocation.transform.position, transform.rotation);
         canMelee = false;
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, meleeDist, ~ignoreMask))
+        {
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+            Instantiate(hitEffect, hit.point, Quaternion.identity);
+
+            if (dmg != null)
+            {
+                dmg.takeDamage(meleeDamage, Vector3.zero, damageType.bullet);
+                StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
+            }
+        }
+
         yield return new WaitForSeconds(MeleeCooldown);
-        canMelee = true;
+        canMelee = true;     
     }
 }
 
