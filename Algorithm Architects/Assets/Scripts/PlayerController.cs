@@ -139,23 +139,7 @@ public class PlayerController : MonoBehaviour, IDamage
             }
         }
 
-        if (controller.isGrounded && isMoving())
-        {
-            if (isCrouching && !isSliding)
-                soundManager.PlayCrouch();
-            else if (!isCrouching)
-                soundManager.StopCrouch();
-
-            if (isMoving() && !isSprinting)
-                soundManager.PlayWalking();
-            else if (!isMoving())
-                soundManager.StopWalking();
-
-            if (isSprinting && !isCrouching && !isSliding)
-                soundManager.PlayRun();
-            else if (!isSprinting)
-                soundManager.StopRun();
-        }
+       
         //Used to see where the player is looking
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
@@ -173,6 +157,24 @@ public class PlayerController : MonoBehaviour, IDamage
     }
     void Movement()
     {
+        if (controller.isGrounded && isMoving())
+        {
+            if (isCrouching && !isSliding)
+                soundManager.PlayCrouch();
+            else if (!isCrouching)
+                soundManager.StopCrouch();
+
+            if (isMoving() && !isSprinting)
+                soundManager.PlayWalking();
+            else if (!isMoving())
+                soundManager.StopWalking();
+
+            if (isSprinting && !isCrouching && !isSliding)
+                soundManager.PlayRun();
+            else if (!isSprinting)
+                soundManager.StopRun();
+        }
+
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushTimer * Time.deltaTime);
 
         if (gameManager.instance.getIsButtered() && !isSpawnProtection)
