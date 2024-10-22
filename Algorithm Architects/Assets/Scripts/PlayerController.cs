@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SearchService;
 
@@ -33,6 +34,9 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
+    [SerializeField] float MeleeCooldown;
+    [SerializeField] GameObject meleeObject;
+    [SerializeField] GameObject meleeLocation;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
 
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isSliding;
     bool canSlide;
     bool crouching;
+    bool canMelee;
 
     //bouncepad fields
     public LayerMask bouncePad;
@@ -105,6 +110,7 @@ public class PlayerController : MonoBehaviour, IDamage
         HealthPoints = maxHP;
         normalHeight = controller.height;
         originalSpeed = speed;
+        canMelee = true;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
         gameManager.instance.setSound(audioSource);
@@ -244,6 +250,11 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             isFlashlight = !isFlashlight;
             flashLight.SetActive(isFlashlight);
+        }
+
+        if(Input.GetButtonDown("Fire2"))
+        {
+            StartCoroutine(meleeCooldown());
         }
     }
 
@@ -574,6 +585,14 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.setPlayerSpeed(originalSpeed);
         isSlowedByButter = false;
         cantSprint = false;
+    }
+
+    IEnumerator meleeCooldown()
+    {
+        Instantiate(meleeObject, meleeLocation.transform.position, transform.rotation);
+        canMelee = false;
+        yield return new WaitForSeconds(MeleeCooldown);
+        canMelee = true;
     }
 }
 
