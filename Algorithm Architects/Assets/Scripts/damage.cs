@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class damage : MonoBehaviour
 {
-    [SerializeField] enum damageTypes { bullet, chaser, stationary, butter }
-    [SerializeField] damageTypes type;
+    
+    [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
     [SerializeField] int damageAmount;
@@ -22,14 +22,14 @@ public class damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (type == damageTypes.bullet || type == damageTypes.butter)
+        if (type == damageType.bullet || type == damageType.butter)
         {
             //rb.velocity = transform.forward * bulletSpeed;
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position) * bulletSpeed;
             Destroy(gameObject, despawnTimer);
         }
 
-        else if (type == damageTypes.chaser)
+        else if (type == damageType.chaser)
         {
             Destroy(gameObject, despawnTimer);
         }
@@ -46,11 +46,11 @@ public class damage : MonoBehaviour
 
         dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null && type != damageTypes.stationary)
+        if (dmg != null && type != damageType.stationary)
         {
-            dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2));
+            dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
 
-            if (type == damageTypes.butter)
+            if (type == damageType.butter)
             {
                 //Marks off the player as getting buttered and then sets the speed change
                 gameManager.instance.setIsButtered(true);
@@ -59,7 +59,7 @@ public class damage : MonoBehaviour
                 playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
             }
         }
-        else if(type == damageTypes.stationary)
+        else if(type == damageType.stationary)
         {
             if(dmg != null)
             {
@@ -67,7 +67,7 @@ public class damage : MonoBehaviour
             }
         }
 
-        if (type == damageTypes.bullet || type == damageTypes.chaser || type == damageTypes.butter)
+        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter)
         {
             Destroy(gameObject);
         }
@@ -75,7 +75,7 @@ public class damage : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(type == damageTypes.stationary)
+        if(type == damageType.stationary)
         {
             CancelInvoke("ApplyStationaryDamageFog");
         }
@@ -85,14 +85,14 @@ public class damage : MonoBehaviour
     {
         if(dmg != null)
         {
-            dmg.takeDamage(damageAmount, Vector3.zero);
+            dmg.takeDamage(damageAmount, Vector3.zero, type);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (type == damageTypes.chaser)
+        if (type == damageType.chaser)
         {
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position).normalized * bulletSpeed * Time.deltaTime;
         }

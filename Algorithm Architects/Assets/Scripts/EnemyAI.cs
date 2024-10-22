@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
+    enum damageTypes { bullet, chaser, stationary, butter }
+
     [SerializeField] int viewAngle;
     float angleToPlayer;
 
@@ -98,7 +100,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         return false;
     }
 
-    public void takeDamage(int amount, Vector3 dir)
+    public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         HP -= amount;
         updateEnemyUI();

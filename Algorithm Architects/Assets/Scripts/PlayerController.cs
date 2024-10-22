@@ -138,6 +138,24 @@ public class PlayerController : MonoBehaviour, IDamage
                 soundManager.PlayLanding();
             }
         }
+
+        if (controller.isGrounded && isMoving())
+        {
+            if (isCrouching && !isSliding)
+                soundManager.PlayCrouch();
+            else if (!isCrouching)
+                soundManager.StopCrouch();
+
+            if (isMoving() && !isSprinting)
+                soundManager.PlayWalking();
+            else if (!isMoving())
+                soundManager.StopWalking();
+
+            if (isSprinting && !isCrouching && !isSliding)
+                soundManager.PlayRun();
+            else if (!isSprinting)
+                soundManager.StopRun();
+        }
         //Used to see where the player is looking
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
@@ -224,24 +242,6 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             isFlashlight = !isFlashlight;
             flashLight.SetActive(isFlashlight);
-        }
-
-        if (controller.isGrounded && isMoving())
-        {
-            if (isCrouching && !isSliding)
-                soundManager.PlayCrouch();
-            else if (!isCrouching)
-                soundManager.StopCrouch();
-
-            if (isMoving() && !isSprinting)
-                soundManager.PlayWalking();
-            else if (!isMoving())
-                soundManager.StopWalking();
-
-            if (isSprinting && !isCrouching && !isSliding)
-                soundManager.PlayRun();
-            else if (!isSprinting)
-                soundManager.StopRun();
         }
     }
 
@@ -355,13 +355,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
                 if (dmg != null)
                 {
-                    dmg.takeDamage(shootDamage, Vector3.zero);
+                    dmg.takeDamage(shootDamage, Vector3.zero, damageType.bullet);
                     StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
                 }
 
                 if (damage != null)
                 {
-                    damage.takeDamage(shootDamage, Vector3.zero);
+                    damage.takeDamage(shootDamage, Vector3.zero, damageType.bullet);
                     StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
                 }
             }
@@ -375,10 +375,16 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
-    public void takeDamage(int amount, Vector3 dir)
+    public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         if (!isSpawnProtection)
         {
+            if      (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
+            else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
+            else if (type == damageType.melee) { soundManager.PlayMeleeDMG();}  
+            else if (type == damageType.butter) { soundManager.PlayButterDMG(); }
+            else if (type == damageType.stationary) { soundManager.PlayStationaryDMG(); }
+
             HealthPoints -= amount;
             pushDirection = dir; 
             StartCoroutine(gameManager.instance.hitFlash());

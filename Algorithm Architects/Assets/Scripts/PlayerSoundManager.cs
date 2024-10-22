@@ -10,12 +10,14 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource wallRun;
     [SerializeField] AudioSource doubleJump;
     [SerializeField] AudioSource landing;
-    [SerializeField] AudioSource breathing;
     [SerializeField] AudioSource takingDamage;
-    [SerializeField] AudioSource healthRecovery;
-    [SerializeField] AudioSource interaction;
     [SerializeField] AudioSource Sliding;
     [SerializeField] AudioSource Bounce;
+    [SerializeField] AudioSource BulletDamage;
+    [SerializeField] AudioSource MeleeDamage;
+    [SerializeField] AudioSource ChaserDamage;
+    [SerializeField] AudioSource ButterDamage;
+    [SerializeField] AudioSource StationaryDamage;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
@@ -104,17 +106,9 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void PlayLanding()
     {
-        if(!landing.isPlaying)
+        if (!landing.isPlaying)
         {
             landing.Play();
-        }
-    }
-    
-    public void PlayBreathing()
-    {
-        if(!breathing.isPlaying)
-        {
-            breathing.Play();
         }
     }
 
@@ -125,23 +119,6 @@ public class PlayerSoundManager : MonoBehaviour
             takingDamage.Play();
         }    
     }
-
-    public void PlayHealthRecovery()
-    {
-        if(!healthRecovery.isPlaying)
-        {
-            healthRecovery.Play();
-        }
-    }
-
-    public void playInteraction()
-    {
-        if(interaction.isPlaying)
-        {
-            interaction.Play();
-        }
-    }
-
     public void playSliding()
     {
         if(!Sliding.isPlaying)
@@ -164,4 +141,44 @@ public class PlayerSoundManager : MonoBehaviour
             Bounce.Play();
         }
     }    
+
+    public void PlayBulletDMG()
+    {
+        if(!BulletDamage.isPlaying)
+        {
+            BulletDamage.Play();
+        }
+    }
+
+    public void PlayMeleeDMG()
+    {
+        if(!MeleeDamage.isPlaying)
+        {
+            MeleeDamage.Play();
+        }
+    }
+
+    public void PlayChaserDMG()
+    {
+        if(!ChaserDamage.isPlaying)
+        {
+            ChaserDamage.Play();
+        }
+    }
+
+    public void PlayButterDMG()
+    {
+        if (!ButterDamage.isPlaying)
+        {
+            ButterDamage.Play();
+        }
+    }
+
+    public void PlayStationaryDMG()
+    {
+        if(!StationaryDamage.isPlaying)
+        {
+            StationaryDamage.Play();
+        }
+    }
 }

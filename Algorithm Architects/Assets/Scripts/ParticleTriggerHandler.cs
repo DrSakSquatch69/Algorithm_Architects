@@ -78,7 +78,7 @@ public class ParticleTriggerHandler : MonoBehaviour
                 if(damageableObject != null)
                 {
                     //Debug.Log("Applying Damage: " + damageAmount + "to" + damageableObject);  //debug log
-                    damageableObject.takeDamage(damageAmount, Vector3.zero);
+                    damageableObject.takeDamage(damageAmount, Vector3.zero, damageType.stationary);
                 }
             }
         }
