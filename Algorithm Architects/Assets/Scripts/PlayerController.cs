@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour, IDamage
             soundManager.StopWalking();
             soundManager.StopCrouch();
         }
-        }
     }
 
     void isMoving()
