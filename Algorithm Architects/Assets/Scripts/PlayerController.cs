@@ -361,6 +361,7 @@ public class PlayerController : MonoBehaviour, IDamage
                     StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
                 }
 
+                //This is for detroying the chaser bullet
                 if (damage != null)
                 {
                     damage.takeDamage(shootDamage, Vector3.zero, damageType.bullet);

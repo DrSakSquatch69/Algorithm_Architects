@@ -136,7 +136,7 @@ public class EnemyAI : MonoBehaviour, IDamage
                 gameManager.instance.updateGameGoal(-1);
                
             }
-            
+
             // Destroys current enemy
             Destroy(gameObject);
             
