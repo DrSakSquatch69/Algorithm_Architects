@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IDamage
     float originalSpeed;
     bool isSlowedByButter;
     bool cantSprint;
+    bool isAirborne;
 
     //Fields for shooting
     [SerializeField] int shootDamage;
@@ -125,6 +126,18 @@ public class PlayerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        if(!controller.isGrounded)
+        {
+            isAirborne = true;
+        }
+        if(controller.isGrounded)
+        {
+            if(isAirborne)
+            {
+                isAirborne = false;
+                soundManager.PlayLanding();
+            }
+        }
         //Used to see where the player is looking
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
@@ -179,8 +192,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
+            if(jumpCount == 1)
+            {
+                soundManager.PlayDoubleJump();
+            }
             jumpCount++;
             playerVel.y = jumpSpeed;
+
         }
 
         playerVel.y -= gravity * Time.deltaTime;
