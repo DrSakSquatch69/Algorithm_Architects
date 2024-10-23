@@ -7,6 +7,7 @@ using UnityEngine.SearchService;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
+    bool isGrounded;
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerSoundManager soundManager;
     [SerializeField] LayerMask ignoreMask;
@@ -130,38 +131,9 @@ public class PlayerController : MonoBehaviour, IDamage
         isSpawnProtection = false;
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if(!controller.isGrounded)
-    //    {
-    //        isAirborne = true;
-    //    }
-    //    if(controller.isGrounded)
-    //    {
-    //        if(isAirborne)
-    //        {
-    //            isAirborne = false;
-    //            soundManager.PlayLanding();
-    //        }
-    //    }
-
-
-    //    //Used to see where the player is looking
-    //    Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
-
-    //    Movement();
-    //    sprint();
-    //    CheckForWall();
-    //    WallRunInput();
-    //    CheckForBouncePad();
-    //    CheckForMud();
-    //}
-
     void Update()
     {
-       
-        if (controller.isGrounded)
+        if (isGrounded)
         {
             if (isAirborne)
             {
@@ -185,8 +157,9 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForBouncePad();
         CheckForMud();
         isMoving();
+        CheckForGround();
 
-        if (inMotion && controller.isGrounded)
+        if (inMotion && isGrounded)
         {
             if (isCrouching && !isSliding)
             {
@@ -543,6 +516,12 @@ public class PlayerController : MonoBehaviour, IDamage
             isSprinting = false;
             cantSprint = false;
         }
+    }
+
+    void CheckForGround()
+    {
+        isGrounded = Physics.Raycast(transform.position, -orientation.up, 1.2f); //A raycast to detect mud
+
     }
 
     IEnumerator reload()
