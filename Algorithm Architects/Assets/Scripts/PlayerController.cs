@@ -219,9 +219,9 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void isMoving()
     {
-        if(controller.velocity.magnitude > 0.1f)
+        if(moveDir != Vector3.zero)
             inMotion = true;
-        else
+        else if (moveDir == Vector3.zero)
             inMotion = false;
     }
     void Movement()
