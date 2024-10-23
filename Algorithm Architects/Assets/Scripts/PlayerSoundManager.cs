@@ -28,6 +28,7 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource melee;
     [SerializeField] AudioSource FirstJump;
     [SerializeField] AudioSource ReloadSounding;
+    [SerializeField] AudioSource shootSource;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
@@ -302,5 +303,10 @@ public class PlayerSoundManager : MonoBehaviour
         {
             ReloadSounding.Play();
         }
+    }
+
+    public void playShootSound(AudioClip clip)
+    {
+        shootSource.PlayOneShot(clip);
     }
 }

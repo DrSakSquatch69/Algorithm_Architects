@@ -35,9 +35,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
-    [SerializeField] float MeleeCooldown;
-    [SerializeField] int meleeDamage;
-    [SerializeField] float meleeDist;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     public ParticleSystem hitEffect;
@@ -62,6 +59,8 @@ public class PlayerController : MonoBehaviour, IDamage
     Vector3 moveDir;
     Vector3 playerVel;
     Vector3 pushDirection;
+
+    [SerializeField] int rayTextDist;
 
     int jumpCount;
     float startTimer;
@@ -263,7 +262,14 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading) //added code so it doesnt shoot when clicking in menu
         {
-            StartCoroutine(shoot());
+            if (gunList[selectGunPos].isMelee)
+            {
+                StartCoroutine(meleeHit());
+            }
+            else
+            {
+                StartCoroutine(shoot());
+            }
         }
 
         if (Input.GetButtonDown("Crouch"))
@@ -284,12 +290,6 @@ public class PlayerController : MonoBehaviour, IDamage
             if (isFlashlight) { soundManager.PlayFlashlightOn(); }
             else { soundManager.PlayFlashlightOff(); }
             flashLight.SetActive(isFlashlight);
-        }
-
-        if(Input.GetButtonDown("Fire2"))
-        {
-            soundManager.PlayMelee();
-            StartCoroutine(meleeCooldown());
         }
     }
 
@@ -406,12 +406,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        StartCoroutine(gameManager.instance.MuzzleFlash());
-        gameManager.instance.getSound().Play();
-
         if (gunList[selectGunPos].ammo > 0)
         {
             isShooting = true;
+
+            PlayerSoundManager.Instance.playShootSound(gunList[selectGunPos].shootSound);
             gunList[selectGunPos].ammo--;
             updatePlayerUI();
 
@@ -445,7 +444,6 @@ public class PlayerController : MonoBehaviour, IDamage
         }
         else
         {
-            soundManager.PlayReload();
             StartCoroutine(reload());
         }
     }
@@ -584,6 +582,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
+            soundManager.PlayReload();
             yield return new WaitForSeconds(0.5f);
             gunList[selectGunPos].ammo = gunList[selectGunPos].magSize;
             gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize;
@@ -594,6 +593,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
+            soundManager.PlayReload();
             yield return new WaitForSeconds(0.5f);
             gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
             gunList[selectGunPos].ammo += gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
@@ -606,6 +606,7 @@ public class PlayerController : MonoBehaviour, IDamage
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
+                soundManager.PlayReload();
                 yield return new WaitForSeconds(0.5f);
                 gunList[selectGunPos].ammo += gunList[selectGunPos].ammoremaining;
                 gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].ammoremaining;
@@ -615,6 +616,7 @@ public class PlayerController : MonoBehaviour, IDamage
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
+                soundManager.PlayReload();
                 yield return new WaitForSeconds(0.5f);
                 gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
                 gunList[selectGunPos].ammo += gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
@@ -656,37 +658,53 @@ public class PlayerController : MonoBehaviour, IDamage
         cantSprint = false;
     }
 
-    IEnumerator meleeCooldown()
+    IEnumerator meleeHit()
     {
-        canMelee = false;
+        isShooting = true;
+
+        PlayerSoundManager.Instance.playShootSound(gunList[selectGunPos].shootSound);
+
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, meleeDist, ~ignoreMask))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
         {
+            // Debug.Log(hit.collider.name);
+
             IDamage dmg = hit.collider.GetComponent<IDamage>();
+            DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
+
+
+            Instantiate(gunList[selectGunPos].hitEffect, hit.point, Quaternion.identity);
 
             if (dmg != null)
             {
-                dmg.takeDamage(meleeDamage, Vector3.zero, damageType.bullet);
+                dmg.takeDamage(shootDamage, Vector3.zero, damageType.bullet);
+                StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
+            }
+
+            //This is for detroying the chaser bullet
+            if (damage != null)
+            {
+                damage.takeDamage(shootDamage, Vector3.zero, damageType.bullet);
                 StartCoroutine(gameManager.instance.ActivateDeactivateHitMarker());
             }
         }
 
-        yield return new WaitForSeconds(MeleeCooldown);
-        canMelee = true;     
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 
     void RayTextUpdate()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, bouncePad)){
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, bouncePad)){
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Bounce Pad";
-        }else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, enemy))
+        }else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, enemy))
         {
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Enemy";
         }
-        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, toxicCloud))
+        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, toxicCloud))
         {
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Toxic Cloud";
