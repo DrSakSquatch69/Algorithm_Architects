@@ -21,9 +21,6 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource ButterDamage;
     [SerializeField] AudioSource StationaryDamage;
 
-
-
-
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
     [SerializeField] float crouchPitch;

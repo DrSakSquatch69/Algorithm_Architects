@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canSlide;
     bool crouching;
     bool canMelee;
+    bool inMotion;
 
     //bouncepad fields
     public LayerMask bouncePad;
@@ -183,32 +184,48 @@ public class PlayerController : MonoBehaviour, IDamage
         WallRunInput();
         CheckForBouncePad();
         CheckForMud();
-    }
+        isMoving();
 
-    bool isMoving()
-    {
-        return controller.velocity.magnitude > 0.1f;
-    }
-    void Movement()
-    {
-        if (controller.isGrounded && isMoving())
+        if (inMotion && controller.isGrounded)
         {
             if (isCrouching && !isSliding)
+            {
+                soundManager.StopWalking();
                 soundManager.PlayCrouch();
+            }
             else if (!isCrouching)
                 soundManager.StopCrouch();
 
-            if (isMoving() && !isSprinting)
+            if (inMotion && !isSprinting)
                 soundManager.PlayWalking();
-            else if (!isMoving())
+            else if (!inMotion)
                 soundManager.StopWalking();
 
             if (isSprinting && !isCrouching && !isSliding)
+            {
+                soundManager.StopWalking();
                 soundManager.PlayRun();
+            }
             else if (!isSprinting)
                 soundManager.StopRun();
         }
+        else
+        {
+            soundManager.StopRun();
+            soundManager.StopWalking();
+            soundManager.StopCrouch();
+        }
+    }
 
+    void isMoving()
+    {
+        if(controller.velocity.magnitude > 0.1f)
+            inMotion = true;
+        else
+            inMotion = false;
+    }
+    void Movement()
+    {
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushTimer * Time.deltaTime);
 
         if (gameManager.instance.getIsButtered() && !isSpawnProtection)
