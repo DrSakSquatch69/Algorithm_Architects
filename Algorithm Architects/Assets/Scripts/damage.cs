@@ -22,7 +22,7 @@ public class damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (type == damageType.bullet || type == damageType.butter)
+        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing)
         {
             //rb.velocity = transform.forward * bulletSpeed;
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position) * bulletSpeed;
@@ -64,6 +64,26 @@ public class damage : MonoBehaviour
             if(dmg != null)
             {
                 InvokeRepeating("ApplyStationaryDamageFog", 0f, damageInterval);
+            }
+        }
+        
+        if(type == damageType.bouncing)
+        {
+            if (dmg == null)
+            {
+                if (other.CompareTag("Wall"))
+                {
+                    transform.forward = -transform.forward;
+                }
+                else
+                {
+                    transform.forward = -transform.forward;
+                    rb.velocity = new Vector3(rb.velocity.x, bulletSpeed, rb.velocity.z);
+                }
+                
+            } else
+            {
+                Destroy(gameObject);
             }
         }
 
