@@ -250,10 +250,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
-            if(jumpCount == 1)
-            {
+            if(jumpCount == 0)
+                soundManager.PlayFirstJump();
+            else
                 soundManager.PlayDoubleJump();
-            }
+
             jumpCount++;
             playerVel.y = jumpSpeed;
 
@@ -421,6 +422,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
         else
         {
+            soundManager.PlayReload();
             StartCoroutine(reload());
         }
     }

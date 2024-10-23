@@ -26,6 +26,8 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource flashlightOn;
     [SerializeField] AudioSource flashlightOff;
     [SerializeField] AudioSource melee;
+    [SerializeField] AudioSource FirstJump;
+    [SerializeField] AudioSource ReloadSounding;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
@@ -283,6 +285,22 @@ public class PlayerSoundManager : MonoBehaviour
         if (!melee.isPlaying)
         {
             melee.Play();
+        }
+    }
+
+    public void PlayFirstJump()
+    {
+        if(!FirstJump.isPlaying)
+        {
+            FirstJump.Play();
+        }
+    }
+    
+    public void PlayReload()
+    {
+        if (!ReloadSounding.isPlaying)
+        {
+            ReloadSounding.Play();
         }
     }
 }
