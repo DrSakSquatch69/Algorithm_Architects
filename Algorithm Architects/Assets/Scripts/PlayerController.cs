@@ -130,25 +130,53 @@ public class PlayerController : MonoBehaviour, IDamage
     }
 
     // Update is called once per frame
+    //void Update()
+    //{
+    //    if(!controller.isGrounded)
+    //    {
+    //        isAirborne = true;
+    //    }
+    //    if(controller.isGrounded)
+    //    {
+    //        if(isAirborne)
+    //        {
+    //            isAirborne = false;
+    //            soundManager.PlayLanding();
+    //        }
+    //    }
+
+
+    //    //Used to see where the player is looking
+    //    Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+
+    //    Movement();
+    //    sprint();
+    //    CheckForWall();
+    //    WallRunInput();
+    //    CheckForBouncePad();
+    //    CheckForMud();
+    //}
+
     void Update()
     {
-        if(!controller.isGrounded)
+       
+        if (controller.isGrounded)
+        {
+            if (isAirborne)
+            {
+                isAirborne = false;
+                soundManager.PlayLanding(controller.isGrounded);
+            }
+        }
+        else
         {
             isAirborne = true;
         }
-        if(controller.isGrounded)
-        {
-            if(isAirborne)
-            {
-                isAirborne = false;
-                soundManager.PlayLanding();
-            }
-        }
 
-       
-        //Used to see where the player is looking
+        
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
+       
         Movement();
         sprint();
         CheckForWall();

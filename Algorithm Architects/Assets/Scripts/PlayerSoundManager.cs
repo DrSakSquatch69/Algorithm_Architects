@@ -24,6 +24,7 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] float crouchPitch;
     [SerializeField] float crouchVolume;
 
+    private bool hasLanded = false;
     private float audioOrigVolume;
     private float audioOrigPitch;
     private void Awake()
@@ -104,11 +105,16 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
-    public void PlayLanding()
+    public void PlayLanding(bool isGrounded)
     {
-        if (!landing.isPlaying)
+        if (isGrounded&& !hasLanded)
         {
             landing.Play();
+            hasLanded = true;
+        }
+        else if (!isGrounded)
+        {
+            hasLanded= false;
         }
     }
 
