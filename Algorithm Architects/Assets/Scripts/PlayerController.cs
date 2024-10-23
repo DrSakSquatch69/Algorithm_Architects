@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     //bouncepad fields
     public LayerMask bouncePad;
+    public LayerMask enemy;
+    public LayerMask toxicCloud;
     [SerializeField] float bouncePadForce;
     bool isBouncePad;
 
@@ -159,6 +161,7 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForMud();
         isMoving();
         CheckForGround();
+        RayTextUpdate();
 
         if (inMotion && isGrounded)
         {
@@ -635,6 +638,29 @@ public class PlayerController : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(MeleeCooldown);
         canMelee = true;     
+    }
+
+    void RayTextUpdate()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, bouncePad)){
+            gameManager.instance.rayText.enabled = true;
+            gameManager.instance.rayText.text = "Bounce Pad";
+        }else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, enemy))
+        {
+            gameManager.instance.rayText.enabled = true;
+            gameManager.instance.rayText.text = "Enemy";
+        }
+        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, toxicCloud))
+        {
+            gameManager.instance.rayText.enabled = true;
+            gameManager.instance.rayText.text = "Toxic Cloud";
+        }
+        else
+        {
+            gameManager.instance.rayText.text = "";
+            gameManager.instance.rayText.enabled = false;
+        }
     }
 }
 

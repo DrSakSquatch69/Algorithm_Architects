@@ -21,6 +21,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] Transform respawnPoint;
     [SerializeField] int enemyCountForCurrentLevel;
     public GameObject enemyHpParent;
+    public TMP_Text rayText;
 
     public Image playerHPBar;
 
