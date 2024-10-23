@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour, IDamage
         isMoving();
         CheckForGround();
         RayTextUpdate();
+        selectGun();
 
         if (inMotion && isGrounded)
         {
