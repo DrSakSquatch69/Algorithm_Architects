@@ -6,7 +6,9 @@ public class PlayerSoundManager : MonoBehaviour
 {
     public static PlayerSoundManager Instance;
 
-    [SerializeField] AudioSource footstepSource;
+    [SerializeField] AudioSource walking;
+    [SerializeField] AudioSource running;
+    [SerializeField] AudioSource crouched;
     [SerializeField] AudioSource wallRun;
     [SerializeField] AudioSource doubleJump;
     [SerializeField] AudioSource landing;
@@ -19,12 +21,14 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource ButterDamage;
     [SerializeField] AudioSource StationaryDamage;
 
+
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
     [SerializeField] float crouchPitch;
     [SerializeField] float crouchVolume;
 
     private bool hasLanded = false;
+
     private float audioOrigVolume;
     private float audioOrigPitch;
     private void Awake()
@@ -40,46 +44,43 @@ public class PlayerSoundManager : MonoBehaviour
     }
     public void PlayWalking()
     {
-        footstepSource.pitch = walkPitch;
-        footstepSource.volume = audioOrigVolume;
-        if(!footstepSource.isPlaying)
+        
+        if(!walking.isPlaying)
         {
-            footstepSource.Play();
+            walking.Play();
         }
     }
     public void StopWalking()
     {
-        if(footstepSource.isPlaying)
+        if(walking.isPlaying)
         {
-            footstepSource.Stop();
+            walking.Stop();
         }
     }
 
     public void PlayCrouch()
     {
-        audioOrigVolume = footstepSource.volume;
-        audioOrigPitch = footstepSource.pitch;
-        footstepSource.pitch = crouchPitch;
-        footstepSource.volume = crouchVolume;
-        footstepSource.Play();
+        if(crouched.isPlaying)
+        {
+            crouched.Play();
+        }
     }
 
     public void StopCrouch()
     {
-        footstepSource.Stop();
-        footstepSource.volume = audioOrigVolume;
-        footstepSource.pitch = audioOrigPitch;
+        crouched.Stop();
     }
     public void PlayRun()
     {
-        footstepSource.pitch = runPitch;
-        footstepSource.Play();
+        if(running.isPlaying)
+        {
+            running.Play();
+        }
     }
 
     public void StopRun()
     {
-        footstepSource.Stop();
-        footstepSource.pitch = audioOrigPitch;
+        running.Stop();
     }
     public void PlayWallRun()
     {
