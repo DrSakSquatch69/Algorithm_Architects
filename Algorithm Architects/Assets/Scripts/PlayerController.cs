@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float MeleeCooldown;
     [SerializeField] int meleeDamage;
     [SerializeField] float meleeDist;
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] GameObject gunModel;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
+    int selectGunPos;
 
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
@@ -49,10 +52,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float crouchHeight;
     float normalHeight;
 
-
-    int ammo;
-    [SerializeField] int ammoremaining;
-    [SerializeField] int magSize;
     bool isReloading;
 
     [SerializeField] float healDelayTime; //how long the player needs to not take damage
@@ -112,7 +111,6 @@ public class PlayerController : MonoBehaviour, IDamage
         normYSize = transform.localScale.y;
         jumpCount = 0;
         origGrav = gravity;
-        ammo = magSize;
         HealthPoints = maxHP;
         normalHeight = controller.height;
         originalSpeed = speed;
@@ -120,9 +118,8 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
         gameManager.instance.setSound(audioSource);
+        changeGun();
 
-
-        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
         updatePlayerUI();
         isSpawnProtection = true;
         StartCoroutine(spawnProtection());
@@ -274,7 +271,7 @@ public class PlayerController : MonoBehaviour, IDamage
             crouch();
         }
 
-        if (Input.GetButton("Reload") && !isReloading && ammo != magSize)
+        if (Input.GetButton("Reload") && !isReloading && gunList[selectGunPos].ammo != gunList[selectGunPos].magSize)
         {
             StartCoroutine(reload());
         }
@@ -381,16 +378,41 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectGunPos < gunList.Count - 1)
+        {
+            selectGunPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGunPos > 0)
+        {
+            selectGunPos--;
+            changeGun();
+        }
+    }
+
+    void changeGun()
+    {
+        shootDamage = gunList[selectGunPos].shootDamage;
+        shootRate = gunList[selectGunPos].shootRate;
+        shootDist = gunList[selectGunPos].shootDist;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        updatePlayerUI();
+    }
+
     IEnumerator shoot()
     {
         StartCoroutine(gameManager.instance.MuzzleFlash());
         gameManager.instance.getSound().Play();
 
-        if (ammo > 0)
+        if (gunList[selectGunPos].ammo > 0)
         {
             isShooting = true;
-            ammo--;
-            gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
+            gunList[selectGunPos].ammo--;
+            updatePlayerUI();
 
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
@@ -401,7 +423,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
 
-                Instantiate(hitEffect, hit.point, Quaternion.identity);
+                Instantiate(gunList[selectGunPos].hitEffect, hit.point, Quaternion.identity);
 
                 if (dmg != null)
                 {
@@ -459,6 +481,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
+        gameManager.instance.UpdateAmmoCounter(gunList[selectGunPos].ammo, gunList[selectGunPos].ammoremaining);
     }
 
     void WallRunInput()
@@ -547,7 +570,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator reload()
     {
-        if (ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
+        if (gunList[selectGunPos].ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
         {
             isReloading = true;
             gameManager.instance.NoAmmoOnOff();
@@ -556,49 +579,49 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.NoAmmoOnOff();
 
         }
-        else if (!isReloading && ammo <= 0 && ammoremaining >= magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
+        else if (!isReloading && gunList[selectGunPos].ammo <= 0 && gunList[selectGunPos].ammoremaining >= gunList[selectGunPos].magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
             yield return new WaitForSeconds(0.5f);
-            ammo = magSize;
-            ammoremaining -= magSize;
+            gunList[selectGunPos].ammo = gunList[selectGunPos].magSize;
+            gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize;
             isReloading = false;
             gameManager.instance.reloadingOnOff();
         }
-        else if (!isReloading && ammo >= 0 && ammoremaining >= magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
+        else if (!isReloading && gunList[selectGunPos].ammo >= 0 && gunList[selectGunPos].ammoremaining >= gunList[selectGunPos].magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
             yield return new WaitForSeconds(0.5f);
-            ammoremaining -= magSize - ammo;
-            ammo += magSize - ammo;
+            gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
+            gunList[selectGunPos].ammo += gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
             isReloading = false;
             gameManager.instance.reloadingOnOff();
         }
-        else if (!isReloading && ammo >= 0 && ammoremaining <= magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
+        else if (!isReloading && gunList[selectGunPos].ammo >= 0 && gunList[selectGunPos].ammoremaining <= gunList[selectGunPos].magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
         {
-            if ((ammo + ammoremaining) <= magSize) //if the ammo left is equal to the mag size then add them together
+            if ((gunList[selectGunPos].ammo + gunList[selectGunPos].ammoremaining) <= gunList[selectGunPos].magSize) //if the ammo left is equal to the mag size then add them together
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
                 yield return new WaitForSeconds(0.5f);
-                ammo += ammoremaining;
-                ammoremaining -= ammoremaining;
+                gunList[selectGunPos].ammo += gunList[selectGunPos].ammoremaining;
+                gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].ammoremaining;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
-            }else if((ammo + ammoremaining) > magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            }else if((gunList[selectGunPos].ammo + gunList[selectGunPos].ammoremaining) > gunList[selectGunPos].magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
                 yield return new WaitForSeconds(0.5f);
-                ammoremaining -= magSize - ammo;
-                ammo += magSize - ammo;
+                gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
+                gunList[selectGunPos].ammo += gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
             }
         }
-        gameManager.instance.UpdateAmmoCounter(ammo, ammoremaining);
+        updatePlayerUI(); 
     }
 
     IEnumerator healPlayer()
