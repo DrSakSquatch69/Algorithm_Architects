@@ -149,10 +149,10 @@ public class PlayerController : MonoBehaviour, IDamage
             soundManager.PlayLanding(isGrounded);
         }
 
-        
+
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-       
+
         Movement();
         sprint();
         CheckForWall();
@@ -165,38 +165,40 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (inMotion && isGrounded)
         {
-            if (crouching && !isSliding)
+            if (isSprinting && !soundManager.runningPlaying())
             {
-                soundManager.StopWalking();
-                soundManager.PlayCrouch();
-            }
-            else if (crouching)
-            {
-                soundManager.StopCrouch();
-            }
-            else if (inMotion && !isSprinting)
-            {
-                soundManager.PlayWalking();
-            }
-            else if (!inMotion)
-            {
-                soundManager.StopWalking();
-            }
-            else if (isSprinting && !crouching && !isSliding)
-            {
-                soundManager.StopWalking();
                 soundManager.PlayRun();
+              //  Debug.Log("Run is playing");
             }
-            else if (!isSprinting)
+            else if (isCrouching && !soundManager.crouchedPlaying())
+            {
+                soundManager.PlayCrouch();
+               // Debug.Log("Crouch is playing");
+            }
+            else if (!isSprinting && soundManager.runningPlaying())
             {
                 soundManager.StopRun();
+              //  Debug.Log("run stopped playing");
+            }
+            else if (!isCrouching && soundManager.crouchedPlaying())
+            {
+                soundManager.StopCrouch();
+                //Debug.Log("crouch stopped playing");
+            }
+            else if (!isSprinting && !isCrouching && !soundManager.walkingPlaying())
+            {
+                soundManager.PlayWalking();
+                //Debug.Log("walking replayed");
             }
         }
-        else
+        else if (!inMotion || !isGrounded)
         {
+            if (soundManager.runningPlaying() || soundManager.crouchedPlaying() || soundManager.walkingPlaying())
+            { 
             soundManager.StopRun();
             soundManager.StopWalking();
             soundManager.StopCrouch();
+            }
         }
     }
 
@@ -436,6 +438,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             if (HealthPoints <= 0)
             {
+                soundManager.PlayDeathSound();
                 gameManager.instance.youLose();
             }
         }

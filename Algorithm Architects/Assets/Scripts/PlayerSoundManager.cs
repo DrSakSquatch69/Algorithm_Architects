@@ -20,11 +20,46 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource ChaserDamage;
     [SerializeField] AudioSource ButterDamage;
     [SerializeField] AudioSource StationaryDamage;
+    [SerializeField] AudioSource deathSound;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
     [SerializeField] float crouchPitch;
     [SerializeField] float crouchVolume;
+
+    public bool isWalkingPlaying;
+    public bool isRunningPlaying;
+    public bool isCrouchedPlaying;
+
+    public bool walkingPlaying()
+    {
+        if (walking.isPlaying) 
+            isWalkingPlaying = true;
+        else 
+            isWalkingPlaying = false;
+
+        return isWalkingPlaying;
+    }
+
+    public bool runningPlaying()
+    {
+        if(running.isPlaying)
+            isRunningPlaying = true;
+        else
+            isRunningPlaying = false;
+
+        return isRunningPlaying;
+    }
+
+    public bool crouchedPlaying()
+    {
+        if (crouched.isPlaying)
+            isCrouchedPlaying = true;
+        else
+            isCrouchedPlaying = false;
+
+        return isCrouchedPlaying;
+    }
 
     private bool hasLanded = false;
 
@@ -185,6 +220,14 @@ public class PlayerSoundManager : MonoBehaviour
         if(!StationaryDamage.isPlaying)
         {
             StationaryDamage.Play();
+        }
+    }
+
+    public void PlayDeathSound()
+    {
+        if(!deathSound.isPlaying)
+        {
+            deathSound.Play();
         }
     }
 }
