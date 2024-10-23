@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int shootDist;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject meleeModel;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
     int selectGunPos;
@@ -399,8 +400,22 @@ public class PlayerController : MonoBehaviour, IDamage
         shootRate = gunList[selectGunPos].shootRate;
         shootDist = gunList[selectGunPos].shootDist;
 
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        if (gunList[selectGunPos].isMelee)
+        {
+            gameManager.instance.turnOnOffAmmoText.SetActive(false);
+            gunModel.SetActive(false);
+            meleeModel.SetActive(true);
+            meleeModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+            meleeModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        }
+        else
+        {
+            gameManager.instance.turnOnOffAmmoText.SetActive(true);
+            meleeModel.SetActive(false);
+            gunModel.SetActive(true);
+            gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+            gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        }
         updatePlayerUI();
     }
 
