@@ -161,26 +161,32 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (inMotion && isGrounded)
         {
-            if (isCrouching && !isSliding)
+            if (crouching && !isSliding)
             {
                 soundManager.StopWalking();
                 soundManager.PlayCrouch();
             }
-            else if (!isCrouching)
+            else if (crouching)
+            {
                 soundManager.StopCrouch();
-
-            if (inMotion && !isSprinting)
+            }
+            else if (inMotion && !isSprinting)
+            {
                 soundManager.PlayWalking();
+            }
             else if (!inMotion)
+            {
                 soundManager.StopWalking();
-
-            if (isSprinting && !isCrouching && !isSliding)
+            }
+            else if (isSprinting && !crouching && !isSliding)
             {
                 soundManager.StopWalking();
                 soundManager.PlayRun();
             }
             else if (!isSprinting)
+            {
                 soundManager.StopRun();
+            }
         }
         else
         {
