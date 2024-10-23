@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour, IDamage
     Vector3 playerVel;
     Vector3 pushDirection;
 
+    [SerializeField] int rayTextDist;
+
     int jumpCount;
     float startTimer;
     float holdingSprintTime;
@@ -694,15 +696,15 @@ public class PlayerController : MonoBehaviour, IDamage
     void RayTextUpdate()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, bouncePad)){
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, bouncePad)){
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Bounce Pad";
-        }else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, enemy))
+        }else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, enemy))
         {
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Enemy";
         }
-        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, toxicCloud))
+        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, toxicCloud))
         {
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Toxic Cloud";

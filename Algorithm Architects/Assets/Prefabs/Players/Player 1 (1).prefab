@@ -2069,9 +2069,6 @@ MonoBehaviour:
   shootDamage: 0
   shootRate: 0
   shootDist: 0
-  MeleeCooldown: 0.3
-  meleeDamage: 60
-  meleeDist: 3
   gunList:
   - {fileID: 11400000, guid: aeb6ceff33063804380f60c00323c606, type: 2}
   - {fileID: 11400000, guid: f99dd150f0d27b64b9820a3cf304c78d, type: 2}
@@ -2086,6 +2083,7 @@ MonoBehaviour:
   healDelayTime: 5
   healRate: 1
   pushTimer: 3
+  rayTextDist: 100
   bouncePad:
     serializedVersion: 2
     m_Bits: 2048
