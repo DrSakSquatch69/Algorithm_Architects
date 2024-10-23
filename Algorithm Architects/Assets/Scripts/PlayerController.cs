@@ -402,6 +402,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (gunList[selectGunPos].isMelee)
         {
+            gameManager.instance.turnOnOffAmmoText.SetActive(false);
             gunModel.SetActive(false);
             meleeModel.SetActive(true);
             meleeModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -409,6 +410,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
         else
         {
+            gameManager.instance.turnOnOffAmmoText.SetActive(true);
             meleeModel.SetActive(false);
             gunModel.SetActive(true);
             gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
