@@ -406,8 +406,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        StartCoroutine(gameManager.instance.MuzzleFlash());
-        gameManager.instance.getSound().Play();
+
+        PlayerSoundManager.Instance.playShootSound(gunList[selectGunPos].shootSound);
 
         if (gunList[selectGunPos].ammo > 0)
         {
