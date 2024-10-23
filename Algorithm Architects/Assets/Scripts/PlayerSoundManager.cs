@@ -29,6 +29,7 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] float crouchPitch;
     [SerializeField] float crouchVolume;
 
+    private bool hasLanded = false;
 
     private float audioOrigVolume;
     private float audioOrigPitch;
