@@ -1569,6 +1569,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3835749644481871480}
+  - {fileID: 4304764659369543133}
   m_Father: {fileID: 4315599496715532236}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &454557023363421908
@@ -2030,7 +2031,7 @@ MonoBehaviour:
   flashlightOff: {fileID: 5416027463398271717}
   melee: {fileID: 8164603631634075404}
   FirstJump: {fileID: 7650343848831744756}
-  ReloadSounding: {fileID: 0}
+  ReloadSounding: {fileID: 6053215377737295364}
   runPitch: 1
   walkPitch: 1.5
   crouchPitch: 0.8
@@ -2063,12 +2064,15 @@ MonoBehaviour:
   jumpMax: 2
   gravity: 28
   butterSlowTimer: 2
-  shootDamage: 20
-  shootRate: 0.1
-  shootDist: 100
+  shootDamage: 0
+  shootRate: 0
+  shootDist: 0
   MeleeCooldown: 0.3
   meleeDamage: 60
   meleeDist: 3
+  gunList:
+  - {fileID: 11400000, guid: aeb6ceff33063804380f60c00323c606, type: 2}
+  gunModel: {fileID: 7782157365335031583}
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   audioSource: {fileID: 1256739297679942886}
   crouchSizeYAxis: 0.5
@@ -2076,8 +2080,6 @@ MonoBehaviour:
   slideSpeedMod: 2.2
   slideDelay: 0.5
   crouchHeight: 0
-  ammoremaining: 2000
-  magSize: 30
   healDelayTime: 5
   healRate: 1
   pushTimer: 3
@@ -2822,6 +2824,112 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &7782157365335031583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4304764659369543133}
+  - component: {fileID: 9096610111220333932}
+  - component: {fileID: 1453647911929599015}
+  - component: {fileID: 7500320543319577976}
+  m_Layer: 0
+  m_Name: GunModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4304764659369543133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782157365335031583}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.50693345, y: 0.49891672, z: 0.48982957, w: 0.5041504}
+  m_LocalPosition: {x: 0.45114556, y: -0.5928147, z: 0.69005144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1859354791136953346}
+  m_LocalEulerAnglesHint: {x: -90.77, y: -28.612, z: 117.332}
+--- !u!33 &9096610111220333932
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782157365335031583}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1453647911929599015
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782157365335031583}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7500320543319577976
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782157365335031583}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5402567031412629817, guid: 8e53c18e70760ae4d9ce13cc65b5bfb0, type: 3}
 --- !u!1 &8409574472595134991
 GameObject:
   m_ObjectHideFlags: 0
