@@ -22,12 +22,14 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource StationaryDamage;
 
 
+
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
     [SerializeField] float crouchPitch;
     [SerializeField] float crouchVolume;
 
     private bool hasLanded = false;
+
 
     private float audioOrigVolume;
     private float audioOrigPitch;
