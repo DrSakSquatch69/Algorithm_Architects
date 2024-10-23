@@ -137,13 +137,14 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             if (isAirborne)
             {
+                soundManager.PlayLanding(isGrounded);
                 isAirborne = false;
-                soundManager.PlayLanding(controller.isGrounded);
             }
         }
         else
         {
             isAirborne = true;
+            soundManager.PlayLanding(isGrounded);
         }
 
         
