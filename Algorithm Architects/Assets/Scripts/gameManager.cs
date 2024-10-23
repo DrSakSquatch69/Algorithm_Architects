@@ -24,7 +24,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] int enemyCountForCurrentLevel;
     public GameObject enemyHpParent;
     public TMP_Text rayText;
-    
+    public PlayerController playerScript;
+    public void setPlayerScript(PlayerController script) { playerScript = script; }
+
     public Image playerHPBar;
 
     [SerializeField] bool isFinalLevel;

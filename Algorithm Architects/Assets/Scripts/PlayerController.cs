@@ -7,6 +7,8 @@ using UnityEngine.SearchService;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
+    public static PlayerController instance;
+
     bool isGrounded;
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerSoundManager soundManager;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
+    [SerializeField] int magSize;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject meleeModel;
@@ -107,6 +110,9 @@ public class PlayerController : MonoBehaviour, IDamage
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     void Start()
     {
+        instance = this;
+        gameManager.instance.setPlayerScript(instance);
+
         //initiates the normal size
         normYSize = transform.localScale.y;
         jumpCount = 0;
@@ -382,7 +388,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectGunPos < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGunPos < gunList.Count - 1)
         {
             selectGunPos++;
             changeGun();
@@ -392,8 +398,20 @@ public class PlayerController : MonoBehaviour, IDamage
             selectGunPos--;
             changeGun();
         }
+        else
+            return;
     }
 
+    public void getGunStats(gunStats gun)
+    {
+        shootDamage = gun.shootDamage;
+        shootRate = gun.shootRate;
+        shootDist = gun.shootDist;
+        magSize = gun.magSize;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
     void changeGun()
     {
         shootDamage = gunList[selectGunPos].shootDamage;
