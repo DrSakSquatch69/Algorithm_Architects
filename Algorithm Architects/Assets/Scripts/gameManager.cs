@@ -8,9 +8,10 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 public class gameManager : MonoBehaviour
 {
+    PlayerSoundManager soundManager;
+
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
-
     [SerializeField] GameObject menuActive, menuPause, menuSettings, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo, muzzleFlash;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
@@ -22,7 +23,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] int enemyCountForCurrentLevel;
     public GameObject enemyHpParent;
     public TMP_Text rayText;
-
+    
     public Image playerHPBar;
 
     [SerializeField] bool isFinalLevel;
@@ -67,9 +68,18 @@ public class gameManager : MonoBehaviour
 
     void Awake()                                                            //awake always happens first  
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this; // makes sure we only have one in the scene
+
+        }
+        else
+        {
+            Destroy(this);
+        }
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location 
+        
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
     }
@@ -149,12 +159,14 @@ public class gameManager : MonoBehaviour
 
             if (isFinalLevel)
             {
+                PlayerSoundManager.Instance.PlayFinalWinSound();
                 statePause();
                 menuActive = menuWin;
                 menuActive.SetActive(isPaused);
             }
             else
             {
+                PlayerSoundManager.Instance.PlayWinningSound();
                 statePause();
                 menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);

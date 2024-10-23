@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour, IDamage
     float normYSize;
 
     // Start is called before the first frame update
+    
+    public PlayerSoundManager GetSoundManager() { return soundManager; }
     void Start()
     {
         //initiates the normal size
@@ -278,12 +280,16 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (Input.GetButtonDown("FlashLight"))
         {
+           
             isFlashlight = !isFlashlight;
+            if (isFlashlight) { soundManager.PlayFlashlightOn(); }
+            else { soundManager.PlayFlashlightOff(); }
             flashLight.SetActive(isFlashlight);
         }
 
         if(Input.GetButtonDown("Fire2"))
         {
+            soundManager.PlayMelee();
             StartCoroutine(meleeCooldown());
         }
     }

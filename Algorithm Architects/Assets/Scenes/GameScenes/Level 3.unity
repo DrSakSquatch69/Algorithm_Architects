@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 3a6d14481c1d6054f8474491a17e0b51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.595
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5252950860147038856, guid: 3a6d14481c1d6054f8474491a17e0b51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -717,6 +717,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3654212573088026782, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3705170326514960532, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_text
       value: Level 3
@@ -728,6 +732,10 @@ PrefabInstance:
     - target: {fileID: 5555986893557831184, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_Name
       value: Main UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573085487912005107, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7710794652449778121, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_text
@@ -952,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: 9c08d2a47aaafd94f96eddd6dd870563, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.92
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6689768580973366425, guid: 9c08d2a47aaafd94f96eddd6dd870563, type: 3}
       propertyPath: m_LocalPosition.z

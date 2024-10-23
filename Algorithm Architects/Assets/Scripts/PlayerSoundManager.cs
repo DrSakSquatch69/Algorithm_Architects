@@ -21,6 +21,11 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource ButterDamage;
     [SerializeField] AudioSource StationaryDamage;
     [SerializeField] AudioSource deathSound;
+    [SerializeField] AudioSource winningSound;
+    [SerializeField] AudioSource finalWiningSound;
+    [SerializeField] AudioSource flashlightOn;
+    [SerializeField] AudioSource flashlightOff;
+    [SerializeField] AudioSource melee;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
@@ -31,6 +36,18 @@ public class PlayerSoundManager : MonoBehaviour
     public bool isRunningPlaying;
     public bool isCrouchedPlaying;
 
+    void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this; // makes sure we only have one in the scene
+
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
     public bool walkingPlaying()
     {
         if (walking.isPlaying) 
@@ -228,6 +245,44 @@ public class PlayerSoundManager : MonoBehaviour
         if(!deathSound.isPlaying)
         {
             deathSound.Play();
+        }
+    }
+    public void PlayWinningSound()
+    {
+        if(!winningSound.isPlaying)
+        {
+            winningSound.Play();
+        }
+    }
+    public void PlayFinalWinSound()
+    {
+        if(!finalWiningSound.isPlaying)
+        {
+            finalWiningSound.Play();
+        }
+    }
+
+    public void PlayFlashlightOn()
+    {
+        if(!flashlightOn.isPlaying)
+        {
+            flashlightOn.Play();
+        }
+    }
+
+    public void PlayFlashlightOff()
+    {
+        if (!flashlightOff.isPlaying)
+        {
+            flashlightOff.Play();
+        }   
+    }
+
+    public void PlayMelee()
+    {
+        if (!melee.isPlaying)
+        {
+            melee.Play();
         }
     }
 }
