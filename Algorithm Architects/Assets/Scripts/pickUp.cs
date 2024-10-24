@@ -13,7 +13,6 @@ public class pickUp : MonoBehaviour
     private void Start()
     {
         gun.ammo = gun.magSize;
-        gun.ammoremaining = gun.ammo;
 
     }
     private void OnTriggerEnter(Collider other)

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c6e66585ffdf7846974606f375fc14e, type: 3}
-  m_Name: S & W 357 G
+  m_Name: SMG T1 BLUE
   m_EditorClassIdentifier: 
-  gunModel: {fileID: 8000689433732326076, guid: 50c3e92fb2aaee34cb9b2dedad5e59e0, type: 3}
-  shootDamage: 28
-  shootRate: 2
-  shootDist: 35
-  magSize: 12
+  gunModel: {fileID: 702948713995209521, guid: 240e873952cf3ca44a1e8f4145680f06, type: 3}
+  shootDamage: 8
+  shootRate: 0.6
+  shootDist: 30
+  magSize: 20
   ammoremaining: 2500
-  ammo: 9
+  ammo: 20
   isMelee: 0
-  hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
-  shootSound: {fileID: 8300000, guid: 60ec2468c0d84f54daf6f3add265e0ad, type: 3}
+  hitEffect: {fileID: 0}
+  shootSound: {fileID: 0}

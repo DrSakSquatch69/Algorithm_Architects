@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c6e66585ffdf7846974606f375fc14e, type: 3}
-  m_Name: MELEE T4 AXE
+  m_Name: S & W 500 G
   m_EditorClassIdentifier: 
-  gunModel: {fileID: 0}
-  shootDamage: 0
-  shootRate: 0
-  shootDist: 0
-  magSize: 0
-  ammoremaining: 0
-  ammo: 0
+  gunModel: {fileID: 793042367010431750, guid: b6d275743e53f344a8746eb12ca42baf, type: 3}
+  shootDamage: 25
+  shootRate: 3.5
+  shootDist: 25
+  magSize: 18
+  ammoremaining: 2500
+  ammo: 18
   isMelee: 0
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
