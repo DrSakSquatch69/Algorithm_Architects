@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: MG - ORANGE
   m_EditorClassIdentifier: 
   gunModel: {fileID: 8436965650169521112, guid: 7b3ce6270094b7c41a5414c6cbc6a98e, type: 3}
-  shootDamage: 35
-  shootRate: 1.2
+  shootDamage: 17
+  shootRate: 0.15
   shootDist: 50
   magSize: 48
   ammoremaining: 2500
   ammo: 0
   isMelee: 0
-  hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
+  hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
+  shootSound: {fileID: 8300000, guid: 588f6ad4e529482408bbb267332dcf35, type: 3}

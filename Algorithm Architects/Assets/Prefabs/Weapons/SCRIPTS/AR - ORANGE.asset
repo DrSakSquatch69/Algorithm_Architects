@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: AR - ORANGE
   m_EditorClassIdentifier: 
   gunModel: {fileID: 3111214254996804638, guid: 815650b6bc52b7b4d85c9ce10796cc04, type: 3}
-  shootDamage: 18
-  shootRate: 1.9
+  shootDamage: 12
+  shootRate: 0.2
   shootDist: 35
   magSize: 40
   ammoremaining: 2500
   ammo: 0
   isMelee: 0
-  hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
+  hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
+  shootSound: {fileID: 8300000, guid: 588f6ad4e529482408bbb267332dcf35, type: 3}
