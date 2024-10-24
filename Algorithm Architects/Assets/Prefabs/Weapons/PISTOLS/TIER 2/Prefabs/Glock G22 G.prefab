@@ -591,13 +591,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2569803352109430448}
   - component: {fileID: 3216336459547712241}
+  - component: {fileID: 5126446738559932655}
   m_Layer: 0
   m_Name: Glock G22 G
   m_TagString: Pistol T2 POS
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2569803352109430448
 Transform:
   m_ObjectHideFlags: 0
@@ -632,4 +633,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: 8c1434851fea041438b8aba55d3e6cb4, type: 2}
+  gunPOS: {fileID: 0}
+--- !u!135 &5126446738559932655
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8983317196484054731}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

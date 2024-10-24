@@ -598,7 +598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9079515837120684614
 Transform:
   m_ObjectHideFlags: 0
@@ -633,7 +633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: d3c41389f528fe943ae440f91003d3d7, type: 2}
+  gunPOS: {fileID: 0}
 --- !u!135 &4373231599709806010
 SphereCollider:
   m_ObjectHideFlags: 0

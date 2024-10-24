@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SearchService;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
@@ -38,13 +35,15 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
     [SerializeField] int magSize;
-    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] List<GameObject> gunList = new List<GameObject>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject meleeModel;
     [SerializeField] GameObject muzzleFlash;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
-    int selectGunPos;
+    private GameObject currentGun;
+    private gunStats currentGunStats;
+    private int gunListIndexCurr;
 
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
@@ -107,7 +106,7 @@ public class PlayerController : MonoBehaviour, IDamage
     float normYSize;
 
     // Start is called before the first frame update
-    
+
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     void Start()
     {
@@ -125,7 +124,7 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
         gameManager.instance.setSound(audioSource);
-        changeGun();
+
 
         updatePlayerUI();
         isSpawnProtection = true;
@@ -175,17 +174,17 @@ public class PlayerController : MonoBehaviour, IDamage
             if (isSprinting && !soundManager.runningPlaying())
             {
                 soundManager.PlayRun();
-              //  Debug.Log("Run is playing");
+                //  Debug.Log("Run is playing");
             }
             else if (isCrouching && !soundManager.crouchedPlaying())
             {
                 soundManager.PlayCrouch();
-               // Debug.Log("Crouch is playing");
+                // Debug.Log("Crouch is playing");
             }
             else if (!isSprinting && soundManager.runningPlaying())
             {
                 soundManager.StopRun();
-              //  Debug.Log("run stopped playing");
+                //  Debug.Log("run stopped playing");
             }
             else if (!isCrouching && soundManager.crouchedPlaying())
             {
@@ -201,17 +200,17 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (!inMotion || !isGrounded)
         {
             if (soundManager.runningPlaying() || soundManager.crouchedPlaying() || soundManager.walkingPlaying())
-            { 
-            soundManager.StopRun();
-            soundManager.StopWalking();
-            soundManager.StopCrouch();
+            {
+                soundManager.StopRun();
+                soundManager.StopWalking();
+                soundManager.StopCrouch();
             }
         }
     }
 
     void isMoving()
     {
-        if(moveDir != Vector3.zero)
+        if (moveDir != Vector3.zero)
             inMotion = true;
         else if (moveDir == Vector3.zero)
             inMotion = false;
@@ -235,7 +234,7 @@ public class PlayerController : MonoBehaviour, IDamage
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
 
         //if the player is crouching, then dive the speed by 3, to make the player move slower
-        if(crouching && !isSliding)
+        if (crouching && !isSliding)
         {
             controller.Move(moveDir * (speed / 3) * Time.deltaTime);
         }
@@ -255,7 +254,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
-            if(jumpCount == 0)
+            if (jumpCount == 0)
                 soundManager.PlayFirstJump();
             else
                 soundManager.PlayDoubleJump();
@@ -268,9 +267,9 @@ public class PlayerController : MonoBehaviour, IDamage
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move((playerVel + pushDirection) * Time.deltaTime);
 
-        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading) //added code so it doesnt shoot when clicking in menu
+        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading && gunList.Count != 0) //added code so it doesnt shoot when clicking in menu
         {
-            if (gunList[selectGunPos].isMelee)
+            if (currentGunStats.isMelee)
             {
                 StartCoroutine(meleeHit());
             }
@@ -286,14 +285,14 @@ public class PlayerController : MonoBehaviour, IDamage
             crouch();
         }
 
-        if (Input.GetButton("Reload") && !isReloading && gunList[selectGunPos].ammo != gunList[selectGunPos].magSize)
+        if (Input.GetButton("Reload") && !isReloading && currentGunStats.ammo != currentGunStats.magSize)
         {
             StartCoroutine(reload());
         }
 
         if (Input.GetButtonDown("FlashLight"))
         {
-           
+
             isFlashlight = !isFlashlight;
             if (isFlashlight) { soundManager.PlayFlashlightOn(); }
             else { soundManager.PlayFlashlightOff(); }
@@ -332,7 +331,8 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             return;
         }
-        else {
+        else
+        {
             StartCoroutine(slidingDelay());
 
 
@@ -369,7 +369,7 @@ public class PlayerController : MonoBehaviour, IDamage
             holdingSprintTime = Time.time - startTimer;
 
             if (canSlide && holdingSprintTime >= slideDelay) //checking if the player can slide and also if they held the key for the correct amount of time
-            { 
+            {
                 isSliding = true;
                 controller.height = crouchHeight;
                 canSlide = false;
@@ -386,21 +386,37 @@ public class PlayerController : MonoBehaviour, IDamage
             crouching = false;
         }
     }
+    public void SwitchGun(GameObject newGun)
+    {
+        foreach (GameObject gun in gunList)
+        {
+            gun.SetActive(false);
+        }
+        newGun.SetActive(true);
+        currentGun = newGun;
+        UpdateGunStats(newGun.GetComponent<gun>().Gun);
+    }
+    public void AddGunToInventory(GameObject gun)
+    {
+        gunList.Add(gun);
+    }
 
+    public void UpdateGunStats(gunStats gunStats)
+    {
+        currentGunStats = gunStats;
+        getGunStats(gunStats);
+    }
     void selectGun()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGunPos < gunList.Count - 1)
+        if (gunList.Count > 0)
         {
-            selectGunPos++;
-            changeGun();
+            if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr < gunList.Count - 1) { gunListIndexCurr++; }
+            else if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr >= gunList.Count -1) { gunListIndexCurr = 0; }
+            foreach (GameObject gun in gunList) { gun.SetActive(false); }
+            gunList[gunListIndexCurr].SetActive(true);
+            currentGun = gunList[gunListIndexCurr];
+            UpdateGunStats(currentGun.GetComponent<gun>().Gun);
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGunPos > 0)
-        {
-            selectGunPos--;
-            changeGun();
-        }
-        else
-            return;
     }
 
     public void getGunStats(gunStats gun)
@@ -410,33 +426,33 @@ public class PlayerController : MonoBehaviour, IDamage
         shootDist = gun.shootDist;
         magSize = gun.magSize;
 
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        //    gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
-    void changeGun()
-    {
-        shootDamage = gunList[selectGunPos].shootDamage;
-        shootRate = gunList[selectGunPos].shootRate;
-        shootDist = gunList[selectGunPos].shootDist;
+    //void changeGun()
+    //{
+    //    shootDamage = gunList[selectGunPos].shootDamage;
+    //    shootRate = gunList[selectGunPos].shootRate;
+    //    shootDist = gunList[selectGunPos].shootDist;
 
-        if (gunList[selectGunPos].isMelee)
-        {
-            gameManager.instance.turnOnOffAmmoText.SetActive(false);
-            gunModel.SetActive(false);
-            meleeModel.SetActive(true);
-            meleeModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-            meleeModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-        }
-        else
-        {
-            gameManager.instance.turnOnOffAmmoText.SetActive(true);
-            meleeModel.SetActive(false);
-            gunModel.SetActive(true);
-            gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-            gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-        }
-        updatePlayerUI();
-    }
+    //    if (gunList[selectGunPos].isMelee)
+    //    {
+    //        gameManager.instance.turnOnOffAmmoText.SetActive(false);
+    //        gunModel.SetActive(false);
+    //        meleeModel.SetActive(true);
+    //        meleeModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+    //        meleeModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    //    }
+    //    else
+    //    {
+    //        gameManager.instance.turnOnOffAmmoText.SetActive(true);
+    //        meleeModel.SetActive(false);
+    //        gunModel.SetActive(true);
+    //        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+    //        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    //    }
+    //    updatePlayerUI();
+    //}
 
     IEnumerator muzzleFlashOnOff()
     {
@@ -447,13 +463,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (gunList[selectGunPos].ammo > 0)
+        if (currentGun.GetComponent<gun>().Gun.ammo > 0)
         {
             isShooting = true;
 
             StartCoroutine(muzzleFlashOnOff());
-            PlayerSoundManager.Instance.playShootSound(gunList[selectGunPos].shootSound);
-            gunList[selectGunPos].ammo--;
+            PlayerSoundManager.Instance.playShootSound(currentGun.GetComponent<gun>().Gun.shootSound);
+            currentGun.GetComponent<gun>().Gun.ammo--;
             updatePlayerUI();
 
             RaycastHit hit;
@@ -465,7 +481,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
 
-                Instantiate(gunList[selectGunPos].hitEffect, hit.point, Quaternion.identity);
+                Instantiate(currentGun.GetComponent<gun>().Gun.hitEffect, hit.point, Quaternion.identity);
 
                 if (dmg != null)
                 {
@@ -494,14 +510,14 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         if (!isSpawnProtection)
         {
-            if      (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
+            if (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
-            else if (type == damageType.melee) { soundManager.PlayMeleeDMG();}  
+            else if (type == damageType.melee) { soundManager.PlayMeleeDMG(); }
             else if (type == damageType.butter) { soundManager.PlayButterDMG(); }
             else if (type == damageType.stationary) { soundManager.PlayStationaryDMG(); }
 
             HealthPoints -= amount;
-            pushDirection = dir; 
+            pushDirection = dir;
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;
@@ -522,7 +538,10 @@ public class PlayerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
-        gameManager.instance.UpdateAmmoCounter(gunList[selectGunPos].ammo, gunList[selectGunPos].ammoremaining);
+        if (currentGun != null)
+        {
+            gameManager.instance.UpdateAmmoCounter(currentGun.GetComponent<gun>().Gun.ammo, currentGun.GetComponent<gun>().Gun.ammoremaining);
+        }
     }
 
     void WallRunInput()
@@ -595,7 +614,8 @@ public class PlayerController : MonoBehaviour, IDamage
             cantSprint = true;
             isSprinting = false;
             speed = originalSpeed / mudSpeedMod;
-        }else if(!isMud && !isSlowedByButter && speed == originalSpeed / mudSpeedMod) //if no mud then reset player speed and grant the ability back to sprint
+        }
+        else if (!isMud && !isSlowedByButter && speed == originalSpeed / mudSpeedMod) //if no mud then reset player speed and grant the ability back to sprint
         {
             speed = originalSpeed;
             isSprinting = false;
@@ -611,7 +631,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator reload()
     {
-        if (gunList[selectGunPos].ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
+        if (currentGun.GetComponent<gun>().Gun.ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
         {
             isReloading = true;
             gameManager.instance.NoAmmoOnOff();
@@ -620,53 +640,54 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.NoAmmoOnOff();
 
         }
-        else if (!isReloading && gunList[selectGunPos].ammo <= 0 && gunList[selectGunPos].ammoremaining >= gunList[selectGunPos].magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
+        else if (!isReloading && currentGun.GetComponent<gun>().Gun.ammo <= 0 && currentGun.GetComponent<gun>().Gun.ammoremaining >= currentGun.GetComponent<gun>().Gun.magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
             soundManager.PlayReload();
             yield return new WaitForSeconds(0.5f);
-            gunList[selectGunPos].ammo = gunList[selectGunPos].magSize;
-            gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize;
+            currentGun.GetComponent<gun>().Gun.ammo = currentGun.GetComponent<gun>().Gun.magSize;
+            currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.magSize;
             isReloading = false;
             gameManager.instance.reloadingOnOff();
         }
-        else if (!isReloading && gunList[selectGunPos].ammo >= 0 && gunList[selectGunPos].ammoremaining >= gunList[selectGunPos].magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
+        else if (!isReloading && currentGun.GetComponent<gun>().Gun.ammo >= 0 && currentGun.GetComponent<gun>().Gun.ammoremaining >= currentGun.GetComponent<gun>().Gun.magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
             soundManager.PlayReload();
             yield return new WaitForSeconds(0.5f);
-            gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
-            gunList[selectGunPos].ammo += gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
+            currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
+            currentGun.GetComponent<gun>().Gun.ammo += currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
             isReloading = false;
             gameManager.instance.reloadingOnOff();
         }
-        else if (!isReloading && gunList[selectGunPos].ammo >= 0 && gunList[selectGunPos].ammoremaining <= gunList[selectGunPos].magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
+        else if (!isReloading && currentGun.GetComponent<gun>().Gun.ammo >= 0 && currentGun.GetComponent<gun>().Gun.ammoremaining <= currentGun.GetComponent<gun>().Gun.magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
         {
-            if ((gunList[selectGunPos].ammo + gunList[selectGunPos].ammoremaining) <= gunList[selectGunPos].magSize) //if the ammo left is equal to the mag size then add them together
+            if ((currentGun.GetComponent<gun>().Gun.ammo + currentGun.GetComponent<gun>().Gun.ammoremaining) <= currentGun.GetComponent<gun>().Gun.magSize) //if the ammo left is equal to the mag size then add them together
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
                 soundManager.PlayReload();
                 yield return new WaitForSeconds(0.5f);
-                gunList[selectGunPos].ammo += gunList[selectGunPos].ammoremaining;
-                gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].ammoremaining;
+                currentGun.GetComponent<gun>().Gun.ammo += currentGun.GetComponent<gun>().Gun.ammoremaining;
+                currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.ammoremaining;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
-            }else if((gunList[selectGunPos].ammo + gunList[selectGunPos].ammoremaining) > gunList[selectGunPos].magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            }
+            else if ((currentGun.GetComponent<gun>().Gun.ammo + currentGun.GetComponent<gun>().Gun.ammoremaining) > currentGun.GetComponent<gun>().Gun.magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
                 soundManager.PlayReload();
                 yield return new WaitForSeconds(0.5f);
-                gunList[selectGunPos].ammoremaining -= gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
-                gunList[selectGunPos].ammo += gunList[selectGunPos].magSize - gunList[selectGunPos].ammo;
+                currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
+                currentGun.GetComponent<gun>().Gun.ammo += currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
             }
         }
-        updatePlayerUI(); 
+        updatePlayerUI();
     }
 
     IEnumerator healPlayer()
@@ -686,7 +707,7 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(healPlayer());
     }
 
-     IEnumerator ButterSlow()
+    IEnumerator ButterSlow()
     {
         //Sets the speed to the slowed down speed, starts the timer, marks the player as no longer buttered, and then gives the player their speed back
         cantSprint = true;
@@ -704,7 +725,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         isShooting = true;
 
-        PlayerSoundManager.Instance.playShootSound(gunList[selectGunPos].shootSound);
+        PlayerSoundManager.Instance.playShootSound(currentGun.GetComponent<gun>().Gun.shootSound);
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
@@ -715,7 +736,7 @@ public class PlayerController : MonoBehaviour, IDamage
             DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
 
-            Instantiate(gunList[selectGunPos].hitEffect, hit.point, Quaternion.identity);
+            Instantiate(currentGun.GetComponent<gun>().Gun.hitEffect, hit.point, Quaternion.identity);
 
             if (dmg != null)
             {
@@ -738,10 +759,12 @@ public class PlayerController : MonoBehaviour, IDamage
     void RayTextUpdate()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, bouncePad)){
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, bouncePad))
+        {
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Bounce Pad";
-        }else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, enemy))
+        }
+        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, enemy))
         {
             gameManager.instance.rayText.enabled = true;
             gameManager.instance.rayText.text = "Enemy";

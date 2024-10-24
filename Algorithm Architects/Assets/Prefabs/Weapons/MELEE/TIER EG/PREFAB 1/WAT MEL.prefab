@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832940264885085646}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.76462305, y: -0.08552174, z: 0.6302967, w: -0.10374787}
+  m_LocalRotation: {x: 0.76462156, y: -0.08551799, z: 0.630299, w: -0.103749275}
   m_LocalPosition: {x: -1.18, y: -0.45141, z: 6.36}
   m_LocalScale: {x: 1, y: 2.0804856, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,7 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: 95d8cfa3d10042b4babff21f2bd5317c, type: 2}
+  gunPOS: {fileID: 0}
 --- !u!33 &3639151651711005954
 MeshFilter:
   m_ObjectHideFlags: 0

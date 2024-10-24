@@ -384,7 +384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: aa316f5380dc5b446a96211b24f17b42, type: 2}
+  gunPOS: {fileID: 0}
 --- !u!135 &8762837258680684167
 SphereCollider:
   m_ObjectHideFlags: 0

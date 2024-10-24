@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class pickUp : MonoBehaviour
 {
+    public PlayerController playerScript;
+
     [SerializeField] gunStats gun;
+    public GameObject gunPOS;
+
     bool itemIsPickedUp;
     private void Start()
     {
         gun.ammo = gun.magSize;
+        gun.ammoremaining = gun.ammo;
 
     }
     private void OnTriggerEnter(Collider other)
@@ -16,7 +21,8 @@ public class pickUp : MonoBehaviour
         if (other.CompareTag("Player") && !itemIsPickedUp)
         {
             itemIsPickedUp = true;
-            gameManager.instance.playerScript.getGunStats(gun);
+            playerScript.AddGunToInventory(gunPOS);
+            playerScript.SwitchGun(gunPOS);
             Destroy(gameObject);
         }
     }

@@ -508,13 +508,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5284036381407058762}
   - component: {fileID: 4768607073436909393}
+  - component: {fileID: 1859325100857734633}
   m_Layer: 0
   m_Name: S & W 500 CAMO
   m_TagString: Pistol T4 POS
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5284036381407058762
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +550,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: 13f62eefbc572b645acd5ea8a93a9b54, type: 2}
+  gunPOS: {fileID: 0}
+--- !u!135 &1859325100857734633
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835999255579587662}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9187230933900551529
 GameObject:
   m_ObjectHideFlags: 0
