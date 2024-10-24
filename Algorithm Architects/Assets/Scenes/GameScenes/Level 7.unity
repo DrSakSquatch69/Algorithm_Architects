@@ -743,6 +743,83 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3f18a9925aef4b141b5ed39333229851, type: 3}
+--- !u!1001 &220710676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3971585279499192674, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_Name
+      value: AR - PURPLE
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 265.58002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 265.58002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 265.58002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.070812
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.293
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474346739913177811, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885184273311268836, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: gunPOS
+      value: 
+      objectReference: {fileID: 354036833}
+    - target: {fileID: 5885184273311268836, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1098985945}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bba91ff4dbb3ba94a8aae85d70dba342, type: 3}
 --- !u!1001 &303043155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,6 +943,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8288055622173806138, guid: f74cfdf1175dd084dbb2c32e911d1aff, type: 3}
   m_PrefabInstance: {fileID: 337807708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &354036833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5724322978534649168, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
+  m_PrefabInstance: {fileID: 1098985942}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &518265768 stripped
 Transform:
@@ -7808,3 +7890,4 @@ SceneRoots:
   - {fileID: 1220839334}
   - {fileID: 1495903229}
   - {fileID: 759738033}
+  - {fileID: 220710676}
