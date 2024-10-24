@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSoundManager : MonoBehaviour
@@ -307,6 +308,10 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void playShootSound(AudioClip clip)
     {
+        if(clip != null)
+        {
+
         shootSource.PlayOneShot(clip);
+        }
     }
 }

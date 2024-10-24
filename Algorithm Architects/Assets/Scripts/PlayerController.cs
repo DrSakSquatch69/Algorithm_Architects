@@ -481,7 +481,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
 
-                Instantiate(currentGun.GetComponent<gun>().Gun.hitEffect, hit.point, Quaternion.identity);
+                //Instantiate(currentGun.GetComponent<gun>().Gun.hitEffect, hit.point, Quaternion.identity);
 
                 if (dmg != null)
                 {
