@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c6e66585ffdf7846974606f375fc14e, type: 3}
-  m_Name: SMG T2 ORANGE
+  m_Name: WAT MELON
   m_EditorClassIdentifier: 
-  gunModel: {fileID: 4800572386600351532, guid: dc6f69af77a31b04a8c9e485ee8f023f, type: 3}
-  shootDamage: 12
-  shootRate: 0.4
-  shootDist: 30
-  magSize: 32
+  gunModel: {fileID: 2392709410971309975, guid: f53406244774b5b4599b41d57a5c1052, type: 3}
+  shootDamage: 31
+  shootRate: 2
+  shootDist: 3
+  magSize: 0
   ammoremaining: 0
-  ammo: 32
-  isMelee: 0
+  ammo: 0
+  isMelee: 1
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
