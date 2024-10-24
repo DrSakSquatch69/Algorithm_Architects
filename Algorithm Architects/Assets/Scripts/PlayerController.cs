@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject meleeModel;
+    [SerializeField] GameObject muzzleFlash;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
     int selectGunPos;
@@ -437,12 +438,20 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerUI();
     }
 
+    IEnumerator muzzleFlashOnOff()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlash.SetActive(false);
+    }
+
     IEnumerator shoot()
     {
         if (gunList[selectGunPos].ammo > 0)
         {
             isShooting = true;
 
+            StartCoroutine(muzzleFlashOnOff());
             PlayerSoundManager.Instance.playShootSound(gunList[selectGunPos].shootSound);
             gunList[selectGunPos].ammo--;
             updatePlayerUI();

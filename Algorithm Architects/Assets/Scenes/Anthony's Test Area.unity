@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: ffaf3fb0ee30526468f5f93fa1785d05, type: 2}
+--- !u!4 &7494924 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 302638229268894333, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
+  m_PrefabInstance: {fileID: 142713805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &130602940
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +240,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 1204370834}
     - target: {fileID: 4315599496715532236, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.87577
@@ -277,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237247011118434377, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6476264784275507049, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
       propertyPath: m_Name
@@ -286,16 +295,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1859354791136953346, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      insertIndex: 1
+    - targetCorrespondingSourceObject: {fileID: 302638229268894333, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1204370835}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
---- !u!4 &142713806 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1859354791136953346, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-  m_PrefabInstance: {fileID: 142713805}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &438035753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,7 +757,7 @@ GameObject:
   - component: {fileID: 1204370837}
   - component: {fileID: 1204370836}
   - component: {fileID: 1204370838}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,12 +772,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204370834}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.369, y: -0.166, z: 3.347}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.36900043, y: -0.16599989, z: 3.347}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 142713806}
+  m_Father: {fileID: 7494924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1204370836
 MeshRenderer:
@@ -836,7 +840,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9528302, g: 0.55124086, b: 0, a: 1}
+  m_Color: {r: 0.9433962, g: 0.7516384, b: 0.004449993, a: 1}
   m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
