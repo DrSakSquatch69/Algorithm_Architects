@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     bool isGrounded;
     [SerializeField] CharacterController controller;
-    [SerializeField] PlayerSoundManager soundManager;
+    public PlayerSoundManager soundManager;
     [SerializeField] LayerMask ignoreMask;
     //Field for Health
     int HealthPoints;
@@ -285,9 +285,12 @@ public class PlayerController : MonoBehaviour, IDamage
             crouch();
         }
 
-        if (Input.GetButton("Reload") && !isReloading && currentGunStats.ammo != currentGunStats.magSize)
+        if (gunList.Count > 0)
         {
-            StartCoroutine(reload());
+            if (Input.GetButton("Reload") && !isReloading && currentGunStats.ammo != currentGunStats.magSize)
+            {
+                StartCoroutine(reload());
+            }
         }
 
         if (Input.GetButtonDown("FlashLight"))

@@ -30,6 +30,7 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource FirstJump;
     [SerializeField] AudioSource ReloadSounding;
     [SerializeField] AudioSource shootSource;
+    [SerializeField] AudioSource explosion;
 
     [SerializeField] float runPitch;
     [SerializeField] float walkPitch;
@@ -312,6 +313,14 @@ public class PlayerSoundManager : MonoBehaviour
         {
 
         shootSource.PlayOneShot(clip);
+        }
+    }
+
+    public void playExplosion(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            explosion.PlayOneShot(clip);
         }
     }
 }
