@@ -6,6 +6,7 @@ using UnityEngine;
 //
 public class ParticleTriggerHandler : MonoBehaviour
 {
+    [SerializeField] PlayerSoundManager soundManager;
     [SerializeField] int damageAmount;
     [SerializeField] float damageInterval;
     [SerializeField] float detectionRadius;
@@ -54,7 +55,8 @@ public class ParticleTriggerHandler : MonoBehaviour
         //Hanle entering particles
         if (numEnter > 0)
         {
-     //       Debug.Log("Particles Entered");
+            //       Debug.Log("Particles Entered");
+            soundManager.PlayStationaryDMG();
             isInToxicCloud = true; 
         }
 
@@ -62,6 +64,7 @@ public class ParticleTriggerHandler : MonoBehaviour
         if (numExit > 0)
         {
    //         Debug.Log("Particles Exited");
+            soundManager.StopStationaryDMG() ;
             isInToxicCloud = false;
         }
 
