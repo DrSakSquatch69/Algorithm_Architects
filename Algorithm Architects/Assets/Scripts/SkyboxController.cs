@@ -16,6 +16,7 @@ public class SkyboxController : MonoBehaviour
         if (timeOfDay > 1f) timeOfDay = 0f; // Reset after a full day cycle
 
         // Adjust BlendFactor in the skybox material for day-night effect
-        skyboxMaterial.SetFloat("_BlendFactor", Mathf.Sin(timeOfDay * Mathf.PI));
+        float blendFactor = 1 - Mathf.Sin(timeOfDay * Mathf.PI);
+        skyboxMaterial.SetFloat("_BlendFactor", blendFactor);
     }
 }

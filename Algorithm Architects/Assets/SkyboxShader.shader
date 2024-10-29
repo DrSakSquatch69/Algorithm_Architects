@@ -5,7 +5,8 @@ Shader "Custom/SkyboxShader"
         _TopColor ("Top Color", Color) = (0.1, 0.4, 0.8, 1) // Sky Color at the top (e.g., blue)
         _HorizonColor ("Horizon Color", Color) = (1, 0.7, 0.4, 1) // Color at the horizon (e.g., warm orange)
         _BottomColor ("Bottom Color", Color) = (0.1, 0.1, 0.2, 1) // Color below the horizon (e.g., dark purple)
-        _BlendFactor ("Blend Factor", Range(0,1)) = 0.5 // Used to transition between day and night
+        _NightColor ("Night Color", Color) = (0, 0, 0.05, 1) // Dark sky color for night
+        _BlendFactor ("Blend Factor", Range(0,.7)) = 0.5 // Used to transition between day and night
     }
 
     SubShader
@@ -32,6 +33,7 @@ Shader "Custom/SkyboxShader"
             float4 _TopColor;
             float4 _HorizonColor;
             float4 _BottomColor;
+            float4 _NightColor;
             float _BlendFactor;
 
             v2f vert (appdata v)
