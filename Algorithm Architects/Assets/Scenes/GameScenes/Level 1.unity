@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.34117648, g: 0.427451, b: 0.5647059, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.03
+  m_FogDensity: 0.015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -2210,6 +2210,10 @@ PrefabInstance:
     - target: {fileID: 3032488496139708541, guid: 8d87b34460415994bbdb8f49f0985fcd, type: 3}
       propertyPath: m_Name
       value: SkyboxController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798739553031364052, guid: 8d87b34460415994bbdb8f49f0985fcd, type: 3}
+      propertyPath: dayLength
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5374777641195079507, guid: 8d87b34460415994bbdb8f49f0985fcd, type: 3}
       propertyPath: m_LocalPosition.x
