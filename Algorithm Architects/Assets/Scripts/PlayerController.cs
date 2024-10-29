@@ -532,6 +532,7 @@ public class PlayerController : MonoBehaviour, IDamage
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
             else if (type == damageType.melee) { soundManager.PlayMeleeDMG(); }
             else if (type == damageType.butter) { soundManager.PlayButterDMG(); }
+            else if (type == damageType.stationary) { soundManager.PlayStationaryDMG(); }
 
             if(gameManager.instance.getIsOnFire())
             {
