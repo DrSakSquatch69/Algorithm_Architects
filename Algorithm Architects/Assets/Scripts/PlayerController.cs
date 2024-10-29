@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour, IDamage
     private GameObject currentGun;
     private gunStats currentGunStats;
     private int gunListIndexCurr;
-
+    //
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
     [SerializeField] float slideDistance;

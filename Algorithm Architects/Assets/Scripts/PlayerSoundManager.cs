@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSoundManager : MonoBehaviour
-{
+{//
     public static PlayerSoundManager Instance;
 
     [SerializeField] AudioSource walking;

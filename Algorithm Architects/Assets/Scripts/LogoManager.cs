@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
  
-
+//
 public class LogoManager : MonoBehaviour
 {
     public float delay = 10.0f; // time to show the logo

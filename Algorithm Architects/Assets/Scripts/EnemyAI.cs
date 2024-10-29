@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
+//
 public class EnemyAI : MonoBehaviour, IDamage
 {
     enum damageTypes { bullet, chaser, stationary, butter }

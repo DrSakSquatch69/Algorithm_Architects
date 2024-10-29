@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class damage : MonoBehaviour
 {
-    
+    //
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 

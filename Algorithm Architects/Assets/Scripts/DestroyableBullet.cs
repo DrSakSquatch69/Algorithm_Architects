@@ -7,7 +7,7 @@ public class DestroyableBullet : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] Renderer model;
     Color colorOrig;
-
+    //
     // Start is called before the first frame update
     void Start()
     {

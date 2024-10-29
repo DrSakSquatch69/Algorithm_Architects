@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//
 public class CameraController : MonoBehaviour
 {
     [SerializeField] float sens;
@@ -44,3 +44,5 @@ public class CameraController : MonoBehaviour
         transform.parent.Rotate(Vector3.up * mouseX);
     }
 }
+
+//override
