@@ -45057,9 +45057,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979932216}
+  - component: {fileID: 1979932217}
   - component: {fileID: 1979932215}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45142,6 +45143,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 61.457, y: -4.444, z: 38.672}
+--- !u!114 &1979932217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979932214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f883f34aecf261d46a8ed576b474dc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sun: {fileID: 1979932215}
+  dayLength: 20
+  sunriseColor: {r: 1, g: 0.6, b: 0.2, a: 1}
+  noonColor: {r: 1, g: 1, b: 0.8, a: 1}
+  sunsetColor: {r: 1, g: 0.4, b: 0.1, a: 1}
+  nightColor: {r: 0.1, g: 0.1, b: 0.4, a: 1}
+  skyboxMaterial: {fileID: 0}
+  dayFogColor: {r: 0, g: 0, b: 0, a: 0}
+  nightFogColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1982138481
 PrefabInstance:
   m_ObjectHideFlags: 0
