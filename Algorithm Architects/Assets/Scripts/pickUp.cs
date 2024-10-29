@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//commments
+//commment
 public class pickUp : MonoBehaviour
 {
     public PlayerController playerScript;
