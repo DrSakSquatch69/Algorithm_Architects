@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour, IDamage
             }
         }
 
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch") && (isGrounded || controller.isGrounded))
         {
             isCrouching = !isCrouching;
             crouch();
