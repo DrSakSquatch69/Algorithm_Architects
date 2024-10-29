@@ -44,3 +44,5 @@ public class CameraController : MonoBehaviour
         transform.parent.Rotate(Vector3.up * mouseX);
     }
 }
+
+//override
