@@ -22,7 +22,7 @@ public class damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing)
+        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing || type == damageType.fire)
         {
             //rb.velocity = transform.forward * bulletSpeed;
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position) * bulletSpeed;
@@ -58,6 +58,11 @@ public class damage : MonoBehaviour
                 gameManager.instance.setPlayerSpeed(playerSpeedChange);
                 playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
             }
+
+            if(type == damageType.fire)
+            {
+                gameManager.instance.setIsOnFire(true);
+            }
         }
         else if(type == damageType.stationary)
         {
@@ -87,7 +92,7 @@ public class damage : MonoBehaviour
             }
         }
 
-        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter)
+        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter || type == damageType.fire)
         {
             Destroy(gameObject);
         }

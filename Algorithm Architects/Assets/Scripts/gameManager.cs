@@ -46,6 +46,7 @@ public class gameManager : MonoBehaviour
     bool isNoAmmo;
     bool IsButtered;
     bool inSettings;
+    bool isOnFire;
 
     AudioSource playerAudioSource;
 
@@ -58,6 +59,7 @@ public class gameManager : MonoBehaviour
     public bool getInSettings() { return inSettings; }
     public float getSens() { return Sensitivity; }
     public AudioSource getSound() { return playerAudioSource; }
+    public bool getIsOnFire() {  return isOnFire; }
 
 
     //SETTERS
@@ -68,6 +70,7 @@ public class gameManager : MonoBehaviour
     public void setInSettings(bool settings) { inSettings = settings; }
     public void setSens(float sensitivity) { Sensitivity = sensitivity; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
+    public void setIsOnFire(bool fire) { isOnFire = fire; }
 
     void Awake()                                                            //awake always happens first  
     {

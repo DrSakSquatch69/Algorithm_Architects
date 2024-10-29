@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject meleeModel;
     [SerializeField] GameObject muzzleFlash;
+    [SerializeField] int dotDamage;
+    [SerializeField] int dotTimer;
+    [SerializeField] int dotRate;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
     private GameObject currentGun;
@@ -328,6 +331,16 @@ public class PlayerController : MonoBehaviour, IDamage
         canSlide = true;
     }
 
+    IEnumerator FireDoT()
+    {
+        for(int i = 0; i < dotRate; ++i)
+        {
+            HealthPoints -= dotDamage;
+            StartCoroutine(gameManager.instance.hitFlash());
+            yield return new WaitForSeconds(dotTimer);
+        }
+    }
+
     void sprint()
     {
         if (cantSprint)
@@ -519,6 +532,11 @@ public class PlayerController : MonoBehaviour, IDamage
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
             else if (type == damageType.melee) { soundManager.PlayMeleeDMG(); }
             else if (type == damageType.butter) { soundManager.PlayButterDMG(); }
+
+            if(gameManager.instance.getIsOnFire())
+            {
+                StartCoroutine(FireDoT());
+            }
 
             HealthPoints -= amount;
             pushDirection = dir;
