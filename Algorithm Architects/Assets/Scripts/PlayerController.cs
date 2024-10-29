@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour, IDamage
     bool cantSprint;
     bool isAirborne;
 
+    [SerializeField] int dotDamage;
+    [SerializeField] float dotTimer;
+    [SerializeField] int dotRate;
+    int dotTracker;
+
     //Fields for shooting
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
@@ -39,9 +44,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject meleeModel;
     [SerializeField] GameObject muzzleFlash;
-    [SerializeField] int dotDamage;
-    [SerializeField] int dotTimer;
-    [SerializeField] int dotRate;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
     private GameObject currentGun;
@@ -209,6 +211,8 @@ public class PlayerController : MonoBehaviour, IDamage
                 soundManager.StopCrouch();
             }
         }
+
+
     }
 
     void isMoving()
@@ -331,15 +335,6 @@ public class PlayerController : MonoBehaviour, IDamage
         canSlide = true;
     }
 
-    IEnumerator FireDoT()
-    {
-        for(int i = 0; i < dotRate; ++i)
-        {
-            HealthPoints -= dotDamage;
-            StartCoroutine(gameManager.instance.hitFlash());
-            yield return new WaitForSeconds(dotTimer);
-        }
-    }
 
     void sprint()
     {
@@ -427,7 +422,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (gunList.Count > 0)
         {
             if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr < gunList.Count - 1) { gunListIndexCurr++; }
-            else if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr >= gunList.Count -1) { gunListIndexCurr = 0; }
+            else if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr >= gunList.Count - 1) { gunListIndexCurr = 0; }
             foreach (GameObject gun in gunList) { gun.SetActive(false); }
             gunList[gunListIndexCurr].SetActive(true);
             currentGun = gunList[gunListIndexCurr];
@@ -526,18 +521,14 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
-        if (!isSpawnProtection)
+
+        if (!isSpawnProtection && type != damageType.fire)
         {
             if (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
             else if (type == damageType.melee) { soundManager.PlayMeleeDMG(); }
             else if (type == damageType.butter) { soundManager.PlayButterDMG(); }
             else if (type == damageType.stationary) { soundManager.PlayStationaryDMG(); }
-
-            if(gameManager.instance.getIsOnFire())
-            {
-                StartCoroutine(FireDoT());
-            }
 
             HealthPoints -= amount;
             pushDirection = dir;
@@ -555,6 +546,42 @@ public class PlayerController : MonoBehaviour, IDamage
         else
         {
             return;
+        }
+    }
+
+    public void DoT()
+    {
+        //Debug.Log("DOT CALLED");
+        if (!isSpawnProtection && gameManager.instance.getIsOnFire())
+        {
+            StartCoroutine(FireDoT());
+        }
+    }
+
+    IEnumerator FireDoT()
+    {
+        while (dotTracker < dotRate)
+        {
+            HealthPoints -= dotDamage;
+            StartCoroutine(gameManager.instance.hitFlash());
+            updatePlayerUI();
+            isTakingDamage = true;
+            ++dotTracker;
+
+            if (HealthPoints <= 0)
+            {
+                soundManager.PlayDeathSound();
+                gameManager.instance.youLose();
+            }
+
+
+            yield return new WaitForSeconds(dotTimer);
+        }
+
+        if (dotTracker >= dotRate)
+        {
+            gameManager.instance.setIsOnFire(false);
+            dotTracker = 0;
         }
     }
 
