@@ -562,6 +562,12 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         while (dotTracker < dotRate)
         {
+            if(HealthPoints < dotDamage)
+            {
+                HealthPoints = 1;
+                yield break;
+            }
+
             HealthPoints -= dotDamage;
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
