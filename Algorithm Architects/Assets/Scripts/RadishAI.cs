@@ -20,6 +20,7 @@ public class RadishAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip explosionSound;
     [SerializeField] float explodingTime;
     [SerializeField] int explodingDamage;
+    public ParticleSystem explodeEffect;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -223,6 +224,10 @@ public class RadishAI : MonoBehaviour, IDamage
             {
                 gameManager.instance.playerScript.soundManager.playExplosion(explosionSound);
             }
+        }
+        if (explodeEffect != null)
+        {
+            Instantiate(explodeEffect, transform.position, Quaternion.identity);
         }
         HP = 0;
         gameManager.instance.updateGameGoal(-1);
