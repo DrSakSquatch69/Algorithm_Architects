@@ -40,6 +40,8 @@ public class RadishAI : MonoBehaviour, IDamage
     bool playerSighted;
     bool playerInRange;
 
+    Collider playerCollider;
+
     int currentRespawnCount = 1;
     //int activeEnemiesAI; //Used for tracking the active enemies 
 
@@ -197,6 +199,7 @@ public class RadishAI : MonoBehaviour, IDamage
         {
             playerSighted = true;
             playerInRange = true;
+            playerCollider = other;
         }
     }
 
@@ -215,7 +218,7 @@ public class RadishAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(explodingTime);
         if (playerInRange)
         {
-            gameManager.instance.playerScript.takeDamage(explodingDamage, Vector3.zero, damageType.melee);
+            gameManager.instance.playerScript.takeDamage(explodingDamage, -(transform.position - playerCollider.transform.position).normalized * (explodingDamage * 2), damageType.melee);
             if(explosionSound != null)
             {
                 gameManager.instance.playerScript.soundManager.playExplosion(explosionSound);
