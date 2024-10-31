@@ -14,7 +14,7 @@ public class gunStats : ScriptableObject
     public int ammoremaining;
     public int ammo;
     public bool isMelee;
-    //public Vector3 placement;
+    public Vector3 placement;
     //public Vector3 rotation;
 
     public ParticleSystem hitEffect;
