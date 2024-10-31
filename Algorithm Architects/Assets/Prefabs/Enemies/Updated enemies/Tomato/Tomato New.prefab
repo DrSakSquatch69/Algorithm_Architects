@@ -35,9 +35,9 @@ Transform:
   m_LocalScale: {x: 5.8884053, y: 5.8884053, z: 5.8884053}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6270495337133696912}
   - {fileID: 7435439654565773394}
   - {fileID: 4155101054091090067}
+  - {fileID: 6270495337133696912}
   - {fileID: 1260575198462972682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 35
-  enemyHp: {fileID: 2998148509316105963}
+  enemyHp: {fileID: 68555201449730135}
   isImgOn: 0
 --- !u!33 &3096220300673528646
 MeshFilter:
