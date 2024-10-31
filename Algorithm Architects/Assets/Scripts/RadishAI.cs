@@ -20,6 +20,7 @@ public class RadishAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip explosionSound;
     [SerializeField] float explodingTime;
     [SerializeField] int explodingDamage;
+    public ParticleSystem explodeEffect;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -39,6 +40,8 @@ public class RadishAI : MonoBehaviour, IDamage
     bool isExploding;
     bool playerSighted;
     bool playerInRange;
+
+    Collider playerCollider;
 
     int currentRespawnCount = 1;
     //int activeEnemiesAI; //Used for tracking the active enemies 
@@ -197,6 +200,7 @@ public class RadishAI : MonoBehaviour, IDamage
         {
             playerSighted = true;
             playerInRange = true;
+            playerCollider = other;
         }
     }
 
@@ -212,14 +216,18 @@ public class RadishAI : MonoBehaviour, IDamage
     IEnumerator Explode()
     {
         isExploding = true;
+        if (explosionSound != null)
+        {
+            gameManager.instance.playerScript.soundManager.playExplosion(explosionSound);
+        }
         yield return new WaitForSeconds(explodingTime);
         if (playerInRange)
         {
-            gameManager.instance.playerScript.takeDamage(explodingDamage, Vector3.zero, damageType.melee);
-            if(explosionSound != null)
-            {
-                gameManager.instance.playerScript.soundManager.playExplosion(explosionSound);
-            }
+            gameManager.instance.playerScript.takeDamage(explodingDamage, -(transform.position - playerCollider.transform.position).normalized * (explodingDamage * 2), damageType.melee);
+        }
+        if (explodeEffect != null)
+        {
+            Instantiate(explodeEffect, transform.position, Quaternion.identity);
         }
         HP = 0;
         gameManager.instance.updateGameGoal(-1);

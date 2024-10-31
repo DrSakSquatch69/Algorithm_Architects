@@ -15,9 +15,9 @@ public class damage : MonoBehaviour
     [SerializeField] int despawnTimer;
     [SerializeField] float butterSlowAmount;
     [SerializeField] float damageInterval;
-    
 
- 
+
+
     float playerSpeedChange;
     IDamage dmg;
 
@@ -61,28 +61,14 @@ public class damage : MonoBehaviour
                 playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
             }
 
+            //If enemy shoots player with fire bullet player is now on fire and calls the damage over time method
             if (type == damageType.fire)
             {
                 gameManager.instance.setIsOnFire(true);
 
                 gameManager.instance.playerScript.DoT();
-                //InvokeRepeating(gameManager.instance.playerScript.takeDamage(dotDamage, Vector3.zero, type), );
-                //StartCoroutine(FireDoT());
             }
         }
-
-        //if (type == damageType.fire)
-        //{
-        //    if (dmg != null)
-        //    {
-        //        //InvokeRepeating("FireDoT", dotTimer, dotRate);
-        //        //gameManager.instance.setIsOnFire(true);
-
-        //           StartCoroutine(FireDoT());
-        //    }
-        //}
-
-
 
         if (type == damageType.stationary)
         {
@@ -125,13 +111,6 @@ public class damage : MonoBehaviour
         {
             CancelInvoke("ApplyStationaryDamageFog");
         }
-
-        //if(dotTracker >= dotRate)
-        //{
-        //    dotTracker = 0;
-        //    StopCoroutine(FireDoT());
-        //    gameManager.instance.setIsOnFire(false);
-        //}
     }
 
     private void ApplyStationaryDamageFog()
@@ -150,16 +129,6 @@ public class damage : MonoBehaviour
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position).normalized * bulletSpeed * Time.deltaTime;
         }
     }
-
-    //IEnumerator FireDoT()
-    //{
-    //    while(dotTracker < dotRate)
-    //    {
-    //        dmg.takeDamage(dotDamage, Vector3.zero, damageType.fire);
-    //        ++dotTracker;
-    //        yield return new WaitForSeconds(dotTimer);
-    //    }
-    //}
 }
 
 

@@ -552,6 +552,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void DoT()
     {
         //Debug.Log("DOT CALLED");
+        //If player has no spawn protection and is set on fire from a fire bullet then call the coroutine that does the damage
         if (!isSpawnProtection && gameManager.instance.getIsOnFire())
         {
             StartCoroutine(FireDoT());
@@ -560,28 +561,32 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator FireDoT()
     {
+        //While the player has not taken the proper amount of damage
         while (dotTracker < dotRate)
         {
+            //Makes sure the player does not die from the damage over time and makes the player unable to be set on fire again if at 1 HP
+            if (HealthPoints < dotDamage)
+            {
+                HealthPoints = 1;
+                yield break;
+            }
+
             HealthPoints -= dotDamage;
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;
             ++dotTracker;
 
-            if (HealthPoints <= 0)
-            {
-                soundManager.PlayDeathSound();
-                gameManager.instance.youLose();
-            }
-
-
+            //Waits until the timer is up to do another instance of damage
             yield return new WaitForSeconds(dotTimer);
         }
 
-        if (dotTracker >= dotRate)
+        //When the proper amount of damage has been done then the player is no longer on fire and the tracker is reset
+        if (dotTracker >= dotRate || HealthPoints == 1)
         {
             gameManager.instance.setIsOnFire(false);
             dotTracker = 0;
+            StartCoroutine(healDelay());
         }
     }
 
