@@ -4,11 +4,8 @@ using UnityEngine;
 //commment
 public class pickUp : MonoBehaviour
 {
-    public PlayerController playerScript;
-
     [SerializeField] gunStats gun;
-    public GameObject gunPOS;
-
+ 
     bool itemIsPickedUp;
     private void Start()
     {
@@ -20,8 +17,7 @@ public class pickUp : MonoBehaviour
         if (other.CompareTag("Player") && !itemIsPickedUp)
         {
             itemIsPickedUp = true;
-            playerScript.AddGunToInventory(gunPOS);
-            playerScript.SwitchGun(gunPOS);
+            gameManager.instance.playerScript.getGunStats(gun);
             Destroy(gameObject);
         }
     }

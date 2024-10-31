@@ -40,15 +40,16 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
     [SerializeField] int magSize;
-    [SerializeField] List<GameObject> gunList = new List<GameObject>();
+
+    //Fields for weapons
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject meleeModel;
     [SerializeField] GameObject muzzleFlash;
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
-    private GameObject currentGun;
-    private gunStats currentGunStats;
-    private int gunListIndexCurr;
+    int selectedGunPos;
+   
     //
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
@@ -81,7 +82,6 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isSliding;
     bool canSlide;
     bool crouching;
-    bool canMelee;
     bool inMotion;
 
     //bouncepad fields
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isSpawnProtection;
 
     //used to see if the player is grounded in debug mode
-
+    
     //stores the normal Y size of the player capsule
     float normYSize;
 
@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour, IDamage
         HealthPoints = maxHP;
         normalHeight = controller.height;
         originalSpeed = speed;
-        canMelee = true;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
         gameManager.instance.setSound(audioSource);
@@ -162,8 +161,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-
+        if(!gameManager.instance.isPaused)
+        {
         Movement();
+        selectGun();
+        }
         sprint();
         CheckForWall();
         WallRunInput();
@@ -172,7 +174,6 @@ public class PlayerController : MonoBehaviour, IDamage
         isMoving();
         CheckForGround();
         RayTextUpdate();
-        selectGun();
 
         if (inMotion && isGrounded)
         {
@@ -274,9 +275,9 @@ public class PlayerController : MonoBehaviour, IDamage
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move((playerVel + pushDirection) * Time.deltaTime);
 
-        if (Input.GetButton("Fire1") && gameManager.instance.getIsPaused() != true && !isShooting && !isReloading && gunList.Count != 0) //added code so it doesnt shoot when clicking in menu
+        if (Input.GetButton("Fire1") && !gameManager.instance.getIsPaused() && !isShooting && !isReloading && gunList.Count != 0) //added code so it doesnt shoot when clicking in menu
         {
-            if (currentGunStats.isMelee)
+            if (gunList[selectedGunPos].isMelee)
             {
                 StartCoroutine(meleeHit());
             }
@@ -294,7 +295,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (gunList.Count > 0)
         {
-            if (Input.GetButton("Reload") && !isReloading && currentGunStats.ammo != currentGunStats.magSize)
+            if (Input.GetButton("Reload") && !isReloading && gunList[selectedGunPos].ammo != gunList[selectedGunPos].magSize)
             {
                 StartCoroutine(reload());
             }
@@ -397,74 +398,7 @@ public class PlayerController : MonoBehaviour, IDamage
             crouching = false;
         }
     }
-    public void SwitchGun(GameObject newGun)
-    {
-        foreach (GameObject gun in gunList)
-        {
-            gun.SetActive(false);
-        }
-        newGun.SetActive(true);
-        currentGun = newGun;
-        UpdateGunStats(newGun.GetComponent<gun>().Gun);
-    }
-    public void AddGunToInventory(GameObject gun)
-    {
-        gunList.Add(gun);
-    }
-
-    public void UpdateGunStats(gunStats gunStats)
-    {
-        currentGunStats = gunStats;
-        getGunStats(gunStats);
-    }
-    void selectGun()
-    {
-        if (gunList.Count > 0)
-        {
-            if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr < gunList.Count - 1) { gunListIndexCurr++; }
-            else if (Input.GetButtonUp("Next Weapon") && gunListIndexCurr >= gunList.Count - 1) { gunListIndexCurr = 0; }
-            foreach (GameObject gun in gunList) { gun.SetActive(false); }
-            gunList[gunListIndexCurr].SetActive(true);
-            currentGun = gunList[gunListIndexCurr];
-            UpdateGunStats(currentGun.GetComponent<gun>().Gun);
-        }
-    }
-
-    public void getGunStats(gunStats gun)
-    {
-        shootDamage = gun.shootDamage;
-        shootRate = gun.shootRate;
-        shootDist = gun.shootDist;
-        magSize = gun.magSize;
-
-        //    gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-    }
-    //void changeGun()
-    //{
-    //    shootDamage = gunList[selectGunPos].shootDamage;
-    //    shootRate = gunList[selectGunPos].shootRate;
-    //    shootDist = gunList[selectGunPos].shootDist;
-
-    //    if (gunList[selectGunPos].isMelee)
-    //    {
-    //        gameManager.instance.turnOnOffAmmoText.SetActive(false);
-    //        gunModel.SetActive(false);
-    //        meleeModel.SetActive(true);
-    //        meleeModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-    //        meleeModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-    //    }
-    //    else
-    //    {
-    //        gameManager.instance.turnOnOffAmmoText.SetActive(true);
-    //        meleeModel.SetActive(false);
-    //        gunModel.SetActive(true);
-    //        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-    //        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-    //    }
-    //    updatePlayerUI();
-    //}
-
+    
     IEnumerator muzzleFlashOnOff()
     {
         muzzleFlash.SetActive(true);
@@ -474,13 +408,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (currentGun.GetComponent<gun>().Gun.ammo > 0)
+        if (gunList[selectedGunPos].ammo > 0)
         {
             isShooting = true;
 
             StartCoroutine(muzzleFlashOnOff());
-            PlayerSoundManager.Instance.playShootSound(currentGun.GetComponent<gun>().Gun.shootSound);
-            currentGun.GetComponent<gun>().Gun.ammo--;
+            PlayerSoundManager.Instance.playShootSound(gunList[selectedGunPos].shootSound);
+            gunList[selectedGunPos].ammo--;
             updatePlayerUI();
 
             RaycastHit hit;
@@ -491,9 +425,9 @@ public class PlayerController : MonoBehaviour, IDamage
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
                 DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
-                if (currentGun.GetComponent<gun>().Gun.hitEffect != null)
+                if (gunList[selectedGunPos].hitEffect != null)
                 {
-                    Instantiate(currentGun.GetComponent<gun>().Gun.hitEffect, hit.point, Quaternion.identity);
+                    Instantiate(gunList[selectedGunPos].hitEffect, hit.point, Quaternion.identity);
                 }
 
                 if (dmg != null)
@@ -593,9 +527,9 @@ public class PlayerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
-        if (currentGun != null)
+        if (gunList.Count != 0)
         {
-            gameManager.instance.UpdateAmmoCounter(currentGun.GetComponent<gun>().Gun.ammo, currentGun.GetComponent<gun>().Gun.ammoremaining);
+            gameManager.instance.UpdateAmmoCounter(gunList[selectedGunPos].ammo, gunList[selectedGunPos].ammoremaining);
         }
     }
 
@@ -686,7 +620,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator reload()
     {
-        if (currentGun.GetComponent<gun>().Gun.ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
+        if (gunList[selectedGunPos].ammoremaining <= 0) //if no more remaining ammo, then let player know that they have no ammo
         {
             isReloading = true;
             gameManager.instance.NoAmmoOnOff();
@@ -695,49 +629,49 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.NoAmmoOnOff();
 
         }
-        else if (!isReloading && currentGun.GetComponent<gun>().Gun.ammo <= 0 && currentGun.GetComponent<gun>().Gun.ammoremaining >= currentGun.GetComponent<gun>().Gun.magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
+        else if (!isReloading && gunList[selectedGunPos].ammo <= 0 && gunList[selectedGunPos].ammoremaining >= gunList[selectedGunPos].magSize) //if ammo is zero or less than and ammo remaining is more than mag size, then set ammo to magsize, and subtract magsize from ammo remaining
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
             soundManager.PlayReload();
             yield return new WaitForSeconds(0.5f);
-            currentGun.GetComponent<gun>().Gun.ammo = currentGun.GetComponent<gun>().Gun.magSize;
-            currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.magSize;
+            gunList[selectedGunPos].ammo = gunList[selectedGunPos].magSize;
+            gunList[selectedGunPos].ammoremaining -= gunList[selectedGunPos].magSize;
             isReloading = false;
             gameManager.instance.reloadingOnOff();
         }
-        else if (!isReloading && currentGun.GetComponent<gun>().Gun.ammo >= 0 && currentGun.GetComponent<gun>().Gun.ammoremaining >= currentGun.GetComponent<gun>().Gun.magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
+        else if (!isReloading && gunList[selectedGunPos].ammo >= 0 && gunList[selectedGunPos].ammoremaining >= gunList[selectedGunPos].magSize) //if there is still ammo in the mag then subtact that number to the magsize and use that difference to take away remaining ammo
         {
             isReloading = true;
             gameManager.instance.reloadingOnOff();
             soundManager.PlayReload();
             yield return new WaitForSeconds(0.5f);
-            currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
-            currentGun.GetComponent<gun>().Gun.ammo += currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
+            gunList[selectedGunPos].ammoremaining -= gunList[selectedGunPos].magSize - gunList[selectedGunPos].ammo;
+            gunList[selectedGunPos].ammo += gunList[selectedGunPos].magSize - gunList[selectedGunPos].ammo;
             isReloading = false;
             gameManager.instance.reloadingOnOff();
         }
-        else if (!isReloading && currentGun.GetComponent<gun>().Gun.ammo >= 0 && currentGun.GetComponent<gun>().Gun.ammoremaining <= currentGun.GetComponent<gun>().Gun.magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
+        else if (!isReloading && gunList[selectedGunPos].ammo >= 0 && gunList[selectedGunPos].ammoremaining <= gunList[selectedGunPos].magSize) //checks if ammo left is greater than zero and the remaining ammo is less the a mag
         {
-            if ((currentGun.GetComponent<gun>().Gun.ammo + currentGun.GetComponent<gun>().Gun.ammoremaining) <= currentGun.GetComponent<gun>().Gun.magSize) //if the ammo left is equal to the mag size then add them together
+            if ((gunList[selectedGunPos].ammo + gunList[selectedGunPos].ammoremaining) <= gunList[selectedGunPos].magSize) //if the ammo left is equal to the mag size then add them together
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
                 soundManager.PlayReload();
                 yield return new WaitForSeconds(0.5f);
-                currentGun.GetComponent<gun>().Gun.ammo += currentGun.GetComponent<gun>().Gun.ammoremaining;
-                currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.ammoremaining;
+                gunList[selectedGunPos].ammo += gunList[selectedGunPos].ammoremaining;
+                gunList[selectedGunPos].ammoremaining -= gunList[selectedGunPos].ammoremaining;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
             }
-            else if ((currentGun.GetComponent<gun>().Gun.ammo + currentGun.GetComponent<gun>().Gun.ammoremaining) > currentGun.GetComponent<gun>().Gun.magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
+            else if ((gunList[selectedGunPos].ammo + gunList[selectedGunPos].ammoremaining) > gunList[selectedGunPos].magSize) //if the ammo left is greater than the mag size then add how much it takes to fill the mag and subtract that number from the remaing ammo
             {
                 isReloading = true;
                 gameManager.instance.reloadingOnOff();
                 soundManager.PlayReload();
                 yield return new WaitForSeconds(0.5f);
-                currentGun.GetComponent<gun>().Gun.ammoremaining -= currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
-                currentGun.GetComponent<gun>().Gun.ammo += currentGun.GetComponent<gun>().Gun.magSize - currentGun.GetComponent<gun>().Gun.ammo;
+                gunList[selectedGunPos].ammoremaining -= gunList[selectedGunPos].magSize - gunList[selectedGunPos].ammo;
+                gunList[selectedGunPos].ammo += gunList[selectedGunPos].magSize - gunList[selectedGunPos].ammo;
                 isReloading = false;
                 gameManager.instance.reloadingOnOff();
             }
@@ -780,7 +714,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         isShooting = true;
 
-        PlayerSoundManager.Instance.playShootSound(currentGun.GetComponent<gun>().Gun.shootSound);
+        PlayerSoundManager.Instance.playShootSound(gunList[selectedGunPos].shootSound);
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
@@ -791,9 +725,9 @@ public class PlayerController : MonoBehaviour, IDamage
             DestroyableBullet damage = hit.collider.GetComponent<DestroyableBullet>();
 
 
-            if (currentGun.GetComponent<gun>().Gun.hitEffect != null)
+            if (gunList[selectedGunPos].hitEffect != null)
             {
-                Instantiate(currentGun.GetComponent<gun>().Gun.hitEffect, hit.point, Quaternion.identity);
+                Instantiate(gunList[selectedGunPos].hitEffect, hit.point, Quaternion.identity);
             }
 
             if (dmg != null)
@@ -837,6 +771,50 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.rayText.text = "";
             gameManager.instance.rayText.enabled = false;
         }
+    }
+
+    public void getGunStats(gunStats gun)
+    {
+        gunList.Add(gun);
+
+        shootDamage = gun.shootDamage;
+        shootDist = gun.shootDist;
+        shootRate = gun.shootRate;
+        magSize = gun.magSize;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        //gunModel.transform.position += gun.placement;
+        //gunModel.transform.eulerAngles += gun.rotation;
+    }
+
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos < gunList.Count - 1)
+        {
+            selectedGunPos++;
+            changeGun();
+        }
+        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos > 0)
+        {
+            selectedGunPos--;
+            changeGun();
+        }
+    }
+
+    void changeGun()
+    {
+        shootDamage = gunList[selectedGunPos].shootDamage;
+        shootDist = gunList[selectedGunPos].shootDist;
+        shootRate = gunList[selectedGunPos].shootRate;
+        magSize = gunList[selectedGunPos].magSize;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGunPos].gunModel.GetComponent <MeshRenderer>().sharedMaterial;
+
+        //gunModel.transform.position = gunList[selectedGunPos].placement;
+        //gunModel.transform.eulerAngles = gunList[selectedGunPos].rotation;
     }
 }
 
