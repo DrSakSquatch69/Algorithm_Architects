@@ -653,11 +653,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8819906391575593269, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
   m_PrefabInstance: {fileID: 242520874}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &242520882 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 80229712589768886, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-  m_PrefabInstance: {fileID: 242520874}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &242520883 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3171179372660676254, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
@@ -1196,9 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScript: {fileID: 242520885}
   gun: {fileID: 11400000, guid: ae18824810f568446be3af80a1142ce0, type: 2}
-  gunPOS: {fileID: 242520882}
 --- !u!1001 &1687330055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1318,11 +1311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6537299464247467081, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 8148018144791217718, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
