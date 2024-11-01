@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System;
 
 public class gameManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] int maxEnemiesAtOnce;
     [SerializeField] Transform respawnPoint;
     [SerializeField] int enemyCountForCurrentLevel;
+    [SerializeField] Image tomatoSplat;
+    [SerializeField] int splatTime;
+    [SerializeField] int fadeOutTime;
     public GameObject enemyHpParent;
     public TMP_Text rayText;
     public PlayerController playerScript;
@@ -35,6 +39,7 @@ public class gameManager : MonoBehaviour
     GameObject player;                                                     //player object so we can access our player through the game manager
     float playerSpeed;
     float originalPlayerSpeed;
+    float alpha;
 
     int enemyCount;
     int activeEnemies;
@@ -47,6 +52,8 @@ public class gameManager : MonoBehaviour
     bool IsButtered;
     bool inSettings;
     bool isOnFire;
+    bool isTomatoed;
+    bool tomatoRun;
 
     AudioSource playerAudioSource;
 
@@ -60,6 +67,7 @@ public class gameManager : MonoBehaviour
     public float getSens() { return Sensitivity; }
     public AudioSource getSound() { return playerAudioSource; }
     public bool getIsOnFire() {  return isOnFire; }
+    public bool getIsTomatoed() { return isTomatoed; }
 
 
     //SETTERS
@@ -71,6 +79,7 @@ public class gameManager : MonoBehaviour
     public void setSens(float sensitivity) { Sensitivity = sensitivity; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
+    public void setIsTomatoed(bool tomato) {  isTomatoed = tomato;}
 
     void Awake()                                                            //awake always happens first  
     {
@@ -85,6 +94,7 @@ public class gameManager : MonoBehaviour
         }
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location 
+        tomatoSplat.color = new Color(0, 0, 0, 0);
         
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
@@ -260,6 +270,55 @@ public class gameManager : MonoBehaviour
     public int GetEnemyCountCurrent()
     {
         return enemyCountForCurrentLevel;
+    }
+
+    public void TomatoSplat()
+    {
+        if(isTomatoed)
+        {
+            if (playerScript.HealthPoints <= 0)
+            {
+                tomatoSplat.color = new Color(0, 0, 0, 0);
+                isTomatoed = false;
+                return;
+            }
+
+            if (tomatoRun)
+            {
+                StopCoroutine(FadeOut());
+                tomatoRun = false;
+            }
+
+            StartCoroutine(FadeOut());
+
+        }
+
+       
+    }
+
+    IEnumerator FadeOut()
+    {
+        //if(tomatoRun)
+        //{
+        //    //StopCoroutine(FadeOut());
+        //    tomatoRun = false;
+        //    yield break;
+        //}
+
+        tomatoRun = true;
+        alpha = 1;
+        tomatoSplat.color = new Color(1, 1, 1, 1);
+        yield return new WaitForSeconds(splatTime);
+
+        while(alpha >= 0)
+        {
+            tomatoSplat.color = new Color(1, 1, 1, alpha);
+            alpha -= 0.2f;
+            yield return new WaitForSeconds(fadeOutTime / 5);
+        }
+
+        isTomatoed = false;
+        tomatoRun = false;
     }
 
     //public IEnumerator GradualSpawning()

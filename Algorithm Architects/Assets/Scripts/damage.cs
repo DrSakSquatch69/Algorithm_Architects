@@ -24,7 +24,7 @@ public class damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing || type == damageType.fire)
+        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing || type == damageType.fire || type == damageType.tomato)
         {
             //rb.velocity = transform.forward * bulletSpeed;
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position) * bulletSpeed;
@@ -67,6 +67,13 @@ public class damage : MonoBehaviour
                 gameManager.instance.setIsOnFire(true);
 
                 gameManager.instance.playerScript.DoT();
+            }
+
+            if(type == damageType.tomato)
+            {
+                gameManager.instance.setIsTomatoed(true);
+
+                gameManager.instance.TomatoSplat();
             }
         }
 

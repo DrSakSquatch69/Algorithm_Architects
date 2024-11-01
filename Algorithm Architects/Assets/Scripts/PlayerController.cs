@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public PlayerSoundManager soundManager;
     [SerializeField] LayerMask ignoreMask;
     //Field for Health
-    int HealthPoints;
+    public int HealthPoints;
     [SerializeField] int maxHP;
 
     //Fields for flashlight
