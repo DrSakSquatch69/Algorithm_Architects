@@ -39,7 +39,7 @@ public class gameManager : MonoBehaviour
     GameObject player;                                                     //player object so we can access our player through the game manager
     float playerSpeed;
     float originalPlayerSpeed;
-    float alpha;
+    float alpha; //Transparency for tomato
 
     int enemyCount;
     int activeEnemies;
@@ -53,8 +53,8 @@ public class gameManager : MonoBehaviour
     bool inSettings;
     bool isOnFire;
     bool isTomatoed;
-    bool tomatoRun;
 
+    IEnumerator tomatoTrack;
     AudioSource playerAudioSource;
 
     //GETTERS
@@ -66,7 +66,7 @@ public class gameManager : MonoBehaviour
     public bool getInSettings() { return inSettings; }
     public float getSens() { return Sensitivity; }
     public AudioSource getSound() { return playerAudioSource; }
-    public bool getIsOnFire() {  return isOnFire; }
+    public bool getIsOnFire() { return isOnFire; }
     public bool getIsTomatoed() { return isTomatoed; }
 
 
@@ -79,7 +79,7 @@ public class gameManager : MonoBehaviour
     public void setSens(float sensitivity) { Sensitivity = sensitivity; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
-    public void setIsTomatoed(bool tomato) {  isTomatoed = tomato;}
+    public void setIsTomatoed(bool tomato) { isTomatoed = tomato; }
 
     void Awake()                                                            //awake always happens first  
     {
@@ -95,7 +95,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location 
         tomatoSplat.color = new Color(0, 0, 0, 0);
-        
+
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
     }
@@ -274,8 +274,9 @@ public class gameManager : MonoBehaviour
 
     public void TomatoSplat()
     {
-        if(isTomatoed)
+        if (isTomatoed)
         {
+            //Gets rid of tomato after player dies
             if (playerScript.HealthPoints <= 0)
             {
                 tomatoSplat.color = new Color(0, 0, 0, 0);
@@ -283,42 +284,38 @@ public class gameManager : MonoBehaviour
                 return;
             }
 
-            if (tomatoRun)
+            //If an instance of the coroutine is running already stop it so it doesn't interfere with the one about to be called
+            if (tomatoTrack != null)
             {
-                StopCoroutine(FadeOut());
-                tomatoRun = false;
+
+                StopCoroutine(tomatoTrack);
             }
 
-            StartCoroutine(FadeOut());
-
+            //Sets up the variable checked above. Allows all instances to be stopped instead of just one instance
+            tomatoTrack = FadeOut();
+            StartCoroutine(tomatoTrack);
         }
 
-       
     }
 
     IEnumerator FadeOut()
     {
-        //if(tomatoRun)
-        //{
-        //    //StopCoroutine(FadeOut());
-        //    tomatoRun = false;
-        //    yield break;
-        //}
-
-        tomatoRun = true;
         alpha = 1;
+
+        //Brings up tomato to screen
         tomatoSplat.color = new Color(1, 1, 1, 1);
+
         yield return new WaitForSeconds(splatTime);
 
-        while(alpha >= 0)
+        //While tomato is still on screen slowly lower its opacity (alpha value)
+        while (alpha >= 0)
         {
             tomatoSplat.color = new Color(1, 1, 1, alpha);
-            alpha -= 0.2f;
-            yield return new WaitForSeconds(fadeOutTime / 5);
+            alpha -= fadeOutTime * Time.deltaTime; //Backup code - alpha -= 0.2f;
+            yield return new WaitForSeconds(0.1f);  // Backup code - yield return new WaitForSeconds(fadeOutTime / 5);
         }
 
         isTomatoed = false;
-        tomatoRun = false;
     }
 
     //public IEnumerator GradualSpawning()

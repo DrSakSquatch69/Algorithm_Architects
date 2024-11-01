@@ -1345,9 +1345,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7530134683075438956, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8361293591935767868, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: splatTime
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8361293591935767868, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: fadeOutTime
@@ -1361,7 +1365,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 167160950897431738, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
-      insertIndex: -1
+      insertIndex: 12
       addedObject: {fileID: 1827670634}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
