@@ -334,9 +334,9 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             if (wallRunCameraTilt < maxWallRunCameraTilt)
             {
-                wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+                wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
             }
-            playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, -wallRunCameraTilt);
+            playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
         }
     }
 
@@ -609,6 +609,11 @@ public class PlayerController : MonoBehaviour, IDamage
             if (wallRunCameraTilt > 0)
             {
                 wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+            }
+            if (wallRunCameraTilt < 0)
+            {
+                wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
                 playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
             }
         }
