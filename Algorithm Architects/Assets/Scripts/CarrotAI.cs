@@ -15,6 +15,7 @@ public class CarrotAI : MonoBehaviour, IDamage
 
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Rigidbody rb;
     [SerializeField] Transform headPosition;
     [SerializeField] Transform shootPosition;
     [SerializeField] GameObject bullet;
@@ -58,6 +59,7 @@ public class CarrotAI : MonoBehaviour, IDamage
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
         origPos = transform.position.y;
+        inGround = true;
         enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
         enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
@@ -76,15 +78,11 @@ public class CarrotAI : MonoBehaviour, IDamage
         if (playerSighted && canSeePlayer())
         {
         }
-        else
-        {
-            inGround = true;
-            burrow();
-        }
+
+        burrow();
     }
     bool canSeePlayer()
     {
-        inGround = false;
         playerDirection = gameManager.instance.getPlayer().transform.position - headPosition.position;
         angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
         Debug.DrawRay(headPosition.position, playerDirection);
@@ -96,7 +94,14 @@ public class CarrotAI : MonoBehaviour, IDamage
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
+                    inGround = false;
+                    burrow();
                     faceTarget();
+                } 
+                else
+                {
+                    inGround = true;
+                    burrow();
                 }
 
                 if (!isShooting)
@@ -225,10 +230,14 @@ public class CarrotAI : MonoBehaviour, IDamage
         if (inGround)
         {
             transform.position = new Vector3(transform.position.x, burrowedPos, transform.position.z);
+            rb.constraints = RigidbodyConstraints.None;
+            
         }
-        else if (!inGround)
+        else if (!inGround && agent.remainingDistance <= agent.stoppingDistance)
         {
             transform.position = new Vector3(transform.position.x, origPos, transform.position.z);
+            rb.constraints = RigidbodyConstraints.FreezePositionY;
+
         }
     }
 }
