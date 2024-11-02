@@ -332,7 +332,7 @@ public class PlayerController : MonoBehaviour, IDamage
         }
         if (isWallLeft)
         {
-            if (wallRunCameraTilt < maxWallRunCameraTilt)
+            if (wallRunCameraTilt > -maxWallRunCameraTilt)
             {
                 wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
             }
