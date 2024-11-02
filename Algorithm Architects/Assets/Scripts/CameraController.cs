@@ -8,7 +8,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY;
 
-    float rotX;
+    public float mouseY;
+    public float mouseX;
+
+    public float rotX;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,7 @@ public class CameraController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         gameManager.instance.setSens(sens);
+        gameManager.instance.setCameraScript(this);
     }
 
     // Update is called once per frame
@@ -25,8 +29,8 @@ public class CameraController : MonoBehaviour
         sens = gameManager.instance.getSens(); //Gets the sens set from the settings menu
 
         // get input
-        float mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
-        float mouseX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
+        mouseX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
 
         // invert Y camera
         if (!invertY)

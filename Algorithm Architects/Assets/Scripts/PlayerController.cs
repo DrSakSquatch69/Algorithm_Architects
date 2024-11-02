@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -98,9 +99,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public LayerMask whatIsWall;
     bool isWallRight, isWallLeft;
+    public Transform playerCam;
     [SerializeField] Transform orientation;
     [SerializeField] int wallRunGrav;
     [SerializeField] int wallRunSpeed;
+    public float wallRunCameraTilt, maxWallRunCameraTilt;
+    Vector3 rot;
+    float desiredX;
     int origGrav;
     bool isWallRunning;
     bool isSpawnProtection;
@@ -308,6 +313,30 @@ public class PlayerController : MonoBehaviour, IDamage
             if (isFlashlight) { soundManager.PlayFlashlightOn(); }
             else { soundManager.PlayFlashlightOff(); }
             flashLight.SetActive(isFlashlight);
+        }
+
+        rot = playerCam.transform.localRotation.eulerAngles;
+
+        if (gameManager.instance.cameraController != null)
+        {
+            desiredX = rot.y + gameManager.instance.cameraController.mouseX;
+        }
+
+        if (isWallRight)
+        {
+            if(wallRunCameraTilt < maxWallRunCameraTilt)
+            {
+                wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+            }
+            playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+        }
+        if (isWallLeft)
+        {
+            if (wallRunCameraTilt < maxWallRunCameraTilt)
+            {
+                wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+            }
+            playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, -wallRunCameraTilt);
         }
     }
 
@@ -535,11 +564,12 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void WallRunInput()
     {
-        if (isWallRight && !isCrouching && !controller.isGrounded)
+        if (isWallRight && !isCrouching && (!controller.isGrounded || !isGrounded))
         {
+
             StartWallRun();
         }
-        if (isWallLeft && !isCrouching && !controller.isGrounded)
+        if (isWallLeft && !isCrouching && (!controller.isGrounded || !isGrounded))
         {
             StartWallRun();
         }
@@ -575,6 +605,12 @@ public class PlayerController : MonoBehaviour, IDamage
         if (!isWallLeft && !isWallRight)
         {
             StopWallRun();
+
+            if (wallRunCameraTilt > 0)
+            {
+                wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+            }
         }
 
     }

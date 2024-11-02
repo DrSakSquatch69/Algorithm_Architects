@@ -29,7 +29,9 @@ public class gameManager : MonoBehaviour
     public GameObject enemyHpParent;
     public TMP_Text rayText;
     public PlayerController playerScript;
+    public CameraController cameraController;
     public void setPlayerScript(PlayerController script) { playerScript = script; }
+    public void setCameraScript(CameraController script) { cameraController = script; }
 
     public Image playerHPBar;
 
