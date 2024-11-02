@@ -7922,6 +7922,9 @@ MonoBehaviour:
   lockVertMin: -90
   lockVertMax: 90
   invertY: 0
+  mouseY: 0
+  mouseX: 0
+  rotX: 0
 --- !u!20 &2597726611362965889
 Camera:
   m_ObjectHideFlags: 0
@@ -10364,6 +10367,7 @@ MonoBehaviour:
   ignoreMask:
     serializedVersion: 2
     m_Bits: 8
+  HealthPoints: 0
   maxHP: 100
   flashLight: {fileID: 8505119978467142831}
   speed: 10
@@ -10372,6 +10376,9 @@ MonoBehaviour:
   jumpMax: 2
   gravity: 28
   butterSlowTimer: 2
+  dotDamage: 0
+  dotTimer: 0
+  dotRate: 0
   shootDamage: 0
   shootRate: 0
   shootDist: 0
@@ -10408,9 +10415,12 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 512
+  playerCam: {fileID: 0}
   orientation: {fileID: 4315599496715532236}
   wallRunGrav: 5
   wallRunSpeed: 23
+  wallRunCameraTilt: 0
+  maxWallRunCameraTilt: 10
 --- !u!143 &3078013358927633543
 CharacterController:
   m_ObjectHideFlags: 0
