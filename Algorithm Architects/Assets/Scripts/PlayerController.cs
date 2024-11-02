@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour, IDamage
             desiredX = rot.y + gameManager.instance.cameraController.mouseX;
         }
 
-        if (isWallRight)
+        if (isWallRight && isWallRunning)
         {
             if(wallRunCameraTilt < maxWallRunCameraTilt)
             {
@@ -330,7 +330,7 @@ public class PlayerController : MonoBehaviour, IDamage
             }
             playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
         }
-        if (isWallLeft)
+        if (isWallLeft && isWallRunning)
         {
             if (wallRunCameraTilt > -maxWallRunCameraTilt)
             {
@@ -564,12 +564,12 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void WallRunInput()
     {
-        if (isWallRight && !isCrouching && (!controller.isGrounded || !isGrounded))
+        if (isWallRight && !isCrouching && (!controller.isGrounded && !isGrounded))
         {
 
             StartWallRun();
         }
-        if (isWallLeft && !isCrouching && (!controller.isGrounded || !isGrounded))
+        if (isWallLeft && !isCrouching && (!controller.isGrounded && !isGrounded))
         {
             StartWallRun();
         }
