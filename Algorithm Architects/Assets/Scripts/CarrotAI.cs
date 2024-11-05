@@ -97,6 +97,12 @@ public class CarrotAI : MonoBehaviour, IDamage
                     inGround = false;
                     burrow();
                     faceTarget();
+
+
+                    if (!isShooting)
+                    {
+                        StartCoroutine(Shoot());
+                    }
                 } 
                 else
                 {
@@ -104,10 +110,6 @@ public class CarrotAI : MonoBehaviour, IDamage
                     burrow();
                 }
 
-                if (!isShooting)
-                {
-                    StartCoroutine(Shoot());
-                }
                 return true;
             }
         }
