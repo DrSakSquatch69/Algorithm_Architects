@@ -31,10 +31,14 @@ public class PlayerController : MonoBehaviour, IDamage
     bool cantSprint;
     bool isAirborne;
 
-    [SerializeField] int dotDamage;
-    [SerializeField] float dotTimer;
-    [SerializeField] int dotRate;
-    int dotTracker;
+    [SerializeField] int fireDotDamage;
+    [SerializeField] int bleedDotDamage;
+    [SerializeField] float fireDotTimer;
+    [SerializeField] int bleedDotTimer;
+    [SerializeField] int fireDotRate;
+    [SerializeField] int bleedDotRate;
+    int fireDotTracker;
+    int bleedDotTracker;
 
     //Fields for shooting
     [SerializeField] int shootDamage;
@@ -521,36 +525,68 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             StartCoroutine(FireDoT());
         }
+
+        else if(!isSpawnProtection && gameManager.instance.getIsCabbaged())
+        {
+            StartCoroutine(BleedDoT());
+        }
     }
 
     IEnumerator FireDoT()
     {
         //While the player has not taken the proper amount of damage
-        while (dotTracker < dotRate)
+        while (fireDotTracker < fireDotRate)
         {
             //Makes sure the player does not die from the damage over time and makes the player unable to be set on fire again if at 1 HP
-            if (HealthPoints < dotDamage)
+            if (HealthPoints < fireDotDamage)
             {
                 HealthPoints = 1;
                 yield break;
             }
 
-            HealthPoints -= dotDamage;
+            HealthPoints -= fireDotDamage;
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;
-            ++dotTracker;
+            ++fireDotTracker;
 
             //Waits until the timer is up to do another instance of damage
-            yield return new WaitForSeconds(dotTimer);
+            yield return new WaitForSeconds(fireDotTimer);
         }
 
         //When the proper amount of damage has been done then the player is no longer on fire and the tracker is reset
-        if (dotTracker >= dotRate || HealthPoints == 1)
+        if (fireDotTracker >= fireDotRate || HealthPoints == 1)
         {
             gameManager.instance.setIsOnFire(false);
-            dotTracker = 0;
+            fireDotTracker = 0;
             StartCoroutine(healDelay());
+        }
+    }
+
+    IEnumerator BleedDoT()
+    {
+        while(bleedDotTracker < bleedDotRate)
+        {
+            if(HealthPoints < bleedDotDamage)
+            {
+                HealthPoints = 1;
+                yield break;
+            }
+
+            HealthPoints -= bleedDotDamage;
+            StartCoroutine (gameManager.instance.hitFlash());
+            isTakingDamage = true;
+            ++bleedDotTracker;
+
+            yield return new WaitForSeconds(bleedDotTimer);
+        }
+
+        if (bleedDotTracker >= bleedDotRate || HealthPoints == 1)
+        {
+            gameManager.instance.setIsCabbaged(false);
+            bleedDotTracker = 0;
+            StartCoroutine(healDelay());
+            
         }
     }
 

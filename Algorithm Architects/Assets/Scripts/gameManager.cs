@@ -55,6 +55,7 @@ public class gameManager : MonoBehaviour
     bool inSettings;
     bool isOnFire;
     bool isTomatoed;
+    bool isCabbaged;
 
     IEnumerator tomatoTrack;
     AudioSource playerAudioSource;
@@ -70,6 +71,7 @@ public class gameManager : MonoBehaviour
     public AudioSource getSound() { return playerAudioSource; }
     public bool getIsOnFire() { return isOnFire; }
     public bool getIsTomatoed() { return isTomatoed; }
+    public bool getIsCabbaged() { return isCabbaged; }
 
 
     //SETTERS
@@ -82,6 +84,7 @@ public class gameManager : MonoBehaviour
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
     public void setIsTomatoed(bool tomato) { isTomatoed = tomato; }
+    public void setIsCabbaged(bool cabbage) { isCabbaged = cabbage; }
 
     void Awake()                                                            //awake always happens first  
     {
@@ -300,7 +303,7 @@ public class gameManager : MonoBehaviour
 
     }
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOut()                                                                                         
     {
         alpha = 1;
 
