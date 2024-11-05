@@ -166,7 +166,14 @@ public class PlayerController : MonoBehaviour, IDamage
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
-        if(!gameManager.instance.isPaused)
+        rot = playerCam.transform.localRotation.eulerAngles;
+
+        if (gameManager.instance.cameraController != null)
+        {
+            desiredX = rot.y + gameManager.instance.cameraController.mouseX;
+        }
+
+        if (!gameManager.instance.isPaused)
         {
         Movement();
         selectGun();
@@ -254,6 +261,23 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
+
+            if (isWallRight)
+            {
+                if (wallRunCameraTilt < maxWallRunCameraTilt)
+                {
+                    wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+                }
+                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+            }
+            else if (isWallLeft)
+            {
+                if (wallRunCameraTilt > -maxWallRunCameraTilt)
+                {
+                    wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
+                }
+                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+            }
         }
         else if (isSliding)
         {
@@ -315,29 +339,6 @@ public class PlayerController : MonoBehaviour, IDamage
             flashLight.SetActive(isFlashlight);
         }
 
-        rot = playerCam.transform.localRotation.eulerAngles;
-
-        if (gameManager.instance.cameraController != null)
-        {
-            desiredX = rot.y + gameManager.instance.cameraController.mouseX;
-        }
-
-        if (isWallRight && isWallRunning)
-        {
-            if(wallRunCameraTilt < maxWallRunCameraTilt)
-            {
-                wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
-            }
-            playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
-        }
-        if (isWallLeft && isWallRunning)
-        {
-            if (wallRunCameraTilt > -maxWallRunCameraTilt)
-            {
-                wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
-            }
-            playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
-        }
     }
 
     IEnumerator Slide()

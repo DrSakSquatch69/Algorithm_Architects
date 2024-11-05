@@ -317,6 +317,7 @@ public class gameManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);  // Backup code - yield return new WaitForSeconds(fadeOutTime / 5);
         }
 
+        tomatoSplat.color = new Color(1, 1, 1, 0);
         isTomatoed = false;
     }
 
