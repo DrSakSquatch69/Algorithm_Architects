@@ -97,20 +97,17 @@ public class CarrotAI : MonoBehaviour, IDamage
                     inGround = false;
                     burrow();
                     faceTarget();
-
-                    //only shoots if not shooting already and if it is out of the ground
-                    if (!isShooting)
-                    {
-                        StartCoroutine(Shoot());
-                    }
-                }
+                } 
                 else
                 {
                     inGround = true;
                     burrow();
                 }
 
-                
+                if (!isShooting)
+                {
+                    StartCoroutine(Shoot());
+                }
                 return true;
             }
         }
