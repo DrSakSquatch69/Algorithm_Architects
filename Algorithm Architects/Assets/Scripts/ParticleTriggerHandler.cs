@@ -14,6 +14,7 @@ public class ParticleTriggerHandler : MonoBehaviour
     private ParticleSystem PS;
     private bool isInToxicCloud;
     private float nextDamageTime;
+    private bool playerIsInToxicCloud;
 
     void Start()
     {
@@ -33,6 +34,11 @@ public class ParticleTriggerHandler : MonoBehaviour
         foreach(var hitCollider in hitColliders)
         {
             IDamage damageable = hitCollider.GetComponent<IDamage>();
+            
+            if(hitCollider.CompareTag("Player")) {playerIsInToxicCloud = true; }
+            else { playerIsInToxicCloud = false; }
+
+
             if(damageable != null && !damageableObjects.Contains(damageable)) 
             {
                 damageableObjects.Add(damageable);
@@ -86,7 +92,7 @@ public class ParticleTriggerHandler : MonoBehaviour
                 {
                     //Debug.Log("Applying Damage: " + damageAmount + "to" + damageableObject);  //debug log
                     damageableObject.takeDamage(damageAmount, Vector3.zero, damageType.stationary);
-                    gameManager.instance.GetSoundManager().PlayStationaryDMG();
+                    if(playerIsInToxicCloud) { gameManager.instance.GetSoundManager().PlayStationaryDMG(); }
                 }
             }
         }

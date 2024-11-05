@@ -247,7 +247,10 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void StopStationaryDMG()
     {
+        if(!StationaryDamage.isPlaying)
+        {
         StationaryDamage.Stop();
+        }
     }
 
     public void PlayDeathSound()
