@@ -6,7 +6,6 @@ using UnityEngine;
 //
 public class ParticleTriggerHandler : MonoBehaviour
 {
-    [SerializeField] PlayerSoundManager soundManager;
     [SerializeField] int damageAmount;
     [SerializeField] float damageInterval;
     [SerializeField] float detectionRadius;
@@ -39,7 +38,14 @@ public class ParticleTriggerHandler : MonoBehaviour
                 damageableObjects.Add(damageable);
             }
         }
-        isInToxicCloud = true;
+        if(damageableObjects.Count > 0)
+        {
+            isInToxicCloud = true;
+        }
+        else
+        {
+            isInToxicCloud = false;
+        }
     }
     void OnParticleTrigger()
     {
@@ -72,7 +78,7 @@ public class ParticleTriggerHandler : MonoBehaviour
     
     private void ApplyDamage()
     {
-        while (isInToxicCloud)
+        if (isInToxicCloud)
         {
             foreach (var damageableObject in damageableObjects)
             {
@@ -80,11 +86,11 @@ public class ParticleTriggerHandler : MonoBehaviour
                 {
                     //Debug.Log("Applying Damage: " + damageAmount + "to" + damageableObject);  //debug log
                     damageableObject.takeDamage(damageAmount, Vector3.zero, damageType.stationary);
-                    soundManager.PlayStationaryDMG();
+                    gameManager.instance.GetSoundManager().PlayStationaryDMG();
                 }
             }
         }
         if (!isInToxicCloud)
-            soundManager.StopStationaryDMG();
+            gameManager.instance.GetSoundManager().StopStationaryDMG();
     }
 }

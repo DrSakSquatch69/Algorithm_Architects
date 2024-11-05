@@ -72,7 +72,7 @@ public class gameManager : MonoBehaviour
     public bool getIsOnFire() { return isOnFire; }
     public bool getIsTomatoed() { return isTomatoed; }
     public bool getIsCabbaged() { return isCabbaged; }
-
+    public PlayerSoundManager GetSoundManager() { return soundManager; }
 
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
@@ -91,7 +91,6 @@ public class gameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this; // makes sure we only have one in the scene
-
         }
         else
         {
@@ -100,7 +99,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location 
         tomatoSplat.color = new Color(0, 0, 0, 0);
-
+        soundManager = player.GetComponent<PlayerSoundManager>();
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
     }
