@@ -242,7 +242,11 @@ PrefabInstance:
     - target: {fileID: 2730505400222567233, guid: 9c08d2a47aaafd94f96eddd6dd870563, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 5612210240426054614, guid: 156187342161324428a87dc24e76cac9, type: 3}
+      objectReference: {fileID: 5223472228960464512, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+    - target: {fileID: 2730505400222567233, guid: 9c08d2a47aaafd94f96eddd6dd870563, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1802799307687461438, guid: 9c08d2a47aaafd94f96eddd6dd870563, type: 3}
     - target: {fileID: 6689768580973366425, guid: 9c08d2a47aaafd94f96eddd6dd870563, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.65
@@ -496,58 +500,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: maxHP
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: dotRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: dotTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: dotDamage
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: fireDotRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: meleeObject
-      value: 
-      objectReference: {fileID: 3531885363742123715, guid: 34be3df99676db94f96314c086cb4b25, type: 3}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: bleedDotRate
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: fireDotTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: MeleeCooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: bleedDotTimer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: fireDotDamage
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: meleeLocation
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 621064450212649755, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
-      propertyPath: bleedDotDamage
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4315599496715532236, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.23
@@ -1281,10 +1233,6 @@ PrefabInstance:
     - target: {fileID: 6660780393547195776, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_Name
       value: Main UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7121243243535118444, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
