@@ -53,37 +53,38 @@ public class ParticleTriggerHandler : MonoBehaviour
        // Debug.Log("Trigger Exit Count: " + numExit);        //Debug Log
 
         //Hanle entering particles
-        if (numEnter > 0)
+        while (numEnter > 0 && isInToxicCloud == false)
         {
-            //       Debug.Log("Particles Entered");
-            soundManager.PlayStationaryDMG();
+            Debug.Log("Particles Entered");
+            
             isInToxicCloud = true; 
         }
 
         //Handle exiting particles
-        if (numExit > 0)
+        if (numExit > 0 && numEnter == 0)
         {
-   //         Debug.Log("Particles Exited");
-            soundManager.StopStationaryDMG() ;
+            Debug.Log("Particles Exited");
             isInToxicCloud = false;
         }
-
         PS.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
         PS.SetTriggerParticles(ParticleSystemTriggerEventType.Exit, exit);
     }
     
     private void ApplyDamage()
     {
-        if(isInToxicCloud)
+        while (isInToxicCloud)
         {
-            foreach(var damageableObject in damageableObjects)
+            foreach (var damageableObject in damageableObjects)
             {
-                if(damageableObject != null)
+                if (damageableObject != null)
                 {
                     //Debug.Log("Applying Damage: " + damageAmount + "to" + damageableObject);  //debug log
                     damageableObject.takeDamage(damageAmount, Vector3.zero, damageType.stationary);
+                    soundManager.PlayStationaryDMG();
                 }
             }
         }
+        if (!isInToxicCloud)
+            soundManager.StopStationaryDMG();
     }
 }
