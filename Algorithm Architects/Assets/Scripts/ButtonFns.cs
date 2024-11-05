@@ -11,7 +11,9 @@ using UnityEngine.Audio;
 
 public class ButtonFns : MonoBehaviour
 {
-    [SerializeField] AudioMixer audioMixer;
+    //[SerializeField] AudioMixer audioMixer;
+    [SerializeField] AudioMixer musicMixer;
+    [SerializeField] AudioMixer SFXMixer;
 
     private void Start(){}
 
@@ -45,10 +47,20 @@ public class ButtonFns : MonoBehaviour
         gameManager.instance.setSens(sensitivity);
     }
 
-    public void volumeSlider(float volume)
+    //public void volumeSlider(float volume)
+    //{
+    //    audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
+    //   // audioSource.Play(); //Issue was I was never playing the audio clip in the first place so set it to play when the player shoots
+    //}
+
+    public void MusicSlider(float volume)
     {
-        audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
-       // audioSource.Play(); //Issue was I was never playing the audio clip in the first place so set it to play when the player shoots
+        musicMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+    }
+
+    public void SFXSlider(float volume)
+    {
+        SFXMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
     }
 
 
