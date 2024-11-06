@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 {
                     wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
                 }
-                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+                playerCam.transform.localRotation = Quaternion.Euler(0, 0, wallRunCameraTilt);
             }
             else if (isWallLeft)
             {
@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 {
                     wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
                 }
-                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+                playerCam.transform.localRotation = Quaternion.Euler(0, 0, wallRunCameraTilt);
             }
         }
         else if (isSliding)
@@ -646,12 +646,12 @@ public class PlayerController : MonoBehaviour, IDamage
             if (wallRunCameraTilt > 0)
             {
                 wallRunCameraTilt -= Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
-                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+                playerCam.transform.localRotation = Quaternion.Euler(0, 0, wallRunCameraTilt);
             }
             if (wallRunCameraTilt < 0)
             {
                 wallRunCameraTilt += Math.Abs(Time.deltaTime * maxWallRunCameraTilt * 2);
-                playerCam.transform.localRotation = Quaternion.Euler(gameManager.instance.cameraController.rotX, desiredX, wallRunCameraTilt);
+                playerCam.transform.localRotation = Quaternion.Euler(0, 0, wallRunCameraTilt);
             }
         }
 
