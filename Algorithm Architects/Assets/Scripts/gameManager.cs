@@ -81,11 +81,7 @@ public class gameManager : MonoBehaviour
     public void setPlayerSpeed(float speed) { playerSpeed = speed; }
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
     public void setInSettings(bool settings) { inSettings = settings; }
-    public void setSens(float sensitivity) 
-    { 
-        Sensitivity = sensitivity; 
-        MainManager.Instance.SetSensitivity(sensitivity);
-    }
+    public void setSens(float sensitivity) { Sensitivity = sensitivity; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
     public void setIsTomatoed(bool tomato) { isTomatoed = tomato; }
@@ -196,7 +192,7 @@ public class gameManager : MonoBehaviour
                 statePause();
                 menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);
-                SaveSettings();
+                playerScript.SaveSettings();
             }
         }
     }
@@ -309,7 +305,7 @@ public class gameManager : MonoBehaviour
 
     }
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOut()                                                                                         
     {
         alpha = 1;
 
@@ -335,10 +331,4 @@ public class gameManager : MonoBehaviour
     //     yield return new WaitForSeconds(nextWaveTimer);
 
     // }
-
-    void SaveSettings()
-    {
-        MainManager.Instance.SetSensitivity(Sensitivity);
-        Debug.Log("sensitivity saved");
-    }
 }

@@ -14,23 +14,13 @@ public class CameraController : MonoBehaviour
 
     public float rotX;
 
-    public float GetSensitity() { return sens; }
     // Start is called before the first frame update
     void Start()
     {
         //Locks the cursor 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        if(MainManager.Instance.GetSensitivity() != 0.0f)
-        {
-            sens = MainManager.Instance.GetSensitivity();
-            gameManager.instance.setSens(sens);
-            Debug.Log("sensitivy settings loaded");
-        }
-        else
-        {
-            gameManager.instance.setSens(sens);
-        }
+        gameManager.instance.setSens(sens);
         gameManager.instance.setCameraScript(this);
     }
 

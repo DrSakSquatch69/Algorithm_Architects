@@ -12,10 +12,14 @@ using UnityEngine.Audio;
 public class ButtonFns : MonoBehaviour
 {
     //[SerializeField] AudioMixer audioMixer;
+    [SerializeField] Slider sensSlider;
     [SerializeField] AudioMixer musicMixer;
     [SerializeField] AudioMixer SFXMixer;
 
-    private void Start(){}
+    private void Start()
+    {
+        sensSlider.value = MainManager.Instance.GetSensitivity();
+    }
 
     public void resume() // resume fn
     {
@@ -45,6 +49,7 @@ public class ButtonFns : MonoBehaviour
     {
         //Debug.Log(sensitivity);
         gameManager.instance.setSens(sensitivity);
+        MainManager.Instance.SetSensitivity(sensitivity);
     }
 
     //public void volumeSlider(float volume)
