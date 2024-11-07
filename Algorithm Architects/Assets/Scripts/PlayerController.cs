@@ -578,6 +578,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             HealthPoints -= bleedDotDamage;
             StartCoroutine (gameManager.instance.hitFlash());
+            updatePlayerUI();
             isTakingDamage = true;
             ++bleedDotTracker;
 
@@ -866,6 +867,8 @@ public class PlayerController : MonoBehaviour, IDamage
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
+        updatePlayerUI();
+
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
     }
@@ -893,6 +896,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGunPos].gunModel.GetComponent <MeshRenderer>().sharedMaterial;
+
+        updatePlayerUI();
 
         //gunModel.transform.position = gunList[selectedGunPos].placement;
         //gunModel.transform.eulerAngles = gunList[selectedGunPos].rotation;
