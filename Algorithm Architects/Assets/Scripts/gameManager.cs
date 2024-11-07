@@ -81,7 +81,11 @@ public class gameManager : MonoBehaviour
     public void setPlayerSpeed(float speed) { playerSpeed = speed; }
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
     public void setInSettings(bool settings) { inSettings = settings; }
-    public void setSens(float sensitivity) { Sensitivity = sensitivity; }
+    public void setSens(float sensitivity) 
+    { 
+        Sensitivity = sensitivity; 
+        MainManager.Instance.SetSensitivity(sensitivity);
+    }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
     public void setIsTomatoed(bool tomato) { isTomatoed = tomato; }
@@ -103,10 +107,7 @@ public class gameManager : MonoBehaviour
         soundManager = player.GetComponent<PlayerSoundManager>();
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
-        if(MainManager.Instance != null)
-        {
-            LoadSettings();
-        }
+        
     }
 
     // Update is called once per frame
@@ -195,7 +196,6 @@ public class gameManager : MonoBehaviour
                 statePause();
                 menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);
-                playerScript.SaveSettings();
                 SaveSettings();
             }
         }
@@ -309,7 +309,7 @@ public class gameManager : MonoBehaviour
 
     }
 
-    IEnumerator FadeOut()                                                                                         
+    IEnumerator FadeOut()
     {
         alpha = 1;
 
@@ -340,11 +340,5 @@ public class gameManager : MonoBehaviour
     {
         MainManager.Instance.SetSensitivity(Sensitivity);
         Debug.Log("sensitivity saved");
-    }
-
-    void LoadSettings()
-    {
-        Sensitivity = MainManager.Instance.GetSensitivity();
-        Debug.Log("sensitivity loaded");
     }
 }
