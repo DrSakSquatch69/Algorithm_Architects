@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System;
+using UnityEngine.Rendering;
 
 public class gameManager : MonoBehaviour
 {
@@ -102,6 +103,10 @@ public class gameManager : MonoBehaviour
         soundManager = player.GetComponent<PlayerSoundManager>();
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
+        if(MainManager.Instance != null)
+        {
+            LoadSettings();
+        }
     }
 
     // Update is called once per frame
@@ -190,6 +195,8 @@ public class gameManager : MonoBehaviour
                 statePause();
                 menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);
+                playerScript.SaveSettings();
+                SaveSettings();
             }
         }
     }
@@ -329,4 +336,15 @@ public class gameManager : MonoBehaviour
 
     // }
 
+    void SaveSettings()
+    {
+        MainManager.Instance.SetSensitivity(Sensitivity);
+        Debug.Log("sensitivity saved");
+    }
+
+    void LoadSettings()
+    {
+        Sensitivity = MainManager.Instance.GetSensitivity();
+        Debug.Log("sensitivity loaded");
+    }
 }

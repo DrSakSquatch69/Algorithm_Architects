@@ -3209,11 +3209,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 9140ecdd51830eb4f9d29fc96a4975e5, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5b47fe5e595482846bfdd76993ad831e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d521b5eb787f67840a477a9f9e474d69, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10191,6 +10191,7 @@ Transform:
   - {fileID: 2979037038213571259}
   - {fileID: 8124701344205155764}
   - {fileID: 2824013211589485961}
+  - {fileID: 3936171941271618156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5308126974526763343
@@ -10273,7 +10274,7 @@ MonoBehaviour:
   shootDist: 0
   magSize: 0
   gunList: []
-  gunModel: {fileID: 5323723898106407600}
+  gunModel: {fileID: 6864910688649998608}
   meleeModel: {fileID: 1635955300408653840}
   muzzleFlash: {fileID: 8863939425410383027}
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
@@ -11067,6 +11068,111 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6864910688649998608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3936171941271618156}
+  - component: {fileID: 7572754939114484541}
+  - component: {fileID: 264267878703510919}
+  - component: {fileID: 2038068671865367815}
+  m_Layer: 0
+  m_Name: Gun POS
+  m_TagString: SMG T1
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3936171941271618156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864910688649998608}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.033906374, y: -0.03203708, z: 0.0143383015, w: 0.9988085}
+  m_LocalPosition: {x: 0.85, y: 0.24, z: 0.81}
+  m_LocalScale: {x: 2.5894027, y: 2.5894027, z: 2.5894027}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4315599496715532236}
+  m_LocalEulerAnglesHint: {x: -176.169, y: -183.733, z: 181.77}
+--- !u!33 &7572754939114484541
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864910688649998608}
+  m_Mesh: {fileID: 0}
+--- !u!23 &264267878703510919
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864910688649998608}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2038068671865367815
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864910688649998608}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0037976138
+  m_Center: {x: 0.000000014988473, y: 0.00060890464, z: -0.00021985575}
 --- !u!1 &6874871665647864182
 GameObject:
   m_ObjectHideFlags: 0

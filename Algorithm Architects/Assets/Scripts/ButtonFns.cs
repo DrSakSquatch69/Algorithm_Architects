@@ -66,7 +66,6 @@ public class ButtonFns : MonoBehaviour
 
     public void NextLevel()
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); //Gets the index of the current level and loads the next scene after it
         
         resume();

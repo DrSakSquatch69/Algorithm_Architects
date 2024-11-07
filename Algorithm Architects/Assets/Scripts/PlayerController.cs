@@ -54,8 +54,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
     int selectedGunPos;
-   
-    //
+    
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
     [SerializeField] float slideDistance;
@@ -141,8 +140,12 @@ public class PlayerController : MonoBehaviour, IDamage
 
         updatePlayerUI();
         isSpawnProtection = true;
-        StartCoroutine(spawnProtection());
+        StartCoroutine(spawnProtection()); 
 
+        if(MainManager.Instance.GetGunList() != null)
+        {
+            LoadSetting();
+        }
     }
 
     IEnumerator spawnProtection()
@@ -326,7 +329,7 @@ public class PlayerController : MonoBehaviour, IDamage
             crouch();
         }
 
-        if (gunList.Count > 0)
+        if (gunList != null && gunList.Count > 0)
         {
             if (Input.GetButton("Reload") && !isReloading && gunList[selectedGunPos].ammo != gunList[selectedGunPos].magSize)
             {
@@ -893,6 +896,24 @@ public class PlayerController : MonoBehaviour, IDamage
 
         //gunModel.transform.position = gunList[selectedGunPos].placement;
         //gunModel.transform.eulerAngles = gunList[selectedGunPos].rotation;
+    }
+
+    public void SaveSettings()
+    {
+        MainManager.Instance.SetGunList(gunList);
+        MainManager.Instance.SetSelectedGunPos(selectedGunPos);
+        Debug.Log("settings saved for player");
+    }
+
+    void LoadSetting()
+    {
+        if (MainManager.Instance.GetGunList().Count != 0)
+        { 
+            gunList = MainManager.Instance.GetGunList();
+            selectedGunPos = MainManager.Instance.GetSelectedGunPOS();
+            Debug.Log("Settings Loaded for Player");
+            changeGun();
+        }
     }
 }
 
