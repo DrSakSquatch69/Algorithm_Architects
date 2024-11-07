@@ -868,7 +868,7 @@ public class PlayerController : MonoBehaviour, IDamage
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
-
+        MainManager.Instance.SetGunList(gunList);
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
     }
@@ -898,17 +898,11 @@ public class PlayerController : MonoBehaviour, IDamage
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGunPos].gunModel.GetComponent <MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
-
+        MainManager.Instance.SetSelectedGunPos(selectedGunPos);
         //gunModel.transform.position = gunList[selectedGunPos].placement;
         //gunModel.transform.eulerAngles = gunList[selectedGunPos].rotation;
     }
 
-    public void SaveSettings()
-    {
-        MainManager.Instance.SetGunList(gunList);
-        MainManager.Instance.SetSelectedGunPos(selectedGunPos);
-        Debug.Log("settings saved for player");
-    }
 
     void LoadSetting()
     {

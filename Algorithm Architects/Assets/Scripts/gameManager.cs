@@ -192,7 +192,6 @@ public class gameManager : MonoBehaviour
                 statePause();
                 menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);
-                playerScript.SaveSettings();
             }
         }
     }

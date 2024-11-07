@@ -9,7 +9,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 
     //Weapon Fields
-    List<gunStats> gunList;
+    List<gunStats> gunList = new List<gunStats>();
     int selectedGunPOS;
 
     //Setting Fields
@@ -39,7 +39,6 @@ public class MainManager : MonoBehaviour
     {
         if(gunList == null)
         {
-            gunList = new List<gunStats>();
             gunList = gunListPassedIn;
         }
         else
