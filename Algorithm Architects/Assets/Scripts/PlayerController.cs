@@ -870,17 +870,11 @@ public class PlayerController : MonoBehaviour, IDamage
     public void getGunStats(gunStats gun)
     {
         gunList.Add(gun);
+        selectedGunPos = gunList.Count - 1;
 
-        shootDamage = gun.shootDamage;
-        shootDist = gun.shootDist;
-        shootRate = gun.shootRate;
-        magSize = gun.magSize;
-
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-
-        updatePlayerUI();
-        MainManager.Instance.SetGunList(gunList);
+        changeGun();
+            
+        //MainManager.Instance.SetGunList(gunList);
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
     }
