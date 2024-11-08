@@ -82,6 +82,15 @@ public class damage : MonoBehaviour
 
                 gameManager.instance.playerScript.DoT();
             }
+
+            if (type == damageType.toxic)
+            {
+                if (!gameManager.instance.playerScript.isInToxicGas)
+                {
+                    gameManager.instance.playerScript.EnterToxicGas();
+                    StartCoroutine(gameManager.instance.playerScript.ToxicGasDoT());
+                }
+            }
         }
 
         if (type == damageType.stationary)

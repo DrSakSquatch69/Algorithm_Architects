@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
 
 public class gameManager : MonoBehaviour
 {
@@ -35,6 +37,10 @@ public class gameManager : MonoBehaviour
     public void setCameraScript(CameraController script) { cameraController = script; }
 
     public Image playerHPBar;
+
+    [SerializeField] private Volume postProcessingVolume;
+    private UnityEngine.Rendering.Universal.DepthOfField depthOfFieldEffect;
+    private bool isBlurred;
 
     [SerializeField] bool isFinalLevel;
 
@@ -103,7 +109,10 @@ public class gameManager : MonoBehaviour
         soundManager = player.GetComponent<PlayerSoundManager>();
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
-        
+        if (postProcessingVolume.profile.TryGet(out depthOfFieldEffect))
+        {
+            depthOfFieldEffect.active = false;
+        }
     }
 
     // Update is called once per frame
@@ -323,6 +332,38 @@ public class gameManager : MonoBehaviour
 
         tomatoSplat.color = new Color(1, 1, 1, 0);
         isTomatoed = false;
+    }
+
+    public void EnableBlur(float duration)
+    {
+        if (depthOfFieldEffect == null) return;
+
+        isBlurred = true;
+        depthOfFieldEffect.active = true;
+        depthOfFieldEffect.focusDistance.value = 0.1f; // High blur effect
+        StartCoroutine(DisableBlurAfterTime(duration));
+    }
+
+    private IEnumerator DisableBlurAfterTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        if (depthOfFieldEffect != null)
+        {
+            depthOfFieldEffect.focusDistance.value = 10f; // Reset to normal
+            depthOfFieldEffect.active = false;
+            isBlurred = false;
+        }
+    }
+
+    public void DisableBlur()
+    {
+        if (depthOfFieldEffect != null)
+        {
+            depthOfFieldEffect.focusDistance.value = 10f; // Reset to normal
+            depthOfFieldEffect.active = false;
+            isBlurred = false;
+        }
     }
 
     //public IEnumerator GradualSpawning()
