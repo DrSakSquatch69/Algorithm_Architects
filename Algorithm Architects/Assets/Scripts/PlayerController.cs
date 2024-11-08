@@ -877,7 +877,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
         changeGun();
             
-        //MainManager.Instance.SetGunList(gunList);
+        MainManager.Instance.SetGunList(gunList);
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
     }
