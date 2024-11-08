@@ -613,7 +613,19 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
         if (gunList.Count != 0)
         {
+            gameManager.instance.turnOnOffAmmoText.SetActive(true);
             gameManager.instance.UpdateAmmoCounter(gunList[selectedGunPos].ammo, gunList[selectedGunPos].ammoremaining);
+        }
+        if (gunList.Count != 0)
+        {
+            if (gunList[selectedGunPos].isMelee)
+            {
+                gameManager.instance.turnOnOffAmmoText.SetActive(false);
+            }
+        }
+        if (gunList.Count == 0)
+        {
+            gameManager.instance.turnOnOffAmmoText.SetActive(false);
         }
     }
 
