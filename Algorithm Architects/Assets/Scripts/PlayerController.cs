@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canSlide;
     bool crouching;
     bool inMotion;
+    public bool isAmmoPickup;
 
     //bouncepad fields
     public LayerMask bouncePad;
@@ -201,6 +202,7 @@ public class PlayerController : MonoBehaviour, IDamage
         isMoving();
         CheckForGround();
         RayTextUpdate();
+        PickupAmmo();
 
         if (inMotion && isGrounded)
         {
@@ -965,6 +967,16 @@ public class PlayerController : MonoBehaviour, IDamage
                 yield break; // Stops the coroutine if the player dies
             }
         }
+    }
+
+    void PickupAmmo()
+    {
+        if (isAmmoPickup && gunList.Count != 0)
+        {
+            gunList[selectedGunPos].ammoremaining += gunList[selectedGunPos].magSize * 2;
+            updatePlayerUI();
+        }
+        isAmmoPickup = false;
     }
 }
 

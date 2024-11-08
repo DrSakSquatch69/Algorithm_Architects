@@ -109,10 +109,10 @@ public class gameManager : MonoBehaviour
         soundManager = player.GetComponent<PlayerSoundManager>();
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
-        if (postProcessingVolume.profile.TryGet(out depthOfFieldEffect))
-        {
-            depthOfFieldEffect.active = false;
-        }
+       // if (postProcessingVolume.profile.TryGet(out depthOfFieldEffect))
+      //  {
+       //     depthOfFieldEffect.active = false;
+       // }
     }
 
     // Update is called once per frame

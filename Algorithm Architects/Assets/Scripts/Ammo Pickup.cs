@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
+    [SerializeField] GameObject icon;
     bool itemIsPickedUp;
-    float yPOS;
     bool floatUp;
 
     private void Start()
@@ -46,7 +46,9 @@ public class AmmoPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && !itemIsPickedUp)
         {
-         
+            gameManager.instance.playerScript.isAmmoPickup = true;
+            Destroy(icon);
+            Destroy(gameObject);
         }
     }
 }
