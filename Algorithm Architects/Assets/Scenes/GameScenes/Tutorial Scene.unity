@@ -21076,16 +21076,28 @@ PrefabInstance:
       value: MELEE T2 SHOV
       objectReference: {fileID: 0}
     - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.377761
       objectReference: {fileID: 0}
     - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.85541
+      value: 31.96
       objectReference: {fileID: 0}
     - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.006094
+      value: -27.11
       objectReference: {fileID: 0}
     - target: {fileID: 5133379043113347331, guid: 79d7e5c2458ceda4992643a554560a1e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27114,7 +27126,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Just walk over weapons to pick up cycle with X
+  m_text: 'Swap Weapons with Scroll Wheel
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36576,16 +36590,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.390959
       objectReference: {fileID: 0}
     - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.61
+      value: 28.134
       objectReference: {fileID: 0}
     - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.49849
+      value: -8.57
       objectReference: {fileID: 0}
     - target: {fileID: 1937022449780173183, guid: 2b4669a2ff0e84c4abf803806d09a448, type: 3}
       propertyPath: m_LocalRotation.w
