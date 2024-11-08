@@ -191,8 +191,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (!gameManager.instance.isPaused)
         {
-        Movement();
-        selectGun();
+            Movement();
+            if (gunList.Count > 0)
+            {
+                selectGun();
+            }
         }
         sprint();
         CheckForWall();
@@ -886,9 +889,19 @@ public class PlayerController : MonoBehaviour, IDamage
             selectedGunPos++;
             changeGun();
         }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos == gunList.Count - 1)
+        {
+            selectedGunPos = 0;
+            changeGun();
+        }
         else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos > 0)
         {
             selectedGunPos--;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos == 0)
+        {
+            selectedGunPos = gunList.Count - 1;
             changeGun();
         }
     }
