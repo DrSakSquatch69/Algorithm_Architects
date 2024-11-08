@@ -165,9 +165,9 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (isGrounded)
+        if (isGrounded || controller.isGrounded)
         {
-            if (isAirborne)
+            if (isAirborne && !isBouncePad)
             {
                 soundManager.PlayLanding(isGrounded);
                 isAirborne = false;
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else
         {
             isAirborne = true;
-            soundManager.PlayLanding(isGrounded);
+            soundManager.StopLanding();
         }
 
 
@@ -683,6 +683,7 @@ public class PlayerController : MonoBehaviour, IDamage
             playerVel = Vector3.zero;
             playerVel.y = bouncePadForce;
             jumpCount = 0;
+            soundManager.StopLanding();
             soundManager.PlayBounce();
         }
     }
