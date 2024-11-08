@@ -15,14 +15,20 @@ public class AmmoPickup : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0.5f, 0);
+        if (!gameManager.instance.isPaused)
+        {
 
-        if ((floatUp))
-        {
-            StartCoroutine(floatingUp());
-        }else if (!floatUp)
-        {
-            StartCoroutine(floatingDown());
+
+            transform.Rotate(0, 0.5f, 0);
+
+            if ((floatUp))
+            {
+                StartCoroutine(floatingUp());
+            }
+            else if (!floatUp)
+            {
+                StartCoroutine(floatingDown());
+            }
         }
 
     }
