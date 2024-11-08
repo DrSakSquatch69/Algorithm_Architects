@@ -5009,6 +5009,7 @@ GameObject:
   - component: {fileID: 6807887272109772301}
   - component: {fileID: 1475851221479137544}
   - component: {fileID: 6353395573049739122}
+  - component: {fileID: -8856703920536871322}
   - component: {fileID: 7469414750361437112}
   - component: {fileID: 984632885498202228}
   - component: {fileID: 6650258678389520826}
@@ -5104,6 +5105,25 @@ MonoBehaviour:
   poisonDamage: 1
   poisonInterval: 1
   postProcessVolume: {fileID: 0}
+--- !u!114 &-8856703920536871322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498436370840992913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ebad54001533d4c9288275204cf675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 9
+  rb: {fileID: 0}
+  damageAmount: 5
+  bulletSpeed: 0
+  despawnTimer: 0
+  butterSlowAmount: 0
+  damageInterval: 1
 --- !u!195 &7469414750361437112
 NavMeshAgent:
   m_ObjectHideFlags: 0

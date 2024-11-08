@@ -1742,6 +1742,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8856703920536871322, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: damageAmount
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 1475851221479137544, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
       propertyPath: playerCamera
       value: 
