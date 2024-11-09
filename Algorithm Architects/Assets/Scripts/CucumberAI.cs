@@ -21,6 +21,7 @@ public class CucumberAI : MonoBehaviour, IDamage
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
     [SerializeField] int Ammo;
+    [SerializeField] GameObject cucumberParent;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -139,7 +140,9 @@ public class CucumberAI : MonoBehaviour, IDamage
             }
 
             // Destroys current enemy
+            Destroy(cucumberParent);
             Destroy(gameObject);
+            
 
             //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
             //{
@@ -212,6 +215,7 @@ public class CucumberAI : MonoBehaviour, IDamage
         if(Ammo == 0)
         {
             gameManager.instance.updateGameGoal(-1);
+            Destroy(cucumberParent);
             Destroy(gameObject);
         }
         yield return new WaitForSeconds(firerate);

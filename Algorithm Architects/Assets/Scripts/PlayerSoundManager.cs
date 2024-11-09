@@ -175,6 +175,12 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
+    public void StopLanding()
+    {
+        landing.Stop();
+        hasLanded = false;
+    }
+
     public void PlayTakingDamage()
     {
         if(!takingDamage.isPlaying)

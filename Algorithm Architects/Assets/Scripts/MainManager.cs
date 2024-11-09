@@ -43,7 +43,6 @@ public class MainManager : MonoBehaviour
         }
         else
         {
-            gunList.Clear();
             gunList = gunListPassedIn;
         }
     }

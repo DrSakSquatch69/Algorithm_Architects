@@ -54,6 +54,14 @@ public class PlayerController : MonoBehaviour, IDamage
     public ParticleSystem hitEffect;
     public AudioSource audioSource;
     int selectedGunPos;
+
+    //Fields for Toxic Gas
+    [SerializeField] float toxicGasDuration = 5f;
+    [SerializeField] float poisonDamageInterval = 1f;
+    [SerializeField] int poisonDamage = 2;
+    [SerializeField] float visionBlurIntensity = 0.5f;
+    public bool isInToxicGas;
+    float toxicGasEndTime;
     
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
@@ -87,6 +95,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canSlide;
     bool crouching;
     bool inMotion;
+    public bool isAmmoPickup;
 
     //bouncepad fields
     public LayerMask bouncePad;
@@ -156,9 +165,9 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (isGrounded)
+        if (isGrounded || controller.isGrounded)
         {
-            if (isAirborne)
+            if (isAirborne && !isBouncePad)
             {
                 soundManager.PlayLanding(isGrounded);
                 isAirborne = false;
@@ -167,7 +176,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else
         {
             isAirborne = true;
-            soundManager.PlayLanding(isGrounded);
+            soundManager.StopLanding();
         }
 
 
@@ -182,8 +191,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (!gameManager.instance.isPaused)
         {
-        Movement();
-        selectGun();
+            Movement();
+            if (gunList.Count > 0)
+            {
+                selectGun();
+            }
         }
         sprint();
         CheckForWall();
@@ -193,6 +205,7 @@ public class PlayerController : MonoBehaviour, IDamage
         isMoving();
         CheckForGround();
         RayTextUpdate();
+        PickupAmmo();
 
         if (inMotion && isGrounded)
         {
@@ -500,6 +513,7 @@ public class PlayerController : MonoBehaviour, IDamage
             else if (type == damageType.melee) { soundManager.PlayMeleeDMG(); }
             else if (type == damageType.butter) { soundManager.PlayButterDMG(); }
             else if (type == damageType.stationary) { soundManager.PlayStationaryDMG(); }
+            else if (type == damageType.toxic) { if (!isInToxicGas) { EnterToxicGas(); } StartCoroutine(ToxicGasDoT()); }
 
             HealthPoints -= amount;
             pushDirection = dir;
@@ -599,7 +613,19 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
         if (gunList.Count != 0)
         {
+            gameManager.instance.turnOnOffAmmoText.SetActive(true);
             gameManager.instance.UpdateAmmoCounter(gunList[selectedGunPos].ammo, gunList[selectedGunPos].ammoremaining);
+        }
+        if (gunList.Count != 0)
+        {
+            if (gunList[selectedGunPos].isMelee)
+            {
+                gameManager.instance.turnOnOffAmmoText.SetActive(false);
+            }
+        }
+        if (gunList.Count == 0)
+        {
+            gameManager.instance.turnOnOffAmmoText.SetActive(false);
         }
     }
 
@@ -672,6 +698,7 @@ public class PlayerController : MonoBehaviour, IDamage
             playerVel = Vector3.zero;
             playerVel.y = bouncePadForce;
             jumpCount = 0;
+            soundManager.StopLanding();
             soundManager.PlayBounce();
         }
     }
@@ -858,16 +885,10 @@ public class PlayerController : MonoBehaviour, IDamage
     public void getGunStats(gunStats gun)
     {
         gunList.Add(gun);
+        selectedGunPos = gunList.Count - 1;
 
-        shootDamage = gun.shootDamage;
-        shootDist = gun.shootDist;
-        shootRate = gun.shootRate;
-        magSize = gun.magSize;
-
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-
-        updatePlayerUI();
+        changeGun();
+            
         MainManager.Instance.SetGunList(gunList);
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
@@ -880,9 +901,19 @@ public class PlayerController : MonoBehaviour, IDamage
             selectedGunPos++;
             changeGun();
         }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos == gunList.Count - 1)
+        {
+            selectedGunPos = 0;
+            changeGun();
+        }
         else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos > 0)
         {
             selectedGunPos--;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos == 0)
+        {
+            selectedGunPos = gunList.Count - 1;
             changeGun();
         }
     }
@@ -913,6 +944,59 @@ public class PlayerController : MonoBehaviour, IDamage
             Debug.Log("Settings Loaded for Player");
             changeGun();
         }
+    }
+
+    public void EnterToxicGas()
+    {
+        isInToxicGas = true;
+        toxicGasEndTime = Time.time + toxicGasDuration;
+        StartCoroutine(ApplyToxicGasEffects());
+    }
+
+    public void ExitToxicGas()
+    {
+        isInToxicGas = false;
+        // Reset blur effect
+        gameManager.instance.DisableBlur();
+        StopCoroutine(ApplyToxicGasEffects());
+    }
+
+    IEnumerator ApplyToxicGasEffects()
+    {
+        while (isInToxicGas && Time.time < toxicGasEndTime)
+        {
+            HealthPoints -= poisonDamage;
+            gameManager.instance.EnableBlur(visionBlurIntensity); // Apply blur while in toxic gas
+            updatePlayerUI();
+            yield return new WaitForSeconds(poisonDamageInterval);
+        }
+        ExitToxicGas(); // Exit when the effect is over
+    }
+
+    public IEnumerator ToxicGasDoT()
+    {
+        while (isInToxicGas)
+        {
+            HealthPoints -= 1; // Apply poison damage over time
+            updatePlayerUI();
+            yield return new WaitForSeconds(1f); // Adjust interval as needed
+            if (HealthPoints <= 0)
+            {
+                soundManager.PlayDeathSound();
+                gameManager.instance.youLose();
+                yield break; // Stops the coroutine if the player dies
+            }
+        }
+    }
+
+    void PickupAmmo()
+    {
+        if (isAmmoPickup && gunList.Count != 0)
+        {
+            gunList[selectedGunPos].ammoremaining += gunList[selectedGunPos].magSize * 2;
+            updatePlayerUI();
+        }
+        isAmmoPickup = false;
     }
 }
 

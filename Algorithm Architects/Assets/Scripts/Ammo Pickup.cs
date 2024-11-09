@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
+    [SerializeField] GameObject icon;
     bool itemIsPickedUp;
-    float yPOS;
     bool floatUp;
 
     private void Start()
@@ -15,14 +15,20 @@ public class AmmoPickup : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0.5f, 0);
+        if (!gameManager.instance.isPaused)
+        {
 
-        if ((floatUp))
-        {
-            StartCoroutine(floatingUp());
-        }else if (!floatUp)
-        {
-            StartCoroutine(floatingDown());
+
+            transform.Rotate(0, 0.5f, 0);
+
+            if ((floatUp))
+            {
+                StartCoroutine(floatingUp());
+            }
+            else if (!floatUp)
+            {
+                StartCoroutine(floatingDown());
+            }
         }
 
     }
@@ -46,7 +52,9 @@ public class AmmoPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && !itemIsPickedUp)
         {
-         
+            gameManager.instance.playerScript.isAmmoPickup = true;
+            Destroy(icon);
+            Destroy(gameObject);
         }
     }
 }
