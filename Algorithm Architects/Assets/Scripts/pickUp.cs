@@ -7,6 +7,7 @@ public class pickUp : MonoBehaviour
     [SerializeField] gunStats gun;
     bool floatUp;
 
+    bool inRange;
     bool itemIsPickedUp;
     private void Start()
     {
@@ -33,6 +34,16 @@ public class pickUp : MonoBehaviour
             }
         }
 
+        if (gameManager.instance.playerScript.isInteract && inRange)
+        {
+            itemIsPickedUp = true;
+            gameManager.instance.playerScript.isInteract = false;
+            gameManager.instance.playerScript.isInteractable = false;
+            gameManager.instance.turnOnOffInteract.SetActive(false);
+            gameManager.instance.playerScript.getGunStats(gun);
+            Destroy(gameObject);
+        }
+
     }
 
     IEnumerator floatingUp()
@@ -57,15 +68,7 @@ public class pickUp : MonoBehaviour
             gameManager.instance.turnOnOffInteract.SetActive(true);
             gameManager.instance.interact.text = "Press E to Pickup";
             gameManager.instance.playerScript.isInteractable = true;
-
-            if (gameManager.instance.playerScript.isInteract)
-            {
-                itemIsPickedUp = true;
-                gameManager.instance.playerScript.isInteract = false;
-                gameManager.instance.playerScript.isInteractable = false;
-                gameManager.instance.playerScript.getGunStats(gun);
-                Destroy(gameObject);
-            }
+            inRange = true;
         }
     }
 
@@ -75,6 +78,7 @@ public class pickUp : MonoBehaviour
         {
             gameManager.instance.turnOnOffInteract.SetActive(false);
             gameManager.instance.playerScript.isInteractable = false;
+            inRange = false;
         }
     }
 }

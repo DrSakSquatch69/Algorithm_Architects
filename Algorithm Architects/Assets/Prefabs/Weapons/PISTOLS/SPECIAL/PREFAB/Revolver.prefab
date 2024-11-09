@@ -47,9 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: 117203c44597a1849ae13c1ecc0bafb7, type: 2}
-  gunPOS: {fileID: 0}
 --- !u!33 &8136857023649113014
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -119,5 +117,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.21958365
+  m_Radius: 0.5
   m_Center: {x: 0.0061324663, y: 0.07082168, z: 0.1408502}
