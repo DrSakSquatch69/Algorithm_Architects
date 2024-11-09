@@ -5,8 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-//
-public class CucumberAI : MonoBehaviour, IDamage
+
+public class DaikonAI : MonoBehaviour, IDamage
 {
     enum damageTypes { bullet, chaser, stationary, butter }
 
@@ -20,8 +20,6 @@ public class CucumberAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
-    [SerializeField] int Ammo;
-    [SerializeField] GameObject cucumberParent;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -48,6 +46,12 @@ public class CucumberAI : MonoBehaviour, IDamage
     Image enemyHpBar;
     public bool isImgOn;
 
+    [SerializeField] int healthPerConsume;
+    [SerializeField] int eatRangeAdd;
+    [SerializeField] int maxEatCount;
+    [SerializeField] SphereCollider eatRange;
+    int eatCount;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +66,7 @@ public class CucumberAI : MonoBehaviour, IDamage
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
+        eatCount = 0;
     }
 
     // Update is called once per frame
@@ -69,7 +74,16 @@ public class CucumberAI : MonoBehaviour, IDamage
     {
         updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+
+        if (eatCount != maxEatCount)
+        {
+            
+        }
+
+        else
+        {
+            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        }
 
         if (playerSighted && canSeePlayer())
         {
@@ -140,9 +154,7 @@ public class CucumberAI : MonoBehaviour, IDamage
             }
 
             // Destroys current enemy
-            Destroy(cucumberParent);
             Destroy(gameObject);
-            
 
             //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
             //{
@@ -211,18 +223,7 @@ public class CucumberAI : MonoBehaviour, IDamage
     {
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
-        Ammo--;
-        if(Ammo == 0)
-        {
-            gameManager.instance.updateGameGoal(-1);
-            Destroy(cucumberParent);
-            Destroy(gameObject);
-        }
         yield return new WaitForSeconds(firerate);
         isShooting = false;
     }
-
-
 }
-
-

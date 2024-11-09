@@ -27,12 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855665055109737177}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45071787, y: -0.5448426, z: -0.5448426, w: 0.45071787}
-  m_LocalPosition: {x: 1.3577074, y: -0.21959573, z: 0.060536224}
-  m_LocalScale: {x: 1.2789428, y: 1.2789441, z: 1.2789434}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 2.19, y: -0.38, z: 0}
+  m_LocalScale: {x: 2.4094026, y: 2.409403, z: 2.4094038}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 625845055388050808}
+  m_Father: {fileID: 864836863651067829}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &6839787903003735805
 MeshFilter:
@@ -136,6 +136,7 @@ Transform:
   m_LocalScale: {x: 1.2451221, y: 1.2451221, z: 1.2451221}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4726593039457727518}
   - {fileID: 625845055388050808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -410,7 +411,6 @@ Transform:
   m_Children:
   - {fileID: 5708531570666358193}
   - {fileID: 9144266628225315372}
-  - {fileID: 4726593039457727518}
   - {fileID: 662522281840087039}
   m_Father: {fileID: 864836863651067829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 100.802}
@@ -434,7 +434,8 @@ MonoBehaviour:
   bullet: {fileID: 5223472228960464512, guid: 5be2ea18450f0cd4b93eeaa31ffaf9d5, type: 3}
   firerate: 0.5
   rotateSpeed: 32
-  selfDamage: 10
+  Ammo: 10
+  cucumberParent: {fileID: 1621743174916948628}
   HP: 100
   enemyPrefab: {fileID: 1621743174916948628}
   maxRespawns: 0
