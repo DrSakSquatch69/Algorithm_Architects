@@ -52,11 +52,29 @@ public class pickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player") && !itemIsPickedUp && !gameManager.instance.isPaused)
+        {
+            gameManager.instance.turnOnOffInteract.SetActive(true);
+            gameManager.instance.interact.text = "Press E to Pickup";
+            gameManager.instance.playerScript.isInteractable = true;
+
+            if (gameManager.instance.playerScript.isInteract)
+            {
+                itemIsPickedUp = true;
+                gameManager.instance.playerScript.isInteract = false;
+                gameManager.instance.playerScript.isInteractable = false;
+                gameManager.instance.playerScript.getGunStats(gun);
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
         if (other.CompareTag("Player") && !itemIsPickedUp)
         {
-            itemIsPickedUp = true;
-            gameManager.instance.playerScript.getGunStats(gun);
-            Destroy(gameObject);
+            gameManager.instance.turnOnOffInteract.SetActive(false);
+            gameManager.instance.playerScript.isInteractable = false;
         }
     }
 }
