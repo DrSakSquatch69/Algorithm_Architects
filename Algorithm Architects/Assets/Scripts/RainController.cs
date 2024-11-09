@@ -24,6 +24,7 @@ public class RainController : MonoBehaviour
         // Get the Emission Module from the Particle System
         emissionModule = rainParticleSystem.emission;
         emissionModule.enabled = true; // Ensure the emission module is enabled
+        rainParticleSystem.Stop();  // Makes sure the partical system is set to false on Awake
         StartCoroutine(RainCycle());
     }
 
