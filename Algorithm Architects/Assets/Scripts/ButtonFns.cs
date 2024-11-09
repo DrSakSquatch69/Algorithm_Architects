@@ -20,23 +20,26 @@ public class ButtonFns : MonoBehaviour
 
     private void Start()
     {
-        if (MainManager.Instance.GetSensitivity() != 0.0f && MainManager.Instance.GetSFXVolume() != -1 && MainManager.Instance.GetMusicsVolume() != -1 )
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            sensSlider.value = MainManager.Instance.GetSensitivity();
-            SFXSliderSlide.value = MainManager.Instance.GetSFXVolume();
-            MusicSliderSlide.value = MainManager.Instance.GetMusicsVolume();
-            SFXMixer.SetFloat("SFXVolume", Mathf.Log10(SFXSliderSlide.value) * 20);
-            musicMixer.SetFloat("MusicVolume", Mathf.Log10(MusicSliderSlide.value) * 20);
-        }
-        else
-        {
-            Debug.Log("Went through else statement");
-            sensSlider.value = 800;
-            MainManager.Instance.SetSensitivity(sensSlider.value);
-            SFXSliderSlide.value = 1;
-            MainManager.Instance.SetSFXVolume(SFXSliderSlide.value);
-            MusicSliderSlide.value = 1;
-            MainManager.Instance.SetMusicVolume(MusicSliderSlide.value);
+            if (MainManager.Instance.GetSensitivity() != 0.0f && MainManager.Instance.GetSFXVolume() != -1 && MainManager.Instance.GetMusicsVolume() != -1)
+            {
+                sensSlider.value = MainManager.Instance.GetSensitivity();
+                SFXSliderSlide.value = MainManager.Instance.GetSFXVolume();
+                MusicSliderSlide.value = MainManager.Instance.GetMusicsVolume();
+                SFXMixer.SetFloat("SFXVolume", Mathf.Log10(SFXSliderSlide.value) * 20);
+                musicMixer.SetFloat("MusicVolume", Mathf.Log10(MusicSliderSlide.value) * 20);
+            }
+            else
+            {
+                Debug.Log("Went through else statement");
+                sensSlider.value = 800;
+                MainManager.Instance.SetSensitivity(sensSlider.value);
+                SFXSliderSlide.value = 1;
+                MainManager.Instance.SetSFXVolume(SFXSliderSlide.value);
+                MusicSliderSlide.value = 1;
+                MainManager.Instance.SetMusicVolume(MusicSliderSlide.value);
+            }
         }
     }
 
