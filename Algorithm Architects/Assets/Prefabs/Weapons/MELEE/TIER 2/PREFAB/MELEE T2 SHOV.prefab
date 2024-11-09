@@ -50,9 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3582155a15e642b65953ff728ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScript: {fileID: 0}
   gun: {fileID: 11400000, guid: b4f1253e481494f49882c910c4a40693, type: 2}
-  gunPOS: {fileID: 0}
 --- !u!33 &2797631179483834324
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -122,7 +120,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.6169041
+  m_Radius: 2
   m_Center: {x: 0, y: 0.95199597, z: 0.023036819}
 --- !u!1 &731497943451842561
 GameObject:

@@ -19,8 +19,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive, menuPause, menuSettings, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
-    public GameObject turnOnOffAmmoText;
-    [SerializeField] TMP_Text remainingAmmoText;
+    public GameObject turnOnOffAmmoText, turnOnOffAmmoText2, turnOnOffAmmoText3, turnOnOffInteract;
+    public GameObject Scroll1, Scroll2, Scroll3;
+    public TMP_Text interact;
+    public TMP_Text remainingAmmoText, remainingAmmoText2, remainingAmmoText3;
     [SerializeField] int nextWaveTimer;
     [SerializeField] GameObject toRespawn;
     [SerializeField] int maxEnemiesAtOnce;
@@ -235,9 +237,20 @@ public class gameManager : MonoBehaviour
     //    hasDialogueRun = true;
     //}
 
-    public void UpdateAmmoCounter(int ammo, int remainingAmmo)
+    public void UpdateAmmoCounter(int ammo, int remainingAmmo, int i)
     {
-        remainingAmmoText.text = ammo.ToString("F0") + " / " + remainingAmmo.ToString("F0");
+        if (i == 0)
+        {
+            remainingAmmoText.text = ammo.ToString("F0") + " / " + remainingAmmo.ToString("F0");
+        }
+        else if (i == 1)
+        {
+            remainingAmmoText2.text = ammo.ToString("F0") + " / " + remainingAmmo.ToString("F0");
+        }
+        else if (i == 2)
+        {
+            remainingAmmoText3.text = ammo.ToString("F0") + " / " + remainingAmmo.ToString("F0");
+        }
     }
 
     public void reloadingOnOff()

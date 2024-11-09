@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour, IDamage
     bool crouching;
     bool inMotion;
     public bool isAmmoPickup;
+    public bool isInteract;
+    public bool isInteractable;
 
     //bouncepad fields
     public LayerMask bouncePad;
@@ -206,6 +208,11 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForGround();
         RayTextUpdate();
         PickupAmmo();
+
+        if (isInteractable == true)
+        {
+            Interact();
+        }
 
         if (inMotion && isGrounded)
         {
@@ -611,21 +618,72 @@ public class PlayerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HealthPoints / maxHP;
+
+
         if (gunList.Count != 0)
         {
             gameManager.instance.turnOnOffAmmoText.SetActive(true);
-            gameManager.instance.UpdateAmmoCounter(gunList[selectedGunPos].ammo, gunList[selectedGunPos].ammoremaining);
+            gameManager.instance.UpdateAmmoCounter(gunList[0].ammo, gunList[0].ammoremaining, 0);
+
+            if (gunList.Count >= 2)
+            {
+                gameManager.instance.turnOnOffAmmoText2.SetActive(true);
+                gameManager.instance.UpdateAmmoCounter(gunList[1].ammo, gunList[1].ammoremaining, 1);
+            }
+
+            if (gunList.Count >= 3)
+            {
+                gameManager.instance.turnOnOffAmmoText3.SetActive(true);
+                gameManager.instance.UpdateAmmoCounter(gunList[2].ammo, gunList[2].ammoremaining, 2);
+            }
         }
         if (gunList.Count != 0)
         {
-            if (gunList[selectedGunPos].isMelee)
+            if (gunList[0].isMelee)
             {
                 gameManager.instance.turnOnOffAmmoText.SetActive(false);
             }
+            if (gunList.Count >= 2)
+            {
+                if (gunList[1].isMelee)
+                {
+                    gameManager.instance.turnOnOffAmmoText2.SetActive(false);
+                }
+            }
+
+            if (gunList.Count >= 3)
+            {
+                if (gunList[2].isMelee)
+                {
+                    gameManager.instance.turnOnOffAmmoText3.SetActive(false);
+                }
+            }
+
         }
         if (gunList.Count == 0)
         {
             gameManager.instance.turnOnOffAmmoText.SetActive(false);
+            gameManager.instance.turnOnOffAmmoText2.SetActive(false);
+            gameManager.instance.turnOnOffAmmoText3.SetActive(false);
+        }
+
+        if(selectedGunPos == 0)
+        {
+            gameManager.instance.Scroll1.SetActive(true);
+            gameManager.instance.Scroll2.SetActive(false);
+            gameManager.instance.Scroll3.SetActive(false);
+        }
+        else if (selectedGunPos == 1)
+        {
+            gameManager.instance.Scroll2.SetActive(true);
+            gameManager.instance.Scroll1.SetActive(false);
+            gameManager.instance.Scroll3.SetActive(false);
+        }
+        else if (selectedGunPos == 2)
+        {
+            gameManager.instance.Scroll3.SetActive(true);
+            gameManager.instance.Scroll2.SetActive(false);
+            gameManager.instance.Scroll1.SetActive(false);
         }
     }
 
@@ -896,24 +954,24 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos < gunList.Count - 1)
-        {
-            selectedGunPos++;
-            changeGun();
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos == gunList.Count - 1)
-        {
-            selectedGunPos = 0;
-            changeGun();
-        }
-        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos > 0)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos > 0)
         {
             selectedGunPos--;
             changeGun();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos == 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos == 0)
         {
             selectedGunPos = gunList.Count - 1;
+            changeGun();
+        }
+        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos < gunList.Count - 1)
+        {
+            selectedGunPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos == gunList.Count - 1)
+        {
+            selectedGunPos = 0;
             changeGun();
         }
     }
@@ -997,6 +1055,14 @@ public class PlayerController : MonoBehaviour, IDamage
             updatePlayerUI();
         }
         isAmmoPickup = false;
+    }
+
+    void Interact()
+    {
+        if (Input.GetButtonDown("Interact"))
+        {
+           isInteract = true;
+        }
     }
 }
 
