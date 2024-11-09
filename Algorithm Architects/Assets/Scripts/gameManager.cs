@@ -19,8 +19,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive, menuPause, menuSettings, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
-    public GameObject turnOnOffAmmoText;
-    [SerializeField] TMP_Text remainingAmmoText;
+    public GameObject turnOnOffAmmoText, turnOnOffAmmoText2, turnOnOffAmmoText3;
+    public TMP_Text remainingAmmoText, remainingAmmoText2, remainingAmmoText3;
     [SerializeField] int nextWaveTimer;
     [SerializeField] GameObject toRespawn;
     [SerializeField] int maxEnemiesAtOnce;
