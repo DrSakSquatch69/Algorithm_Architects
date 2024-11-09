@@ -829,6 +829,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Cucumber '
       objectReference: {fileID: 0}
+    - target: {fileID: 4726593039457727518, guid: 104fe5a0e69216746a3d302423df7b7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726593039457727518, guid: 104fe5a0e69216746a3d302423df7b7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484326090524196559, guid: 104fe5a0e69216746a3d302423df7b7a, type: 3}
+      propertyPath: cucumberParent
+      value: 
+      objectReference: {fileID: 1666262838}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1128,6 +1140,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 71.188, y: -6.997, z: 31.262}
+--- !u!1 &1666262838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1621743174916948628, guid: 104fe5a0e69216746a3d302423df7b7a, type: 3}
+  m_PrefabInstance: {fileID: 1180087298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1681013706
 PrefabInstance:
   m_ObjectHideFlags: 0
