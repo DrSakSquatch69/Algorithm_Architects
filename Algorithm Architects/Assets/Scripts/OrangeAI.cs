@@ -95,8 +95,11 @@ public class OrangeAI : MonoBehaviour, IDamage
             isOpen = true;
             isClosed = false;
         }
-        isOpen = false;
-        isClosed = true;
+        else
+        {
+            isOpen = false;
+            isClosed = true;
+        }
     }
     public void Damage(int amount)
     {

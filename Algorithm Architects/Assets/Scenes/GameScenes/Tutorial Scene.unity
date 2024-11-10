@@ -7289,6 +7289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8361293591935767868, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: enemyHpParent
+      value: 
+      objectReference: {fileID: 1351470181}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30455,6 +30459,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 138a09161c0a726499773d357444317f, type: 3}
+--- !u!1 &1351470181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5191034643357455983, guid: 138a09161c0a726499773d357444317f, type: 3}
+  m_PrefabInstance: {fileID: 1351470180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1351564839
 GameObject:
   m_ObjectHideFlags: 0
