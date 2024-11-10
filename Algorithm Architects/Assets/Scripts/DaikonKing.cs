@@ -5,11 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
-public class DaikonAI : MonoBehaviour, IDamage
+//
+public class DaikonKing : MonoBehaviour, IDamage
 {
-    public static DaikonAI instance;
-
     enum damageTypes { bullet, chaser, stationary, butter }
 
     [SerializeField] int viewAngle;
@@ -44,47 +42,45 @@ public class DaikonAI : MonoBehaviour, IDamage
     int currentRespawnCount = 1;
     //int activeEnemiesAI; //Used for tracking the active enemies 
 
-    public Image enemyHp;
-    Image enemyHpBar;
-    public bool isImgOn;
+    [SerializeField] Slider enemyHpBar;
+    public bool isSliderOn;
 
-    public int daikonCount;
+    [SerializeField] int healthPerConsume;
+    [SerializeField] int damagerPerConsume;
+    [SerializeField] float fireratePerConsume;
+    [SerializeField] int consumeCap;
+    [SerializeField] SphereCollider range;
+    int eatCount;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-
-        else
-        {
-            Destroy(this);
-        }
-
-
         //stores the original color
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
-        //enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
-        //enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
-        ++daikonCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+        updateEnemyUI();
 
-        agent.SetDestination(gameManager.instance.getDaikonKing().transform.position);
+        if (DaikonAI.instance.daikonCount <= 0)
+        {
+            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+
+            if (playerSighted && canSeePlayer())
+            {
+
+            }
+        }
     }
     bool canSeePlayer()
     {
@@ -114,48 +110,51 @@ public class DaikonAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
-        HP -= amount;
-        updateEnemyUI();
-
-        StartCoroutine(flashColor());
-
-        //when hp is zero or less, it destroys the object
-        if (HP <= 0)
+        if (DaikonAI.instance.daikonCount <= 0)
         {
-            // --activeEnemiesAI;
-            // gameManager.instance.ActiveCheck(activeEnemiesAI);
+            HP -= amount;
+            updateEnemyUI();
 
-            // Check if enemy can respawn
-            if (currentRespawnCount < maxRespawns)
+            StartCoroutine(flashColor());
+
+            //when hp is zero or less, it destroys the object
+            if (HP <= 0)
             {
+                // --activeEnemiesAI;
+                // gameManager.instance.ActiveCheck(activeEnemiesAI);
+
+                // Check if enemy can respawn
+                if (currentRespawnCount < maxRespawns)
+                {
 
 
-                //Creates two new enemies when this one dies
-                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
-                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
+                    //Creates two new enemies when this one dies
+                    GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
+                    GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
 
-                // Set the respawn count of the new enemies to be 1 more than the current enemy
-                enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
-                enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                    // Set the respawn count of the new enemies to be 1 more than the current enemy
+                    enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                    enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
 
-                //Increment the game goal by 1 for each new enemy
-                gameManager.instance.updateGameGoal(+1);
+                    //Increment the game goal by 1 for each new enemy
+                    gameManager.instance.updateGameGoal(+1);
 
+                }
+                else
+                {
+                    // No more respawns allowed, decrement the game goal
+                    gameManager.instance.updateGameGoal(-1);
+
+                }
+
+                // Destroys current enemy
+                Destroy(gameObject);
+
+                //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
+                //{
+                //    gameManager.instance.Waves();
+                //}
             }
-            else
-            {
-                // No more respawns allowed, decrement the game goal
-                gameManager.instance.updateGameGoal(-1);
-
-            }
-
-            // Destroys current enemy
-            Destroy(gameObject);
-
-            //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
-            //{
-            //    gameManager.instance.Waves();
-            //}
         }
     }
 
@@ -163,20 +162,17 @@ public class DaikonAI : MonoBehaviour, IDamage
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
-        if (render.isVisible && dist <= renderDistance)
-        {                                                                                             //see if enemy model is on screen
-            //enemyHpBar.enabled = true;
-            isImgOn = true;
-            //enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
-            // enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
-            dist = 1 / dist * 10f;
-            dist = Mathf.Clamp(dist, minHPSize, maxHPSize);                                                                            //set min and max for what dist can be
-            //enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
+        if (dist <= renderDistance)
+        {
+            enemyHpBar.gameObject.SetActive(true);
+            enemyHpBar.value = (float)HP / hpOrig;
+            enemyHpBar.transform.rotation = Camera.main.transform.rotation;
+            isSliderOn = true;
         }
         else
         {
-            //enemyHpBar.enabled = false;                                                                         //turn off health bar if enemy is not on screen
-            isImgOn = false;
+            enemyHpBar.gameObject.SetActive(false);
+            isSliderOn = false;
         }
     }
 
@@ -201,10 +197,16 @@ public class DaikonAI : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("DaikonKing"))
+        if (other.CompareTag("Player"))
         {
-            //playerSighted = true;
-            Destroy(gameObject);
+            playerSighted = true;
+        }
+
+        if (other.CompareTag("Daikon"))
+        {
+            HP += healthPerConsume;
+            firerate += fireratePerConsume;
+
         }
     }
 
@@ -223,4 +225,8 @@ public class DaikonAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(firerate);
         isShooting = false;
     }
+
+
 }
+
+
