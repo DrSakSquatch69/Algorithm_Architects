@@ -9,10 +9,12 @@ public class LogoManager : MonoBehaviour
     public float delay = 10.0f; // time to show the logo
     public float fadeDuration = 2.0f; // Durration for fade in/out
     public SpriteRenderer logoSprite; // reference to the logo
+    [SerializeField] AudioSource AudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource.Play();
         //Invoke("LoadNextScene", delay);
         StartCoroutine(FadeInOut());
     }
