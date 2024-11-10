@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //
 public class ParticleTriggerHandler : MonoBehaviour
 {
@@ -96,7 +97,7 @@ public class ParticleTriggerHandler : MonoBehaviour
                 }
             }
         }
-        if (!isInToxicCloud)
+        if (!isInToxicCloud && SceneManager.GetActiveScene().buildIndex != 1)
             gameManager.instance.GetSoundManager().StopStationaryDMG();
     }
 }
