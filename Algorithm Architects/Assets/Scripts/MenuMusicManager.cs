@@ -10,10 +10,9 @@ public class MenuMusicManager : MonoBehaviour
     [SerializeField] AudioSource QuitButtonClick;
     public bool isMainMenu;
     [SerializeField] AudioClip playButtonClip;
-    public float getPlayButtonLength()
-    {
-        return playButtonClip.length;
-    }
+    [SerializeField] AudioClip QuitQuip;
+    public float getPlayButtonLength() { return playButtonClip.length; }
+    public float getQuitButtonLength() { return QuitQuip.length; }
     void Start()
     {
         if (Instance == null)
@@ -33,7 +32,6 @@ public class MenuMusicManager : MonoBehaviour
     {
         
     }
-
     public void StopAmbientSound()
     {
         MainMenuAmbient.Stop();
