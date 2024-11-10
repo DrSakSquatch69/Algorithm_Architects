@@ -130,17 +130,17 @@ public class PumpkinAI : MonoBehaviour, IDamage
 
         if (render.isVisible && dist <= renderDistance)
         {
-            enemyHpBar.enabled = true;
+            //enemyHpBar.enabled = true;
             isImgOn = true;
-            enemyHpBar.fillAmount = (float)HP / hpOrig;
-            enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);
+            //enemyHpBar.fillAmount = (float)HP / hpOrig;
+            //enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);
             dist = 1 / dist * 10f;
             dist = Mathf.Clamp(dist, minHPSize, maxHPSize);
-            enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);
+            //enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);
         }
         else
         {
-            enemyHpBar.enabled = false;
+            //enemyHpBar.enabled = false;
             isImgOn = false;
         }
     }
