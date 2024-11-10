@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: END_GAME_PISTOL
   m_EditorClassIdentifier: 
   gunModel: {fileID: 7547756691880299704, guid: 3016938909b17534794fbe85cba443f4, type: 3}
-  shootDamage: 50
-  shootRate: 1.2
+  shootDamage: 100
+  shootRate: 0.1
   shootDist: 100
-  magSize: 10
-  ammoremaining: 20
-  ammo: 10
+  magSize: 30
+  ammoremaining: 2000
+  ammo: 30
   isMelee: 0
   placement: {x: 0, y: 0, z: 0}
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
