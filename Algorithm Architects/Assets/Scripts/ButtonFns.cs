@@ -17,7 +17,7 @@ public class ButtonFns : MonoBehaviour
     [SerializeField] AudioMixer SFXMixer;
     [SerializeField] Slider SFXSliderSlide;
     [SerializeField] Slider MusicSliderSlide;
-
+    [SerializeField] MenuMusicManager mMusicManager;
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex != 1)
@@ -100,9 +100,16 @@ public class ButtonFns : MonoBehaviour
         resume();
     }
 
+    IEnumerator PlayButton()
+    {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.PlayButtonSound();
+        yield return new WaitForSeconds(mMusicManager.getPlayButtonLength());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(PlayButton());
     }
 
     public void PlayTutorial() //goes to the tutorial
