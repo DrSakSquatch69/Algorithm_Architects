@@ -1156,13 +1156,101 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 192614173702042111, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 192614173702042111, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 215389695880001629, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 215389695880001629, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 362490407900208478, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 539822412887153599, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109
+      objectReference: {fileID: 0}
+    - target: {fileID: 679915109641986788, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 679915109641986788, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009971828958106241, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 193
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929686865465156283, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929686865465156283, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111545468315030085, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248144416361665459, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248144416361665459, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498767111215937079, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5505115280491241602, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6612106720556149217, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6660780393547195776, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_Name
       value: Main UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662411125870749607, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662411125870749607, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098693331285791294, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705447156546351475, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917084367408164596, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917084367408164596, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1232,6 +1320,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 960209178}
+    - target: {fileID: 2840229186930639966, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3341120092696279890, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1246,7 +1338,7 @@ PrefabInstance:
       objectReference: {fileID: 885542420}
     - target: {fileID: 3598946491233589379, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
       propertyPath: m_VersionIndex
-      value: 2278
+      value: 2281
       objectReference: {fileID: 0}
     - target: {fileID: 4478215808077783589, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
       propertyPath: m_Mesh
@@ -1254,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 1202542848}
     - target: {fileID: 4478215808077783589, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
       propertyPath: m_VersionIndex
-      value: 386
+      value: 389
       objectReference: {fileID: 0}
     - target: {fileID: 4925956171474717421, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
       propertyPath: m_Mesh
@@ -1307,6 +1399,10 @@ PrefabInstance:
     - target: {fileID: 5749629226868240422, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057222646290643102, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -43,12 +43,8 @@ public class CarrotAI : MonoBehaviour, IDamage
 
     float origPos;
     int currentRespawnCount = 1;
-    //int activeEnemiesAI; //Used for tracking the active enemies 
-
-    //public Image enemyHp;
-    //Image enemyHpBar;
-    //public bool isImgOn;
     [SerializeField] Slider enemyHpBar;
+    public bool isSliderOn;
 
 
     // Start is called before the first frame update
@@ -165,26 +161,20 @@ public class CarrotAI : MonoBehaviour, IDamage
 
     public void updateEnemyUI()
     {
-        //float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
+        float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
-        //if (render.isVisible && dist <= renderDistance)
-        //{                                                                                             //see if enemy model is on screen
-        //    enemyHpBar.enabled = true;
-        //    isImgOn = true;
-        //    enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
-        //    enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
-        //    dist = 1 / dist * 10f;
-        //    dist = Mathf.Clamp(dist, minHPSize, maxHPSize);                                                                            //set min and max for what dist can be
-        //    enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
-        //}
-        //else
-        //{
-        //    enemyHpBar.enabled = false;                                                                         //turn off health bar if enemy is not on screen
-        //    isImgOn = false;
-        //}
-
-        enemyHpBar.value = (float)HP / hpOrig;
-        enemyHpBar.transform.rotation = Camera.main.transform.rotation;
+        if (dist <= renderDistance)
+        {
+            enemyHpBar.gameObject.SetActive(true);
+            enemyHpBar.value = (float)HP / hpOrig;
+            enemyHpBar.transform.rotation = Camera.main.transform.rotation;
+            isSliderOn = true;
+        } else
+        {
+            enemyHpBar.gameObject.SetActive(false);
+            isSliderOn = false;
+        }
+        
     }
 
     public void SetRespawnCount(int respawnCount)
