@@ -13,7 +13,7 @@ using UnityEngine.Rendering.Universal;
 public class gameManager : MonoBehaviour
 {
     PlayerSoundManager soundManager;
-
+    [SerializeField] MenuMusicManager menuMusicManager;
     public static gameManager instance;                                     //how we will access game manager
                                                                             // Start is called before the first frame update
     [SerializeField] GameObject menuActive, menuPause, menuSettings, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo;
@@ -130,6 +130,8 @@ public class gameManager : MonoBehaviour
             if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
             {
                 statePause();                                               // calling Fn to create the paused state
+                MenuMusicManager.Instance.StopAmbientSound();
+                MenuMusicManager.Instance.PlayPauseUp();
                 menuActive = menuPause;                                 // setting active menu variable
                 menuActive.SetActive(isPaused);                         //setting menu active via our variable
             }
@@ -159,6 +161,7 @@ public class gameManager : MonoBehaviour
 
     public void settingsMenuUp() //Method for bringing menu up here so it can get called in ButtonFns
     {
+        MenuMusicManager.Instance.PlaySettings();
         menuActive.SetActive(false);
         menuActive = menuSettings;
         menuActive.SetActive(true);
@@ -172,10 +175,12 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;                       //locking the cursor
         menuActive.SetActive(false);                                    //setting the active menu to inactive
         menuActive = null;                                              //and changes our var back to null
+        MenuMusicManager.Instance.PlayAmbient();
     }
 
     public void stateUnpauseMainMenu()                                  //unpauses the game for the main menu
     {
+
         isPaused = !isPaused;                                           // toggles on and off
         Time.timeScale = timeScaleOrig;                                 // sets our time scale to active using our variable we stored orig timescale in 
         menuActive.SetActive(false);                                    //setting the active menu to inactive
@@ -192,7 +197,7 @@ public class gameManager : MonoBehaviour
 
             if (isFinalLevel)
             {
-                PlayerSoundManager.Instance.PlayFinalWinSound();
+                MenuMusicManager.Instance.PlayFinWin();
                 statePause();
                 menuActive = menuWin;
                 menuActive.SetActive(isPaused);
@@ -210,6 +215,7 @@ public class gameManager : MonoBehaviour
     public void youLose()
     {
         statePause();
+        MenuMusicManager.Instance.PlayLoseUp();
         menuActive = menuLose;
         menuActive.SetActive(true);
     }

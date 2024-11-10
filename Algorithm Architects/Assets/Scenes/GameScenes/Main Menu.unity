@@ -991,8 +991,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 405104061}
-  - {fileID: 704711257}
   - {fileID: 1578164167}
+  - {fileID: 704711257}
   m_Father: {fileID: 668293475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &745514861
@@ -1007,12 +1007,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafce28334e1fed44a02c203f68a2d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenuAmbient: {fileID: 405104060}
+  Ambient: {fileID: 405104060}
   PlayButtonClick: {fileID: 704711256}
+  playButtonClip: {fileID: 8300000, guid: cc7175ec13bb59042ab48ced68d2de32, type: 3}
   QuitButtonClick: {fileID: 1578164166}
-  isMainMenu: 1
-  playButtonClip: {fileID: 8300000, guid: e37bcecbde5aa5d44bde75d782670f91, type: 3}
-  QuitQuip: {fileID: 8300000, guid: f69c680ef5848624597f2b3d26c29c3c, type: 3}
+  QuitQuips:
+  - {fileID: 8300000, guid: 54a2f2b7e10b7114cbf0a913ce17ccfc, type: 3}
+  - {fileID: 8300000, guid: dc740904d8ae7df4ab3e6c7dc8772523, type: 3}
+  - {fileID: 8300000, guid: 442ef6ff18dc11c4b9b6a479e447e56d, type: 3}
+  - {fileID: 8300000, guid: c50a15add55ed3e42aad834b6ebf2892, type: 3}
+  - {fileID: 8300000, guid: 2a1b97f5895a1d543860829375bcc2a3, type: 3}
+  - {fileID: 8300000, guid: 94b1b399c2ec32e46ad0b11eddb8a06c, type: 3}
+  - {fileID: 8300000, guid: ecce8e460336a854682167eb0e7970bb, type: 3}
+  - {fileID: 8300000, guid: 70229e1c76f09104aac899265f299b2d, type: 3}
+  - {fileID: 8300000, guid: bcef8101e3248604483c44586defcfba, type: 3}
+  - {fileID: 8300000, guid: 2c677fb81ad58f94faded773f8308d9a, type: 3}
+  LoseMenuUp: {fileID: 405104060}
+  LoseMenuUpClips:
+  - {fileID: 8300000, guid: 404f908289a27b1428425cc23b87d0e9, type: 3}
+  - {fileID: 8300000, guid: d14474c6f31ac084499fd7dfa6560254, type: 3}
+  - {fileID: 8300000, guid: ac1b4c2214bd9454b80a16745c3a9e4b, type: 3}
+  - {fileID: 8300000, guid: e13e148a013ef7a46b98d07e93eb628d, type: 3}
+  - {fileID: 8300000, guid: 887030ffd75588a4086d6a47574e2a6c, type: 3}
+  - {fileID: 8300000, guid: d0dc054370591ba44b3eaf4602c920a9, type: 3}
+  - {fileID: 8300000, guid: 0938fbc430d56674eb29bef47424e298, type: 3}
+  - {fileID: 8300000, guid: 3da4f9f1446a1ea4aa017a45290bdbd1, type: 3}
+  - {fileID: 8300000, guid: 0992e35ca28ecdb4d9d4ecad9a33d137, type: 3}
+  - {fileID: 8300000, guid: 567c012e7c389e64b9459a5fe2bd01da, type: 3}
+  - {fileID: 8300000, guid: d387d623adae5354dae27c757c845771, type: 3}
+  - {fileID: 8300000, guid: ba1aa32ca1714c74fa3ab0259871f052, type: 3}
+  NextLevelButton: {fileID: 405104060}
+  NextLevelClips:
+  - {fileID: 8300000, guid: 150ae90e72642494aabe6f8c33733c61, type: 3}
+  - {fileID: 8300000, guid: d387d623adae5354dae27c757c845771, type: 3}
+  - {fileID: 8300000, guid: 91716f0df015c734795e053e0b3fe2b1, type: 3}
+  - {fileID: 8300000, guid: e7c1b9713b701c446914da5dcfffb25f, type: 3}
+  - {fileID: 8300000, guid: bc0748279e89f3f4a8bbdc40123af2fd, type: 3}
+  - {fileID: 8300000, guid: 24d5f194dee251a42a347b747d70f11c, type: 3}
+  - {fileID: 8300000, guid: 500b1a6df04e06f438da9a0047599b03, type: 3}
+  OnPauseButton: {fileID: 405104060}
+  OnPauseQuips:
+  - {fileID: 8300000, guid: 8558e93b5806e54418c158b45b03314e, type: 3}
+  - {fileID: 8300000, guid: 78f32d1d27a064645848844a65613ce8, type: 3}
+  ResumeButtons: {fileID: 405104060}
+  ResumeClips:
+  - {fileID: 8300000, guid: b246131d1e259b64893464d1032e154c, type: 3}
+  - {fileID: 8300000, guid: 7fb5b95e5c7f9484a8806dc4362c928a, type: 3}
+  - {fileID: 8300000, guid: ded112c5930cf9a4da50fe3901f66f11, type: 3}
+  - {fileID: 8300000, guid: a964215c91828f840a4ad3406068635f, type: 3}
+  FinalWin: {fileID: 405104060}
+  FinalWinClip: {fileID: 8300000, guid: b102801849cedcb479b0ab28b104e713, type: 3}
+  LoseRestart: {fileID: 405104060}
+  LoseRestartClip: {fileID: 8300000, guid: dd5210225b27c294398a40b9a42ea7cf, type: 3}
+  NextLevMenuUp: {fileID: 405104060}
+  NextLevMenUpClip: {fileID: 8300000, guid: 57dac09266964e24f95e2078b4a6278f, type: 3}
+  SettingsUp: {fileID: 405104060}
+  SettingClip: {fileID: 8300000, guid: 195b6f58a3a9deb489b9b42630ed93f9, type: 3}
+  WinMMBtn: {fileID: 405104060}
+  WinMMbtnClip: {fileID: 8300000, guid: 5934c74b646055e488b6b73386df217f, type: 3}
+  WinRestart: {fileID: 405104060}
+  WinRestartClip: {fileID: 8300000, guid: 594aa72e50b4af94c84e0a9f6d758c96, type: 3}
 --- !u!1001 &1136362345
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; //need this to access scene manager
 using UnityEngine.Audio;
+using System;
 
 
-  //      
+//      
 
 public class ButtonFns : MonoBehaviour
 {
@@ -42,34 +43,25 @@ public class ButtonFns : MonoBehaviour
             }
         }
     }
-
+    
     public void resume() // resume fn
     {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.PlayResume();
         gameManager.instance.stateUnpause(); //just call gamemanager and call our unpause state fn
+        
     }
-    public void restart() // restart fn
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
-        resume(); // unpause
-    }
-    IEnumerator QuitQuip()
+    public void Winrestart() // restart fn
     {
         mMusicManager.StopAmbientSound();
-        mMusicManager.QuitButtonSound();
-        yield return new WaitForSeconds(mMusicManager.getQuitButtonLength());
-#if UNITY_EDITOR //C sharp if statement
-        UnityEditor.EditorApplication.isPlaying = false; // if in the editor we need to access the editor application and quit the game through here
-#else
-        Application.Quit(); //if not in editor just quit application
-#endif
+        mMusicManager.PlayWinRestart();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
+        resume(); // unpause
+        
     }
-    public void quit() // quit Fn
-    {
-        StartCoroutine(QuitQuip());
-    }
-
     public void settings() //Tells gameManager the settings menu is up and brings the menu up
     {
+        mMusicManager.PlaySettings();
         gameManager.instance.setInSettings(true);
         gameManager.instance.settingsMenuUp();
     }
@@ -99,24 +91,19 @@ public class ButtonFns : MonoBehaviour
         MainManager.Instance.SetSFXVolume(volume);
     }
 
-
-    public void NextLevel()
+    public void NextLevelBtn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); //Gets the index of the current level and loads the next scene after it
-        
+        mMusicManager.StopAmbientSound();
+        mMusicManager.PlayNextLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Gets the index of the current level and loads the next scene after it
         resume();
     }
 
-    IEnumerator PlayButton()
+    public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
         mMusicManager.StopAmbientSound();
         mMusicManager.PlayButtonSound();
-        yield return new WaitForSeconds(mMusicManager.getPlayButtonLength());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
-    {
-        StartCoroutine(PlayButton());
     }
 
     public void PlayTutorial() //goes to the tutorial
@@ -126,7 +113,26 @@ public class ButtonFns : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.PlayWinMainMenu();
         SceneManager.LoadScene(0);
         gameManager.instance.stateUnpauseMainMenu();
+    }
+    public void LoseRestart()
+    {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.PlayLoseRestart();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
+        resume(); // unpause
+    }
+    public void quit() // quit Fn
+    {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.QuitButtonSound();
+#if UNITY_EDITOR //C sharp if statement
+            UnityEditor.EditorApplication.isPlaying = false; // if in the editor we need to access the editor application and quit the game through here
+#else
+        Application.Quit(); //if not in editor just quit application
+#endif
     }
 }
