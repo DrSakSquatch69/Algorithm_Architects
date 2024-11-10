@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7569543481161472728}
-  - component: {fileID: 8954164136491511880}
   - component: {fileID: 4811466251047507850}
   - component: {fileID: 5112248307662847513}
   - component: {fileID: 1289296064447607169}
@@ -18,7 +17,7 @@ GameObject:
   - component: {fileID: 8574994569557099384}
   - component: {fileID: 754697561995043352}
   m_Layer: 8
-  m_Name: Bullet - T-Split
+  m_Name: Bullet - Split
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,25 +38,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8954164136491511880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461093298853194389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ebad54001533d4c9288275204cf675, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  rb: {fileID: 5112248307662847513}
-  damageAmount: 20
-  bulletSpeed: 2
-  despawnTimer: 10
-  butterSlowAmount: 0
-  damageInterval: 0
 --- !u!114 &4811466251047507850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,9 +50,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c9c2aca10b35d45acc1519700eb873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  splitDistance: 10
-  splitBulletPrefab: {fileID: 2461093298853194389}
+  viewAngle: 0
+  model: {fileID: 0}
+  agent: {fileID: 0}
+  headPosition: {fileID: 0}
+  shootPosition: {fileID: 0}
+  bullet: {fileID: 0}
+  firerate: 0
+  rotateSpeed: 0
+  maxBurstAmount: 0
+  timeBetweenShots: 0
+  travelDistance: 10
+  travelSpeed: 20
+  HP: 0
+  enemyPrefab: {fileID: 0}
+  maxRespawns: 0
+  minHPSize: 0
+  maxHPSize: 0
+  renderDistance: 0
+  enemyHp: {fileID: 0}
+  isImgOn: 0
 --- !u!54 &5112248307662847513
 Rigidbody:
   m_ObjectHideFlags: 0
