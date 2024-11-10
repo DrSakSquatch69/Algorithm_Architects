@@ -1807,6 +1807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strawberry
       objectReference: {fileID: 0}
+    - target: {fileID: 5801828451794537794, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3840383602836954559, guid: 5e2c42fc3ea2ae045ab54857df047938, type: 3}
     - target: {fileID: 5987521361626558375, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
       propertyPath: m_AutoBraking
       value: 1
@@ -1868,6 +1872,10 @@ PrefabInstance:
       propertyPath: damageAmount
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 984632885498202228, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300004, guid: b69b26c8b73b8bd49bf243bbe541a2e0, type: 3}
     - target: {fileID: 1475851221479137544, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
       propertyPath: playerCamera
       value: 
@@ -1930,7 +1938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498436370840992913, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1959,8 +1967,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4072220555173883778, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7072437828079975302, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3339082285309697363, guid: b0b7f9e021488cd4babc040a9193b0e5, type: 3}
     - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25
@@ -2033,6 +2045,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2854314808611738697, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
+      propertyPath: damageAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854314808611738697, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
+      propertyPath: maxBurstAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211283152446266822, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3216447080179446721, guid: 1922faa967875d5408fcd6048351a339, type: 3}
     - target: {fileID: 7743717119313380277, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.859581
@@ -2073,7 +2097,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7325247871253736179, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
