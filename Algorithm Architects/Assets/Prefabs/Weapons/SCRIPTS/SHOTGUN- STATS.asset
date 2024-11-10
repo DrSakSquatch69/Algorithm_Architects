@@ -17,8 +17,9 @@ MonoBehaviour:
   shootRate: 1
   shootDist: 20
   magSize: 8
-  ammoremaining: 2500
+  ammoremaining: 32
   ammo: 8
   isMelee: 0
+  placement: {x: 0, y: 0, z: 0}
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   shootSound: {fileID: 8300000, guid: c67dde6d9477eca49b3c12d115376765, type: 3}

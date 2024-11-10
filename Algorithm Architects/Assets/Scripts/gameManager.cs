@@ -48,6 +48,7 @@ public class gameManager : MonoBehaviour
 
     float timeScaleOrig;                                                    // original timeScale
     GameObject player;                                                     //player object so we can access our player through the game manager
+    GameObject daikonKing;
     float playerSpeed;
     float originalPlayerSpeed;
     float alpha; //Transparency for tomato
@@ -72,6 +73,7 @@ public class gameManager : MonoBehaviour
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
     public GameObject getPlayer() { return player; }                        // getter for player to use in DamageReciever Class
+    public GameObject getDaikonKing() { return daikonKing; }
     public bool getIsButtered() { return IsButtered; }
     public float getPlayerSpeed() { return playerSpeed; }
     public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
@@ -107,6 +109,7 @@ public class gameManager : MonoBehaviour
         }
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location 
+        daikonKing = GameObject.FindWithTag("DaikonKing");
         tomatoSplat.color = new Color(0, 0, 0, 0);
         soundManager = player.GetComponent<PlayerSoundManager>();
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number

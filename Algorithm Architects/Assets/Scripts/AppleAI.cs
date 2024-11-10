@@ -57,18 +57,18 @@ public class AppleAI : MonoBehaviour, IDamage
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
-        enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
-        enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
+     //   enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
+    //    enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
-        updateEnemyUI();
+       // updateEnemyUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateEnemyUI();
+      //  updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
@@ -106,7 +106,7 @@ public class AppleAI : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         HP -= amount;
-        updateEnemyUI();
+       // updateEnemyUI();
 
         StartCoroutine(flashColor());
 

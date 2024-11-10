@@ -67,8 +67,8 @@ MonoBehaviour:
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 35
-  enemyHp: {fileID: 68555201449730135}
-  isImgOn: 0
+  enemyHpBar: {fileID: 0}
+  isSliderOn: 0
 --- !u!33 &3096220300673528646
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -135,12 +135,12 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: db56cf08d8051074ab52ac44cb2aecb9, type: 3}
+  m_Mesh: {fileID: -1340541719380434750, guid: f58e122f95f9fda4c80da1e95a2f7883, type: 3}
 --- !u!135 &7544705911759752497
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 1296689676424598079}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.001, y: -0.1764, z: 0.476}
+  m_LocalPosition: {x: 0.001, y: -0.1764, z: 0.762}
   m_LocalScale: {x: 0.16982527, y: 0.16982527, z: 0.16982527}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -497,7 +497,7 @@ Transform:
   m_GameObject: {fileID: 8684367293321904783}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003, y: 0.349, z: 0.001}
+  m_LocalPosition: {x: -0.003, y: 0.349, z: 0.61}
   m_LocalScale: {x: 0.16982527, y: 0.16982527, z: 0.16982527}
   m_ConstrainProportionsScale: 0
   m_Children: []

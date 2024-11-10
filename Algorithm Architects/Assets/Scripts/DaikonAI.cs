@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class DaikonAI : MonoBehaviour, IDamage
 {
+    public static DaikonAI instance;
+
     enum damageTypes { bullet, chaser, stationary, butter }
 
     [SerializeField] int viewAngle;
@@ -46,49 +48,43 @@ public class DaikonAI : MonoBehaviour, IDamage
     Image enemyHpBar;
     public bool isImgOn;
 
-    [SerializeField] int healthPerConsume;
-    [SerializeField] int eatRangeAdd;
-    [SerializeField] int maxEatCount;
-    [SerializeField] SphereCollider eatRange;
-    int eatCount;
+    public int daikonCount;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
+        else
+        {
+            Destroy(this);
+        }
+
+
         //stores the original color
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
-        enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
-        enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
+        //enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
+        //enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
-        eatCount = 0;
+        ++daikonCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateEnemyUI();
+        //updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
 
-        if (eatCount != maxEatCount)
-        {
-            
-        }
-
-        else
-        {
-            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
-        }
-
-        if (playerSighted && canSeePlayer())
-        {
-
-        }
+        agent.SetDestination(gameManager.instance.getDaikonKing().transform.position);
     }
     bool canSeePlayer()
     {
@@ -169,17 +165,17 @@ public class DaikonAI : MonoBehaviour, IDamage
 
         if (render.isVisible && dist <= renderDistance)
         {                                                                                             //see if enemy model is on screen
-            enemyHpBar.enabled = true;
+            //enemyHpBar.enabled = true;
             isImgOn = true;
-            enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
-            enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
+            //enemyHpBar.fillAmount = (float)HP / hpOrig;                                                                     //update enemy hp bar fill amount
+            // enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);                          //transform from screen space to world space, and always face the screen
             dist = 1 / dist * 10f;
             dist = Mathf.Clamp(dist, minHPSize, maxHPSize);                                                                            //set min and max for what dist can be
-            enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
+            //enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);                                        //set scale based on distance
         }
         else
         {
-            enemyHpBar.enabled = false;                                                                         //turn off health bar if enemy is not on screen
+            //enemyHpBar.enabled = false;                                                                         //turn off health bar if enemy is not on screen
             isImgOn = false;
         }
     }
@@ -205,9 +201,10 @@ public class DaikonAI : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("DaikonKing"))
         {
-            playerSighted = true;
+            //playerSighted = true;
+            Destroy(gameObject);
         }
     }
 
