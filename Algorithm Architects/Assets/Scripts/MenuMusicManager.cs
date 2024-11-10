@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class MenuMusicManager : MonoBehaviour
@@ -9,7 +10,7 @@ public class MenuMusicManager : MonoBehaviour
 
     [SerializeField] public AudioSource PlayButtonClick;
     [SerializeField] public AudioClip playButtonClip;
-    
+
     [SerializeField] public AudioSource QuitButtonClick;
     [SerializeField] List<AudioClip> QuitQuips;
     public AudioClip curQuitQuip;
@@ -67,33 +68,14 @@ public class MenuMusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void StopAmbientSound()
     {
         Ambient.Stop();
     }
-    public void PlayButtonSound()
-    {
-        if (!PlayButtonClick.isPlaying) { PlayButtonClick.Play(); }
-    }
-    public void QuitButtonSound()
-    {
-        int randomIndex = Random.Range(0, QuitQuips.Count - 1);
-        QuitButtonClick.clip = QuitQuips[randomIndex];
-        curQuitQuip = QuitQuips[randomIndex];
-        QuitButtonClick.Play();
-    }
 
-    public void PlayWinRestart()
-    {
-        if(!WinRestart.isPlaying) { WinRestart.Play(); }
-    }
 
-    public void PlayWinMainMenu()
-    {
-        if(!WinMMBtn.isPlaying) { WinMMBtn.Play(); }   
-    }
 
     public void PlaySettings()
     {
@@ -105,23 +87,12 @@ public class MenuMusicManager : MonoBehaviour
         if (!NextLevMenuUp.isPlaying) { NextLevMenuUp.Play(); }
     }
 
-    public void PlayLoseRestart()
-    {
-        if (!LoseRestart.isPlaying) { LoseRestart.Play(); }
-    }
 
     public void PlayFinWin()
     {
         if (!FinalWin.isPlaying) { FinalWin.Play(); }
     }
 
-    public void PlayResume()
-    {
-        int randomIndex = Random.Range(0, ResumeClips.Count - 1);
-        ResumeButtons.clip = ResumeClips[randomIndex];
-        curResumeClip = ResumeClips[randomIndex];
-        ResumeButtons.Play();
-    }
 
     public void PlayPauseUp()
     {
@@ -131,13 +102,6 @@ public class MenuMusicManager : MonoBehaviour
         OnPauseButton.Play();
     }
 
-    public void PlayNextLevel()
-    {
-        int randomIndex = Random.Range(0, NextLevelClips.Count-1);
-        NextLevelButton.clip = NextLevelClips[randomIndex];
-        curNextLevelClip = NextLevelClips[randomIndex];
-        NextLevelButton.Play();
-    }
 
     public void PlayLoseUp()
     {
@@ -145,5 +109,42 @@ public class MenuMusicManager : MonoBehaviour
         LoseMenuUp.clip = LoseMenuUpClips[randomIndex];
         curLoseUpClip = LoseMenuUpClips[randomIndex];
         LoseMenuUp.Play();
+    }
+    public void PlayWinMainMenu()
+    {
+        WinMMBtn.Play();
+    }
+    public void PlayLoseRestart()
+    {
+        LoseRestart.Play();
+    }
+
+    public void PlayButtonSound()
+    {
+        PlayButtonClick.Play();
+    }
+
+    public void PlayNextLevel()
+    {
+        int randomIndex = Random.Range(0, NextLevelClips.Count - 1);
+        NextLevelButton.clip = NextLevelClips[randomIndex];
+        NextLevelButton.Play();
+    }
+    public void QuitButtonSound()
+    {
+        int randomIndex = Random.Range(0, QuitQuips.Count - 1);
+        QuitButtonClick.clip = QuitQuips[randomIndex];
+        QuitButtonClick.Play();
+    }
+    public void PlayWinRestart()
+    {
+        WinRestart.Play();
+        
+    }
+    public void PlayResume()
+    {
+        int randomIndex = Random.Range(0, ResumeClips.Count - 1);
+        ResumeButtons.clip = ResumeClips[randomIndex];
+        ResumeButtons.Play();
     }
 }
