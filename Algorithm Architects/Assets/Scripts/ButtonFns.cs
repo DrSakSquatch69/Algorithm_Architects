@@ -17,7 +17,7 @@ public class ButtonFns : MonoBehaviour
     [SerializeField] AudioMixer SFXMixer;
     [SerializeField] Slider SFXSliderSlide;
     [SerializeField] Slider MusicSliderSlide;
-
+    [SerializeField] MenuMusicManager mMusicManager;
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex != 1)
@@ -52,13 +52,20 @@ public class ButtonFns : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
         resume(); // unpause
     }
-    public void quit() // quit Fn
+    IEnumerator QuitQuip()
     {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.QuitButtonSound();
+        yield return new WaitForSeconds(mMusicManager.getQuitButtonLength());
 #if UNITY_EDITOR //C sharp if statement
         UnityEditor.EditorApplication.isPlaying = false; // if in the editor we need to access the editor application and quit the game through here
 #else
         Application.Quit(); //if not in editor just quit application
 #endif
+    }
+    public void quit() // quit Fn
+    {
+        StartCoroutine(QuitQuip());
     }
 
     public void settings() //Tells gameManager the settings menu is up and brings the menu up
@@ -100,9 +107,16 @@ public class ButtonFns : MonoBehaviour
         resume();
     }
 
+    IEnumerator PlayButton()
+    {
+        mMusicManager.StopAmbientSound();
+        mMusicManager.PlayButtonSound();
+        yield return new WaitForSeconds(mMusicManager.getPlayButtonLength());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(PlayButton());
     }
 
     public void PlayTutorial() //goes to the tutorial
