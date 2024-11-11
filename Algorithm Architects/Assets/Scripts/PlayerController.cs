@@ -148,6 +148,10 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.setPlayerSpeed(speed);
         gameManager.instance.setSound(audioSource);
 
+        if (gunList.Count != 0)
+        {
+            changeGun();
+        }
 
         updatePlayerUI();
         isSpawnProtection = true;
@@ -664,6 +668,13 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             gameManager.instance.turnOnOffAmmoText.SetActive(false);
             gameManager.instance.turnOnOffAmmoText2.SetActive(false);
+            gameManager.instance.turnOnOffAmmoText3.SetActive(false);
+        }else if (gunList.Count == 1)
+        {
+            gameManager.instance.turnOnOffAmmoText2.SetActive(false);
+            gameManager.instance.turnOnOffAmmoText3.SetActive(false);
+        }else if(gunList.Count == 2)
+        {
             gameManager.instance.turnOnOffAmmoText3.SetActive(false);
         }
 
