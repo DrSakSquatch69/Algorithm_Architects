@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class damage : MonoBehaviour
 {
+    public static damage instance;
     //
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
     public int damageAmount;
-    [SerializeField] int bulletSpeed;
+    [SerializeField] public int bulletSpeed;
     [SerializeField] int despawnTimer;
     [SerializeField] float butterSlowAmount;
     [SerializeField] float damageInterval;
@@ -24,6 +25,16 @@ public class damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
+        else
+        {
+            Destroy(this);
+        }
+
         if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage)
         {
             //rb.velocity = transform.forward * bulletSpeed;

@@ -33,7 +33,7 @@ public class ButtonFns : MonoBehaviour
             }
             else
             {
-                Debug.Log("Went through else statement");
+                //Debug.Log("Went through else statement");
                 sensSlider.value = 800;
                 MainManager.Instance.SetSensitivity(sensSlider.value);
                 SFXSliderSlide.value = 1;

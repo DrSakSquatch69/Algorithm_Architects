@@ -203,8 +203,9 @@ public class DaikonAI : MonoBehaviour, IDamage
     {
         if (other.CompareTag("DaikonKing"))
         {
+            //Debug.Log("Trigger Check");
             //playerSighted = true;
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

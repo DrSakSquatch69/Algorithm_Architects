@@ -49,7 +49,7 @@ public class DaikonKing : MonoBehaviour, IDamage
     [SerializeField] int damagerPerConsume;
     [SerializeField] float fireratePerConsume;
     [SerializeField] int consumeCap;
-    [SerializeField] SphereCollider range;
+    [SerializeField] GameObject daikonToEat;
     int eatCount;
 
 
@@ -197,16 +197,21 @@ public class DaikonKing : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Daikon"))
         {
-            playerSighted = true;
-        }
-
-        if (other.CompareTag("Daikon"))
-        {
-            HP += healthPerConsume;
-            firerate += fireratePerConsume;
-
+            if(other.CompareTag("Player"))
+            {
+                playerSighted = true;
+            }
+           
+            if (other.CompareTag("Daikon"))
+            {
+                Debug.Log("Trigger Check");
+                Destroy(other.gameObject);
+                HP += healthPerConsume;
+                firerate += fireratePerConsume;
+                damage.instance.damageAmount += damagerPerConsume;
+            }
         }
     }
 
