@@ -200,6 +200,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
+        Debug.Log("Shooting bullet: " + bullet.name);
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(firerate);
         isShooting = false;
