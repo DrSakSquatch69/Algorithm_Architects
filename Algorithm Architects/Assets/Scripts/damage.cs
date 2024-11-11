@@ -12,6 +12,7 @@ public class damage : MonoBehaviour
     [SerializeField] Rigidbody rb;
 
     public int damageAmount;
+    [SerializeField] public int kingDamageAmount;
     [SerializeField] public int bulletSpeed;
     [SerializeField] int despawnTimer;
     [SerializeField] float butterSlowAmount;
@@ -25,7 +26,7 @@ public class damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -35,7 +36,7 @@ public class damage : MonoBehaviour
             Destroy(this);
         }
 
-        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage)
+        if (type == damageType.bullet || type == damageType.butter || type == damageType.bouncing || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage || type == damageType.king)
         {
             //rb.velocity = transform.forward * bulletSpeed;
             rb.velocity = (gameManager.instance.getPlayer().transform.position - transform.position) * bulletSpeed;
@@ -61,7 +62,15 @@ public class damage : MonoBehaviour
 
         if (dmg != null && type != damageType.stationary && !other.CompareTag("Enemy"))
         {
-            dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
+            if (type == damageType.bullet)
+            {
+                dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
+            }
+
+            if(type == damageType.king)
+            {
+                dmg.takeDamage(kingDamageAmount, -(transform.position - other.transform.position).normalized * (kingDamageAmount / 2), type);
+            }
 
             if (type == damageType.butter)
             {
@@ -80,14 +89,14 @@ public class damage : MonoBehaviour
                 gameManager.instance.playerScript.DoT();
             }
 
-            if(type == damageType.tomato)
+            if (type == damageType.tomato)
             {
                 gameManager.instance.setIsTomatoed(true);
 
                 gameManager.instance.TomatoSplat();
             }
 
-            if(type == damageType.cabbage)
+            if (type == damageType.cabbage)
             {
                 gameManager.instance.setIsCabbaged(true);
 

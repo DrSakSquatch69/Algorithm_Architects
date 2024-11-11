@@ -71,6 +71,8 @@ public class gameManager : MonoBehaviour
     IEnumerator tomatoTrack;
     AudioSource playerAudioSource;
 
+    int daikonCount;
+
     //GETTERS
     public bool getIsPaused() { return isPaused; }                         //getter for our is paused bool
     public GameObject getPlayer() { return player; }                        // getter for player to use in DamageReciever Class
@@ -85,6 +87,7 @@ public class gameManager : MonoBehaviour
     public bool getIsTomatoed() { return isTomatoed; }
     public bool getIsCabbaged() { return isCabbaged; }
     public PlayerSoundManager GetSoundManager() { return soundManager; }
+    public int getDaikonCount() { return daikonCount; }
 
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
@@ -99,6 +102,7 @@ public class gameManager : MonoBehaviour
     public void setIsCabbaged(bool cabbage) { isCabbaged = cabbage; }
     public void setCurrWave(int wave) { currWave = wave; }
     public void setLastWave(bool isLastWave) { lastWave = isLastWave; }
+    public void setDaikonCount(int daikon) { daikonCount = daikon; }
 
     void Awake()                                                            //awake always happens first  
     {
@@ -115,6 +119,10 @@ public class gameManager : MonoBehaviour
         daikonKing = GameObject.FindWithTag("DaikonKing");
         tomatoSplat.color = new Color(0, 0, 0, 0);
         soundManager = player.GetComponent<PlayerSoundManager>();
+
+        
+        GameObject[]daikonFind = (GameObject.FindGameObjectsWithTag("Daikon"));
+        daikonCount = daikonFind.Length;
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
        // if (postProcessingVolume.profile.TryGet(out depthOfFieldEffect))

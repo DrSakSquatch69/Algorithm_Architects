@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 public class DaikonAI : MonoBehaviour, IDamage
 {
-    public static DaikonAI instance;
+    //public static DaikonAI instance;
 
     enum damageTypes { bullet, chaser, stationary, butter }
 
-    [SerializeField] int viewAngle;
-    float angleToPlayer;
+    //[SerializeField] int viewAngle;
+    //float angleToPlayer;
 
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -47,21 +47,21 @@ public class DaikonAI : MonoBehaviour, IDamage
     [SerializeField] Slider enemyHpBar;
     public bool isSliderOn;
 
-    public int daikonCount;
-
+    //public int daikonCount;
+    //List<NavMeshAgent> daikonAgents = new List<NavMeshAgent>();
 
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //}
 
-        else
-        {
-            Destroy(this);
-        }
+        //else
+        //{
+        //    Destroy(this);
+        //}
 
 
         //stores the original color
@@ -72,7 +72,6 @@ public class DaikonAI : MonoBehaviour, IDamage
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
-        ++daikonCount;
     }
 
     // Update is called once per frame
@@ -81,30 +80,32 @@ public class DaikonAI : MonoBehaviour, IDamage
         //updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
 
-        agent.SetDestination(gameManager.instance.getDaikonKing().transform.position);
+      
+            agent.SetDestination(gameManager.instance.getDaikonKing().transform.position);
+      
     }
     bool canSeePlayer()
     {
         playerDirection = gameManager.instance.getPlayer().transform.position - headPosition.position;
-        angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+        //angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
         Debug.DrawRay(headPosition.position, playerDirection);
 
         RaycastHit hit;
         if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000, ~ignoreMask))
         {
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            // if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            // {
+            if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    faceTarget();
-                }
-
-                if (!isShooting)
-                {
-                    StartCoroutine(Shoot());
-                }
-                return true;
+                faceTarget();
             }
+
+            if (!isShooting)
+            {
+                StartCoroutine(Shoot());
+            }
+            return true;
+            //}
         }
         return false;
     }

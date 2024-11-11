@@ -49,7 +49,6 @@ public class DaikonKing : MonoBehaviour, IDamage
     [SerializeField] int damagerPerConsume;
     [SerializeField] float fireratePerConsume;
     [SerializeField] int consumeCap;
-    [SerializeField] GameObject daikonToEat;
     int eatCount;
 
 
@@ -72,7 +71,7 @@ public class DaikonKing : MonoBehaviour, IDamage
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         updateEnemyUI();
 
-        if (DaikonAI.instance.daikonCount <= 0)
+        if (gameManager.instance.getDaikonCount() <= 0)
         {
             agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
@@ -110,7 +109,7 @@ public class DaikonKing : MonoBehaviour, IDamage
 
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
-        if (DaikonAI.instance.daikonCount <= 0)
+        if (gameManager.instance.getDaikonCount() <= 0)
         {
             HP -= amount;
             updateEnemyUI();
@@ -203,14 +202,14 @@ public class DaikonKing : MonoBehaviour, IDamage
             playerSighted = true;
         }
 
-        if (other.CompareTag("Daikon"))
+        if (other.CompareTag("Daikon") && eatCount < consumeCap)
         {
-            Debug.Log("Trigger Check");
+            ++eatCount;
             Destroy(other.gameObject);
             HP += healthPerConsume;
             firerate += fireratePerConsume;
-            //damage.instance.damageAmount += damagerPerConsume;
-            bullet.GetComponent<damage>().damageAmount += damagerPerConsume;
+            bullet.GetComponent<damage>().kingDamageAmount += damagerPerConsume;
+            gameManager.instance.setDaikonCount(gameManager.instance.getDaikonCount() - 1);
         }
 
     }

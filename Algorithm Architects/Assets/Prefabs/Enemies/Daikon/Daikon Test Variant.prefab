@@ -149,6 +149,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5827208219828423410, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269271504688115646, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5915613
@@ -201,6 +205,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5547908730902899622, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1830886608848430856}
+    - targetCorrespondingSourceObject: {fileID: 5547908730902899622, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5413809635698126212}
   m_SourcePrefab: {fileID: 100100000, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
 --- !u!1 &4198024642532371893 stripped
 GameObject:
@@ -219,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f4c700eaf2a7548bc892ea37c95a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 45
   model: {fileID: 4417991640723930136}
   agent: {fileID: 4642195116947381822}
   headPosition: {fileID: 5672541068409961000}
@@ -228,14 +234,40 @@ MonoBehaviour:
   firerate: 1
   rotateSpeed: 32
   HP: 100
-  enemyPrefab: {fileID: 4498683362734329830, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
+  enemyPrefab: {fileID: 5247476546327169525}
   maxRespawns: 0
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 35
   enemyHpBar: {fileID: 5862737664882730756}
   isSliderOn: 0
-  daikonCount: 0
+--- !u!54 &5413809635698126212
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198024642532371893}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!23 &4417991640723930136 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5472888733546428939, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
@@ -244,6 +276,11 @@ MeshRenderer:
 --- !u!195 &4642195116947381822 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 3949695829296060461, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
+  m_PrefabInstance: {fileID: 8555784530306991635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5247476546327169525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4498683362734329830, guid: 6e8faa239ebaf8748a3225a9b0c176a7, type: 3}
   m_PrefabInstance: {fileID: 8555784530306991635}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5672541068409961000 stripped
