@@ -15,7 +15,6 @@ public class gameManager : MonoBehaviour
     PlayerSoundManager soundManager;
     [SerializeField] MenuMusicManager menuMusicManager;
     public static gameManager instance;                                     //how we will access game manager
-                                                                            // Start is called before the first frame update
     [SerializeField] GameObject menuActive, menuPause, menuSettings, menuWin, menuLose, menuNextLevel, hitMarker, screenFlash, reloading, noAmmo;
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
@@ -45,6 +44,8 @@ public class gameManager : MonoBehaviour
     private bool isBlurred;
 
     [SerializeField] bool isFinalLevel;
+    int currWave;
+    bool lastWave = true;
 
     float timeScaleOrig;                                                    // original timeScale
     GameObject player;                                                     //player object so we can access our player through the game manager
@@ -96,6 +97,8 @@ public class gameManager : MonoBehaviour
     public void setIsOnFire(bool fire) { isOnFire = fire; }
     public void setIsTomatoed(bool tomato) { isTomatoed = tomato; }
     public void setIsCabbaged(bool cabbage) { isCabbaged = cabbage; }
+    public void setCurrWave(int wave) { currWave = wave; }
+    public void setLastWave(bool isLastWave) { lastWave = isLastWave; }
 
     void Awake()                                                            //awake always happens first  
     {
@@ -198,14 +201,14 @@ public class gameManager : MonoBehaviour
         if (enemyCount <= 0)
         {
 
-            if (isFinalLevel)
+            if (isFinalLevel && lastWave)
             {
                 MenuMusicManager.Instance.PlayFinWin();
                 statePause();
                 menuActive = menuWin;
                 menuActive.SetActive(isPaused);
             }
-            else
+            else if (!isFinalLevel && lastWave)
             {
                 PlayerSoundManager.Instance.PlayWinningSound();
                 statePause();
@@ -306,7 +309,7 @@ public class gameManager : MonoBehaviour
 
     public int GetEnemyCountCurrent()
     {
-        return enemyCountForCurrentLevel;
+        return enemyCount;
     }
 
     public void TomatoSplat()
