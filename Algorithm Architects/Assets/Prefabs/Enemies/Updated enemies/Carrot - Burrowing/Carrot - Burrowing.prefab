@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1292608752214208085}
   m_Layer: 7
   m_Name: Carrot - Burrowing
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   maxHPSize: 1
   renderDistance: 35
   enemyHpBar: {fileID: 8706835330288407830}
+  isSliderOn: 0
 --- !u!114 &778521701438829155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,8 +103,8 @@ MonoBehaviour:
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 35
-  enemyHp: {fileID: 0}
-  isImgOn: 0
+  enemyHpBar: {fileID: 0}
+  isSliderOn: 0
 --- !u!195 &7774580484510731702
 NavMeshAgent:
   m_ObjectHideFlags: 0

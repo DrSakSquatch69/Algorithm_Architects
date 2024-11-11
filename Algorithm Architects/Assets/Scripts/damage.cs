@@ -59,7 +59,7 @@ public class damage : MonoBehaviour
 
         dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null && type != damageType.stationary)
+        if (dmg != null && type != damageType.stationary && !other.CompareTag("Enemy"))
         {
             dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
 
