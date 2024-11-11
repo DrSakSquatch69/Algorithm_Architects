@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba02aa19c1cb0d94e813de63a50443cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewAngle: 0
   model: {fileID: 8687565140067641564}
   agent: {fileID: 6433048275713136076}
   headPosition: {fileID: 1254169219541499536}
@@ -229,6 +230,11 @@ MonoBehaviour:
   HP: 50
   enemyPrefab: {fileID: 5261893305261296824}
   maxRespawns: 0
+  minHPSize: 0
+  maxHPSize: 0
+  renderDistance: 0
+  enemyHpBar: {fileID: 0}
+  isSliderOn: 0
 --- !u!195 &6433048275713136076
 NavMeshAgent:
   m_ObjectHideFlags: 0
