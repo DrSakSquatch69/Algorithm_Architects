@@ -44,17 +44,14 @@ public class StrawberryAI : MonoBehaviour
 
     int currentRespawnCount = 1;
 
-    public Image enemyHp;
-    Image enemyHpBar;
-    public bool isImgOn;
+    [SerializeField] Slider enemyHpBar;
+    public bool isSliderOn;
 
     void Start()
     {
         colorOrig = model.material.color;
         hpOrig = HP;
         render = GetComponent<Renderer>();
-        //enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
-        //enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
@@ -133,22 +130,19 @@ public class StrawberryAI : MonoBehaviour
 
     public void updateEnemyUI()
     {
-        float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
+        float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
-        if (render.isVisible && dist <= renderDistance)
+        if (dist <= renderDistance)
         {
-            enemyHpBar.enabled = true;
-            isImgOn = true;
-            enemyHpBar.fillAmount = (float)HP / hpOrig;
-            enemyHpBar.transform.position = Camera.main.WorldToScreenPoint(headPosition.position);
-            dist = 1 / dist * 10f;
-            dist = Mathf.Clamp(dist, minHPSize, maxHPSize);
-            enemyHpBar.transform.localScale = new Vector3(dist, dist, 0);
+            enemyHpBar.gameObject.SetActive(true);
+            enemyHpBar.value = (float)HP / hpOrig;
+            enemyHpBar.transform.rotation = Camera.main.transform.rotation;
+            isSliderOn = true;
         }
         else
         {
-            enemyHpBar.enabled = false;
-            isImgOn = false;
+            enemyHpBar.gameObject.SetActive(false);
+            isSliderOn = false;
         }
     }
 

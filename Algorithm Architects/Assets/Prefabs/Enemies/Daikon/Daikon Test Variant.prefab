@@ -105,6 +105,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
+--- !u!114 &5862737664882730756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 399269908023412856, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
+  m_PrefabInstance: {fileID: 6113316560894324604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8648901396871690009 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
@@ -222,8 +233,8 @@ MonoBehaviour:
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 35
-  enemyHp: {fileID: 0}
-  isImgOn: 0
+  enemyHpBar: {fileID: 5862737664882730756}
+  isSliderOn: 0
   daikonCount: 0
 --- !u!23 &4417991640723930136 stripped
 MeshRenderer:

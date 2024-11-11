@@ -70,6 +70,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7836066063821625369, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
   m_PrefabInstance: {fileID: 8564269428162411176}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2848180914032795052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5862737664882730756, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+  m_PrefabInstance: {fileID: 8564269428162411176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &3942345629462176918 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 4642195116947381822, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
@@ -116,11 +127,10 @@ MonoBehaviour:
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 32
-  enemyHpBar: {fileID: 0}
+  enemyHpBar: {fileID: 2848180914032795052}
   isSliderOn: 0
   healthPerConsume: 0
   damagerPerConsume: 0
   fireratePerConsume: 0
   consumeCap: 0
-  range: {fileID: 0}
   daikonToEat: {fileID: 0}
