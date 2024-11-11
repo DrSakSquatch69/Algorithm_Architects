@@ -197,22 +197,22 @@ public class DaikonKing : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Daikon"))
+
+        if (other.CompareTag("Player"))
         {
-            if(other.CompareTag("Player"))
-            {
-                playerSighted = true;
-            }
-           
-            if (other.CompareTag("Daikon"))
-            {
-                Debug.Log("Trigger Check");
-                Destroy(other.gameObject);
-                HP += healthPerConsume;
-                firerate += fireratePerConsume;
-                damage.instance.damageAmount += damagerPerConsume;
-            }
+            playerSighted = true;
         }
+
+        if (other.CompareTag("Daikon"))
+        {
+            Debug.Log("Trigger Check");
+            Destroy(other.gameObject);
+            HP += healthPerConsume;
+            firerate += fireratePerConsume;
+            //damage.instance.damageAmount += damagerPerConsume;
+            bullet.GetComponent<damage>().damageAmount += damagerPerConsume;
+        }
+
     }
 
     void OnTriggerExit(Collider other)
