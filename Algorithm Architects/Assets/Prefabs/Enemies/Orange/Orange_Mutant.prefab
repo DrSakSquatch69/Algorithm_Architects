@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1595809767812747459}
   - component: {fileID: 7864090293161687986}
   - component: {fileID: 631384478222904517}
-  m_Layer: 17
+  m_Layer: 7
   m_Name: Weak spot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 55764550098374117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.093, y: 0.538, z: -0.112}
+  m_LocalPosition: {x: 0.093, y: 0.542, z: -0.107}
   m_LocalScale: {x: 1.5138302, y: 0.11504001, z: 1.3880067}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4754521924055635995}
   - component: {fileID: 3805330565164984663}
   - component: {fileID: 6294523850768124583}
-  m_Layer: 17
+  m_Layer: 7
   m_Name: Weak spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 1138955688602594041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.013, y: 0.525, z: 0.098}
+  m_LocalPosition: {x: 0.013, y: 0.537, z: 0.098}
   m_LocalScale: {x: 1.5138302, y: 0.11504, z: 1.3880066}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1897
+  m_VersionIndex: 1909
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 2471605018435854158}
   - component: {fileID: 7638705885489146433}
   - component: {fileID: 5003750276268525778}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Btm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1897
+  m_VersionIndex: 1909
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1897
+  m_VersionIndex: 1909
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1316,8 +1316,7 @@ GameObject:
   - component: {fileID: 5572574980105749154}
   - component: {fileID: 8683875562101568026}
   - component: {fileID: 7741607436851548911}
-  - component: {fileID: 1367084293719931147}
-  m_Layer: 17
+  m_Layer: 7
   m_Name: Orange_Mutant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1359,12 +1358,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orangeAnimator: {fileID: 8683875562101568026}
-  model: {fileID: 5572574980105749154}
+  Body:
+  - {fileID: 7638705885489146433}
+  - {fileID: 682140449398319745}
   headPosition: {fileID: 6662680116678030168}
   shootPosition: {fileID: 5016685592786315896}
   bullet: {fileID: 8886995009437855015, guid: 6169b298dad9c114bbc9ce1ea7bebe00, type: 3}
   firerate: 2
   distancePlayerIsSeen: 61
+  distanceOrangeCloses: 10
   HP: 200
   enemyPrefab: {fileID: 3634760117275985707}
   maxRespawns: 0
@@ -1458,27 +1460,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!135 &1367084293719931147
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3634760117275985707}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: -0.4, y: 0, z: -0.6}
 --- !u!1 &3695523214533157492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,7 +1620,7 @@ GameObject:
   - component: {fileID: 5194495515143671310}
   - component: {fileID: 682140449398319745}
   - component: {fileID: 1825136183472606570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1951,7 +1932,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1897
+  m_VersionIndex: 1909
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2443,7 +2424,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1897
+  m_VersionIndex: 1909
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
