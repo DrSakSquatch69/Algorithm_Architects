@@ -12,6 +12,7 @@ public class damage : MonoBehaviour
     [SerializeField] Rigidbody rb;
 
     public int damageAmount;
+    [SerializeField] int kingDamageAmountOriginal;
     [SerializeField] public int kingDamageAmount;
     [SerializeField] public int bulletSpeed;
     [SerializeField] int despawnTimer;
@@ -49,6 +50,7 @@ public class damage : MonoBehaviour
         }
 
         playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
+        kingDamageAmount = kingDamageAmountOriginal;
     }
 
     private void OnTriggerEnter(Collider other)

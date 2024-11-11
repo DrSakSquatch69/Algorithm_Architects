@@ -60,7 +60,6 @@ public class DaikonKing : MonoBehaviour, IDamage
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
         gameManager.instance.updateGameGoal(1);
-
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
     }
@@ -70,15 +69,15 @@ public class DaikonKing : MonoBehaviour, IDamage
     {
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         updateEnemyUI();
+        if (playerSighted && canSeePlayer())
+        {
+
+        }
 
         if (gameManager.instance.getDaikonCount() <= 0)
         {
             agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
-            if (playerSighted && canSeePlayer())
-            {
-
-            }
         }
     }
     bool canSeePlayer()
@@ -210,6 +209,7 @@ public class DaikonKing : MonoBehaviour, IDamage
             firerate += fireratePerConsume;
             bullet.GetComponent<damage>().kingDamageAmount += damagerPerConsume;
             gameManager.instance.setDaikonCount(gameManager.instance.getDaikonCount() - 1);
+            gameManager.instance.updateGameGoal(-1);
         }
 
     }

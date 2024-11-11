@@ -120,6 +120,7 @@ public class DaikonAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
+            gameManager.instance.setDaikonCount(gameManager.instance.getDaikonCount() - 1);
             // --activeEnemiesAI;
             // gameManager.instance.ActiveCheck(activeEnemiesAI);
 

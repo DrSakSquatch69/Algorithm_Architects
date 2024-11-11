@@ -268,6 +268,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1961928402167110324, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961928402167110324, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765816773606837473, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5247476546327169525, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
       propertyPath: m_Name
       value: Daikon Test Variant (1)
@@ -275,6 +287,14 @@ PrefabInstance:
     - target: {fileID: 5247476546327169525, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1170,6 +1190,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1822,6 +1850,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2335,13 +2371,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2765816773606837473, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765816773606837473, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5247476546327169525, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
       propertyPath: m_Name
       value: Daikon Test
       objectReference: {fileID: 0}
-    - target: {fileID: 5247476546327169525, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413809635698126212, guid: 91b3f3761f9437e41b95f662c617d3f0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
