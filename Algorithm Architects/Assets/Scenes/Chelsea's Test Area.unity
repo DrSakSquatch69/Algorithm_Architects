@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 288914104}
   - component: {fileID: 288914103}
   m_Layer: 0
-  m_Name: spawnPoint
+  m_Name: Wave Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,6 +545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df65ecd6ec158f4cb2ae753c51a7c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currWave: 0
+  maxWaves: 0
   waves:
   - enemies:
     - {fileID: 384208684937261245, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
@@ -553,6 +555,7 @@ MonoBehaviour:
   - enemies:
     - {fileID: 384208684937261245, guid: 858be28a3b05c0041b2c5077dbdcae38, type: 3}
     nextEnemyTime: 0
+  countdown: 0
 --- !u!4 &288914104
 Transform:
   m_ObjectHideFlags: 0
