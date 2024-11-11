@@ -2681,7 +2681,8 @@ MonoBehaviour:
   shootRate: 0
   shootDist: 0
   magSize: 0
-  gunList: []
+  gunList:
+  - {fileID: 11400000, guid: 117203c44597a1849ae13c1ecc0bafb7, type: 2}
   gunModel: {fileID: 6864910688649998608}
   meleeModel: {fileID: 1635955300408653840}
   muzzleFlash: {fileID: 8863939425410383027}
@@ -3210,7 +3211,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.0037976138
   m_Center: {x: 0.000000014988473, y: 0.00060890464, z: -0.00021985575}
