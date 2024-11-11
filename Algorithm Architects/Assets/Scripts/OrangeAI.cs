@@ -98,6 +98,7 @@ public class OrangeAI : MonoBehaviour, IDamage
         HP -= amount;
         if(HP <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
