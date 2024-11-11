@@ -11,12 +11,13 @@ public class OrangeAI : MonoBehaviour, IDamage
     enum damageTypes { bullet, chaser, stationary, butter }
 
     [SerializeField] Animator orangeAnimator;
-    [SerializeField] Renderer model;
+    [SerializeField] public List<Renderer> Body;
     [SerializeField] Transform headPosition;
     [SerializeField] Transform shootPosition;
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
     [SerializeField] int distancePlayerIsSeen;
+    [SerializeField] int distanceOrangeCloses;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -38,6 +39,9 @@ public class OrangeAI : MonoBehaviour, IDamage
     bool PlayerTooClose;
     bool isOpen;
     bool isClosed;
+    bool canShoot;
+
+    private OrangeWeakSpot WeakSpotScript;
 
     int currentRespawnCount = 1;
     //int activeEnemiesAI; //Used for tracking the active enemies 
@@ -49,26 +53,16 @@ public class OrangeAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        colorOrig = model.material.color;
+        WeakSpotScript = gameObject.GetComponent<OrangeWeakSpot>();
+        colorOrig = Body[0].material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
+        PlayerDist();
 
-        if(Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position) <= 10)
-        {
-            PlayerTooClose = true;
-            orangeAnimator.SetBool("isClosed", true);
-            orangeAnimator.SetTrigger("Close");
-        }
-        else 
-        { 
-            PlayerTooClose = false;
-            orangeAnimator.SetBool("isOpen", true);
-            orangeAnimator.SetTrigger("Open");
-        }
     }
 
     // Update is called once per frame
@@ -87,15 +81,16 @@ public class OrangeAI : MonoBehaviour, IDamage
     private void PlayerDist()
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
-        if (dist < distancePlayerIsSeen && !PlayerTooClose)
+        if (dist <= distancePlayerIsSeen && dist >= distanceOrangeCloses && canSeePlayer())
         {
-            isOpen = true;
-            isClosed = false;
+            OpenUp();
+            canShoot = true;
+            if (!isShooting) { Shoot(); }
         }
         else
         {
-            isOpen = false;
-            isClosed = true;
+            canShoot = false;
+            CloseUp();
         }
     }
     public void Damage(int amount)
@@ -116,10 +111,7 @@ public class OrangeAI : MonoBehaviour, IDamage
         {
             if (hit.collider.CompareTag("Player"))
             { 
-                    if (!isShooting && isOpen)
-                    {
-                        StartCoroutine(Shoot());
-                    }
+                    
                 return true;
             }
         }
@@ -150,54 +142,62 @@ public class OrangeAI : MonoBehaviour, IDamage
     }
 
     //Sends feedback to the user that they are doing damage
-    IEnumerator flashColor()
-    {
-        model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
-    }
+    
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            PlayerTooClose = true;
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        PlayerTooClose = true;
+    //    }
+    //}
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            PlayerTooClose = false;
-        }
-    }
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        PlayerTooClose = false;
+    //    }
+    //}
 
-    void Animate()
+    void OpenUp()
     {
-        if(isOpen)
+       if(!isOpen)
         {
             orangeAnimator.SetBool("isOpen", true);
-            orangeAnimator.SetBool("isClose", false);
-            orangeAnimator.SetTrigger("Open");
-        }
-        else if(isClosed)
-        {
-            orangeAnimator.SetBool("isOpen", false );
-            orangeAnimator.SetBool("isClose", true );
-            orangeAnimator.SetTrigger("Close");
+            orangeAnimator.SetBool("isClosed", false);
+            isOpen = true;
+            isClosed = false;
         }
     }
-    IEnumerator Shoot()
+
+    void CloseUp()
     {
-        isShooting = true;
-        Instantiate(bullet, shootPosition.position, transform.rotation);
-        yield return new WaitForSeconds(firerate);
-        isShooting = false;
+        if(!isClosed)
+        {
+            orangeAnimator.SetBool("isOpen", false );
+            orangeAnimator.SetBool("isClosed", true );
+            isClosed = true;
+            isOpen = false;
+        }
+    }
+    private void Shoot()
+    {
+        if(canShoot)
+        {
+            StartCoroutine(Shooting());
+        }
     }
     
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
        
+    }
+    IEnumerator Shooting()
+    {
+        isShooting = true;
+        Instantiate(bullet, shootPosition.position, transform.rotation);
+        yield return new WaitForSeconds(firerate);
+        isShooting = false;
     }
 }

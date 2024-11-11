@@ -53,8 +53,8 @@ public class StrawberryAI : MonoBehaviour
         colorOrig = model.material.color;
         hpOrig = HP;
         render = GetComponent<Renderer>();
-        enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
-        enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
+        //enemyHpBar = Instantiate(enemyHp, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
+        //enemyHpBar.transform.SetParent(gameManager.instance.enemyHpParent.transform);
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
