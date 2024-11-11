@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-//
+
 public class SplitBullet : MonoBehaviour
 {
     enum damageTypes { bullet, chaser, stationary, butter, melee, bouncing, fire, tomato, cabbage, toxic, TSplit }
@@ -66,10 +66,23 @@ public class SplitBullet : MonoBehaviour
     void Update()
     {
         updateEnemyUI();
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
-        if (playerSighted && canSeePlayer())
+        // Set the destination to the player's position
+        if (agent != null)
         {
+            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        }
+
+        // Always try to shoot if the player is within a certain distance
+        float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
+        if (distanceToPlayer <= agent.stoppingDistance + 5f) // Adjust the range as needed
+        {
+            faceTarget();
+
+            if (!isShooting)
+            {
+                StartCoroutine(Shoot());
+            }
         }
     }
 

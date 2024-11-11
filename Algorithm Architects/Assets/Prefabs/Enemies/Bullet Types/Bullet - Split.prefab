@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6865427475379387693}
   - component: {fileID: 4546410779565449119}
   - component: {fileID: 8574994569557099384}
-  - component: {fileID: 754697561995043352}
   m_Layer: 8
   m_Name: Bullet - Split
   m_TagString: Untagged
@@ -53,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   rb: {fileID: 5112248307662847513}
-  damageAmount: 0
+  damageAmount: 10
   bulletSpeed: 0
   despawnTimer: 0
   butterSlowAmount: 0
@@ -187,7 +186,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.6
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &8574994569557099384
 TrailRenderer:
@@ -311,24 +310,3 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!135 &754697561995043352
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461093298853194389}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
