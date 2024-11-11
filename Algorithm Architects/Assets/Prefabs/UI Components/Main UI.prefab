@@ -7790,6 +7790,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 442ef6ff18dc11c4b9b6a479e447e56d, type: 3}
   - {fileID: 8300000, guid: dc740904d8ae7df4ab3e6c7dc8772523, type: 3}
   - {fileID: 8300000, guid: 54a2f2b7e10b7114cbf0a913ce17ccfc, type: 3}
+  curQuitQuip: {fileID: 0}
   LoseMenuUp: {fileID: 7935923106544538486}
   LoseMenuUpClips:
   - {fileID: 8300000, guid: 567c012e7c389e64b9459a5fe2bd01da, type: 3}
@@ -7802,6 +7803,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ac1b4c2214bd9454b80a16745c3a9e4b, type: 3}
   - {fileID: 8300000, guid: d14474c6f31ac084499fd7dfa6560254, type: 3}
   - {fileID: 8300000, guid: 404f908289a27b1428425cc23b87d0e9, type: 3}
+  curLoseUpClip: {fileID: 0}
   NextLevelButton: {fileID: 2636347027892433530}
   NextLevelClips:
   - {fileID: 8300000, guid: 150ae90e72642494aabe6f8c33733c61, type: 3}
@@ -7814,6 +7816,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 500b1a6df04e06f438da9a0047599b03, type: 3}
   - {fileID: 8300000, guid: f0b7a4a47b855b64994334d3835e496f, type: 3}
   - {fileID: 8300000, guid: 44df45e2fb647c54d8951dbdb66ceac1, type: 3}
+  curNextLevelClip: {fileID: 0}
   OnPauseButton: {fileID: 7392678685801483809}
   OnPauseQuips:
   - {fileID: 8300000, guid: 8558e93b5806e54418c158b45b03314e, type: 3}
@@ -7823,12 +7826,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c50c17543d92d64fa4dde7df1bd8038, type: 3}
   - {fileID: 8300000, guid: 7a8cc3a4df497994ab584c2f51a0b885, type: 3}
   - {fileID: 8300000, guid: 102d11e8c869cbe4fbf53b9b23f5c586, type: 3}
+  curPauseQuip: {fileID: 0}
   ResumeButtons: {fileID: 3042097696218416381}
   ResumeClips:
   - {fileID: 8300000, guid: b246131d1e259b64893464d1032e154c, type: 3}
   - {fileID: 8300000, guid: 7fb5b95e5c7f9484a8806dc4362c928a, type: 3}
   - {fileID: 8300000, guid: ded112c5930cf9a4da50fe3901f66f11, type: 3}
   - {fileID: 8300000, guid: a964215c91828f840a4ad3406068635f, type: 3}
+  curResumeClip: {fileID: 0}
   FinalWin: {fileID: 4178949631598974691}
   FinalWinClip: {fileID: 8300000, guid: b102801849cedcb479b0ab28b104e713, type: 3}
   LoseRestart: {fileID: 6678383456656118853}
@@ -9840,7 +9845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2662149407098198991
 RectTransform:
   m_ObjectHideFlags: 0
