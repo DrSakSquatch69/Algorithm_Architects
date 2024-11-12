@@ -141,25 +141,6 @@ public class OrangeAI : MonoBehaviour, IDamage
         currentRespawnCount = respawnCount;
     }
 
-    //Sends feedback to the user that they are doing damage
-    
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        PlayerTooClose = true;
-    //    }
-    //}
-
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        PlayerTooClose = false;
-    //    }
-    //}
-
     void OpenUp()
     {
        if(!isOpen)
