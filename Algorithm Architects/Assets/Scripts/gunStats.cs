@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 [CreateAssetMenu]
 //
 public class gunStats : ScriptableObject
@@ -16,7 +17,7 @@ public class gunStats : ScriptableObject
     public int ammoremaining;
     public int ammo;
     public bool isMelee;
-    public RawImage icon;
+    public Texture icon;
     public Vector3 placement;
     //public Vector3 rotation;
 

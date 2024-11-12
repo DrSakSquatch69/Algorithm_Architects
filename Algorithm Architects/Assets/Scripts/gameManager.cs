@@ -19,7 +19,8 @@ public class gameManager : MonoBehaviour
     //[SerializeField] GameObject dialogueBox;                                //Set apart so it can be commented out / turned off
     [SerializeField] TMP_Text enemyCountText;
     public GameObject turnOnOffAmmoText, turnOnOffAmmoText2, turnOnOffAmmoText3, turnOnOffInteract;
-    public GameObject Scroll1, Scroll2, Scroll3;
+    public GameObject Scroll1, Scroll2, Scroll3, icon1, icon2, icon3;
+    public RawImage iconImage1, iconImage2, iconImage3;
     public TMP_Text interact;
     public TMP_Text remainingAmmoText, remainingAmmoText2, remainingAmmoText3;
     [SerializeField] int nextWaveTimer;
