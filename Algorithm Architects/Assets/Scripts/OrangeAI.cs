@@ -81,11 +81,10 @@ public class OrangeAI : MonoBehaviour, IDamage
     private void PlayerDist()
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
-        if (dist <= distancePlayerIsSeen && dist >= distanceOrangeCloses && canSeePlayer())
+        if (dist <= distancePlayerIsSeen && dist >= distanceOrangeCloses)
         {
             OpenUp();
             canShoot = true;
-            if (!isShooting) { Shoot(); }
         }
         else
         {
@@ -112,7 +111,7 @@ public class OrangeAI : MonoBehaviour, IDamage
         {
             if (hit.collider.CompareTag("Player"))
             { 
-                    
+            if (!isShooting) { Shoot(); }
                 return true;
             }
         }

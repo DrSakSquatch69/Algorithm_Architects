@@ -13,20 +13,18 @@ public class OrangeWeakSpot : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         //Debug.Log("hit weak spot");
-        DamageParent(amount, dir, type);
-    }
-    void DamageParent(int amount, Vector3 dir, damageType type)
-    {
-        StartCoroutine(TakeDamage(amount, dir, type, ParentBody, ParentBody[0].material.color));
-    }
-    IEnumerator TakeDamage(int amount, Vector3 dir, damageType type, List<Renderer> models, Color origColor)
-    {
         ParentEnemy.Damage(amount);
-        for(int i = 0; i < models.Count - 1; i++)
+        Color origColor;
+        for (int i = 0; i < ParentBody.Count - 1; i++)
         {
-            StartCoroutine(flashColor(models[i], origColor));
+            origColor = ParentBody[i].material.color;
+            StartCoroutine(flashColor(ParentBody[i], origColor));
+                     
         }
-        yield return new WaitForSeconds(0);
+    }
+    void DamageParent(int amount, Vector3 dir, damageType type, List<Renderer> models)
+    {
+
     }
     IEnumerator flashColor(Renderer model, Color origColor)
     {
