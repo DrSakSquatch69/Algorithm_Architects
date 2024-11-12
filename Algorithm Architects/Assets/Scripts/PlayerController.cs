@@ -206,7 +206,6 @@ public class PlayerController : MonoBehaviour, IDamage
         sprint();
         CheckForWall();
         WallRunInput();
-        CheckForBouncePad();
         CheckForMud();
         isMoving();
         CheckForGround();
@@ -787,13 +786,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
     }
 
-    void CheckForBouncePad()
+    public void CheckForBouncePad()
     {
-        //uses a raycast to see if there is a bounce pad underneath the player.
-        isBouncePad = Physics.Raycast(transform.position, -orientation.up, 1.7f, bouncePad);
-
         //gave the player the option to not bounce if crouching
-        if (isBouncePad && !crouching)
+        if (!crouching)
         {
             playerVel = Vector3.zero;
             playerVel.y = bouncePadForce;
