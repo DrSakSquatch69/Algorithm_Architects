@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7434323865784459510}
+  - component: {fileID: 9080217377245832703}
   - component: {fileID: 5971151030873161800}
   - component: {fileID: 6376341537154405937}
   - component: {fileID: 8942055525573114516}
+  - component: {fileID: 8934314635226701173}
   m_Layer: 11
   m_Name: Mushroom_Small_Wide
   m_TagString: BouncePad
@@ -34,6 +36,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9080217377245832703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545279490662403917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac01431c1d907247aca2a17414fcf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &5971151030873161800
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -106,3 +120,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1439785
   m_Center: {x: -0.0272547, y: 0.14315736, z: 0.014196396}
+--- !u!135 &8934314635226701173
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545279490662403917}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.2
+  m_Center: {x: -0.027254699, y: 0.5, z: 0.014196395}

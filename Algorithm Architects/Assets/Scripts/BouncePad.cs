@@ -17,6 +17,8 @@ public class BouncePad : MonoBehaviour
         {
             gameManager.instance.playerScript.CheckForBouncePad();
             playerInRange = true;
+
+            //Place animation code here
         }
     }
 
