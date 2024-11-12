@@ -631,6 +631,10 @@ public class PlayerController : MonoBehaviour, IDamage
                 gameManager.instance.icon1.SetActive(true);
                 gameManager.instance.iconImage1.texture = gunList[0].icon;
             }
+            else
+            {
+                gameManager.instance.icon2.SetActive(false);
+            }
 
             gameManager.instance.turnOnOffAmmoText.SetActive(true);
             gameManager.instance.UpdateAmmoCounter(gunList[0].ammo, gunList[0].ammoremaining, 0);
@@ -641,6 +645,10 @@ public class PlayerController : MonoBehaviour, IDamage
                 {
                     gameManager.instance.icon2.SetActive(true);
                     gameManager.instance.iconImage2.texture = gunList[1].icon;
+                }
+                else
+                {
+                    gameManager.instance.icon2.SetActive(false);
                 }
 
                 gameManager.instance.turnOnOffAmmoText2.SetActive(true);
@@ -654,6 +662,11 @@ public class PlayerController : MonoBehaviour, IDamage
                     gameManager.instance.icon3.SetActive(true);
                     gameManager.instance.iconImage3.texture = gunList[2].icon;
                 }
+                else
+                {
+                    gameManager.instance.icon2.SetActive(false);
+                }
+
                 gameManager.instance.turnOnOffAmmoText3.SetActive(true);
                 gameManager.instance.UpdateAmmoCounter(gunList[2].ammo, gunList[2].ammoremaining, 2);
             }

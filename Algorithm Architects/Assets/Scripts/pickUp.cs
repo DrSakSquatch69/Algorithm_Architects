@@ -7,6 +7,8 @@ public class pickUp : MonoBehaviour
     [SerializeField] gunStats gun;
     bool floatUp;
 
+    [SerializeField] bool flipRotation;
+
     bool inRange;
     bool itemIsPickedUp;
     private void Start()
@@ -48,17 +50,34 @@ public class pickUp : MonoBehaviour
 
     IEnumerator floatingUp()
     {
-        transform.Translate(Vector3.up * 0.2f * Time.deltaTime);
-        yield return new WaitForSeconds(2);
-        floatUp = false;
+        if (flipRotation)
+        {
+            transform.Translate(Vector3.forward * 0.2f * Time.deltaTime);
+            yield return new WaitForSeconds(2);
+            floatUp = false;
+        }
+        else
+        {
+            transform.Translate(Vector3.up * 0.2f * Time.deltaTime);
+            yield return new WaitForSeconds(2);
+            floatUp = false;
+        }
     }
 
     IEnumerator floatingDown()
     {
-        transform.Translate(-(Vector3.up * 0.2f * Time.deltaTime));
-        //transform.position.y -= 0.5 * Time.deltaTime;
-        yield return new WaitForSeconds(2);
-        floatUp = true;
+        if (flipRotation)
+        {
+            transform.Translate(-(Vector3.forward * 0.2f * Time.deltaTime));
+            yield return new WaitForSeconds(2);
+            floatUp = true;
+        }
+        else
+        {
+            transform.Translate(-(Vector3.up * 0.2f * Time.deltaTime));
+            yield return new WaitForSeconds(2);
+            floatUp = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
