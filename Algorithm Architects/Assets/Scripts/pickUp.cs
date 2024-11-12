@@ -23,8 +23,14 @@ public class pickUp : MonoBehaviour
         if (!gameManager.instance.isPaused)
         {
 
-
-            transform.Rotate(0, 0.5f, 0);
+            if (flipRotation)
+            {
+                transform.Rotate(0, 0, 0.5f);
+            }
+            else
+            {
+                transform.Rotate(0, 0.5f, 0);
+            }
 
             if ((floatUp))
             {
