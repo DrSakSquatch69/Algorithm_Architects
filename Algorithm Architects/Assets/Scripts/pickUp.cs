@@ -16,6 +16,11 @@ public class pickUp : MonoBehaviour
         gun.ammo = gun.magSize;
         floatUp = true;
 
+        if (flipRotation)
+        {
+            transform.eulerAngles = new Vector3(-90f, 0f, 0f);
+        }
+
     }
 
     void Update()

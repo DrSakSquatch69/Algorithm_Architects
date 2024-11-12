@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SMG T1 ORANGE
   m_EditorClassIdentifier: 
   gunModel: {fileID: 420215144022386727, guid: ca2bcc72963fd454c849448d0be1b1a0, type: 3}
+  prefab: {fileID: 719308884867625915, guid: d3878e63ff162db43a919b8285deee46, type: 3}
   shootDamage: 8
   shootRate: 0.1
   shootDist: 80
@@ -20,5 +21,7 @@ MonoBehaviour:
   ammoremaining: 2500
   ammo: 20
   isMelee: 0
+  icon: {fileID: 0}
+  placement: {x: 0, y: 0, z: 0}
   hitEffect: {fileID: 7226583673155636403, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   shootSound: {fileID: 8300000, guid: 588f6ad4e529482408bbb267332dcf35, type: 3}
