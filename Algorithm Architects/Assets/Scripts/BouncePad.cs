@@ -8,16 +8,14 @@ public class BouncePad : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange)
-        {
-            gameManager.instance.playerScript.CheckForBouncePad();
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !gameManager.instance.isPaused)
         {
+            gameManager.instance.playerScript.CheckForBouncePad();
             playerInRange = true;
         }
     }
