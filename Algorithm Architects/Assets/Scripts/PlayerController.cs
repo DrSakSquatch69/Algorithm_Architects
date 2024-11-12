@@ -633,7 +633,7 @@ public class PlayerController : MonoBehaviour, IDamage
             }
             else
             {
-                gameManager.instance.icon2.SetActive(false);
+                gameManager.instance.icon1.SetActive(false);
             }
 
             gameManager.instance.turnOnOffAmmoText.SetActive(true);
@@ -664,7 +664,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 }
                 else
                 {
-                    gameManager.instance.icon2.SetActive(false);
+                    gameManager.instance.icon3.SetActive(false);
                 }
 
                 gameManager.instance.turnOnOffAmmoText3.SetActive(true);
