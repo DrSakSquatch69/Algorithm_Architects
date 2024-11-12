@@ -143,6 +143,7 @@ public class MenuMusicManager : MonoBehaviour
     }
     public void PlayResume()
     {
+
         int randomIndex = Random.Range(0, ResumeClips.Count - 1);
         ResumeButtons.clip = ResumeClips[randomIndex];
         ResumeButtons.Play();
