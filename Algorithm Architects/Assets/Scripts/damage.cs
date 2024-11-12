@@ -50,7 +50,7 @@ public class damage : MonoBehaviour
         }
 
         playerSpeedChange = gameManager.instance.getOriginalPlayerSpeed();
-        kingDamageAmount = kingDamageAmountOriginal;
+        //kingDamageAmount = kingDamageAmountOriginal;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,7 +69,7 @@ public class damage : MonoBehaviour
                 dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
             }
 
-            if(type == damageType.king)
+            if (type == damageType.king)
             {
                 dmg.takeDamage(kingDamageAmount, -(transform.position - other.transform.position).normalized * (kingDamageAmount / 2), type);
             }

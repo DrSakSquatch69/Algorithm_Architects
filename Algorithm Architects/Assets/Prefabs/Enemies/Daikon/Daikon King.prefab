@@ -137,8 +137,8 @@ Transform:
   m_GameObject: {fileID: 4198024642532371893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.8, y: -0.68, z: 5.8}
-  m_LocalScale: {x: 5.9083314, y: 5.9083314, z: 5.9083314}
+  m_LocalPosition: {x: -0.03, y: -0.68, z: -0.11}
+  m_LocalScale: {x: 11.095846, y: 11.095846, z: 11.095846}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8648901396871690009}
@@ -159,26 +159,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633ddca4f756b00408db79f0f897c7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 45
+  viewAngle: 90
   model: {fileID: 4417991640723930136}
   agent: {fileID: 4642195116947381822}
   headPosition: {fileID: 5672541068409961000}
   shootPosition: {fileID: 7836066063821625369}
   bullet: {fileID: 5223472228960464512, guid: 86c15c540b5b9c44b9b2afb10b402ca0, type: 3}
-  firerate: 1
+  firerate: 41
   rotateSpeed: 32
-  HP: 0
-  enemyPrefab: {fileID: 0}
+  HP: 100
+  enemyPrefab: {fileID: 5247476546327169525}
   maxRespawns: 0
-  minHPSize: 0
-  maxHPSize: 0
+  minHPSize: 0.1
+  maxHPSize: 1
   renderDistance: 35
-  enemyHpBar: {fileID: 0}
+  enemyHpBar: {fileID: 5862737664882730756}
   isSliderOn: 0
-  healthPerConsume: 0
-  damagerPerConsume: 0
-  fireratePerConsume: 0
-  consumeCap: 0
+  healthPerConsume: 10
+  damagerPerConsume: 10
+  fireratePerConsume: 10
+  consumeCap: 4
 --- !u!33 &8664416092426738378
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -638,12 +638,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 5247476546327169525}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.65
-  m_Speed: 8
+  m_Radius: 0.5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 800
-  m_StoppingDistance: 0
+  m_AngularSpeed: 120
+  m_StoppingDistance: 8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -676,7 +676,7 @@ Transform:
   m_GameObject: {fileID: 5580639827851578478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.274, z: 0}
+  m_LocalPosition: {x: 0, y: 0.244, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

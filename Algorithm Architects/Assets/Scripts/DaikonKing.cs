@@ -118,6 +118,7 @@ public class DaikonKing : MonoBehaviour, IDamage
             //when hp is zero or less, it destroys the object
             if (HP <= 0)
             {
+                bullet.GetComponent<damage>().kingDamageAmount = damage.instance.kingDamageAmountOriginal;
                 // --activeEnemiesAI;
                 // gameManager.instance.ActiveCheck(activeEnemiesAI);
 
