@@ -10,6 +10,7 @@ using UnityEngine;
 public class gunStats : ScriptableObject
 {
     public GameObject gunModel;
+    public GameObject prefab;
     public int shootDamage;
     public float shootRate;
     public int shootDist;

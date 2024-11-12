@@ -971,12 +971,23 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void getGunStats(gunStats gun)
     {
-        gunList.Add(gun);
-        selectedGunPos = gunList.Count - 1;
+        if (gunList.Count != 3)
+        {
+            gunList.Add(gun);
+            selectedGunPos = gunList.Count - 1;
+        }
+        else
+        {
+            if (gunList[selectedGunPos].prefab != null)
+            {
+                Instantiate(gunList[selectedGunPos].prefab, transform.position, Quaternion.identity);
+            }
+            gunList[selectedGunPos] = gun;
+        }
 
-        changeGun();
-            
-        MainManager.Instance.SetGunList(gunList);
+            changeGun();
+
+            MainManager.Instance.SetGunList(gunList);
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
     }
