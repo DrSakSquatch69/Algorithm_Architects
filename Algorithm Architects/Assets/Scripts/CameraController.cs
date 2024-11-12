@@ -20,14 +20,14 @@ public class CameraController : MonoBehaviour
         //Locks the cursor 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        gameManager.instance.setSens(sens);
+        //gameManager.instance.setSens(sens);
         gameManager.instance.setCameraScript(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        sens = gameManager.instance.getSens(); //Gets the sens set from the settings menu
+        sens = MainManager.Instance.GetSensitivity(); //Gets the sens set from the settings menu
 
         // get input
         mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;

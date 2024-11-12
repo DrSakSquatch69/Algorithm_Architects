@@ -69,7 +69,7 @@ public class ButtonFns : MonoBehaviour
     public void sensitivitySlider(float sensitivity) //Gets the slider info to send to gameManager which sends it to camera controller
     {
         //Debug.Log(sensitivity);
-        gameManager.instance.setSens(sensitivity);
+        //gameManager.instance.setSens(sensitivity);
         MainManager.Instance.SetSensitivity(sensitivity);
     }
 
