@@ -206,7 +206,7 @@ public class DaikonKing : MonoBehaviour, IDamage
             ++eatCount;
             Destroy(other.gameObject);
             HP += healthPerConsume;
-            firerate += fireratePerConsume;
+            firerate -= fireratePerConsume;
             bullet.GetComponent<damage>().kingDamageAmount += damagerPerConsume;
             gameManager.instance.setDaikonCount(gameManager.instance.getDaikonCount() - 1);
             gameManager.instance.updateGameGoal(-1);

@@ -84,31 +84,31 @@ public class DaikonAI : MonoBehaviour, IDamage
             agent.SetDestination(gameManager.instance.getDaikonKing().transform.position);
       
     }
-    bool canSeePlayer()
-    {
-        playerDirection = gameManager.instance.getPlayer().transform.position - headPosition.position;
-        //angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
-        Debug.DrawRay(headPosition.position, playerDirection);
+    //bool canSeePlayer()
+    //{
+    //    playerDirection = gameManager.instance.getPlayer().transform.position - headPosition.position;
+    //    //angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+    //    Debug.DrawRay(headPosition.position, playerDirection);
 
-        RaycastHit hit;
-        if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000, ~ignoreMask))
-        {
-            // if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
-            // {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000, ~ignoreMask))
+    //    {
+    //        // if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+    //        // {
+    //        if (agent.remainingDistance <= agent.stoppingDistance)
+    //        {
+    //            faceTarget();
+    //        }
 
-            if (!isShooting)
-            {
-                StartCoroutine(Shoot());
-            }
-            return true;
-            //}
-        }
-        return false;
-    }
+    //        if (!isShooting)
+    //        {
+    //            StartCoroutine(Shoot());
+    //        }
+    //        return true;
+    //        //}
+    //    }
+    //    return false;
+    //}
 
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {

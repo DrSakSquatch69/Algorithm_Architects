@@ -12,7 +12,7 @@ public class damage : MonoBehaviour
     [SerializeField] Rigidbody rb;
 
     public int damageAmount;
-    [SerializeField] int kingDamageAmountOriginal;
+    [SerializeField] public int kingDamageAmountOriginal;
     [SerializeField] public int kingDamageAmount;
     [SerializeField] public int bulletSpeed;
     [SerializeField] int despawnTimer;
@@ -144,7 +144,7 @@ public class damage : MonoBehaviour
             }
         }
 
-        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage)
+        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage || type == damageType.king)
         {
             Destroy(gameObject);
         }
