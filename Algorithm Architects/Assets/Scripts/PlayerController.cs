@@ -626,17 +626,34 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (gunList.Count != 0)
         {
+            if (gunList[0].icon != null)
+            {
+                gameManager.instance.icon1.SetActive(true);
+                gameManager.instance.iconImage1.texture = gunList[0].icon;
+            }
+
             gameManager.instance.turnOnOffAmmoText.SetActive(true);
             gameManager.instance.UpdateAmmoCounter(gunList[0].ammo, gunList[0].ammoremaining, 0);
 
             if (gunList.Count >= 2)
             {
+                if (gunList[1].icon != null)
+                {
+                    gameManager.instance.icon2.SetActive(true);
+                    gameManager.instance.iconImage2.texture = gunList[1].icon;
+                }
+
                 gameManager.instance.turnOnOffAmmoText2.SetActive(true);
                 gameManager.instance.UpdateAmmoCounter(gunList[1].ammo, gunList[1].ammoremaining, 1);
             }
 
             if (gunList.Count >= 3)
             {
+                if (gunList[2].icon != null)
+                {
+                    gameManager.instance.icon3.SetActive(true);
+                    gameManager.instance.iconImage3.texture = gunList[2].icon;
+                }
                 gameManager.instance.turnOnOffAmmoText3.SetActive(true);
                 gameManager.instance.UpdateAmmoCounter(gunList[2].ammo, gunList[2].ammoremaining, 2);
             }
@@ -647,6 +664,7 @@ public class PlayerController : MonoBehaviour, IDamage
             {
                 gameManager.instance.turnOnOffAmmoText.SetActive(false);
             }
+
             if (gunList.Count >= 2)
             {
                 if (gunList[1].isMelee)
