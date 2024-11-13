@@ -537,6 +537,7 @@ public class PlayerController : MonoBehaviour, IDamage
             updatePlayerUI();
             isTakingDamage = true;
             StartCoroutine(healDelay());
+            gameManager.instance.cameraController.startShake(0.3f, amount / 50f);
 
             if (HealthPoints <= 0)
             {
