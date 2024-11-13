@@ -784,7 +784,7 @@ Transform:
   m_GameObject: {fileID: 417237880}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: -1}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1807,25 +1807,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strawberry
       objectReference: {fileID: 0}
-    - target: {fileID: 5801828451794537794, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 3840383602836954559, guid: 5e2c42fc3ea2ae045ab54857df047938, type: 3}
-    - target: {fileID: 5987521361626558375, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6578447554487833834, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.399
+      value: 10.56
       objectReference: {fileID: 0}
     - target: {fileID: 6578447554487833834, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.585
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6578447554487833834, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -10.88
       objectReference: {fileID: 0}
     - target: {fileID: 6578447554487833834, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1855,6 +1847,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8622474189594620527, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622474189594620527, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1872,6 +1872,14 @@ PrefabInstance:
       propertyPath: damageAmount
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 180278993404566996, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 180278993404566996, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 984632885498202228, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1888,6 +1896,18 @@ PrefabInstance:
       propertyPath: postProcessVolume
       value: 
       objectReference: {fileID: 32488428}
+    - target: {fileID: 6824911273489979410, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824911273489979410, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824911273489979410, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6824911273489979410, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.420931
@@ -1938,7 +1958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498436370840992913, guid: f43d28f45151bd747862ee3b413649c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1957,17 +1977,25 @@ PrefabInstance:
       propertyPath: m_AutoBraking
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2944862269965297806, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944862269965297806, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: enemyHp
       value: 
-      objectReference: {fileID: 5522121211061126129}
+      objectReference: {fileID: 0}
     - target: {fileID: 4072220555173883778, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_Name
       value: Pumpkin
       objectReference: {fileID: 0}
     - target: {fileID: 4072220555173883778, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7072437828079975302, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_Mesh
@@ -2018,17 +2046,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
---- !u!114 &5522121211061126129 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8577815799992442310, guid: bdbe5be301e291447a9ecea49c0c0fb7, type: 3}
-  m_PrefabInstance: {fileID: 2175242531646198459}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7846361585575636909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2037,13 +2054,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 436966582427738617, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 436966582427738617, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 932339075692980055, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
       propertyPath: m_Name
       value: BananaSplit
       objectReference: {fileID: 0}
     - target: {fileID: 932339075692980055, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2854314808611738697, guid: 1ab49a8a06e02914a81e84ed417f1275, type: 3}
       propertyPath: damageAmount
