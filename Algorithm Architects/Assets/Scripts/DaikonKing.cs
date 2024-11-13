@@ -8,8 +8,6 @@ using UnityEngine.UI;
 //
 public class DaikonKing : MonoBehaviour, IDamage
 {
-    enum damageTypes { bullet, chaser, stationary, butter }
-
     [SerializeField] int viewAngle;
     float angleToPlayer;
 

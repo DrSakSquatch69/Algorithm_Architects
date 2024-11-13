@@ -9,9 +9,6 @@ using UnityEngine.UI;
 public class DaikonAI : MonoBehaviour, IDamage
 {
     //public static DaikonAI instance;
-
-    enum damageTypes { bullet, chaser, stationary, butter }
-
     //[SerializeField] int viewAngle;
     //float angleToPlayer;
 
