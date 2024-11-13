@@ -23,6 +23,7 @@ public class StrawberryAI : MonoBehaviour
     [SerializeField] float burstDuration = 2f; // Duration of the burst
     [SerializeField] float verticalAmplitude = 10f; // The range of up-and-down movement in degrees
     [SerializeField] float verticalFrequency = 2f;  // How quickly the bullets move up and down
+    [SerializeField] float randomMoveRange = 10f; // Range within which the enemy moves randomly
 
     int hpOrig;
     [SerializeField] int HP;
@@ -41,6 +42,7 @@ public class StrawberryAI : MonoBehaviour
 
     bool isShooting;
     bool playerSighted;
+    bool isMovingRandomly;
 
     int currentRespawnCount = 1;
 
@@ -56,28 +58,62 @@ public class StrawberryAI : MonoBehaviour
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
+
+        // Start random movement
+        StartCoroutine(RandomMoveRoutine());
     }
 
     void Update()
     {
         updateEnemyUI();
 
-        // Set the destination to the player's position
-        if (agent != null)
-        {
-            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
-        }
-
-        // Always try to shoot if the player is within a certain distance
+        // Check if the player is within shooting range
         float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
+
+        // If the player is within a certain range, stop moving and shoot
         if (distanceToPlayer <= agent.stoppingDistance + 5f) // Adjust the range as needed
         {
+            if (agent != null && agent.isActiveAndEnabled)
+            {
+                // Stop the enemy from moving
+                agent.isStopped = true;
+            }
+
             faceTarget();
 
+            // Start shooting if not already shooting
             if (!isShooting)
             {
                 StartCoroutine(SpinAndShoot());
             }
+        }
+        else
+        {
+            if (agent != null && agent.isActiveAndEnabled)
+            {
+                // Resume movement if the player is out of range
+                agent.isStopped = false;
+            }
+        }
+    }
+    IEnumerator RandomMoveRoutine()
+    {
+        while (true)
+        {
+            if (!isShooting)
+            {
+                Vector3 randomDirection = Random.insideUnitSphere * randomMoveRange;  // Get random direction within specified range
+                randomDirection += transform.position;  // Make sure the position is relative to the current location
+
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(randomDirection, out hit, randomMoveRange, NavMesh.AllAreas))
+                {
+                    agent.SetDestination(hit.position);  // Set the destination to the random point on the NavMesh
+                }
+            }
+
+            // Wait for a random time before choosing the next random point
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
         }
     }
 
@@ -184,29 +220,42 @@ public class StrawberryAI : MonoBehaviour
     {
         isShooting = true;
         float timeElapsed = 0f;
-        int bulletCount = 200;
+        int bulletCount = 50; // Adjust the number of bullets for the dome pattern
         float timeBetweenShots = burstDuration / bulletCount;
 
-        while (timeElapsed < burstDuration)
+        for (int i = 0; i < bulletCount; i++)
         {
-            // Rotate the strawberry horizontally
-            transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
+            // Generate a random direction for the bullet in a dome shape
+            Vector3 shootDirection = GetRandomDomeDirection();
 
-            // Calculate the vertical angle using a sine wave for up-and-down motion
-            float verticalAngle = Mathf.Sin(timeElapsed * verticalFrequency) * verticalAmplitude;
+            // Instantiate the bullet and set its position
+            GameObject bulletInstance = Instantiate(bullet, shootPosition.position, Quaternion.identity);
 
-            // Create a rotation that includes both the spin and the vertical oscillation
-            Quaternion bulletRotation = Quaternion.Euler(verticalAngle, transform.eulerAngles.y, 0);
-
-            // Shoot a bullet in the calculated direction
-            Instantiate(bullet, shootPosition.position, shootPosition.rotation);
+            // Apply velocity to the bullet in the calculated direction
+            Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
+            if (bulletRb != null)
+            {
+                bulletRb.velocity = shootDirection * 20f; // Adjust the speed as needed
+            }
 
             // Wait before shooting the next bullet
             yield return new WaitForSeconds(timeBetweenShots);
-
-            timeElapsed += timeBetweenShots;
         }
 
         isShooting = false;
+    }
+
+    Vector3 GetRandomDomeDirection()
+    {
+        // Generate a random point on a hemisphere (dome) facing upward
+        float theta = Random.Range(0f, Mathf.PI * 2); // Random angle around the y-axis
+        float phi = Random.Range(0f, Mathf.PI / 2);   // Random angle from the upward direction
+
+        // Calculate the direction using spherical coordinates
+        float x = Mathf.Sin(phi) * Mathf.Cos(theta);
+        float y = Mathf.Cos(phi); // Upward direction for dome shape
+        float z = Mathf.Sin(phi) * Mathf.Sin(theta);
+
+        return new Vector3(x, y, z).normalized;
     }
 }

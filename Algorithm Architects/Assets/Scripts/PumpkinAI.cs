@@ -8,7 +8,7 @@ using UnityEngine.UI;
 //
 public class PumpkinAI : MonoBehaviour, IDamage
 {
-    enum damageTypes { bullet, chaser, stationary, butter, melee, bouncing, fire, tomato, cabbage, toxic }
+    
 
     [SerializeField] int viewAngle;
     float angleToPlayer;
