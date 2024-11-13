@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class OrangeAI : MonoBehaviour, IDamage
 {
-    enum damageTypes { bullet, chaser, stationary, butter }
-
     [SerializeField] Animator orangeAnimator;
     [SerializeField] public List<Renderer> Body;
     [SerializeField] Transform headPosition;

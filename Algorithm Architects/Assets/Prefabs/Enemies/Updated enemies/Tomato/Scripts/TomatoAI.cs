@@ -6,8 +6,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 //
-public class DaikonKing : MonoBehaviour, IDamage
+public class TomatoAI : MonoBehaviour, IDamage
 {
+    
     [SerializeField] int viewAngle;
     float angleToPlayer;
 
@@ -43,12 +44,6 @@ public class DaikonKing : MonoBehaviour, IDamage
     [SerializeField] Slider enemyHpBar;
     public bool isSliderOn;
 
-    [SerializeField] int healthPerConsume;
-    [SerializeField] int damagerPerConsume;
-    [SerializeField] float fireratePerConsume;
-    [SerializeField] int consumeCap;
-    int eatCount;
-
 
     // Start is called before the first frame update
     void Start()
@@ -58,24 +53,21 @@ public class DaikonKing : MonoBehaviour, IDamage
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
         gameManager.instance.updateGameGoal(1);
+
         ignoreMask = LayerMask.GetMask("Enemy");
-        updateEnemyUI();
+      //  updateEnemyUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        updateEnemyUI();
-        if (playerSighted && canSeePlayer())
+       // updateEnemyUI();
+       // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        
+        if(playerSighted && canSeePlayer())
         {
-
-        }
-
-        if (gameManager.instance.getDaikonCount() <= 0)
-        {
-            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
-
+            
         }
     }
     bool canSeePlayer()
@@ -85,7 +77,7 @@ public class DaikonKing : MonoBehaviour, IDamage
         Debug.DrawRay(headPosition.position, playerDirection);
 
         RaycastHit hit;
-        if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000, ~ignoreMask))
+        if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000 ,~ignoreMask))
         {
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
@@ -106,55 +98,51 @@ public class DaikonKing : MonoBehaviour, IDamage
 
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
-        if (gameManager.instance.getDaikonCount() <= 0)
+        HP -= amount;
+       // updateEnemyUI();
+
+        StartCoroutine(flashColor());
+
+        //when hp is zero or less, it destroys the object
+        if (HP <= 0)
         {
-            HP -= amount;
-            updateEnemyUI();
+           // --activeEnemiesAI;
+           // gameManager.instance.ActiveCheck(activeEnemiesAI);
 
-            StartCoroutine(flashColor());
-
-            //when hp is zero or less, it destroys the object
-            if (HP <= 0)
+            // Check if enemy can respawn
+            if (currentRespawnCount < maxRespawns)
             {
-                bullet.GetComponent<damage>().kingDamageAmount = damage.instance.kingDamageAmountOriginal;
-                // --activeEnemiesAI;
-                // gameManager.instance.ActiveCheck(activeEnemiesAI);
+                
 
-                // Check if enemy can respawn
-                if (currentRespawnCount < maxRespawns)
-                {
-
-
-                    //Creates two new enemies when this one dies
-                    GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
-                    GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
-
-                    // Set the respawn count of the new enemies to be 1 more than the current enemy
-                    enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
-                    enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
-
-                    //Increment the game goal by 1 for each new enemy
-                    gameManager.instance.updateGameGoal(+1);
-
-                }
-                else
-                {
-                    // No more respawns allowed, decrement the game goal
-                    gameManager.instance.updateGameGoal(-1);
-
-                }
-
-                // Destroys current enemy
-                Destroy(gameObject);
-
-                //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
-                //{
-                //    gameManager.instance.Waves();
-                //}
+                //Creates two new enemies when this one dies
+                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
+                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
+                
+                // Set the respawn count of the new enemies to be 1 more than the current enemy
+                enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                
+                //Increment the game goal by 1 for each new enemy
+                gameManager.instance.updateGameGoal(+1);
+                
             }
+            else 
+            {
+                // No more respawns allowed, decrement the game goal
+                gameManager.instance.updateGameGoal(-1);
+               
+            }
+
+            // Destroys current enemy
+            Destroy(gameObject);
+            
+            //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
+            //{
+            //    gameManager.instance.Waves();
+            //}
         }
     }
-
+   
     public void updateEnemyUI()
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
@@ -194,23 +182,10 @@ public class DaikonKing : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-
         if (other.CompareTag("Player"))
         {
             playerSighted = true;
         }
-
-        if (other.CompareTag("Daikon") && eatCount < consumeCap)
-        {
-            ++eatCount;
-            Destroy(other.gameObject);
-            HP += healthPerConsume;
-            firerate -= fireratePerConsume;
-            bullet.GetComponent<damage>().kingDamageAmount += damagerPerConsume;
-            gameManager.instance.setDaikonCount(gameManager.instance.getDaikonCount() - 1);
-            gameManager.instance.updateGameGoal(-1);
-        }
-
     }
 
     void OnTriggerExit(Collider other)
@@ -224,12 +199,13 @@ public class DaikonKing : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
+        Debug.Log("Shooting bullet: " + bullet.name);
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(firerate);
         isShooting = false;
     }
 
-
+  
 }
 
 

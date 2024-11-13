@@ -20,7 +20,6 @@ public class CameraController : MonoBehaviour
         //Locks the cursor 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //gameManager.instance.setSens(sens);
         gameManager.instance.setCameraScript(this);
     }
 

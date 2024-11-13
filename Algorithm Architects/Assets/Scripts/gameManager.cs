@@ -57,7 +57,6 @@ public class gameManager : MonoBehaviour
 
     int enemyCount;
     int activeEnemies;
-    float Sensitivity;
     // bool hasDialogueRun;                                                     //to keep track of if the dialogue box has run yet
 
     public bool isPaused;                                                   //variable to store wether we are paused or not
@@ -82,7 +81,6 @@ public class gameManager : MonoBehaviour
     public float getPlayerSpeed() { return playerSpeed; }
     public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
     public bool getInSettings() { return inSettings; }
-    public float getSens() { return Sensitivity; }
     public AudioSource getSound() { return playerAudioSource; }
     public bool getIsOnFire() { return isOnFire; }
     public bool getIsTomatoed() { return isTomatoed; }
@@ -96,7 +94,6 @@ public class gameManager : MonoBehaviour
     public void setPlayerSpeed(float speed) { playerSpeed = speed; }
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
     public void setInSettings(bool settings) { inSettings = settings; }
-    public void setSens(float sensitivity) { Sensitivity = sensitivity; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
     public void setIsTomatoed(bool tomato) { isTomatoed = tomato; }
