@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MenuMusicManager : MonoBehaviour
@@ -79,7 +80,16 @@ public class MenuMusicManager : MonoBehaviour
 
     public void PlaySettings()
     {
-        if (!SettingsUp.isPlaying) { SettingsUp.Play(); }
+        if (OnPauseButton.isPlaying || ResumeButtons.isPlaying || QuitButtonClick.isPlaying || NextLevelButton.isPlaying || LoseMenuUp.isPlaying)
+        {
+            OnPauseButton.Stop();
+            ResumeButtons.Stop();
+            QuitButtonClick.Stop();
+            NextLevelButton.Stop();
+            LoseMenuUp.Stop();
+        }
+       
+        SettingsUp.Play();
     }
 
     public void PlayNextLevelMenUp()
@@ -99,7 +109,18 @@ public class MenuMusicManager : MonoBehaviour
         int randomIndex = Random.Range(0, OnPauseQuips.Count - 1);
         OnPauseButton.clip = OnPauseQuips[randomIndex];
         curPauseQuip = OnPauseQuips[randomIndex];
+
+        if (SettingsUp.isPlaying || ResumeButtons.isPlaying || QuitButtonClick.isPlaying || NextLevelButton.isPlaying || LoseMenuUp.isPlaying)
+        {
+            NextLevelButton.Stop();
+            ResumeButtons.Stop();
+            QuitButtonClick.Stop();
+            SettingsUp.Stop();
+            LoseMenuUp.Stop();
+        }
+
         OnPauseButton.Play();
+
     }
 
 
@@ -108,6 +129,15 @@ public class MenuMusicManager : MonoBehaviour
         int randomIndex = Random.Range(0, LoseMenuUpClips.Count - 1);
         LoseMenuUp.clip = LoseMenuUpClips[randomIndex];
         curLoseUpClip = LoseMenuUpClips[randomIndex];
+
+        if (OnPauseButton.isPlaying || ResumeButtons.isPlaying || QuitButtonClick.isPlaying || SettingsUp.isPlaying)
+        {
+            OnPauseButton.Stop();
+            ResumeButtons.Stop();
+            QuitButtonClick.Stop();
+            SettingsUp.Stop();
+        }
+
         LoseMenuUp.Play();
     }
     public void PlayWinMainMenu()
@@ -128,24 +158,53 @@ public class MenuMusicManager : MonoBehaviour
     {
         int randomIndex = Random.Range(0, NextLevelClips.Count - 1);
         NextLevelButton.clip = NextLevelClips[randomIndex];
+
+        if (OnPauseButton.isPlaying || QuitButtonClick.isPlaying || ResumeButtons.isPlaying || SettingsUp.isPlaying)
+        {
+            OnPauseButton.Stop();
+            ResumeButtons.Stop();
+            QuitButtonClick.Stop();
+            SettingsUp.Stop();
+        }
+
         NextLevelButton.Play();
     }
     public void QuitButtonSound()
     {
         int randomIndex = Random.Range(0, QuitQuips.Count - 1);
         QuitButtonClick.clip = QuitQuips[randomIndex];
+
+        if (OnPauseButton.isPlaying || ResumeButtons.isPlaying || SettingsUp.isPlaying || NextLevelButton.isPlaying || LoseMenuUp.isPlaying)
+        {
+            OnPauseButton.Stop();
+            ResumeButtons.Stop();
+            SettingsUp.Stop();
+            NextLevelButton.Stop();
+            LoseMenuUp.Stop();
+        }
+
         QuitButtonClick.Play();
     }
     public void PlayWinRestart()
     {
         WinRestart.Play();
-        
+
     }
     public void PlayResume()
     {
 
         int randomIndex = Random.Range(0, ResumeClips.Count - 1);
         ResumeButtons.clip = ResumeClips[randomIndex];
+
+        if (OnPauseButton.isPlaying || SettingsUp.isPlaying || QuitButtonClick.isPlaying || LoseMenuUp.isPlaying)
+        {
+            OnPauseButton.Stop();
+            LoseMenuUp.Stop();
+            QuitButtonClick.Stop();
+            SettingsUp.Stop();
+        }
+
         ResumeButtons.Play();
+
     }
 }
