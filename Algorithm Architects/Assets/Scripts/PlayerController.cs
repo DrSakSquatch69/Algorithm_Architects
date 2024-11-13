@@ -536,7 +536,15 @@ public class PlayerController : MonoBehaviour, IDamage
             StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;
-            StartCoroutine(healDelay());
+
+            if (healDelayTrack != null)
+            {
+                StopCoroutine(healDelayTrack);
+            }
+
+            healDelayTrack = healDelay();
+            StartCoroutine(healDelayTrack);
+            gameManager.instance.cameraController.startShake(0.3f, amount / 50f);
 
             if (HealthPoints <= 0)
             {

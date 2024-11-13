@@ -10,10 +10,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] Transform playerCapsule;
     [SerializeField] GameObject cameraShake;
 
+    Vector3 originalPos;
+
     public float mouseY;
     public float mouseX;
 
     public float rotX;
+    bool isShaking;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,8 @@ public class CameraController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         gameManager.instance.setCameraScript(this);
+        
+        originalPos = cameraShake.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -47,6 +52,39 @@ public class CameraController : MonoBehaviour
 
         // rotate the player on the y-axis
         playerCapsule.Rotate(Vector3.up * mouseX);
+    }
+
+    public void startShake(float time, float intensity)
+    {
+        if (!isShaking) 
+        {
+            StartCoroutine(shake(time, intensity));
+        }
+    }
+
+    IEnumerator shake(float time, float intensity)
+    {
+
+        originalPos = cameraShake.transform.localPosition;
+        isShaking = true;
+
+        while (time > 0 && !gameManager.instance.isPaused)
+        {
+            float x = Random.Range(-1f, 1f) * intensity;
+            float y = Random.Range(-1f, 1f) * intensity;
+
+            Vector3 shakePos = new Vector3(x, y, originalPos.z);
+
+            cameraShake.transform.localPosition = originalPos + shakePos;
+
+
+            time -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        cameraShake.transform.localPosition = originalPos;
+        isShaking = false;
     }
 }
 
