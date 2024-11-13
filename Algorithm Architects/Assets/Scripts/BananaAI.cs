@@ -121,20 +121,43 @@ public class BananaAI : MonoBehaviour, IDamage
         }
     }
 
-    public void updateEnemyUI()
+      public void updateEnemyUI()
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
+        // Debug log to check the objects
+        Debug.Log("gameManager.instance: " + (gameManager.instance == null ? "null" : "initialized"));
+        Debug.Log("gameManager.instance.getPlayer(): " + (gameManager.instance.getPlayer() == null ? "null" : "initialized"));
+        Debug.Log("enemyHpBar: " + (enemyHpBar == null ? "null" : "initialized"));
+        Debug.Log("Camera.main: " + (Camera.main == null ? "null" : "initialized"));
+
         if (dist <= renderDistance)
         {
-            enemyHpBar.gameObject.SetActive(true);
-            enemyHpBar.value = (float)HP / hpOrig;
-            enemyHpBar.transform.rotation = Camera.main.transform.rotation;
-            isSliderOn = true;
+            if (enemyHpBar != null)
+            {
+                enemyHpBar.gameObject.SetActive(true);
+                enemyHpBar.value = (float)HP / hpOrig;
+                if (Camera.main != null)
+                {
+                    enemyHpBar.transform.rotation = Camera.main.transform.rotation;
+                }
+                else
+                {
+                   Debug.Log("Camera.main is null.");
+                }
+                isSliderOn = true;
+            }
+            else
+            {
+                Debug.Log("enemyHpBar is null.");
+            }
         }
         else
         {
-            enemyHpBar.gameObject.SetActive(false);
+            if (enemyHpBar != null)
+            {
+                enemyHpBar.gameObject.SetActive(false);
+            }
             isSliderOn = false;
         }
     }
@@ -199,20 +222,43 @@ public class BananaAI : MonoBehaviour, IDamage
 
     IEnumerator BulletTravelAndSplit(GameObject bullet)
     {
+        if (bullet == null)
+        {
+            Debug.Log("Bullet is null at the start of the coroutine.");
+            yield break;  // Exit early if the bullet is already null
+        }
+
         Vector3 startPosition = bullet.transform.position;
         Vector3 forwardDirection = bullet.transform.forward;
 
         // Travel straight for the set distance
-        while (Vector3.Distance(startPosition, bullet.transform.position) < travelDistance)
+        while (bullet != null && Vector3.Distance(startPosition, bullet.transform.position) < travelDistance)
         {
+            // Ensure that the bullet is still valid
+            if (bullet == null)
+            {
+                Debug.Log("Bullet was destroyed during movement.");
+                yield break;  // Exit if the bullet is destroyed
+            }
+
             bullet.transform.position += forwardDirection * travelSpeed * Time.deltaTime;
             yield return null;
         }
 
-        // Destroy the original bullet after traveling the distance
-        Destroy(bullet);
+        // Now that the bullet has traveled the set distance, split and destroy the bullet
+        if (bullet != null)
+        {
+            Destroy(bullet);  // Destroy the bullet after it has traveled the required distance
+        }
 
-        // Define the split directions for T-shape
+        // Check if the bullet is destroyed after moving the set distance
+        if (bullet == null)
+        {
+            Debug.Log("Bullet was destroyed after traveling the set distance, exiting coroutine.");
+            yield break;  // Exit if the bullet is destroyed
+        }
+
+        // Split bullet handling (instantiate new bullets for the split)
         Vector3 middleDirection = forwardDirection;
         Vector3 leftDirection = Quaternion.Euler(0, -22, 0) * forwardDirection;
         Vector3 leftDirection2 = Quaternion.Euler(0, -45, 0) * forwardDirection;
@@ -225,6 +271,13 @@ public class BananaAI : MonoBehaviour, IDamage
         GameObject leftBullet2 = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
         GameObject rightBullet = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
         GameObject rightBullet2 = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
+
+        // Ensure the bullets were instantiated correctly
+        if (middleBullet == null || leftBullet == null || leftBullet2 == null || rightBullet == null || rightBullet2 == null)
+        {
+            Debug.Log("One or more split bullets were not instantiated correctly.");
+            yield break;  // Exit if any split bullet was not instantiated correctly
+        }
 
         // Assign velocities directly to ensure proper movement
         middleBullet.GetComponent<Rigidbody>().velocity = middleDirection * travelSpeed;

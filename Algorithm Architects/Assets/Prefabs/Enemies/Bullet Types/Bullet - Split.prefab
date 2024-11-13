@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7569543481161472728}
   - component: {fileID: 1450887155423330531}
+  - component: {fileID: -2212525192933761065}
   - component: {fileID: 5112248307662847513}
   - component: {fileID: 1289296064447607169}
   - component: {fileID: 6865427475379387693}
@@ -70,6 +71,27 @@ MonoBehaviour:
   renderDistance: 0
   enemyHpBar: {fileID: 0}
   isSliderOn: 0
+--- !u!114 &-2212525192933761065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461093298853194389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ebad54001533d4c9288275204cf675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  rb: {fileID: 0}
+  damageAmount: 10
+  kingDamageAmountOriginal: 0
+  kingDamageAmount: 0
+  bulletSpeed: 0
+  despawnTimer: 0
+  butterSlowAmount: 0
+  damageInterval: 0
 --- !u!54 &5112248307662847513
 Rigidbody:
   m_ObjectHideFlags: 0
