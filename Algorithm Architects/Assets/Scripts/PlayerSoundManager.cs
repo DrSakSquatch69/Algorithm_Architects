@@ -100,7 +100,6 @@ public class PlayerSoundManager : MonoBehaviour
     }
     public void PlayWalking()
     {
-        
         if(!walking.isPlaying)
         {
             walking.Play();

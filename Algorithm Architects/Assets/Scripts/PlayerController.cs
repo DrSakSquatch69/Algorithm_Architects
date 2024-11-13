@@ -219,6 +219,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (inMotion && isGrounded)
         {
+            if(soundManager.isWalkingPlaying && gameManager.instance.isPaused)
+            {
+                soundManager.StopWalking();
+            }
+
             if (isSprinting && !soundManager.runningPlaying())
             {
                 soundManager.PlayRun();
