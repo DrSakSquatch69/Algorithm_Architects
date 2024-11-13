@@ -62,10 +62,10 @@ public class TomatoAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        tomAnimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
        // updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        tomAnimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         
         if(playerSighted && canSeePlayer())
         {
@@ -200,9 +200,11 @@ public class TomatoAI : MonoBehaviour, IDamage
 
     IEnumerator Shoot()
     {
+        tomAnimator.SetTrigger("PreShoot");
         isShooting = true;
         Debug.Log("Shooting bullet: " + bullet.name);
         Instantiate(bullet, shootPosition.position, transform.rotation);
+        tomAnimator.SetTrigger("PostShoot");
         yield return new WaitForSeconds(firerate);
         isShooting = false;
     }

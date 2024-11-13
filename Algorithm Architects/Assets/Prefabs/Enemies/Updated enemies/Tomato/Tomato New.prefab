@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6716240081610270829}
   - component: {fileID: 8012485037679556014}
   - component: {fileID: 1522763140932563669}
+  - component: {fileID: 1606766503139804679}
   - component: {fileID: 3096220300673528646}
   - component: {fileID: 5682108936079179055}
   - component: {fileID: 8299881549600973547}
   - component: {fileID: 7544705911759752497}
-  - component: {fileID: 1606766503139804679}
   m_Layer: 7
   m_Name: Tomato New
   m_TagString: Enemy
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8285eb6c871e654ab06b69b51bc5d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 0
+  viewAngle: 90
   tomAnimator: {fileID: 8012485037679556014}
   model: {fileID: 5682108936079179055}
   agent: {fileID: 1606766503139804679}
@@ -92,6 +92,28 @@ MonoBehaviour:
   renderDistance: 35
   enemyHpBar: {fileID: 3158824109531740497}
   isSliderOn: 0
+--- !u!195 &1606766503139804679
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891655430818489601}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 800
+  m_StoppingDistance: 15
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!33 &3096220300673528646
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -185,28 +207,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 7
   m_Center: {x: 0.00010199845, y: 0.037901, z: -0.011187509}
---- !u!195 &1606766503139804679
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891655430818489601}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 8
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 800
-  m_StoppingDistance: 10
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1024027978712089142
 GameObject:
   m_ObjectHideFlags: 0
