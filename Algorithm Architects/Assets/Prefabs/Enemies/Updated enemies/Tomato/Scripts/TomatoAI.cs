@@ -6,8 +6,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 //
-public class EnemyAI : MonoBehaviour, IDamage
+public class TomatoAI : MonoBehaviour, IDamage
 {
+    
     [SerializeField] int viewAngle;
     float angleToPlayer;
 
