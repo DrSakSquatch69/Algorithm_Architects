@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 
-public class ToxicEnemy : MonoBehaviour
+public class ToxicEnemy : MonoBehaviour 
 {
     public float gasRange = 5f;
     public float attachRange = 1f;

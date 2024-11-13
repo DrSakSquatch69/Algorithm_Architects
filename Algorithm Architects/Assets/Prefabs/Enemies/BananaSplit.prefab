@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7743717119313380277}
-  - component: {fileID: 2854314808611738697}
+  - component: {fileID: 7548468270782498709}
   - component: {fileID: 5078074436856157722}
   - component: {fileID: 7211283152446266822}
   - component: {fileID: 8477705439739443654}
@@ -148,7 +148,7 @@ Transform:
   - {fileID: 1022974100631267405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2854314808611738697
+--- !u!114 &7548468270782498709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,25 +160,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c9c2aca10b35d45acc1519700eb873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 90
+  viewAngle: 0
   model: {fileID: 8477705439739443654}
-  agent: {fileID: 5078074436856157722}
+  agent: {fileID: 0}
   headPosition: {fileID: 8103365681268204801}
   shootPosition: {fileID: 586826145256589872}
   bullet: {fileID: 2461093298853194389, guid: ec1752eca93d1c546a1e13d268f70a05, type: 3}
-  firerate: 1
+  firerate: 0
   rotateSpeed: 0
-  maxBurstAmount: 1
-  timeBetweenShots: 2
-  damageAmount: 5
+  maxBurstAmount: 0
+  timeBetweenShots: 0
+  damageAmount: 0
   travelDistance: 10
   travelSpeed: 20
-  HP: 10
+  HP: 0
   enemyPrefab: {fileID: 932339075692980055}
   maxRespawns: 0
-  minHPSize: 0.1
-  maxHPSize: 1
-  renderDistance: 35
+  minHPSize: 0
+  maxHPSize: 0
+  renderDistance: 0
   enemyHpBar: {fileID: 5808101270420967357}
   isSliderOn: 0
 --- !u!195 &5078074436856157722
