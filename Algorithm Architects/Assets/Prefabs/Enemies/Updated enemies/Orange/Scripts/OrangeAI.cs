@@ -16,7 +16,7 @@ public class OrangeAI : MonoBehaviour, IDamage
     [SerializeField] float firerate;
     [SerializeField] int distancePlayerIsSeen;
     [SerializeField] int distanceOrangeCloses;
-
+    [SerializeField] int rotateSpeed;
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
     [SerializeField] GameObject enemyPrefab;    //Refrence to the enemy prefab
@@ -62,7 +62,11 @@ public class OrangeAI : MonoBehaviour, IDamage
         PlayerDist();
 
     }
-
+    void faceTarget()
+    {
+        Quaternion rotate = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotate, Time.deltaTime * rotateSpeed);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -81,6 +85,7 @@ public class OrangeAI : MonoBehaviour, IDamage
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
         if (dist <= distancePlayerIsSeen && dist >= distanceOrangeCloses)
         {
+            faceTarget();
             OpenUp();
             canShoot = true;
         }
