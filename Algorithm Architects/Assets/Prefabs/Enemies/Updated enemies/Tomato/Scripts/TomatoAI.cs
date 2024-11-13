@@ -12,6 +12,7 @@ public class TomatoAI : MonoBehaviour, IDamage
     [SerializeField] int viewAngle;
     float angleToPlayer;
 
+    [SerializeField] Animator tomAnimator;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform headPosition;
@@ -61,6 +62,7 @@ public class TomatoAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        tomAnimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
        // updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);

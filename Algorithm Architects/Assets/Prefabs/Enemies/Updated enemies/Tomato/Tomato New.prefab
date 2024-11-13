@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6716240081610270829}
-  - component: {fileID: 5831104948246350847}
+  - component: {fileID: 8012485037679556014}
+  - component: {fileID: 1522763140932563669}
   - component: {fileID: 3096220300673528646}
   - component: {fileID: 5682108936079179055}
   - component: {fileID: 8299881549600973547}
@@ -41,7 +42,28 @@ Transform:
   - {fileID: 1260575198462972682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5831104948246350847
+--- !u!95 &8012485037679556014
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891655430818489601}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 045fd0ce864ca3948ae765c1d06865d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1522763140932563669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,19 +72,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 891655430818489601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba02aa19c1cb0d94e813de63a50443cf, type: 3}
+  m_Script: {fileID: 11500000, guid: c8285eb6c871e654ab06b69b51bc5d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 90
+  viewAngle: 0
+  tomAnimator: {fileID: 8012485037679556014}
   model: {fileID: 5682108936079179055}
   agent: {fileID: 1606766503139804679}
   headPosition: {fileID: 4155101054091090067}
   shootPosition: {fileID: 7435439654565773394}
-  bullet: {fileID: 8346530349689674458, guid: c46e1fb3198e8b6408213d70a7a6cdc1, type: 3}
-  firerate: 0.4
+  bullet: {fileID: 5312572403292314785, guid: 02792e3fa50897d4d8429e302e5f175d, type: 3}
+  firerate: 2
   rotateSpeed: 32
   HP: 80
-  enemyPrefab: {fileID: 2514469933649856281, guid: b5172cea73966ba44bca39dd0a9f0049, type: 3}
+  enemyPrefab: {fileID: 891655430818489601}
   maxRespawns: 0
   minHPSize: 0.1
   maxHPSize: 1
