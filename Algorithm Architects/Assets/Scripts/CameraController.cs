@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY;
     [SerializeField] Transform playerCapsule;
+    [SerializeField] GameObject cameraShake;
 
     public float mouseY;
     public float mouseX;
