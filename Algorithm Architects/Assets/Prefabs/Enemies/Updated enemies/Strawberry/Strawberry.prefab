@@ -531,13 +531,14 @@ MonoBehaviour:
   shootPosition: {fileID: 1191529129667941047}
   bullet: {fileID: 8815419695332713176, guid: c9d42cdfcc42e8841b8c216e2fb62ee4, type: 3}
   firerate: 1
+  bulletDamage: 10
   rotateSpeed: 32
   spinSpeed: 360
   burstDuration: 1
   verticalAmplitude: 10
   verticalFrequency: 2
   randomMoveRange: 10
-  HP: 50
+  HP: 1000
   enemyPrefab: {fileID: 5661651392466127480}
   maxRespawns: 0
   minHPSize: 0.1

@@ -5,9 +5,9 @@ using UnityEngine.AI;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 
-public class StrawberryAI : MonoBehaviour
+public class StrawberryAI : MonoBehaviour, IDamage
 {
-    enum damageTypes { bullet, chaser, stationary, butter, melee, bouncing, fire, tomato, cabbage, toxic }
+    
 
     [SerializeField] int viewAngle;
     float angleToPlayer;
@@ -18,6 +18,7 @@ public class StrawberryAI : MonoBehaviour
     [SerializeField] Transform shootPosition;
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
+    [SerializeField] int bulletDamage = 10;  // Amount of damage taken from player
     [SerializeField] int rotateSpeed;
     [SerializeField] float spinSpeed = 360f; // Speed of spin in degrees per second
     [SerializeField] float burstDuration = 2f; // Duration of the burst
@@ -141,26 +142,47 @@ public class StrawberryAI : MonoBehaviour
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         HP -= amount;
-        updateEnemyUI();
+        // updateEnemyUI();
 
         StartCoroutine(flashColor());
 
+        //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
+            // --activeEnemiesAI;
+            // gameManager.instance.ActiveCheck(activeEnemiesAI);
+
+            // Check if enemy can respawn
             if (currentRespawnCount < maxRespawns)
             {
-                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity);
-                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity);
-                enemy1.GetComponent<StrawberryAI>().SetRespawnCount(currentRespawnCount + 1);
-                enemy2.GetComponent<StrawberryAI>().SetRespawnCount(currentRespawnCount + 1);
+
+
+                //Creates two new enemies when this one dies
+                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
+                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
+
+                // Set the respawn count of the new enemies to be 1 more than the current enemy
+                enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+
+                //Increment the game goal by 1 for each new enemy
                 gameManager.instance.updateGameGoal(+1);
+
             }
             else
             {
+                // No more respawns allowed, decrement the game goal
                 gameManager.instance.updateGameGoal(-1);
+
             }
 
+            // Destroys current enemy
             Destroy(gameObject);
+
+            //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
+            //{
+            //    gameManager.instance.Waves();
+            //}
         }
     }
 

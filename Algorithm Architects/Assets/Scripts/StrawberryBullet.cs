@@ -23,33 +23,20 @@ public class StrawberryBullet : MonoBehaviour
     {
         for (int i = 0; i < burstBulletCount; i++)
         {
-            // Calculate a random direction within a dome shape
             Vector3 randomDirection = RandomDomeDirection();
-
-            // Create a new GameObject for each bullet
             GameObject bullet = new GameObject("StrawberryBullet");
-            bullet.transform.position = transform.position; // Position the bullet at the enemy's position
+            bullet.transform.position = transform.position;
 
-            // Add Rigidbody and Collider components to the bullet
             Rigidbody rb = bullet.AddComponent<Rigidbody>();
             rb.useGravity = false;
-            rb.isKinematic = false;
+            rb.velocity = randomDirection * bulletSpeed;
 
             SphereCollider col = bullet.AddComponent<SphereCollider>();
             col.isTrigger = true;
 
-            // Set the bullet's velocity in the calculated dome direction
-            rb.velocity = randomDirection * bulletSpeed;
-
-            // Destroy the bullet after a set time
             Destroy(bullet, despawnTimer);
-
-            // Optional delay between each bullet for visual effect
             yield return new WaitForSeconds(burstDelay);
         }
-
-        // Destroy the original enemy object after firing all bullets
-        Destroy(gameObject);
     }
 
     private Vector3 RandomDomeDirection()
