@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int bleedDotRate;
     int fireDotTracker;
     int bleedDotTracker;
+    IEnumerator healDelayTrack;
 
     //Fields for shooting
     [SerializeField] int shootDamage;
@@ -573,6 +574,14 @@ public class PlayerController : MonoBehaviour, IDamage
             if (HealthPoints < fireDotDamage)
             {
                 HealthPoints = 1;
+
+                if(healDelayTrack != null)
+                {
+                    StopCoroutine(healDelayTrack);
+                }
+
+                healDelayTrack = healDelay();
+                StartCoroutine(healDelayTrack);
                 yield break;
             }
 
@@ -591,7 +600,14 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             gameManager.instance.setIsOnFire(false);
             fireDotTracker = 0;
-            StartCoroutine(healDelay());
+            
+            if (healDelayTrack != null)
+            {
+                StopCoroutine(healDelayTrack);
+            }
+
+            healDelayTrack = healDelay();
+            StartCoroutine(healDelayTrack);
         }
     }
 
