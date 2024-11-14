@@ -180,6 +180,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             if (isAirborne && !isBouncePad)
             {
+                Instantiate(runParticle, particleSource.position, Quaternion.identity);
                 soundManager.PlayLanding(isGrounded);
                 isAirborne = false;
             }
@@ -334,9 +335,15 @@ public class PlayerController : MonoBehaviour, IDamage
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             if (jumpCount == 0)
+            {
                 soundManager.PlayFirstJump();
+                Instantiate(runParticle, particleSource.position, Quaternion.identity);
+            }
             else
+            {
                 soundManager.PlayDoubleJump();
+                Instantiate(runParticle, particleSource.position, Quaternion.identity);
+            }
 
             jumpCount++;
             playerVel.y = jumpSpeed;
