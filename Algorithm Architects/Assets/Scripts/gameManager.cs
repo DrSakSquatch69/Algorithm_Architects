@@ -46,6 +46,7 @@ public class gameManager : MonoBehaviour
     private bool isBlurred;
 
     [SerializeField] bool isFinalLevel;
+    bool inCredits;
     int currWave;
     bool lastWave = true;
 
@@ -113,21 +114,41 @@ public class gameManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        if (SceneManager.GetActiveScene().buildIndex == 12)
+        {
+            inCredits = true;
+        }
+
+        else
+        {
+            inCredits = false;
+        }
+
         timeScaleOrig = Time.timeScale;                                     // setting the original time scale to reset after pause
         player = GameObject.FindWithTag("Player");                          //Tracks player's location 
         daikonKing = GameObject.FindWithTag("DaikonKing");
         tomatoSplat.color = new Color(0, 0, 0, 0);
-        soundManager = player.GetComponent<PlayerSoundManager>();
 
-        
-        GameObject[]daikonFind = (GameObject.FindGameObjectsWithTag("Daikon"));
+        if (inCredits != true)
+        {
+            soundManager = player.GetComponent<PlayerSoundManager>();
+        }
+
+        else
+        {
+            //Play credits music
+        }
+
+
+        GameObject[] daikonFind = (GameObject.FindGameObjectsWithTag("Daikon"));
         daikonCount = daikonFind.Length;
         //updateGameGoal(enemyCountForCurrentLevel);                          //Sets the enemy count text to the proper number
         //Waves();                                                            //Spawns in the first wave of enemies
-       // if (postProcessingVolume.profile.TryGet(out depthOfFieldEffect))
-      //  {
-       //     depthOfFieldEffect.active = false;
-       // }
+        // if (postProcessingVolume.profile.TryGet(out depthOfFieldEffect))
+        //  {
+        //     depthOfFieldEffect.active = false;
+        // }
     }
 
     // Update is called once per frame
@@ -138,30 +159,33 @@ public class gameManager : MonoBehaviour
         //    dialogue();
         //}
 
-        if (Input.GetButtonDown("Cancel"))
+        if (inCredits != true)
         {
-            if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
+            if (Input.GetButtonDown("Cancel"))
             {
-                statePause();                                               // calling Fn to create the paused state
-                MenuMusicManager.Instance.StopAmbientSound();
-                MenuMusicManager.Instance.PlayPauseUp();
-                menuActive = menuPause;                                 // setting active menu variable
-                menuActive.SetActive(isPaused);                         //setting menu active via our variable
-            }
+                if (menuActive == null)                                        //if active menu is null we are in game if not null we are in menu
+                {
+                    statePause();                                               // calling Fn to create the paused state
+                    MenuMusicManager.Instance.StopAmbientSound();
+                    MenuMusicManager.Instance.PlayPauseUp();
+                    menuActive = menuPause;                                 // setting active menu variable
+                    menuActive.SetActive(isPaused);                         //setting menu active via our variable
+                }
 
-            else if (inSettings) //Checks if the player is in the settings menu when escape is pressed so it can close the settings menu
-            {
-                menuActive.SetActive(false);
-                menuActive = menuPause;
-                menuActive.SetActive(true);
-                inSettings = false;
-            }
+                else if (inSettings) //Checks if the player is in the settings menu when escape is pressed so it can close the settings menu
+                {
+                    menuActive.SetActive(false);
+                    menuActive = menuPause;
+                    menuActive.SetActive(true);
+                    inSettings = false;
+                }
 
-            else if (menuActive == menuPause)                           //if we are in the pause menu
-            {
-                stateUnpause();                                         //change game state
-            }
+                else if (menuActive == menuPause)                           //if we are in the pause menu
+                {
+                    stateUnpause();                                         //change game state
+                }
 
+            }
         }
     }
     public void statePause()                                            // changes game state to a paused state
@@ -196,7 +220,11 @@ public class gameManager : MonoBehaviour
 
         isPaused = !isPaused;                                           // toggles on and off
         Time.timeScale = timeScaleOrig;                                 // sets our time scale to active using our variable we stored orig timescale in 
-        menuActive.SetActive(false);                                    //setting the active menu to inactive
+
+        if (inCredits != true)
+        {
+            menuActive.SetActive(false);                                    //setting the active menu to inactive
+        }
         menuActive = null;
     }
 
@@ -345,7 +373,7 @@ public class gameManager : MonoBehaviour
 
     }
 
-    IEnumerator FadeOut()                                                                                         
+    IEnumerator FadeOut()
     {
         alpha = 1;
 

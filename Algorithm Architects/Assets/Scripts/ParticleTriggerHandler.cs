@@ -97,7 +97,7 @@ public class ParticleTriggerHandler : MonoBehaviour
                 }
             }
         }
-        if (!isInToxicCloud && SceneManager.GetActiveScene().buildIndex != 1)
+        if (!isInToxicCloud && SceneManager.GetActiveScene().buildIndex != 1 && SceneManager.GetActiveScene().buildIndex != 12)
             gameManager.instance.GetSoundManager().StopStationaryDMG();
     }
 }
