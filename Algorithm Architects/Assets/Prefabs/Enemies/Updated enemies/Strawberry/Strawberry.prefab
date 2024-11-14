@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7430180208401555807}
   - component: {fileID: 3069755374737327951}
   - component: {fileID: 5723199470076711027}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Enemy HP Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7771370727417610816}
   - component: {fileID: 7478762573307377210}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Enemy HP Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7651932027941057258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 525327146642143583}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.79, z: 0.01}
+  m_LocalPosition: {x: -0.22, y: 0.59, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 7508779768307218800}
   - component: {fileID: 2324980704744458341}
   - component: {fileID: 4309349086377038041}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191529129667941047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shoot Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 1725402776204737678}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -0.7, z: 0.02}
+  m_LocalPosition: {x: -0.08, y: -0.59, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 5256570026395655432}
   - component: {fileID: 5607388649240381923}
   - component: {fileID: 4255943030565863636}
-  m_Layer: 16
+  m_Layer: 7
   m_Name: Enemy Icon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7789451623351655225}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,13 +486,13 @@ GameObject:
   - component: {fileID: 4968588687819808886}
   - component: {fileID: 2384313514574523071}
   - component: {fileID: 2197985645459723898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Strawberry
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5605106147888153485
 Transform:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5661651392466127480}
-  m_Mesh: {fileID: 3840383602836954559, guid: 5e2c42fc3ea2ae045ab54857df047938, type: 3}
+  m_Mesh: {fileID: 3840383602836954559, guid: 184933852d2eb42438b8c17a3b1aa4cc, type: 3}
 --- !u!23 &3717513685207141410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -615,7 +615,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -640,7 +640,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3840383602836954559, guid: 184933852d2eb42438b8c17a3b1aa4cc, type: 3}
 --- !u!135 &2384313514574523071
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 5653927973981269421}
   - component: {fileID: 3083932558366651858}
   - component: {fileID: 8427958167428457786}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ RectTransform:
   m_Father: {fileID: 7789451623351655225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.63, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
