@@ -720,7 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6384347599693153410}
   m_Layer: 5
-  m_Name: AmmoOnOff
+  m_Name: AmmoOnOff3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.596115, y: -13.5704155}
+  m_AnchoredPosition: {x: -12.3, y: -13.5704155}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1065628446319564950
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 3463276720835586949}
   - component: {fileID: 3504804951038410408}
   m_Layer: 5
-  m_Name: icon1
+  m_Name: icon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,7 +2011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 113.99983, y: 24.999996}
+  m_AnchoredPosition: {x: 102, y: 23}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &254042450808817067
@@ -2069,8 +2069,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2746,7 +2746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8107903204469628261}
   m_Layer: 5
-  m_Name: AmmoOnOff
+  m_Name: AmmoOnOff2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2769,7 +2769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.596115, y: -13.5704155}
+  m_AnchoredPosition: {x: -12.3, y: -13.5704155}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2196406272797928672
@@ -2914,22 +2914,22 @@ MonoBehaviour:
   noAmmo: {fileID: 5836558648795607778}
   enemyCountText: {fileID: 618311326169530451}
   turnOnOffAmmoText: {fileID: 4186327441584759813}
-  turnOnOffAmmoText2: {fileID: 0}
-  turnOnOffAmmoText3: {fileID: 0}
+  turnOnOffAmmoText2: {fileID: 2118024798940913071}
+  turnOnOffAmmoText3: {fileID: 1000607639613268846}
   turnOnOffInteract: {fileID: 989898032154840142}
-  Scroll1: {fileID: 0}
-  Scroll2: {fileID: 0}
-  Scroll3: {fileID: 0}
   icon1: {fileID: 6397187058976911467}
-  icon2: {fileID: 0}
-  icon3: {fileID: 0}
+  icon2: {fileID: 1078425422832507585}
+  icon3: {fileID: 2483943401581156544}
+  Scroll1: {fileID: 1166735599166510030}
+  Scroll2: {fileID: 1115994625103929074}
+  Scroll3: {fileID: 486239108839210774}
   iconImage1: {fileID: 4902381812293494852}
-  iconImage2: {fileID: 0}
-  iconImage3: {fileID: 0}
+  iconImage2: {fileID: 3504804951038410408}
+  iconImage3: {fileID: 7265131258814182185}
   interact: {fileID: 7805697435249245295}
   remainingAmmoText: {fileID: 3460451102139912061}
-  remainingAmmoText2: {fileID: 0}
-  remainingAmmoText3: {fileID: 0}
+  remainingAmmoText2: {fileID: 5098153413378004720}
+  remainingAmmoText3: {fileID: 1080799281421635714}
   nextWaveTimer: 0
   toRespawn: {fileID: 0}
   maxEnemiesAtOnce: 0
@@ -3569,7 +3569,7 @@ GameObject:
   - component: {fileID: 2474434004784960908}
   - component: {fileID: 7265131258814182185}
   m_Layer: 5
-  m_Name: icon1
+  m_Name: icon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5928,7 +5928,7 @@ GameObject:
   - component: {fileID: 5092662479397646052}
   - component: {fileID: 5098153413378004720}
   m_Layer: 5
-  m_Name: RemainingAmmo
+  m_Name: RemainingAmmo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5950,7 +5950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 113.99983, y: 24.999996}
+  m_AnchoredPosition: {x: 102, y: 23}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5092662479397646052
@@ -6008,8 +6008,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6204,7 +6204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.596115, y: -13.5704155}
+  m_AnchoredPosition: {x: -12.3, y: -13.5704155}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4305913963369976368
@@ -6947,7 +6947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 3b93a9c8cd7bafd4b81d1ff54e1e5aec, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -7391,7 +7391,7 @@ GameObject:
   - component: {fileID: 6414309832796740926}
   - component: {fileID: 1080799281421635714}
   m_Layer: 5
-  m_Name: RemainingAmmo
+  m_Name: RemainingAmmo3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7413,7 +7413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 113.99983, y: 24.999996}
+  m_AnchoredPosition: {x: 102, y: 23}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6414309832796740926
@@ -7471,8 +7471,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9165,8 +9165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 278a0bbc92a13e84481b703dcaab902d, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9703,7 +9703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25.870165, y: 1.0254135}
+  m_AnchoredPosition: {x: -26.1, y: 1.0254135}
   m_SizeDelta: {x: 19.98, y: 50.9844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7259689695131343564
@@ -9726,7 +9726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 3b93a9c8cd7bafd4b81d1ff54e1e5aec, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -11290,7 +11290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 3b93a9c8cd7bafd4b81d1ff54e1e5aec, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

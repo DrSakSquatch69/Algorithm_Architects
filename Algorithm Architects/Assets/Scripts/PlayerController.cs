@@ -739,21 +739,21 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if(selectedGunPos == 0)
         {
-            gameManager.instance.Scroll1.SetActive(true);
-            gameManager.instance.Scroll2.SetActive(false);
-            gameManager.instance.Scroll3.SetActive(false);
+            gameManager.instance.Scroll1.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.60f);
+            gameManager.instance.Scroll2.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
+            gameManager.instance.Scroll3.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
         }
         else if (selectedGunPos == 1)
         {
-            gameManager.instance.Scroll2.SetActive(true);
-            gameManager.instance.Scroll1.SetActive(false);
-            gameManager.instance.Scroll3.SetActive(false);
+            gameManager.instance.Scroll2.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.60f);
+            gameManager.instance.Scroll1.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
+            gameManager.instance.Scroll3.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
         }
         else if (selectedGunPos == 2)
         {
-            gameManager.instance.Scroll3.SetActive(true);
-            gameManager.instance.Scroll2.SetActive(false);
-            gameManager.instance.Scroll1.SetActive(false);
+            gameManager.instance.Scroll3.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.60f);
+            gameManager.instance.Scroll2.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
+            gameManager.instance.Scroll1.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
         }
     }
 
