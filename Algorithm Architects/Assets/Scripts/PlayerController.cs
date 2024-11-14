@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpCount = 0;
         origGrav = gravity;
         HealthPoints = maxHP;
-        normalHeight = controller.height;
+        normalHeight = controller.radius;
         originalSpeed = speed;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
@@ -450,7 +450,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (isCrouching && !isSprinting && !isSliding)
         {
             //changes the player Y size to the crouch size
-            controller.height = crouchHeight; //Change character controller instead of actual model size
+            controller.radius = crouchHeight; //Change character controller instead of actual model size
             crouching = true;                                         //Make enemies easier to see (try making them bigger first)
 
         }
@@ -462,7 +462,7 @@ public class PlayerController : MonoBehaviour, IDamage
             if (canSlide && holdingSprintTime >= slideDelay) //checking if the player can slide and also if they held the key for the correct amount of time
             {
                 isSliding = true;
-                controller.height = crouchHeight;
+                controller.radius = crouchHeight;
                 canSlide = false;
             }
             else
@@ -473,7 +473,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (!isCrouching)
         {
             //changes the player Y size to the normal size
-            controller.height = normalHeight;
+            controller.radius = normalHeight;
             crouching = false;
         }
     }
