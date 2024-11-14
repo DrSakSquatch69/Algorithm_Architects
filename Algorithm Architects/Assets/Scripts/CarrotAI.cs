@@ -13,6 +13,7 @@ public class CarrotAI : MonoBehaviour, IDamage
     [SerializeField] int viewAngle;
     float angleToPlayer;
 
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Rigidbody rb;
@@ -22,6 +23,7 @@ public class CarrotAI : MonoBehaviour, IDamage
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
     [SerializeField] float burrowedPos;
+    [SerializeField] float burrowSpeed;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -37,7 +39,7 @@ public class CarrotAI : MonoBehaviour, IDamage
     Vector3 playerDirection;
     Renderer render;
 
-    bool isShooting;
+    public bool isShooting;
     bool playerSighted;
     bool inGround;
 
@@ -215,21 +217,25 @@ public class CarrotAI : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
+        if (isShooting) { anim.SetTrigger("Shoot"); }
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(firerate);
         isShooting = false;
+        anim.ResetTrigger("Shoot");
     }
 
     void burrow()
     {
         if (inGround)
         {
+            anim.SetTrigger("Burrow");
             transform.position = new Vector3(transform.position.x, burrowedPos, transform.position.z);
             rb.constraints = RigidbodyConstraints.None;
             
         }
         else if (!inGround && agent.remainingDistance <= agent.stoppingDistance)
         {
+            anim.SetTrigger("Resurface");
             transform.position = new Vector3(transform.position.x, origPos, transform.position.z);
             rb.constraints = RigidbodyConstraints.FreezePositionY;
 
