@@ -125,6 +125,10 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isWallRunning;
     bool isSpawnProtection;
 
+    //Particles
+    [SerializeField] Transform particleSource;
+    [SerializeField] ParticleEffect runParticle;
+
     //used to see if the player is grounded in debug mode
     
     //stores the normal Y size of the player capsule
@@ -218,7 +222,7 @@ public class PlayerController : MonoBehaviour, IDamage
             Interact();
         }
 
-        if (inMotion && isGrounded)
+        if (inMotion && (isGrounded || controller.isGrounded))
         {
             if(soundManager.isWalkingPlaying && gameManager.instance.isPaused)
             {
@@ -228,6 +232,7 @@ public class PlayerController : MonoBehaviour, IDamage
             if (isSprinting && !soundManager.runningPlaying())
             {
                 soundManager.PlayRun();
+                Instantiate(runParticle, particleSource.position, Quaternion.identity);
                 //  Debug.Log("Run is playing");
             }
             else if (isCrouching && !soundManager.crouchedPlaying())
@@ -297,6 +302,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (isWallRunning)
         {
             controller.Move(moveDir * wallRunSpeed * Time.deltaTime);
+            Instantiate(runParticle, particleSource.position, Quaternion.identity);
 
             if (isWallRight)
             {
@@ -773,7 +779,10 @@ public class PlayerController : MonoBehaviour, IDamage
     void StartWallRun()
     {
         jumpCount = 0;
-        soundManager.PlayWallRun();
+        if (!gameManager.instance.isPaused)
+        {
+            soundManager.PlayWallRun();
+        }
         //Resets fall speed when player first starts wall running
         if (!isWallRunning)
         {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionEffect : MonoBehaviour
+public class ParticleEffect : MonoBehaviour
 {
-    [SerializeField] int explodeDur;
+    [SerializeField] float dur;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +13,7 @@ public class ExplosionEffect : MonoBehaviour
 
     IEnumerator duration()
     {
-        yield return new WaitForSeconds(explodeDur);
+        yield return new WaitForSeconds(dur);
         Destroy(gameObject);
     }
 }
