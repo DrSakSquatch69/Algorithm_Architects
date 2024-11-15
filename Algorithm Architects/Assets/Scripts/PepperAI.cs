@@ -55,7 +55,7 @@ public class PepperAI : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
-      //  updateEnemyUI();
+        updateEnemyUI();
     }
 
     // Update is called once per frame
