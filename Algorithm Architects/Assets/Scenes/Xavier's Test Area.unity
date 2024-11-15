@@ -227,6 +227,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122193284}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &188223029
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.075799
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5641346
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 40.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247476546327169525, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_Name
+      value: Daikon King
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
 --- !u!1 &244473162
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +500,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2845827201945584486, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 319485
+      objectReference: {fileID: 0}
     - target: {fileID: 4315599496715532236, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.23
@@ -1386,3 +1455,4 @@ SceneRoots:
   - {fileID: 1408211681}
   - {fileID: 779577826}
   - {fileID: 881461478}
+  - {fileID: 188223029}
