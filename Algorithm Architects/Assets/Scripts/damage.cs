@@ -93,8 +93,8 @@ public class damage : MonoBehaviour
 
             if (type == damageType.tomato)
             {
+                dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
                 gameManager.instance.setIsTomatoed(true);
-
                 gameManager.instance.TomatoSplat();
             }
 
