@@ -49,7 +49,7 @@ public class BananaAI : MonoBehaviour, IDamage
 
     void Start()
     {
-        colorOrig = model.material.color;
+        //colorOrig = model.material.color;
         hpOrig = HP;
         render = GetComponent<Renderer>();
         gameManager.instance.updateGameGoal(1);
@@ -61,7 +61,7 @@ public class BananaAI : MonoBehaviour, IDamage
     void Update()
     {
         updateEnemyUI();
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
 
         if (playerSighted && canSeePlayer())
         {
@@ -126,10 +126,10 @@ public class BananaAI : MonoBehaviour, IDamage
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
         // Debug log to check the objects
-        Debug.Log("gameManager.instance: " + (gameManager.instance == null ? "null" : "initialized"));
-        Debug.Log("gameManager.instance.getPlayer(): " + (gameManager.instance.getPlayer() == null ? "null" : "initialized"));
-        Debug.Log("enemyHpBar: " + (enemyHpBar == null ? "null" : "initialized"));
-        Debug.Log("Camera.main: " + (Camera.main == null ? "null" : "initialized"));
+        //Debug.Log("gameManager.instance: " + (gameManager.instance == null ? "null" : "initialized"));
+        //Debug.Log("gameManager.instance.getPlayer(): " + (gameManager.instance.getPlayer() == null ? "null" : "initialized"));
+        //Debug.Log("enemyHpBar: " + (enemyHpBar == null ? "null" : "initialized"));
+        //Debug.Log("Camera.main: " + (Camera.main == null ? "null" : "initialized"));
 
         if (dist <= renderDistance)
         {
@@ -143,13 +143,13 @@ public class BananaAI : MonoBehaviour, IDamage
                 }
                 else
                 {
-                   Debug.Log("Camera.main is null.");
+                   //Debug.Log("Camera.main is null.");
                 }
                 isSliderOn = true;
             }
             else
             {
-                Debug.Log("enemyHpBar is null.");
+                //Debug.Log("enemyHpBar is null.");
             }
         }
         else
@@ -224,7 +224,7 @@ public class BananaAI : MonoBehaviour, IDamage
     {
         if (bullet == null)
         {
-            Debug.Log("Bullet is null at the start of the coroutine.");
+            //Debug.Log("Bullet is null at the start of the coroutine.");
             yield break;  // Exit early if the bullet is already null
         }
 
@@ -237,7 +237,7 @@ public class BananaAI : MonoBehaviour, IDamage
             // Ensure that the bullet is still valid
             if (bullet == null)
             {
-                Debug.Log("Bullet was destroyed during movement.");
+                //Debug.Log("Bullet was destroyed during movement.");
                 yield break;  // Exit if the bullet is destroyed
             }
 
@@ -254,7 +254,7 @@ public class BananaAI : MonoBehaviour, IDamage
         // Check if the bullet is destroyed after moving the set distance
         if (bullet == null)
         {
-            Debug.Log("Bullet was destroyed after traveling the set distance, exiting coroutine.");
+            //Debug.Log("Bullet was destroyed after traveling the set distance, exiting coroutine.");
             yield break;  // Exit if the bullet is destroyed
         }
 
@@ -275,7 +275,7 @@ public class BananaAI : MonoBehaviour, IDamage
         // Ensure the bullets were instantiated correctly
         if (middleBullet == null || leftBullet == null || leftBullet2 == null || rightBullet == null || rightBullet2 == null)
         {
-            Debug.Log("One or more split bullets were not instantiated correctly.");
+            //Debug.Log("One or more split bullets were not instantiated correctly.");
             yield break;  // Exit if any split bullet was not instantiated correctly
         }
 

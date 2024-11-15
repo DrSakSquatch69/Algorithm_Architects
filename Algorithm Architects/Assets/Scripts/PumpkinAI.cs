@@ -63,11 +63,25 @@ public class PumpkinAI : MonoBehaviour, IDamage
     void Update()
     {
         updateEnemyUI();
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
-        if (playerSighted && canSeePlayer())
+        // Get the distance between the enemy and the player
+        float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
+
+        // If the player is within the stopping distance, stop the agent
+        if (distanceToPlayer <= agent.stoppingDistance)
         {
-            // Engage the player with rapid fire when in sight
+            agent.isStopped = true;
+            faceTarget();
+        }
+        else
+        {
+            agent.isStopped = false;
+            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        }
+
+        // Engage the player if sighted and not on cooldown
+        if (playerSighted && canSeePlayer() && !isOnCooldown)
+        {
             if (!isShooting)
             {
                 StartCoroutine(ShootRapidFire());
