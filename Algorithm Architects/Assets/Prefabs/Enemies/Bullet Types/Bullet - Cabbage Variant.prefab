@@ -33,20 +33,36 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1050562069397511582, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: bulletSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050562069397511582, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
       propertyPath: damageAmount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.19270368
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.19270368
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.19270368
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.85
+      value: 9.89
       objectReference: {fileID: 0}
     - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.75
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9154477
+      value: 23.86043
       objectReference: {fileID: 0}
     - target: {fileID: 1470164870884174514, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -76,10 +92,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4181149989653813136, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3760286561286826541, guid: 48d4b1e2ed74a0a4aa162a67b307fe14, type: 3}
     - target: {fileID: 5223472228960464512, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
       propertyPath: m_Name
       value: Bullet - Cabbage Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8314681664398686720, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106096539545287709, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 4891645606513695757, guid: 48d4b1e2ed74a0a4aa162a67b307fe14, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

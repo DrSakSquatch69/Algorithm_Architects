@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5846427611103812879, guid: cc3929cfbf5daf94b9658cd0f7e51cb8, type: 3}
+      propertyPath: enemyHpBar
+      value: 
+      objectReference: {fileID: 522407858}
     - target: {fileID: 6605230962299044520, guid: cc3929cfbf5daf94b9658cd0f7e51cb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.3423076
@@ -496,6 +500,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &522407858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7557928010771520345, guid: cc3929cfbf5daf94b9658cd0f7e51cb8, type: 3}
+  m_PrefabInstance: {fileID: 117482626}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &525114495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -598,32 +613,6 @@ Transform:
   - {fileID: 952086818}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &607535878 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6630611280689858322, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-  m_PrefabInstance: {fileID: 7308433423470301102}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &607535883
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607535878}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61db2666db4d89d4fb755507e94ae83f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &735679183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,49 +1546,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8736846324548703425, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 607535883}
-    - target: {fileID: 8736846324548703425, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      propertyPath: maxHPSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8736846324548703425, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      propertyPath: minHPSize
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8736846324548703425, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      propertyPath: enemyHpBar
-      value: 
-      objectReference: {fileID: 7308433423470301103}
-    - target: {fileID: 8736846324548703425, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 2109514584166928146, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-    - target: {fileID: 8736846324548703425, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      propertyPath: renderDistance
-      value: 35
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6630611280689858322, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 607535883}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
---- !u!114 &7308433423470301103 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2414047603871051243, guid: b93a3529fe90c3e419dcbfdbe0e1ca86, type: 3}
-  m_PrefabInstance: {fileID: 7308433423470301102}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
