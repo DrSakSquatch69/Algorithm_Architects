@@ -1001,20 +1001,29 @@ public class PlayerController : MonoBehaviour, IDamage
     void RayTextUpdate()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, bouncePad))
+
+        if (!gameManager.instance.isPaused)
         {
-            gameManager.instance.rayText.enabled = true;
-            gameManager.instance.rayText.text = "Bounce Pad";
-        }
-        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, enemy))
-        {
-            gameManager.instance.rayText.enabled = true;
-            gameManager.instance.rayText.text = "Enemy";
-        }
-        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, toxicCloud))
-        {
-            gameManager.instance.rayText.enabled = true;
-            gameManager.instance.rayText.text = "Toxic Cloud";
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, bouncePad))
+            {
+                gameManager.instance.rayText.enabled = true;
+                gameManager.instance.rayText.text = "Bounce Pad";
+            }
+            else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, enemy))
+            {
+                gameManager.instance.rayText.enabled = true;
+                gameManager.instance.rayText.text = "Enemy";
+            }
+            else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayTextDist, toxicCloud))
+            {
+                gameManager.instance.rayText.enabled = true;
+                gameManager.instance.rayText.text = "Toxic Cloud";
+            }
+            else
+            {
+                gameManager.instance.rayText.text = "";
+                gameManager.instance.rayText.enabled = false;
+            }
         }
         else
         {
