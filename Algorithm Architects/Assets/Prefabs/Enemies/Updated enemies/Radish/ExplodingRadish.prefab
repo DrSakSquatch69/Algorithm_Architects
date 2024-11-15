@@ -34,10 +34,8 @@ Transform:
   m_LocalScale: {x: 4.931967, y: 4.931967, z: 4.738042}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5830783100313737896}
   - {fileID: 5701322105922908506}
   - {fileID: 5245976002456996867}
-  - {fileID: 9186660297688810854}
   m_Father: {fileID: 6823146099943496553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2980113373044692529
@@ -69,6 +67,7 @@ MonoBehaviour:
   maxHPSize: 1
   renderDistance: 35
   enemyHpBar: {fileID: 8768696978319395509}
+  parent: {fileID: 4609816656826990098}
   isSliderOn: 0
 --- !u!33 &8323615751450181845
 MeshFilter:
@@ -191,11 +190,11 @@ Transform:
   m_GameObject: {fileID: 1003917966687384645}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.16614152}
+  m_LocalPosition: {x: -0.06999954, y: 25.879831, z: 0}
+  m_LocalScale: {x: 3.9455733, y: 3.790434, z: 0.8194045}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 7488181815906116339}
+  m_Father: {fileID: 6823146099943496553}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &6587584534367760527
 MeshFilter:
@@ -340,6 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6823146099943496553}
+  - component: {fileID: 4789360405972430979}
   - component: {fileID: 4930237963337000639}
   m_Layer: 0
   m_Name: ExplodingRadish
@@ -362,8 +362,25 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7488181815906116339}
+  - {fileID: 9186660297688810854}
+  - {fileID: 5830783100313737896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4789360405972430979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609816656826990098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d215e672ed88e3c47920e540b2004a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceHeight: 1
+  bounceSpeed: 10
+  agent: {fileID: 4930237963337000639}
 --- !u!195 &4930237963337000639
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -392,7 +409,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7488181815906116339}
+    m_TransformParent: {fileID: 6823146099943496553}
     m_Modifications:
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_Pivot.x
@@ -428,11 +445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.006
+      value: 0.029591799
       objectReference: {fileID: 0}
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.006
+      value: 0.029591799
       objectReference: {fileID: 0}
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,11 +481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.06999954
       objectReference: {fileID: 0}
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.7799988
+      value: 5.6242433
       objectReference: {fileID: 0}
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -481,6 +498,14 @@ PrefabInstance:
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499851095515781424, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000417034852630566, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7596735509185898229, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_Name

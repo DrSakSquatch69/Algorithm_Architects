@@ -47,6 +47,7 @@ public class RadishAI : MonoBehaviour, IDamage
     //int activeEnemiesAI; //Used for tracking the active enemies 
 
     [SerializeField] Slider enemyHpBar;
+    [SerializeField] GameObject parent;
     public bool isSliderOn;
 
 
@@ -60,14 +61,14 @@ public class RadishAI : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
-       // updateEnemyUI();
+        updateEnemyUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-       // updateEnemyUI();
-        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+       updateEnemyUI();
+        //activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
         if (playerSighted && canSeePlayer())
@@ -105,7 +106,7 @@ public class RadishAI : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         HP -= amount;
-        //updateEnemyUI();
+        updateEnemyUI();
 
         StartCoroutine(flashColor());
 
@@ -210,6 +211,7 @@ public class RadishAI : MonoBehaviour, IDamage
     IEnumerator Explode()
     {
         isExploding = true;
+        StartCoroutine(scaleUp());
         if (explosionSound != null)
         {
             gameManager.instance.playerScript.soundManager.playExplosion(explosionSound);
@@ -226,8 +228,16 @@ public class RadishAI : MonoBehaviour, IDamage
         }
         HP = 0;
         gameManager.instance.updateGameGoal(-1);
-        Destroy(enemyHpBar);
+        Destroy(parent);
         Destroy(gameObject);
+    }
+
+    IEnumerator scaleUp()
+    {
+        Vector3 scale = new Vector3(0.2f, 0.1f, 0.2f);
+        transform.localScale = (transform.localScale + scale);
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(scaleUp());
     }
 
 
