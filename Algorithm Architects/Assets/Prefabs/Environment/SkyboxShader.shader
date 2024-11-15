@@ -2,10 +2,11 @@ Shader "Custom/SkyboxShader"
 {
     Properties
     {
-        _TopColor ("Top Color", Color) = (0.1, 0.4, 0.8, 1) // Sky Color at the top (e.g., blue)
-        _HorizonColor ("Horizon Color", Color) = (1, 0.7, 0.4, 1) // Color at the horizon (e.g., warm orange)
-        _BottomColor ("Bottom Color", Color) = (0.1, 0.1, 0.2, 1) // Color below the horizon (e.g., dark purple)
-        _BlendFactor ("Blend Factor", Range(0,1)) = 0.5 // Used to transition between day and night
+        _TopColor ("Top Color", Color) = (0.1, 0.4, 0.8, 1) // Sky color at the top during day
+        _HorizonColor ("Horizon Color", Color) = (1, 0.7, 0.4, 1) // Horizon color during day
+        _BottomColor ("Bottom Color", Color) = (0.1, 0.1, 0.2, 1) // Bottom of sky during day
+        _NightColor ("Night Color", Color) = (0, 0, 0.05, 1) // Dark sky color for night
+        _BlendFactor ("Blend Factor", Range(0,1)) = 0.5 // For day-to-night transition
     }
 
     SubShader
@@ -32,6 +33,7 @@ Shader "Custom/SkyboxShader"
             float4 _TopColor;
             float4 _HorizonColor;
             float4 _BottomColor;
+            float4 _NightColor;
             float _BlendFactor;
 
             v2f vert (appdata v)
@@ -44,17 +46,17 @@ Shader "Custom/SkyboxShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // Calculate vertical gradient based on y position of the world position
+                // Calculate height gradient based on y position
                 float height = i.worldPos.y;
 
-                // Interpolate between bottom, horizon, and top color
-                float4 skyColor = lerp(_BottomColor, _HorizonColor, smoothstep(-0.2, 0.2, height));
-                skyColor = lerp(skyColor, _TopColor, smoothstep(0.2, 1.0, height));
+                // Interpolate day colors
+                float4 dayColor = lerp(_BottomColor, _HorizonColor, smoothstep(-0.2, 0.2, height));
+                dayColor = lerp(dayColor, _TopColor, smoothstep(0.2, 1.0, height));
 
-                // Blend factor for day-night transition
-                skyColor = lerp(skyColor, float4(0, 0, 0, 1), _BlendFactor);
+                // Transition to night color based on BlendFactor
+                float4 finalColor = lerp(_NightColor, dayColor, 1 - _BlendFactor);
 
-                return skyColor;
+                return finalColor;
             }
             ENDCG
         }

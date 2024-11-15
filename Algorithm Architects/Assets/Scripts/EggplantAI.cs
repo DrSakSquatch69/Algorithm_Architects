@@ -16,7 +16,7 @@ public class EggplantAI : MonoBehaviour, IDamage
     [SerializeField] private int maxRespawns = 0;
     [SerializeField] private float renderDistance = 50f;
     [SerializeField] private float gasRange = 5f;
-    [SerializeField] private float attachRange = 1f;
+    //[SerializeField] private float attachRange = 1f;
     [SerializeField] private float poisonDamage = 1f;
     [SerializeField] private float poisonInterval = 1f;
     [SerializeField] private float attachDuration = 5f;
@@ -48,7 +48,7 @@ public class EggplantAI : MonoBehaviour, IDamage
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
             if (player == null)
             {
-                Debug.Log("Player not found! Ensure the player has the 'Player' tag.");
+               // Debug.Log("Player not found! Ensure the player has the 'Player' tag.");
             }
         }
 
@@ -226,7 +226,7 @@ public class EggplantAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             isPlayerInGasRange = true;
-            Debug.Log("Player entered gas range");
+            //Debug.Log("Player entered gas range");
 
             // Start the poison damage effect and enable the particle system
             if (!gasEffect.isPlaying)
@@ -244,7 +244,7 @@ public class EggplantAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             isPlayerInGasRange = false;
-            Debug.Log("Player exited gas range");
+            //Debug.Log("Player exited gas range");
 
             // Stop poison damage effect and disable particle system
             StopCoroutine(ApplyPoisonDamage());

@@ -241,7 +241,7 @@ public class StrawberryAI : MonoBehaviour, IDamage
     IEnumerator SpinAndShoot()
     {
         isShooting = true;
-        float timeElapsed = 0f;
+        //float timeElapsed = 0f;
         int bulletCount = 50; // Adjust the number of bullets for the dome pattern
         float timeBetweenShots = burstDuration / bulletCount;
 
