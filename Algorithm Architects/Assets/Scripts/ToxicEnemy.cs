@@ -6,6 +6,8 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class ToxicEnemy : MonoBehaviour 
 {
+    [SerializeField] private Renderer enemyRenderer;
+    [SerializeField] private Vector2 materialScale = new Vector2(1f, 1f);
     public float gasRange = 5f;
     public float attachRange = 1f;
     public float poisonDamage = 1f;
@@ -26,6 +28,12 @@ public class ToxicEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // Check if the volume has Depth of Field and cache it
         postProcessVolume.profile.TryGetSettings(out depthOfFieldEffect);
+
+        // Set the material texture scale
+        if (enemyRenderer != null)
+        {
+            enemyRenderer.material.mainTextureScale = materialScale;
+        }
     }
 
     void Update()
