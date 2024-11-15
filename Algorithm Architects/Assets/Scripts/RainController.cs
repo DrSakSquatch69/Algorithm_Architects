@@ -17,7 +17,7 @@ public class RainController : MonoBehaviour
     {
         if (rainParticleSystem == null)
         {
-            Debug.LogError("Rain Particle System is not assigned!");
+            //Debug.LogError("Rain Particle System is not assigned!");
             return;
         }
 
@@ -34,19 +34,19 @@ public class RainController : MonoBehaviour
         {
             // Randomize the time until it rains
             float waitTime = Random.Range(minRainInterval, maxRainInterval);
-            Debug.Log("Waiting for " + waitTime + " seconds before rain."); // Debug log
+            //Debug.Log("Waiting for " + waitTime + " seconds before rain."); // Debug log
             yield return new WaitForSeconds(waitTime);
 
             // Set a random intensity for the rain
             float rainIntensity = Random.Range(minRainIntensity, maxRainIntensity);
-            Debug.Log("Starting rain with intensity: " + rainIntensity); // Debug log
+            //Debug.Log("Starting rain with intensity: " + rainIntensity); // Debug log
             StartCoroutine(FadeRainIntensity(rainIntensity, 2f)); // Fade to the new intensity over 2 seconds
 
             // Enable the rain
             if (!rainParticleSystem.isPlaying)
             {
                 rainParticleSystem.Play();
-                Debug.Log("Rain started.");
+                //Debug.Log("Rain started.");
             }
             
             // Wait for the rain duration, then stop the rain
@@ -54,7 +54,7 @@ public class RainController : MonoBehaviour
 
             
             StartCoroutine(FadeRainIntensity(0f, 2f)); // Fade out the intensity over 2 seconds
-            Debug.Log("Stopping rain."); // Debug log
+            //Debug.Log("Stopping rain."); // Debug log
             yield return new WaitForSeconds(2f); // Wait for fade out to complete
         }
     }
