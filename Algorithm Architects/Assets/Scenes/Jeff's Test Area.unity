@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: f0991523499965a488c717f20ca08595, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1649,6 +1649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkyboxController
       objectReference: {fileID: 0}
+    - target: {fileID: 3798739553031364052, guid: 8d87b34460415994bbdb8f49f0985fcd, type: 3}
+      propertyPath: skyboxMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e11050537d2c9124591f4c8e513dff5f, type: 2}
     - target: {fileID: 5374777641195079507, guid: 8d87b34460415994bbdb8f49f0985fcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2071,6 +2075,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 3241160878078584034, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241160878078584034, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f414f86f8de9c60409adda9e115c4823, type: 2}
     - target: {fileID: 6680663587558512244, guid: c91873994015adc4b9fb742ec7384311, type: 3}
       propertyPath: m_LocalPosition.x
       value: 111.67212
@@ -2111,6 +2123,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.ratio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.worldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.textureScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.textureScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0.8497241
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0.8962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 0.8937702
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2144,11 +2192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2944862269965297806, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2944862269965297806, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: HP
@@ -2158,13 +2206,17 @@ PrefabInstance:
       propertyPath: enemyHp
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: maxBullets
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4072220555173883778, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_Name
       value: Pumpkin
       objectReference: {fileID: 0}
     - target: {fileID: 4072220555173883778, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7072437828079975302, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_Mesh
@@ -2391,10 +2443,10 @@ SceneRoots:
   - {fileID: 962776543}
   - {fileID: 610310698}
   - {fileID: 1455679244}
+  - {fileID: 1737927157}
+  - {fileID: 2121859079}
   - {fileID: 431978365}
   - {fileID: 7732543612633856742}
   - {fileID: 3063938135761553945}
   - {fileID: 1583152490}
   - {fileID: 1729657270}
-  - {fileID: 2121859079}
-  - {fileID: 1737927157}

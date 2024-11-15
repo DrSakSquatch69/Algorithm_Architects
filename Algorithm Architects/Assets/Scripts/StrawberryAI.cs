@@ -18,12 +18,12 @@ public class StrawberryAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPosition;
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
-    [SerializeField] int bulletDamage = 10;  // Amount of damage taken from player
+    //[SerializeField] int bulletDamage = 10;  // Amount of damage taken from player
     [SerializeField] int rotateSpeed;
-    [SerializeField] float spinSpeed = 360f; // Speed of spin in degrees per second
+    //[SerializeField] float spinSpeed = 360f; // Speed of spin in degrees per second
     [SerializeField] float burstDuration = 2f; // Duration of the burst
-    [SerializeField] float verticalAmplitude = 10f; // The range of up-and-down movement in degrees
-    [SerializeField] float verticalFrequency = 2f;  // How quickly the bullets move up and down
+    //[SerializeField] float verticalAmplitude = 10f; // The range of up-and-down movement in degrees
+    //[SerializeField] float verticalFrequency = 2f;  // How quickly the bullets move up and down
     [SerializeField] float randomMoveRange = 10f; // Range within which the enemy moves randomly
 
     int hpOrig;
