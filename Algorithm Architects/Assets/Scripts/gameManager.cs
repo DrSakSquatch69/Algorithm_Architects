@@ -55,6 +55,8 @@ public class gameManager : MonoBehaviour
     GameObject daikonKing;
     float playerSpeed;
     float originalPlayerSpeed;
+    int playerJumpSpeed;
+    int originalPlayerJumpSpeed;
     float alpha; //Transparency for tomato
 
     int enemyCount;
@@ -81,7 +83,9 @@ public class gameManager : MonoBehaviour
     public GameObject getDaikonKing() { return daikonKing; }
     public bool getIsButtered() { return IsButtered; }
     public float getPlayerSpeed() { return playerSpeed; }
+    public int getPlayerJumpSpeed() { return playerJumpSpeed; }
     public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
+    public int getOriginalPlayerJumpSpeed() { return originalPlayerJumpSpeed; }
     public bool getInSettings() { return inSettings; }
     public AudioSource getSound() { return playerAudioSource; }
     public bool getIsOnFire() { return isOnFire; }
@@ -94,7 +98,9 @@ public class gameManager : MonoBehaviour
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
     public void setIsButtered(bool butter) { IsButtered = butter; }
     public void setPlayerSpeed(float speed) { playerSpeed = speed; }
+    public void setPlayerJumpSpeed(int jumpSpeed) { playerJumpSpeed = jumpSpeed; }
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
+    public void setOriginalPlayerJumpSpeed(int jumpSpeed) {originalPlayerJumpSpeed = jumpSpeed; }  
     public void setInSettings(bool settings) { inSettings = settings; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }

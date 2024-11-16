@@ -151,6 +151,8 @@ public class PlayerController : MonoBehaviour, IDamage
         originalSpeed = speed;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
+        gameManager.instance.setPlayerJumpSpeed(jumpSpeed);
+        gameManager.instance.setOriginalPlayerJumpSpeed(jumpSpeed);
         gameManager.instance.setSound(audioSource);
 
         if (gunList.Count != 0)

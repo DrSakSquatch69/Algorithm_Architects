@@ -7,7 +7,7 @@ public class PowerupPickUp : MonoBehaviour
     [SerializeField] float speedBoost;
     [SerializeField] int speedBoostTimer;
     [SerializeField] float protectionTime;
-    [SerializeField] float jumpBoost;
+    [SerializeField] int jumpBoost;
     [SerializeField] int jumpBoostTimer;
     bool floatUp;
     bool inSpeedRange;
@@ -143,6 +143,8 @@ public class PowerupPickUp : MonoBehaviour
 
     IEnumerator JumpBoost()
     {
-        
+        gameManager.instance.setPlayerJumpSpeed(jumpBoost * gameManager.instance.getPlayerJumpSpeed());
+        yield return new WaitForSeconds(jumpBoostTimer);
+        gameManager.instance.setPlayerJumpSpeed(gameManager.instance.getOriginalPlayerJumpSpeed());
     }
 }
