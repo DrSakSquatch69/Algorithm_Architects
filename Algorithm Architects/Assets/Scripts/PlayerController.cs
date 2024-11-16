@@ -143,7 +143,11 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int jumpBoost;
     [SerializeField] int jumpBoostTimer;
     public bool speedBoosting;
+    public bool jumpBoosting;
+    public bool isProtected;
     float speedBoostSpeed;
+    int jumpBoostSpeed;
+    int originalJumpSpeed;
 
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     void Start()
@@ -158,10 +162,9 @@ public class PlayerController : MonoBehaviour, IDamage
         HealthPoints = maxHP;
         normalHeight = controller.radius;
         originalSpeed = speed;
+        originalJumpSpeed = jumpSpeed;
         gameManager.instance.setOriginalPlayerSpeed(speed);
         gameManager.instance.setPlayerSpeed(speed);
-        gameManager.instance.setPlayerJumpSpeed(jumpSpeed);
-        gameManager.instance.setOriginalPlayerJumpSpeed(jumpSpeed);
         gameManager.instance.setSound(audioSource);
 
         if (gunList.Count != 0)
@@ -558,7 +561,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
 
-        if (!isSpawnProtection && type != damageType.fire && type != damageType.cabbage || !gameManager.instance.getIsProtected())
+        if (!isSpawnProtection && type != damageType.fire && type != damageType.cabbage || !isProtected)
         {
             if (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
@@ -599,7 +602,7 @@ public class PlayerController : MonoBehaviour, IDamage
         //Debug.Log("DOT CALLED");
         //If player has no spawn protection and is set on fire from a fire bullet then call the coroutine that does the damage
 
-        if (!gameManager.instance.getIsProtected())
+        if (!isProtected)
         {
             if (!isSpawnProtection && gameManager.instance.getIsOnFire())
             {
@@ -1232,17 +1235,19 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator Protection()
     {
-        gameManager.instance.setIsProtected(true);
+        //gameManager.instance.setIsProtected(true);
         yield return new WaitForSeconds(protectionTime);
-        gameManager.instance.setIsProtected(false);
+        //gameManager.instance.setIsProtected(false);
     }
 
 
-    IEnumerator JumpBoost()
+    public IEnumerator JumpBoost()
     {
+        jumpBoosting = true;
         jumpSpeed *= jumpBoost;
         yield return new WaitForSeconds(jumpBoostTimer);
-        jumpSpeed = gameManager.instance.getOriginalPlayerJumpSpeed();
+        jumpSpeed = originalJumpSpeed;
+        jumpBoosting = false;
     }
 }
 

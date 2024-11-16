@@ -84,9 +84,7 @@ public class gameManager : MonoBehaviour
     public GameObject getDaikonKing() { return daikonKing; }
     public bool getIsButtered() { return IsButtered; }
     public float getPlayerSpeed() { return playerSpeed; }
-    public int getPlayerJumpSpeed() { return playerJumpSpeed; }
     public float getOriginalPlayerSpeed() { return originalPlayerSpeed; }
-    public int getOriginalPlayerJumpSpeed() { return originalPlayerJumpSpeed; }
     public bool getInSettings() { return inSettings; }
     public AudioSource getSound() { return playerAudioSource; }
     public bool getIsOnFire() { return isOnFire; }
@@ -94,15 +92,12 @@ public class gameManager : MonoBehaviour
     public bool getIsCabbaged() { return isCabbaged; }
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     public int getDaikonCount() { return daikonCount; }
-    public bool getIsProtected() { return isProtected; }
 
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
     public void setIsButtered(bool butter) { IsButtered = butter; }
     public void setPlayerSpeed(float speed) { playerSpeed = speed; }
-    public void setPlayerJumpSpeed(int jumpSpeed) { playerJumpSpeed = jumpSpeed; }
     public void setOriginalPlayerSpeed(float speed) { originalPlayerSpeed = speed; }
-    public void setOriginalPlayerJumpSpeed(int jumpSpeed) {originalPlayerJumpSpeed = jumpSpeed; }  
     public void setInSettings(bool settings) { inSettings = settings; }
     public void setSound(AudioSource audio) { playerAudioSource = audio; }
     public void setIsOnFire(bool fire) { isOnFire = fire; }
@@ -111,7 +106,6 @@ public class gameManager : MonoBehaviour
     public void setCurrWave(int wave) { currWave = wave; }
     public void setLastWave(bool isLastWave) { lastWave = isLastWave; }
     public void setDaikonCount(int daikon) { daikonCount = daikon; }
-    public void setIsProtected(bool protect) {  isProtected = protect; }
 
     void Awake()                                                            //awake always happens first  
     {

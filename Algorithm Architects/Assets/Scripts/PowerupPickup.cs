@@ -62,22 +62,34 @@ public class PowerupPickUp : MonoBehaviour
             {
                 StartCoroutine(gameManager.instance.playerScript.SpeedBoost());
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
+               
+                if (!gameManager.instance.playerScript.speedBoosting)
+                {
+                    Destroy(gameObject);
+                }
             }
 
             if (gameObject.CompareTag("Protect"))
             {
                 //StartCoroutine(Protection());
+
+                if (!gameManager.instance.playerScript.isProtected)
+                {
+                    Destroy(gameObject);
+                }
             }
 
             if (gameObject.CompareTag("Jump"))
             {
-                //StartCoroutine(JumpBoost());
+                StartCoroutine(gameManager.instance.playerScript.JumpBoost());
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+                if (!gameManager.instance.playerScript.jumpBoosting)
+                {
+                    Destroy(gameObject);
+                }
             }
 
-            if (!gameManager.instance.playerScript.speedBoosting)
-            {
-                Destroy(gameObject);
-            }
         }
 
     }
@@ -134,26 +146,4 @@ public class PowerupPickUp : MonoBehaviour
             inRange = false;
         }
     }
-
-    //IEnumerator SpeedBoost()
-    //{
-    //    gameManager.instance.setPlayerSpeed(speedBoost * gameManager.instance.getPlayerSpeed());
-    //    yield return new WaitForSeconds(speedBoostTimer);
-    //    gameManager.instance.setPlayerSpeed(gameManager.instance.getOriginalPlayerSpeed());
-    //}
-
-    //IEnumerator Protection()
-    //{
-    //    gameManager.instance.setIsProtected(true);
-    //    yield return new WaitForSeconds(protectionTime);
-    //    gameManager.instance.setIsProtected(false);
-    //}
-
-
-    //IEnumerator JumpBoost()
-    //{
-    //    gameManager.instance.setPlayerJumpSpeed(jumpBoost * gameManager.instance.getPlayerJumpSpeed());
-    //    yield return new WaitForSeconds(jumpBoostTimer);
-    //    gameManager.instance.setPlayerJumpSpeed(gameManager.instance.getOriginalPlayerJumpSpeed());
-    //}
 }
