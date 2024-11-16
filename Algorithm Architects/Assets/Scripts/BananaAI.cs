@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
+//
 public class BananaAI : MonoBehaviour, IDamage
 {
+    enum damageTypes { bullet, chaser, stationary, butter }
+
     [SerializeField] int viewAngle;
     float angleToPlayer;
 
@@ -19,15 +22,12 @@ public class BananaAI : MonoBehaviour, IDamage
     [SerializeField] int rotateSpeed;
     [SerializeField] int maxBurstAmount;
     [SerializeField] float timeBetweenShots;
-    public int damageAmount;  // Bullet damage
-    [SerializeField] float travelDistance = 10f; // Adjustable travel distance
-    [SerializeField] float travelSpeed = 20f;    // Adjustable travel speed
     int burstAmount;
 
-    int hpOrig;
+    int hpOrig;                                 //Original HP
     [SerializeField] int HP;
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int maxRespawns = 0;
+    [SerializeField] GameObject enemyPrefab;    //Refrence to the enemy prefab
+    [SerializeField] int maxRespawns = 0;       //limit the amound of respawns the enemy has
 
     [SerializeField] float minHPSize;
     [SerializeField] float maxHPSize;
@@ -43,33 +43,35 @@ public class BananaAI : MonoBehaviour, IDamage
     bool playerSighted;
 
     int currentRespawnCount = 1;
+    //int activeEnemiesAI; //Used for tracking the active enemies 
 
     [SerializeField] Slider enemyHpBar;
     public bool isSliderOn;
 
+
+    // Start is called before the first frame update
     void Start()
     {
-        //colorOrig = model.material.color;
-        hpOrig = HP;
-        render = GetComponent<Renderer>();
+        //stores the original color
+        colorOrig = model.material.color;
+        hpOrig = HP;                                //set original hp
+        render = GetComponent<Renderer>();        //getting the renderer of the game object
         gameManager.instance.updateGameGoal(1);
 
         ignoreMask = LayerMask.GetMask("Enemy");
         updateEnemyUI();
     }
 
+    // Update is called once per frame
     void Update()
     {
         updateEnemyUI();
-        float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);
+        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
 
         if (playerSighted && canSeePlayer())
         {
-            // Engage the player with rapid fire when in sight
-            if (!isShooting)
-            {
-                StartCoroutine(Shoot());
-            }
+
         }
     }
     bool canSeePlayer()
@@ -87,6 +89,11 @@ public class BananaAI : MonoBehaviour, IDamage
                 {
                     faceTarget();
                 }
+
+                if (!isShooting)
+                {
+                    StartCoroutine(Shoot());
+                }
                 return true;
             }
         }
@@ -100,64 +107,60 @@ public class BananaAI : MonoBehaviour, IDamage
 
         StartCoroutine(flashColor());
 
+        //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
+            // --activeEnemiesAI;
+            // gameManager.instance.ActiveCheck(activeEnemiesAI);
+
+            // Check if enemy can respawn
             if (currentRespawnCount < maxRespawns)
             {
-                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity);
-                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity);
 
-                enemy1.GetComponent<AppleAI>().SetRespawnCount(currentRespawnCount + 1);
-                enemy2.GetComponent<AppleAI>().SetRespawnCount(currentRespawnCount + 1);
 
+                //Creates two new enemies when this one dies
+                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
+                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
+
+                // Set the respawn count of the new enemies to be 1 more than the current enemy
+                enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+                enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
+
+                //Increment the game goal by 1 for each new enemy
                 gameManager.instance.updateGameGoal(+1);
+
             }
             else
             {
+                // No more respawns allowed, decrement the game goal
                 gameManager.instance.updateGameGoal(-1);
+
             }
 
+            // Destroys current enemy
             Destroy(gameObject);
+
+            //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
+            //{
+            //    gameManager.instance.Waves();
+            //}
         }
     }
 
-      public void updateEnemyUI()
+    public void updateEnemyUI()
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
-        // Debug log to check the objects
-        //Debug.Log("gameManager.instance: " + (gameManager.instance == null ? "null" : "initialized"));
-        //Debug.Log("gameManager.instance.getPlayer(): " + (gameManager.instance.getPlayer() == null ? "null" : "initialized"));
-        //Debug.Log("enemyHpBar: " + (enemyHpBar == null ? "null" : "initialized"));
-        //Debug.Log("Camera.main: " + (Camera.main == null ? "null" : "initialized"));
-
         if (dist <= renderDistance)
         {
-            if (enemyHpBar != null)
-            {
-                enemyHpBar.gameObject.SetActive(true);
-                enemyHpBar.value = (float)HP / hpOrig;
-                if (Camera.main != null)
-                {
-                    enemyHpBar.transform.rotation = Camera.main.transform.rotation;
-                }
-                else
-                {
-                   //Debug.Log("Camera.main is null.");
-                }
-                isSliderOn = true;
-            }
-            else
-            {
-                //Debug.Log("enemyHpBar is null.");
-            }
+            enemyHpBar.gameObject.SetActive(true);
+            enemyHpBar.value = (float)HP / hpOrig;
+            enemyHpBar.transform.rotation = Camera.main.transform.rotation;
+            isSliderOn = true;
         }
         else
         {
-            if (enemyHpBar != null)
-            {
-                enemyHpBar.gameObject.SetActive(false);
-            }
+            enemyHpBar.gameObject.SetActive(false);
             isSliderOn = false;
         }
     }
@@ -167,6 +170,7 @@ public class BananaAI : MonoBehaviour, IDamage
         currentRespawnCount = respawnCount;
     }
 
+    //Sends feedback to the user that they are doing damage
     IEnumerator flashColor()
     {
         model.material.color = Color.red;
@@ -199,14 +203,8 @@ public class BananaAI : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-
-        // Instantiate the initial bullet
-        GameObject initialBullet = Instantiate(bullet, shootPosition.position, transform.rotation);
+        Instantiate(bullet, shootPosition.position, transform.rotation);
         burstAmount++;
-
-        // Start the coroutine to handle the bullet travel and split
-        StartCoroutine(BulletTravelAndSplit(initialBullet));
-
         if (burstAmount != maxBurstAmount)
         {
             yield return new WaitForSeconds(timeBetweenShots);
@@ -220,77 +218,5 @@ public class BananaAI : MonoBehaviour, IDamage
         }
     }
 
-    IEnumerator BulletTravelAndSplit(GameObject bullet)
-    {
-        if (bullet == null)
-        {
-            //Debug.Log("Bullet is null at the start of the coroutine.");
-            yield break;  // Exit early if the bullet is already null
-        }
 
-        Vector3 startPosition = bullet.transform.position;
-        Vector3 forwardDirection = bullet.transform.forward;
-
-        // Travel straight for the set distance
-        while (bullet != null && Vector3.Distance(startPosition, bullet.transform.position) < travelDistance)
-        {
-            // Ensure that the bullet is still valid
-            if (bullet == null)
-            {
-                //Debug.Log("Bullet was destroyed during movement.");
-                yield break;  // Exit if the bullet is destroyed
-            }
-
-            bullet.transform.position += forwardDirection * travelSpeed * Time.deltaTime;
-            yield return null;
-        }
-
-        // Now that the bullet has traveled the set distance, split and destroy the bullet
-        if (bullet != null)
-        {
-            Destroy(bullet);  // Destroy the bullet after it has traveled the required distance
-        }
-
-        // Check if the bullet is destroyed after moving the set distance
-        if (bullet == null)
-        {
-            //Debug.Log("Bullet was destroyed after traveling the set distance, exiting coroutine.");
-            yield break;  // Exit if the bullet is destroyed
-        }
-
-        // Split bullet handling (instantiate new bullets for the split)
-        Vector3 middleDirection = forwardDirection;
-        Vector3 leftDirection = Quaternion.Euler(0, -22, 0) * forwardDirection;
-        Vector3 leftDirection2 = Quaternion.Euler(0, -45, 0) * forwardDirection;
-        Vector3 rightDirection = Quaternion.Euler(0, 22, 0) * forwardDirection;
-        Vector3 rightDirection2 = Quaternion.Euler(0, 45, 0) * forwardDirection;
-
-        // Instantiate the split bullets
-        GameObject middleBullet = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
-        GameObject leftBullet = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
-        GameObject leftBullet2 = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
-        GameObject rightBullet = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
-        GameObject rightBullet2 = Instantiate(this.bullet, bullet.transform.position, Quaternion.identity);
-
-        // Ensure the bullets were instantiated correctly
-        if (middleBullet == null || leftBullet == null || leftBullet2 == null || rightBullet == null || rightBullet2 == null)
-        {
-            //Debug.Log("One or more split bullets were not instantiated correctly.");
-            yield break;  // Exit if any split bullet was not instantiated correctly
-        }
-
-        // Assign velocities directly to ensure proper movement
-        middleBullet.GetComponent<Rigidbody>().velocity = middleDirection * travelSpeed;
-        leftBullet.GetComponent<Rigidbody>().velocity = leftDirection * travelSpeed;
-        leftBullet2.GetComponent<Rigidbody>().velocity = leftDirection2 * travelSpeed;
-        rightBullet.GetComponent<Rigidbody>().velocity = rightDirection * travelSpeed;
-        rightBullet2.GetComponent<Rigidbody>().velocity = rightDirection2 * travelSpeed;
-
-        // Set the damage amount for the split bullets
-        middleBullet.GetComponent<damage>().damageAmount = damageAmount;
-        leftBullet.GetComponent<damage>().damageAmount = damageAmount;
-        leftBullet2.GetComponent<damage>().damageAmount = damageAmount;
-        rightBullet.GetComponent<damage>().damageAmount = damageAmount;
-        rightBullet2.GetComponent<damage>().damageAmount = damageAmount;
-    }
 }
