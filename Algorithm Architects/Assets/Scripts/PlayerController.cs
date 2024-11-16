@@ -1209,13 +1209,23 @@ public class PlayerController : MonoBehaviour, IDamage
         speed *= speedBoost;
         speedBoostSpeed = speed;
 
-        if(isSprinting && speedBoostSpeed > originalSpeed * speedBoost)
+        if (isSprinting && speedBoostSpeed > originalSpeed * speedBoost)
         {
             speedBoostSpeed /= sprintMod;
         }
 
         yield return new WaitForSeconds(speedBoostTimer);
-        speed = originalSpeed;
+
+        if (isSprinting)
+        {
+            speed = originalSpeed * sprintMod;
+        }
+
+        else
+        {
+            speed = originalSpeed;
+        }
+
         speedBoostSpeed = 0;
         speedBoosting = false;
     }
@@ -1230,7 +1240,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator JumpBoost()
     {
-       jumpSpeed *= jumpBoost;
+        jumpSpeed *= jumpBoost;
         yield return new WaitForSeconds(jumpBoostTimer);
         jumpSpeed = gameManager.instance.getOriginalPlayerJumpSpeed();
     }
