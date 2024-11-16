@@ -5,6 +5,7 @@ using UnityEngine;
 public class BouncePad : MonoBehaviour
 {
     bool playerInRange;
+    [SerializeField] Animator anim;
 
     private void Update()
     {
@@ -19,6 +20,7 @@ public class BouncePad : MonoBehaviour
             playerInRange = true;
 
             //Place animation code here
+            StartCoroutine(bounce());
         }
     }
 
@@ -28,5 +30,12 @@ public class BouncePad : MonoBehaviour
         {
             playerInRange = false;
         }
+    }
+
+    IEnumerator bounce()
+    {
+        anim.SetTrigger("Bounce");
+        yield return new WaitForSeconds(.5f);
+        anim.ResetTrigger("Bounce");
     }
 }
