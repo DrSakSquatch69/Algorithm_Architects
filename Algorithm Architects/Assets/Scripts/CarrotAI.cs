@@ -105,7 +105,7 @@ public class CarrotAI : MonoBehaviour, IDamage
                 else
                 {
                     inGround = true;
-                    //burrow();
+                    burrow();
                 }
 
                 return true;
@@ -124,6 +124,7 @@ public class CarrotAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             // Destroys current enemy
             Destroy(gameObject);
         }
@@ -182,9 +183,9 @@ public class CarrotAI : MonoBehaviour, IDamage
         isShooting = true;
         if (isShooting) { anim.SetTrigger("Shoot"); }
         Instantiate(bullet, shootPosition.position, transform.rotation);
-        anim.ResetTrigger("Shoot");
         yield return new WaitForSeconds(firerate);
         isShooting = false;
+        anim.ResetTrigger("Shoot");
     }
 
     void burrow()
