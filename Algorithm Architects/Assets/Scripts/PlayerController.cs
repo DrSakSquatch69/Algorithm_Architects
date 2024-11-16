@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float visionBlurIntensity = 0.5f;
     public bool isInToxicGas;
     float toxicGasEndTime;
-    
+
     //Value must be below the normal size for it to be a crouch
     [SerializeField] float crouchSizeYAxis;
     [SerializeField] float slideDistance;
@@ -130,11 +131,19 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] ParticleEffect runParticle;
 
     //used to see if the player is grounded in debug mode
-    
+
     //stores the normal Y size of the player capsule
     float normYSize;
 
     // Start is called before the first frame update
+
+    [SerializeField] float speedBoost;
+    [SerializeField] int speedBoostTimer;
+    [SerializeField] float protectionTime;
+    [SerializeField] int jumpBoost;
+    [SerializeField] int jumpBoostTimer;
+    bool speedBoosting;
+    float speedBoostSpeed;
 
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     void Start()
@@ -162,9 +171,9 @@ public class PlayerController : MonoBehaviour, IDamage
 
         updatePlayerUI();
         isSpawnProtection = true;
-        StartCoroutine(spawnProtection()); 
+        StartCoroutine(spawnProtection());
 
-        if(MainManager.Instance.GetGunList() != null)
+        if (MainManager.Instance.GetGunList() != null)
         {
             LoadSetting();
         }
@@ -227,7 +236,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (inMotion && (isGrounded || controller.isGrounded))
         {
-            if(soundManager.isWalkingPlaying && gameManager.instance.isPaused)
+            if (soundManager.isWalkingPlaying && gameManager.instance.isPaused)
             {
                 soundManager.StopWalking();
             }
@@ -435,10 +444,22 @@ public class PlayerController : MonoBehaviour, IDamage
                 speed *= sprintMod;
                 isSprinting = true;
             }
-            else if (Input.GetButtonUp("Sprint"))
+            else if (Input.GetButtonUp("Sprint") && !speedBoosting)
             {
                 // speed /= sprintMod;
                 speed = originalSpeed;
+                isSprinting = false;
+                holdingSprintTime = 0;
+            }
+
+            else if (Input.GetButtonUp("Sprint") && speedBoosting)
+            {
+                if (speedBoostSpeed > speed * speedBoost)
+                {
+                    speedBoostSpeed /= sprintMod;
+                }
+
+                speed = speedBoostSpeed;
                 isSprinting = false;
                 holdingSprintTime = 0;
             }
@@ -479,7 +500,7 @@ public class PlayerController : MonoBehaviour, IDamage
             crouching = false;
         }
     }
-    
+
     IEnumerator muzzleFlashOnOff()
     {
         muzzleFlash.SetActive(true);
@@ -537,7 +558,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
 
-        if (!isSpawnProtection && type != damageType.fire)
+        if (!isSpawnProtection && type != damageType.fire && type != damageType.cabbage || !gameManager.instance.getIsProtected())
         {
             if (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
@@ -577,15 +598,25 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         //Debug.Log("DOT CALLED");
         //If player has no spawn protection and is set on fire from a fire bullet then call the coroutine that does the damage
-        if (!isSpawnProtection && gameManager.instance.getIsOnFire())
+
+        if (!gameManager.instance.getIsProtected())
         {
-            StartCoroutine(FireDoT());
+            if (!isSpawnProtection && gameManager.instance.getIsOnFire())
+            {
+                StartCoroutine(FireDoT());
+            }
+
+            else if (!isSpawnProtection && gameManager.instance.getIsCabbaged())
+            {
+                StartCoroutine(BleedDoT());
+            }
         }
 
-        else if(!isSpawnProtection && gameManager.instance.getIsCabbaged())
+        else
         {
-            StartCoroutine(BleedDoT());
+            return;
         }
+
     }
 
     IEnumerator FireDoT()
@@ -598,7 +629,7 @@ public class PlayerController : MonoBehaviour, IDamage
             {
                 HealthPoints = 1;
 
-                if(healDelayTrack != null)
+                if (healDelayTrack != null)
                 {
                     StopCoroutine(healDelayTrack);
                 }
@@ -623,7 +654,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             gameManager.instance.setIsOnFire(false);
             fireDotTracker = 0;
-            
+
             if (healDelayTrack != null)
             {
                 StopCoroutine(healDelayTrack);
@@ -636,16 +667,16 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator BleedDoT()
     {
-        while(bleedDotTracker < bleedDotRate)
+        while (bleedDotTracker < bleedDotRate)
         {
-            if(HealthPoints < bleedDotDamage)
+            if (HealthPoints < bleedDotDamage)
             {
                 HealthPoints = 1;
                 yield break;
             }
 
             HealthPoints -= bleedDotDamage;
-            StartCoroutine (gameManager.instance.hitFlash());
+            StartCoroutine(gameManager.instance.hitFlash());
             updatePlayerUI();
             isTakingDamage = true;
             ++bleedDotTracker;
@@ -658,7 +689,7 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.setIsCabbaged(false);
             bleedDotTracker = 0;
             StartCoroutine(healDelay());
-            
+
         }
     }
 
@@ -743,16 +774,18 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.turnOnOffAmmoText.SetActive(false);
             gameManager.instance.turnOnOffAmmoText2.SetActive(false);
             gameManager.instance.turnOnOffAmmoText3.SetActive(false);
-        }else if (gunList.Count == 1)
+        }
+        else if (gunList.Count == 1)
         {
             gameManager.instance.turnOnOffAmmoText2.SetActive(false);
             gameManager.instance.turnOnOffAmmoText3.SetActive(false);
-        }else if(gunList.Count == 2)
+        }
+        else if (gunList.Count == 2)
         {
             gameManager.instance.turnOnOffAmmoText3.SetActive(false);
         }
 
-        if(selectedGunPos == 0)
+        if (selectedGunPos == 0)
         {
             gameManager.instance.Scroll1.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.60f);
             gameManager.instance.Scroll2.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.60f);
@@ -1050,16 +1083,16 @@ public class PlayerController : MonoBehaviour, IDamage
             gunList[selectedGunPos] = gun;
         }
 
-            changeGun();
+        changeGun();
 
-            MainManager.Instance.SetGunList(gunList);
+        MainManager.Instance.SetGunList(gunList);
         //gunModel.transform.position += gun.placement;
         //gunModel.transform.eulerAngles += gun.rotation;
     }
 
     void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGunPos > 0)
         {
             selectedGunPos--;
             changeGun();
@@ -1069,7 +1102,7 @@ public class PlayerController : MonoBehaviour, IDamage
             selectedGunPos = gunList.Count - 1;
             changeGun();
         }
-        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos < gunList.Count - 1)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGunPos < gunList.Count - 1)
         {
             selectedGunPos++;
             changeGun();
@@ -1089,7 +1122,7 @@ public class PlayerController : MonoBehaviour, IDamage
         magSize = gunList[selectedGunPos].magSize;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGunPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGunPos].gunModel.GetComponent <MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
         MainManager.Instance.SetSelectedGunPos(selectedGunPos);
@@ -1101,7 +1134,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void LoadSetting()
     {
         if (MainManager.Instance.GetGunList().Count != 0)
-        { 
+        {
             gunList = MainManager.Instance.GetGunList();
             selectedGunPos = MainManager.Instance.GetSelectedGunPOS();
             Debug.Log("Settings Loaded for Player");
@@ -1166,8 +1199,41 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         if (Input.GetButtonDown("Interact"))
         {
-           isInteract = true;
+            isInteract = true;
         }
+    }
+
+    public IEnumerator SpeedBoost()
+    {
+        speedBoosting = true;
+        speed *= speedBoost;
+        speedBoostSpeed = speed;
+
+        if(isSprinting && speedBoostSpeed > originalSpeed * speedBoost)
+        {
+            speedBoostSpeed /= sprintMod;
+        }
+
+        Debug.Log("Yield return");
+        yield return new WaitForSeconds(speedBoostTimer);
+        speed = originalSpeed;
+        speedBoostSpeed = 0;
+        speedBoosting = false;
+    }
+
+    IEnumerator Protection()
+    {
+        gameManager.instance.setIsProtected(true);
+        yield return new WaitForSeconds(protectionTime);
+        gameManager.instance.setIsProtected(false);
+    }
+
+
+    IEnumerator JumpBoost()
+    {
+       jumpSpeed *= jumpBoost;
+        yield return new WaitForSeconds(jumpBoostTimer);
+        jumpSpeed = gameManager.instance.getOriginalPlayerJumpSpeed();
     }
 }
 

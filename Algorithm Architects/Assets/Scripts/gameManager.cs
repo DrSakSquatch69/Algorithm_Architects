@@ -71,6 +71,7 @@ public class gameManager : MonoBehaviour
     bool isOnFire;
     bool isTomatoed;
     bool isCabbaged;
+    bool isProtected;
 
     IEnumerator tomatoTrack;
     AudioSource playerAudioSource;
@@ -93,6 +94,7 @@ public class gameManager : MonoBehaviour
     public bool getIsCabbaged() { return isCabbaged; }
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     public int getDaikonCount() { return daikonCount; }
+    public bool getIsProtected() { return isProtected; }
 
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
@@ -109,6 +111,7 @@ public class gameManager : MonoBehaviour
     public void setCurrWave(int wave) { currWave = wave; }
     public void setLastWave(bool isLastWave) { lastWave = isLastWave; }
     public void setDaikonCount(int daikon) { daikonCount = daikon; }
+    public void setIsProtected(bool protect) {  isProtected = protect; }
 
     void Awake()                                                            //awake always happens first  
     {
