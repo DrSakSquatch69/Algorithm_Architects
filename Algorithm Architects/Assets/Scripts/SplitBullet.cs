@@ -4,44 +4,51 @@ using UnityEngine;
 
 public class SplitBullet : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private int damageAmount;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float travelDistance; // Distance before the bullet splits
-    [SerializeField] private float despawnTimer;
+    [Header("Bullet Settings")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float travelSpeed = 20f;
+    [SerializeField] private float travelDistance = 10f;
+    [SerializeField] private float despawnTime = 5f;
+    [SerializeField] private int damageAmount = 10;
+    [SerializeField] private bool canSplit = true;
 
     private Vector3 startPosition;
+    private Rigidbody rb;
+    private bool hasSplit = false;
 
-    void Start()
+    private void Start()
     {
-        // Set the start position and initial velocity
+        rb = GetComponent<Rigidbody>();
         startPosition = transform.position;
-        rb.velocity = transform.forward * bulletSpeed;
 
-        // Start the coroutine for split bullet behavior
+        // Set initial velocity for the bullet
+        rb.velocity = transform.forward * travelSpeed;
+
+        // Start the travel and split coroutine
         StartCoroutine(BulletTravelAndSplit());
+
+        // Destroy the bullet after the despawn time
+        Destroy(gameObject, despawnTime);
     }
 
-    // Coroutine to handle the travel and splitting of the bullet
-    IEnumerator BulletTravelAndSplit()
+    private IEnumerator BulletTravelAndSplit()
     {
-        // Wait until the bullet reaches the specified travel distance
+        // Travel straight for the set distance
         while (Vector3.Distance(startPosition, transform.position) < travelDistance)
         {
             yield return null;
         }
 
-        // Split the bullet into multiple directions
-        Split();
+        // If the bullet has already split or cannot split, exit
+        if (hasSplit || !canSplit)
+            yield break;
 
-        // Destroy the original bullet after splitting
+        hasSplit = true; // Mark the bullet as split
+
+        // Destroy the original bullet
         Destroy(gameObject);
-    }
 
-    // Method to split the bullet into multiple projectiles
-    private void Split()
-    {
-        // Define the split directions
+        // Directions for split bullets
         Vector3 middleDirection = transform.forward;
         Vector3 leftDirection = Quaternion.Euler(0, -22, 0) * middleDirection;
         Vector3 leftDirection2 = Quaternion.Euler(0, -45, 0) * middleDirection;
@@ -56,35 +63,25 @@ public class SplitBullet : MonoBehaviour
         CreateSplitBullet(rightDirection2);
     }
 
-    // Helper method to instantiate a split bullet
     private void CreateSplitBullet(Vector3 direction)
     {
-        GameObject splitBullet = Instantiate(gameObject, transform.position, Quaternion.identity);
+        GameObject splitBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Rigidbody splitRb = splitBullet.GetComponent<Rigidbody>();
 
-        // Set the velocity and damage amount for the split bullet
-        splitRb.velocity = direction * bulletSpeed;
-        SplitBullet splitScript = splitBullet.GetComponent<SplitBullet>();
-        splitScript.damageAmount = damageAmount;
-
-        // Destroy the split bullet after the despawn timer
-        Destroy(splitBullet, despawnTimer);
-    }
-
-    // Handle collision detection
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.isTrigger || other.CompareTag("Enemy")) return;
-
-        IDamage dmg = other.GetComponent<IDamage>();
-
-        // Apply damage if the collided object implements the IDamage interface
-        if (dmg != null)
+        if (splitRb != null)
         {
-            dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), damageType.SplitBullet);
+            splitRb.velocity = direction * travelSpeed;
         }
 
-        // Destroy the bullet on impact
-        Destroy(gameObject);
+        // Set the damage amount for the split bullet
+        damage damageComponent = splitBullet.GetComponent<damage>();
+        if (damageComponent != null)
+        {
+            damageComponent.damageAmount = damageAmount;
+            damageComponent.type = damageType.SplitBullet; 
+        }
+
+        // Destroy split bullet after the despawn timer
+        Destroy(splitBullet, despawnTime);
     }
 }

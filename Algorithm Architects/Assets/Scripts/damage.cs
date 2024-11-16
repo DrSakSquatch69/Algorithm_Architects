@@ -8,7 +8,7 @@ public class damage : MonoBehaviour
 {
     public static damage instance;
     //
-    [SerializeField] damageType type;
+    public damageType type;
     [SerializeField] Rigidbody rb;
 
     public int damageAmount;
