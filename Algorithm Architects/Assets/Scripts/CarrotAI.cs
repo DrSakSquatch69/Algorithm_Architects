@@ -44,7 +44,6 @@ public class CarrotAI : MonoBehaviour, IDamage
     bool inGround;
 
     float origPos;
-    int currentRespawnCount = 1;
     [SerializeField] Slider enemyHpBar;
     public bool isSliderOn;
 
@@ -72,6 +71,7 @@ public class CarrotAI : MonoBehaviour, IDamage
         updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
         
         if (playerSighted && canSeePlayer())
         {
@@ -105,7 +105,7 @@ public class CarrotAI : MonoBehaviour, IDamage
                 else
                 {
                     inGround = true;
-                    burrow();
+                    //burrow();
                 }
 
                 return true;
@@ -124,40 +124,8 @@ public class CarrotAI : MonoBehaviour, IDamage
         //when hp is zero or less, it destroys the object
         if (HP <= 0)
         {
-            // --activeEnemiesAI;
-            // gameManager.instance.ActiveCheck(activeEnemiesAI);
-
-            // Check if enemy can respawn
-            if (currentRespawnCount < maxRespawns)
-            {
-
-
-                //Creates two new enemies when this one dies
-                GameObject enemy1 = Instantiate(enemyPrefab, transform.position + Vector3.right, Quaternion.identity); // offset position so theyre not stacked
-                GameObject enemy2 = Instantiate(enemyPrefab, transform.position + Vector3.left, Quaternion.identity); // offset position so theyre not stacked
-
-                // Set the respawn count of the new enemies to be 1 more than the current enemy
-                enemy1.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
-                enemy2.GetComponent<EnemyAI>().SetRespawnCount(currentRespawnCount + 1);
-
-                //Increment the game goal by 1 for each new enemy
-                gameManager.instance.updateGameGoal(+1);
-
-            }
-            else
-            {
-                // No more respawns allowed, decrement the game goal
-                gameManager.instance.updateGameGoal(-1);
-
-            }
-
             // Destroys current enemy
             Destroy(gameObject);
-
-            //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
-            //{
-            //    gameManager.instance.Waves();
-            //}
         }
     }
 
@@ -177,11 +145,6 @@ public class CarrotAI : MonoBehaviour, IDamage
             isSliderOn = false;
         }
         
-    }
-
-    public void SetRespawnCount(int respawnCount)
-    {
-        currentRespawnCount = respawnCount;
     }
 
     //Sends feedback to the user that they are doing damage
@@ -219,26 +182,22 @@ public class CarrotAI : MonoBehaviour, IDamage
         isShooting = true;
         if (isShooting) { anim.SetTrigger("Shoot"); }
         Instantiate(bullet, shootPosition.position, transform.rotation);
+        anim.ResetTrigger("Shoot");
         yield return new WaitForSeconds(firerate);
         isShooting = false;
-        anim.ResetTrigger("Shoot");
     }
 
     void burrow()
     {
         if (inGround)
         {
-            anim.SetTrigger("Burrow");
             transform.position = new Vector3(transform.position.x, burrowedPos, transform.position.z);
-            rb.constraints = RigidbodyConstraints.None;
-            
+            anim.SetBool("Burrowed", true);
         }
         else if (!inGround && agent.remainingDistance <= agent.stoppingDistance)
         {
-            anim.SetTrigger("Resurface");
             transform.position = new Vector3(transform.position.x, origPos, transform.position.z);
-            rb.constraints = RigidbodyConstraints.FreezePositionY;
-
+            anim.SetBool("Burrowed", false);
         }
     }
 }
