@@ -4,15 +4,12 @@ using UnityEngine;
 //commment
 public class PowerupPickUp : MonoBehaviour
 {
-    [SerializeField] float speedBoost;
-    [SerializeField] int speedBoostTimer;
-    [SerializeField] float protectionTime;
-    [SerializeField] int jumpBoost;
-    [SerializeField] int jumpBoostTimer;
+    //[SerializeField] float speedBoost;
+    //[SerializeField] int speedBoostTimer;
+    //[SerializeField] float protectionTime;
+    //[SerializeField] int jumpBoost;
+    //[SerializeField] int jumpBoostTimer;
     bool floatUp;
-    bool inSpeedRange;
-    bool inJumpRange;
-    bool inProtectRange;
 
     [SerializeField] bool flipRotation;
 
@@ -63,17 +60,17 @@ public class PowerupPickUp : MonoBehaviour
         
             if(gameObject.CompareTag("Speed"))
             {
-                StartCoroutine(SpeedBoost());
+                StartCoroutine(gameManager.instance.playerScript.SpeedBoost());
             }
 
             if(gameObject.CompareTag("Protect"))
             {
-
+                //StartCoroutine(Protection());
             }
 
             if(gameObject.CompareTag("Jump"))
             {
-
+                //StartCoroutine(JumpBoost());
             }
 
             Destroy(gameObject);
@@ -134,17 +131,25 @@ public class PowerupPickUp : MonoBehaviour
         }
     }
 
-    IEnumerator SpeedBoost()
-    {
-        gameManager.instance.setPlayerSpeed(speedBoost * gameManager.instance.getPlayerSpeed());
-        yield return new WaitForSeconds(speedBoostTimer);
-        gameManager.instance.setPlayerSpeed(gameManager.instance.getOriginalPlayerSpeed());
-    }
+    //IEnumerator SpeedBoost()
+    //{
+    //    gameManager.instance.setPlayerSpeed(speedBoost * gameManager.instance.getPlayerSpeed());
+    //    yield return new WaitForSeconds(speedBoostTimer);
+    //    gameManager.instance.setPlayerSpeed(gameManager.instance.getOriginalPlayerSpeed());
+    //}
 
-    IEnumerator JumpBoost()
-    {
-        gameManager.instance.setPlayerJumpSpeed(jumpBoost * gameManager.instance.getPlayerJumpSpeed());
-        yield return new WaitForSeconds(jumpBoostTimer);
-        gameManager.instance.setPlayerJumpSpeed(gameManager.instance.getOriginalPlayerJumpSpeed());
-    }
+    //IEnumerator Protection()
+    //{
+    //    gameManager.instance.setIsProtected(true);
+    //    yield return new WaitForSeconds(protectionTime);
+    //    gameManager.instance.setIsProtected(false);
+    //}
+
+
+    //IEnumerator JumpBoost()
+    //{
+    //    gameManager.instance.setPlayerJumpSpeed(jumpBoost * gameManager.instance.getPlayerJumpSpeed());
+    //    yield return new WaitForSeconds(jumpBoostTimer);
+    //    gameManager.instance.setPlayerJumpSpeed(gameManager.instance.getOriginalPlayerJumpSpeed());
+    //}
 }
