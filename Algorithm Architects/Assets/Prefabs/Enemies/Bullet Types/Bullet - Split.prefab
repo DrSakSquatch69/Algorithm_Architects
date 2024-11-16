@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7569543481161472728}
   - component: {fileID: -3902384606178135104}
+  - component: {fileID: 2283198131155624921}
   - component: {fileID: 5112248307662847513}
   - component: {fileID: 1289296064447607169}
   - component: {fileID: 6865427475379387693}
@@ -49,11 +50,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e369879bfa877bc4284aa5d1a040a301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 5112248307662847513}
-  damageAmount: 1
-  bulletSpeed: 20
+  bulletPrefab: {fileID: 2461093298853194389}
+  travelSpeed: 20
   travelDistance: 10
-  despawnTimer: 5
+  despawnTime: 5
+  damageAmount: 1
+  canSplit: 1
+--- !u!114 &2283198131155624921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461093298853194389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ebad54001533d4c9288275204cf675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 11
+  rb: {fileID: 5112248307662847513}
+  damageAmount: 10
+  kingDamageAmountOriginal: 0
+  kingDamageAmount: 0
+  bulletSpeed: 0
+  despawnTimer: 0
+  butterSlowAmount: 0
+  damageInterval: 0
 --- !u!54 &5112248307662847513
 Rigidbody:
   m_ObjectHideFlags: 0
