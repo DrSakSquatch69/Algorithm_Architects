@@ -42,7 +42,7 @@ public class StrawberryAI : MonoBehaviour, IDamage
     Renderer render;
 
     bool isShooting;
-    bool playerSighted;
+    //bool playerSighted;
     bool isMovingRandomly;
 
     int currentRespawnCount = 1;
@@ -226,7 +226,7 @@ public class StrawberryAI : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
-            playerSighted = true;
+           // playerSighted = true;
         }
     }
 
@@ -234,7 +234,7 @@ public class StrawberryAI : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
-            playerSighted = false;
+            //playerSighted = false;
         }
     }
 
