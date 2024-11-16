@@ -20,7 +20,11 @@ public class BouncePad : MonoBehaviour
             playerInRange = true;
 
             //Place animation code here
-            StartCoroutine(bounce());
+
+            if (anim != null)
+            {
+                StartCoroutine(bounce());
+            }
         }
     }
 
