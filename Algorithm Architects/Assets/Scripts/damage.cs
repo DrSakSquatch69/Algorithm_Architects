@@ -64,7 +64,7 @@ public class damage : MonoBehaviour
 
         if (dmg != null && type != damageType.stationary && !other.CompareTag("Enemy"))
         {
-            if (type == damageType.bullet || type == damageType.chaser)
+            if (type == damageType.bullet || type == damageType.chaser || type == damageType.SplitBullet)
             {
                 dmg.takeDamage(damageAmount, -(transform.position - other.transform.position).normalized * (damageAmount / 2), type);
             }
@@ -144,7 +144,7 @@ public class damage : MonoBehaviour
             }
         }
 
-        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage || type == damageType.king)
+        if (type == damageType.bullet || type == damageType.chaser || type == damageType.butter || type == damageType.fire || type == damageType.tomato || type == damageType.cabbage || type == damageType.king || type == damageType.SplitBullet)
         {
             Destroy(gameObject);
         }

@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float protectionTime;
     [SerializeField] int jumpBoost;
     [SerializeField] int jumpBoostTimer;
-    bool speedBoosting;
+    public bool speedBoosting;
     float speedBoostSpeed;
 
     public PlayerSoundManager GetSoundManager() { return soundManager; }
@@ -1214,7 +1214,6 @@ public class PlayerController : MonoBehaviour, IDamage
             speedBoostSpeed /= sprintMod;
         }
 
-        Debug.Log("Yield return");
         yield return new WaitForSeconds(speedBoostTimer);
         speed = originalSpeed;
         speedBoostSpeed = 0;

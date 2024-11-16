@@ -17,7 +17,7 @@ public class PowerupPickUp : MonoBehaviour
     bool itemIsPickedUp;
     private void Start()
     {
-       
+
         floatUp = true;
 
         if (flipRotation)
@@ -57,23 +57,27 @@ public class PowerupPickUp : MonoBehaviour
             gameManager.instance.playerScript.isInteract = false;
             gameManager.instance.playerScript.isInteractable = false;
             gameManager.instance.turnOnOffInteract.SetActive(false);
-        
-            if(gameObject.CompareTag("Speed"))
+
+            if (gameObject.CompareTag("Speed"))
             {
                 StartCoroutine(gameManager.instance.playerScript.SpeedBoost());
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
 
-            if(gameObject.CompareTag("Protect"))
+            if (gameObject.CompareTag("Protect"))
             {
                 //StartCoroutine(Protection());
             }
 
-            if(gameObject.CompareTag("Jump"))
+            if (gameObject.CompareTag("Jump"))
             {
                 //StartCoroutine(JumpBoost());
             }
 
-            Destroy(gameObject);
+            if (!gameManager.instance.playerScript.speedBoosting)
+            {
+                Destroy(gameObject);
+            }
         }
 
     }
