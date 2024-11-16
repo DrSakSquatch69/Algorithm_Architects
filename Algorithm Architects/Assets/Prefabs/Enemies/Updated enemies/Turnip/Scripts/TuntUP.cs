@@ -8,7 +8,6 @@ using UnityEngine.UI;
 //
 public class TuntUP : MonoBehaviour, IDamage
 {
-    [SerializeField] int viewAngle;
     float angleToPlayer;
 
     [SerializeField] Animator Beetimator;
@@ -61,7 +60,7 @@ public class TuntUP : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        Beetimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
+        //wBeetimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
@@ -81,18 +80,12 @@ public class TuntUP : MonoBehaviour, IDamage
         RaycastHit hit;
         if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000 ,~ignoreMask))
         {
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            if (hit.collider.CompareTag("Player"))
             {
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    faceTarget();
-                }
-
-                if (!isShooting)
-                {
-
-                    StartCoroutine(Shoot());
-                }
+                    if (!isShooting)
+                    {
+                        StartCoroutine(Shoot());
+                    }
                 return true;
             }
         }
@@ -175,12 +168,6 @@ public class TuntUP : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
-    }
-
-    void faceTarget()
-    {
-        Quaternion rotate = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotate, Time.deltaTime * rotateSpeed);
     }
 
     void OnTriggerEnter(Collider other)

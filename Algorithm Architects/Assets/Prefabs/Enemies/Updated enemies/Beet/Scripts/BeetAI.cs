@@ -90,12 +90,11 @@ public class BeetAI : MonoBehaviour, IDamage
                 {
                     faceTarget();
                 }
-
-                if (!isShooting)
-                {
-
-                    StartCoroutine(Shoot());
-                }
+                    if (!isShooting)
+                    {
+                        StartCoroutine(Shoot());
+                    }
+                
                 return true;
             }
         }

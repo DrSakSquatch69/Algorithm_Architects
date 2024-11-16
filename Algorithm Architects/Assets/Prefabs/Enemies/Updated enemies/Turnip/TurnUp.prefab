@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1768427593925038991}
   - component: {fileID: 8779104336726057464}
-  - component: {fileID: 2440490774696216626}
   - component: {fileID: 3730258759363925810}
   m_Layer: 0
   m_Name: TurnUp
@@ -57,28 +56,6 @@ NavMeshAgent:
   m_BaseOffset: 0.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &2440490774696216626
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247989502006091676}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!135 &3730258759363925810
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -431,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d034095c24657684c895ddc5f5c295bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 90
   Beetimator: {fileID: 2803806416985012003}
   model: {fileID: 6447402230331862341}
   agent: {fileID: 8779104336726057464}
