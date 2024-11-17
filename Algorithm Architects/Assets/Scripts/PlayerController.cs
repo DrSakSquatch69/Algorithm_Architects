@@ -588,8 +588,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
             if (HealthPoints <= 0)
             {
-                gameManager.instance.GetMenuMusicManager().PlayLoseUp();
                 gameManager.instance.youLose();
+                //gameManager.instance.GetMenuMusicManager().PlayLoseUp();
             }
         }
         else
