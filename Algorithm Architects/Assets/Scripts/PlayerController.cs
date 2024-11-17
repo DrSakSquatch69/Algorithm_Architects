@@ -231,6 +231,7 @@ public class PlayerController : MonoBehaviour, IDamage
         CheckForGround();
         RayTextUpdate();
         PickupAmmo();
+        checkForAmmoLimit();
 
         if (isInteractable == true)
         {
@@ -1248,6 +1249,38 @@ public class PlayerController : MonoBehaviour, IDamage
         yield return new WaitForSeconds(jumpBoostTimer);
         jumpSpeed = originalJumpSpeed;
         jumpBoosting = false;
+    }
+
+    void checkForAmmoLimit()
+    {
+
+        if (gunList.Count >= 1)
+        {
+            if (gunList[0].ammoremaining > 999)
+            {
+                gunList[0].ammoremaining = 999;
+                updatePlayerUI();
+            }
+        }
+
+        if (gunList.Count >= 2)
+        {
+            if (gunList[1].ammoremaining > 999)
+            {
+                gunList[1].ammoremaining = 999;
+                updatePlayerUI();
+            }
+        }
+
+
+        if (gunList.Count >= 3)
+        {
+            if (gunList[2].ammoremaining > 999)
+            {
+                gunList[2].ammoremaining = 999;
+                updatePlayerUI();
+            }
+        }
     }
 }
 
