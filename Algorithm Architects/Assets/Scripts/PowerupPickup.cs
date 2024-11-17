@@ -4,11 +4,6 @@ using UnityEngine;
 //commment
 public class PowerupPickUp : MonoBehaviour
 {
-    //[SerializeField] float speedBoost;
-    //[SerializeField] int speedBoostTimer;
-    //[SerializeField] float protectionTime;
-    //[SerializeField] int jumpBoost;
-    //[SerializeField] int jumpBoostTimer;
     bool floatUp;
 
     [SerializeField] bool flipRotation;
