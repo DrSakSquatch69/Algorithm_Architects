@@ -4,11 +4,6 @@ using UnityEngine;
 //commment
 public class PowerupPickUp : MonoBehaviour
 {
-    //[SerializeField] float speedBoost;
-    //[SerializeField] int speedBoostTimer;
-    //[SerializeField] float protectionTime;
-    //[SerializeField] int jumpBoost;
-    //[SerializeField] int jumpBoostTimer;
     bool floatUp;
 
     [SerializeField] bool flipRotation;
@@ -17,7 +12,7 @@ public class PowerupPickUp : MonoBehaviour
     bool itemIsPickedUp;
     private void Start()
     {
-       
+
         floatUp = true;
 
         if (flipRotation)
@@ -57,23 +52,39 @@ public class PowerupPickUp : MonoBehaviour
             gameManager.instance.playerScript.isInteract = false;
             gameManager.instance.playerScript.isInteractable = false;
             gameManager.instance.turnOnOffInteract.SetActive(false);
-        
-            if(gameObject.CompareTag("Speed"))
+
+            if (gameObject.CompareTag("Speed"))
             {
                 StartCoroutine(gameManager.instance.playerScript.SpeedBoost());
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+               
+                if (!gameManager.instance.playerScript.speedBoosting)
+                {
+                    Destroy(gameObject);
+                }
             }
 
-            if(gameObject.CompareTag("Protect"))
+            if (gameObject.CompareTag("Protect"))
             {
                 //StartCoroutine(Protection());
+
+                if (!gameManager.instance.playerScript.isProtected)
+                {
+                    Destroy(gameObject);
+                }
             }
 
-            if(gameObject.CompareTag("Jump"))
+            if (gameObject.CompareTag("Jump"))
             {
-                //StartCoroutine(JumpBoost());
+                StartCoroutine(gameManager.instance.playerScript.JumpBoost());
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+                if (!gameManager.instance.playerScript.jumpBoosting)
+                {
+                    Destroy(gameObject);
+                }
             }
 
-            Destroy(gameObject);
         }
 
     }
@@ -130,26 +141,4 @@ public class PowerupPickUp : MonoBehaviour
             inRange = false;
         }
     }
-
-    //IEnumerator SpeedBoost()
-    //{
-    //    gameManager.instance.setPlayerSpeed(speedBoost * gameManager.instance.getPlayerSpeed());
-    //    yield return new WaitForSeconds(speedBoostTimer);
-    //    gameManager.instance.setPlayerSpeed(gameManager.instance.getOriginalPlayerSpeed());
-    //}
-
-    //IEnumerator Protection()
-    //{
-    //    gameManager.instance.setIsProtected(true);
-    //    yield return new WaitForSeconds(protectionTime);
-    //    gameManager.instance.setIsProtected(false);
-    //}
-
-
-    //IEnumerator JumpBoost()
-    //{
-    //    gameManager.instance.setPlayerJumpSpeed(jumpBoost * gameManager.instance.getPlayerJumpSpeed());
-    //    yield return new WaitForSeconds(jumpBoostTimer);
-    //    gameManager.instance.setPlayerJumpSpeed(gameManager.instance.getOriginalPlayerJumpSpeed());
-    //}
 }

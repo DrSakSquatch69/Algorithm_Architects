@@ -2033,7 +2033,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 974845
+    m_Bits: 319485
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2536,6 +2536,14 @@ MonoBehaviour:
   maxWallRunCameraTilt: 10
   particleSource: {fileID: 3979917375870057752}
   runParticle: {fileID: 1675630992775557321, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
+  speedBoost: 2
+  speedBoostTimer: 5
+  protectionTime: 5
+  jumpBoost: 2
+  jumpBoostTimer: 5
+  speedBoosting: 0
+  jumpBoosting: 0
+  isProtected: 0
 --- !u!143 &3078013358927633543
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2630,7 +2638,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
