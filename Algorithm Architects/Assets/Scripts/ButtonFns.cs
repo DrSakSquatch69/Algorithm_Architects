@@ -19,6 +19,8 @@ public class ButtonFns : MonoBehaviour
     [SerializeField] Slider SFXSliderSlide;
     [SerializeField] Slider MusicSliderSlide;
     [SerializeField] MenuMusicManager mMusicManager;
+    [SerializeField] LoadingScreen LoadingScreen;
+
     private void Start()
     {
         //mMusicManager.OnResumeFinished += ExecuteResume;
@@ -115,7 +117,7 @@ public class ButtonFns : MonoBehaviour
     private void NxtLvlFns()
     {
         mMusicManager.PlayAmbient();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Gets the index of the current level and loads the next scene after it
+        LoadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         resume();
     }
 
@@ -126,7 +128,7 @@ public class ButtonFns : MonoBehaviour
     private void PlayFns()
     {
         mMusicManager.PlayAmbient();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LoadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void Credits() //goes to the tutorial
     {
