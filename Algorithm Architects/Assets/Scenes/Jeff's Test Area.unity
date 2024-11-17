@@ -967,15 +967,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624236929643424425, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2644752563334186951, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2644752563334186951, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7591850520130611323, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1416,6 +1416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Eggplant '
       objectReference: {fileID: 0}
+    - target: {fileID: 1070490769117470721, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4977342788718585518, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
       propertyPath: gasRange
       value: 40
@@ -1466,11 +1470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8426092525176881075, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 8426092525176881075, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2122,6 +2126,10 @@ PrefabInstance:
       propertyPath: mudPrefab
       value: 
       objectReference: {fileID: 951208392}
+    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2138,7 +2146,7 @@ PrefabInstance:
     - target: {fileID: 303922845182290800, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -2048083146131787379, guid: bcf3fd31feee7e3419910fa716627a93, type: 3}
+      objectReference: {fileID: 4496843174274597451, guid: b0b7f9e021488cd4babc040a9193b0e5, type: 3}
     - target: {fileID: 756219433363736469, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_AutoBraking
       value: 1
@@ -2157,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: HP
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: enemyHp
@@ -2166,6 +2174,14 @@ PrefabInstance:
     - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: maxBullets
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 451168153}
+    - target: {fileID: 3338167276816836036, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: projectileSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4072220555173883778, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_Name
@@ -2180,12 +2196,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3339082285309697363, guid: b0b7f9e021488cd4babc040a9193b0e5, type: 3}
     - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8536401074016954521, guid: 5708a40da33f20640861aa11e03ac946, type: 3}
       propertyPath: m_LocalPosition.z
