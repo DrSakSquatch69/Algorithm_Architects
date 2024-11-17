@@ -993,17 +993,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6685839146446757675, guid: 836d7ac5b25afc746ac6cd6b74c295d0, type: 3}
-      propertyPath: itemDifference
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8415248498332601849, guid: 836d7ac5b25afc746ac6cd6b74c295d0, type: 3}
       propertyPath: m_Name
       value: Jump Power-Up
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415248498332601849, guid: 836d7ac5b25afc746ac6cd6b74c295d0, type: 3}
-      propertyPath: m_TagString
-      value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 9188230823909873475, guid: 836d7ac5b25afc746ac6cd6b74c295d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1238,10 +1230,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6756408982513102932, guid: 77c2108e75a6da04b8a9c2d5f73fc910, type: 3}
-      propertyPath: itemDifference
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7155462594337050797, guid: 77c2108e75a6da04b8a9c2d5f73fc910, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.938053
@@ -1285,10 +1273,6 @@ PrefabInstance:
     - target: {fileID: 7495854542567655959, guid: 77c2108e75a6da04b8a9c2d5f73fc910, type: 3}
       propertyPath: m_Name
       value: Speed Power-Up
-      objectReference: {fileID: 0}
-    - target: {fileID: 7495854542567655959, guid: 77c2108e75a6da04b8a9c2d5f73fc910, type: 3}
-      propertyPath: m_TagString
-      value: Speed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

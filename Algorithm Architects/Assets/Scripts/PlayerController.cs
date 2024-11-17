@@ -1275,6 +1275,12 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         jumpBoosting = true;
         jumpSpeed *= jumpBoost;
+
+        if (jumpSpeed > originalJumpSpeed * jumpBoost)
+        {
+            jumpSpeed /= 2;
+        }
+
         yield return new WaitForSeconds(jumpBoostTimer);
         jumpSpeed = originalJumpSpeed;
         jumpBoosting = false;
