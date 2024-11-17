@@ -61,8 +61,9 @@ MonoBehaviour:
   HP: 100
   maxRespawns: 0
   renderDistance: 50
-  gasRange: 10
-  poisonDamage: 5
+  gasRange: 40
+  attachRange: 20
+  poisonDamage: 10
   poisonInterval: 1
   attachDuration: 10
   gasEffect: {fileID: 4252676361387857683}
@@ -79,7 +80,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 800
