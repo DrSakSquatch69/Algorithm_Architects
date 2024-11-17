@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5749629226868240422
 Transform:
   m_ObjectHideFlags: 0
@@ -73,7 +73,6 @@ MonoBehaviour:
   burrowSpeed: 0
   HP: 80
   enemyPrefab: {fileID: 2514469933649856281, guid: b5172cea73966ba44bca39dd0a9f0049, type: 3}
-  maxRespawns: 0
   minHPSize: 0.1
   maxHPSize: 1
   renderDistance: 35
