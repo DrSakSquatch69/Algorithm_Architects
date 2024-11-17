@@ -1,3 +1,4 @@
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class EnemyFactory : MonoBehaviour
     public int maxWaves;
     public Wave[] waves;
     [SerializeField] float countdown;
+    [SerializeField] Transform spawn1, spawn2, spawn3, spawn4, spawn5, spawn6, spawn7;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,8 +42,37 @@ public class EnemyFactory : MonoBehaviour
     {
         for (int i = 0; i < waves[currWave].enemies.Length;)
         {
-            Instantiate(waves[currWave].enemies[i], transform);
-            yield return new WaitForSeconds(waves[currWave].nextEnemyTime);
+            int num = Random.Range(1, 7);
+
+            if(num == 1)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn1.position, Quaternion.identity);
+            } else if (num == 2)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn2.position, Quaternion.identity);
+            }
+            else if (num == 3)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn3.position, Quaternion.identity);
+            }
+            else if (num == 4)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn4.position, Quaternion.identity);
+            }
+            else if (num == 5)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn5.position, Quaternion.identity);
+            }
+            else if (num == 6)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn6.position, Quaternion.identity);
+            }
+            else if (num == 7)
+            {
+                Instantiate(waves[currWave].enemies[i], spawn7.position, Quaternion.identity);
+            }
+
+            yield return new WaitForSeconds(1);
             ++i;
         
         }
