@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 726912905262175606}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 11.73, z: 0}
-  m_LocalScale: {x: 6.033479, y: 6.0334797, z: 1.6152321}
+  m_LocalPosition: {x: 0.0047390503, y: 2.1004238, z: 0.022002848}
+  m_LocalScale: {x: 1.0211816, y: 1.0211817, z: 0.27338213}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 323725007476418989}
+  m_Father: {fileID: 9079719538217966266}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &3597969230511851933
 MeshFilter:
@@ -251,6 +251,7 @@ Transform:
   - {fileID: 7836066063821625369}
   - {fileID: 5672541068409961000}
   - {fileID: 7672847970347040674}
+  - {fileID: 7762353087194163852}
   m_Father: {fileID: 323725007476418989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1830886608848430856
@@ -272,6 +273,7 @@ MonoBehaviour:
   bullet: {fileID: 5223472228960464512, guid: b3fb5a203e68fc94dba179befbea5bed, type: 3}
   firerate: 1
   rotateSpeed: 32
+  parent: {fileID: 5247476546327169525}
   HP: 100
   enemyPrefab: {fileID: 5247476546327169525}
   maxRespawns: 0
@@ -559,7 +561,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2432863450757192728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +730,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9079719538217966266}
-  - {fileID: 7762353087194163852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &4642195116947381822

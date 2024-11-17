@@ -18,8 +18,9 @@ public class gunStats : ScriptableObject
     public int ammoremaining;
     public int ammo;
     public bool isMelee;
+    public bool altModel;
     public Texture icon;
-    public Vector3 placement;
+    public Vector3 Muzzleplacement;
     //public Vector3 rotation;
 
     public ParticleSystem hitEffect;

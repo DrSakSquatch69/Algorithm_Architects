@@ -19,6 +19,7 @@ public class DaikonAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float firerate;
     [SerializeField] int rotateSpeed;
+    [SerializeField] GameObject parent;
 
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
@@ -145,6 +146,7 @@ public class DaikonAI : MonoBehaviour, IDamage
             }
 
             // Destroys current enemy
+            Destroy(parent);
             Destroy(gameObject);
 
             //if (gameManager.instance.ActiveCheck(activeEnemiesAI))
