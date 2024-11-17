@@ -61,7 +61,7 @@ public class CabbageAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-       // updateEnemyUI();
+       updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
         animator.SetFloat("Speed", agent.velocity.normalized.magnitude);
@@ -100,7 +100,7 @@ public class CabbageAI : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
         HP -= amount;
-       // updateEnemyUI();
+        updateEnemyUI();
 
         StartCoroutine(flashColor());
 
