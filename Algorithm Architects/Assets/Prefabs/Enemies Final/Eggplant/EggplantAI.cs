@@ -16,7 +16,7 @@ public class EggplantAI : MonoBehaviour, IDamage
     [SerializeField] private int maxRespawns = 0;
     [SerializeField] private float renderDistance = 50f;
     [SerializeField] private float gasRange = 5f;
-    //[SerializeField] private float attachRange = 1f;
+    [SerializeField] private float attachRange = 1f;
     [SerializeField] private float poisonDamage = 1f;
     [SerializeField] private float poisonInterval = 1f;
     [SerializeField] private float attachDuration = 5f;
@@ -40,79 +40,79 @@ public class EggplantAI : MonoBehaviour, IDamage
 
     private int currentRespawnCount = 0;  // Initialize it with 0
 
-    void Start()
+   void Start()
+{
+    // Check if the player is correctly assigned
+    if (player == null)
     {
-        // Check if the player is correctly assigned
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
-            if (player == null)
-            {
-                Debug.LogWarning("Player not found! Ensure the player has the 'Player' tag.");
-            }
-        }
-
-        render = GetComponent<Renderer>();
-        colorOrig = model.material.color;
-        hpOrig = HP;
-
-        // Get the MeshFilter and MeshRenderer components
-        MeshFilter meshFilter = GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        float scaleMultiplier = 3f;  // Adjust this value to change the size
-
-        if (meshFilter != null)
-        {
-            Mesh mesh = meshFilter.mesh;
-            if (mesh != null)
-            {
-                Vector3[] vertices = mesh.vertices;
-
-                // Scale the vertices of the mesh
-                for (int i = 0; i < vertices.Length; i++)
-                {
-                    vertices[i] *= scaleMultiplier;
-                }
-
-                // Apply changes and recalculate the mesh properties
-                mesh.vertices = vertices;
-                mesh.RecalculateBounds();
-                mesh.RecalculateNormals();
-                mesh.RecalculateTangents();
-            }
-            else
-            {
-                Debug.LogError("Mesh is null. Ensure the MeshFilter has a valid mesh assigned.");
-            }
-        }
-        else
-        {
-            Debug.LogError("MeshFilter component is missing on the GameObject.");
-        }
-
-        // Update the MeshRenderer properties
-        if (meshRenderer != null)
-        {
-            // Optionally, update material properties if needed
-            meshRenderer.material.mainTextureScale = new Vector2(materialScale.x / scaleMultiplier, materialScale.y / scaleMultiplier);
-        }
-        else
-        {
-            Debug.LogError("MeshRenderer component is missing on the GameObject.");
-        }
-
-        // Apply uniform scaling to the transform
-        transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
-
-        gameManager.instance.updateGameGoal(1);
-        updateEnemyUI();
-
-        // Ensure the gas effect is stopped when the enemy starts
-        if (gasEffect != null && gasEffect.isPlaying)
-        {
-            gasEffect.Stop();
+            Debug.LogWarning("Player not found! Ensure the player has the 'Player' tag.");
         }
     }
+
+    render = GetComponent<Renderer>();
+    colorOrig = model.material.color;
+    hpOrig = HP;
+
+    // Get the MeshFilter and MeshRenderer components
+    MeshFilter meshFilter = GetComponent<MeshFilter>();
+    MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+    float scaleMultiplier = 3f;  // Adjust this value to change the size
+
+    if (meshFilter != null)
+    {
+        Mesh mesh = meshFilter.mesh;
+        if (mesh != null)
+        {
+            Vector3[] vertices = mesh.vertices;
+
+            // Scale the vertices of the mesh
+            for (int i = 0; i < vertices.Length; i++)
+            {
+                vertices[i] *= scaleMultiplier;
+            }
+
+            // Apply changes and recalculate the mesh properties
+            mesh.vertices = vertices;
+            mesh.RecalculateBounds();
+            mesh.RecalculateNormals();
+            mesh.RecalculateTangents();
+        }
+        else
+        {
+            Debug.LogError("Mesh is null. Ensure the MeshFilter has a valid mesh assigned.");
+        }
+    }
+    else
+    {
+        Debug.LogError("MeshFilter component is missing on the GameObject.");
+    }
+
+    // Update the MeshRenderer properties
+    if (meshRenderer != null)
+    {
+        // Optionally, update material properties if needed
+        meshRenderer.material.mainTextureScale = new Vector2(materialScale.x / scaleMultiplier, materialScale.y / scaleMultiplier);
+    }
+    else
+    {
+        Debug.LogError("MeshRenderer component is missing on the GameObject.");
+    }
+
+    // Apply uniform scaling to the transform
+    transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
+
+    gameManager.instance.updateGameGoal(1);
+    updateEnemyUI();
+
+    // Ensure the gas effect is stopped when the enemy starts
+    if (gasEffect != null && gasEffect.isPlaying)
+    {
+        gasEffect.Stop();
+    }
+}
 
     void Update()
     {
@@ -242,19 +242,22 @@ public class EggplantAI : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-        // Only activate poison gas if the player is in range
         if (other.CompareTag("Player"))
         {
             isPlayerInGasRange = true;
-            //Debug.Log("Player entered gas range");
 
-            // Start the poison damage effect and enable the particle system
+            // Start the poison gas effect and enable the particle system
             if (!gasEffect.isPlaying)
             {
                 gasEffect.Play();  // Play the gas effect when the player is inside the gas range
             }
 
-            AttachPoisonGasToPlayer();  // Attach poison gas to the player
+            // Check if the player is close enough to the enemy to attach the gas
+            float distanceToEnemy = Vector3.Distance(transform.position, player.position);
+            if (distanceToEnemy <= attachRange && !isPoisonGasActive)
+            {
+                AttachPoisonGasToPlayer();
+            }
         }
     }
 
