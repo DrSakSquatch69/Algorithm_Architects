@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 246497787790666797}
   - component: {fileID: 4645749414003369730}
   - component: {fileID: 1112434756716180355}
-  - component: {fileID: 3092182581220509149}
   m_Layer: 0
   m_Name: shotgun_001 (1)
   m_TagString: Shotgun POS
@@ -121,21 +120,3 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0.021223048, y: 0.0772786, z: 0.41042316}
---- !u!114 &3092182581220509149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8961513192043526625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
