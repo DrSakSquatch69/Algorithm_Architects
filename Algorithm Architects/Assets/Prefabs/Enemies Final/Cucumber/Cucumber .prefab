@@ -135,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 855665055109737177}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 14.44, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1.8739808}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &864836863651067829
 Transform:
   m_ObjectHideFlags: 0
@@ -782,10 +782,10 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 989697595907042063, guid: b447c63c6c76c5f4c8837ac158b10435, type: 3}
 --- !u!1001 &2938632055661340442
@@ -875,6 +875,14 @@ PrefabInstance:
     - target: {fileID: 3229587784506595429, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980941118311802428, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980941118311802428, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7000417034852630566, guid: 61b312e180ca27a479f3b8fe345e761d, type: 3}
       propertyPath: m_SizeDelta.y

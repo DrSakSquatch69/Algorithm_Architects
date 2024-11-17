@@ -54,7 +54,7 @@ MonoBehaviour:
   travelSpeed: 20
   travelDistance: 10
   despawnTime: 5
-  damageAmount: 1
+  damageAmount: 10
   canSplit: 1
 --- !u!114 &2283198131155624921
 MonoBehaviour:
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   rb: {fileID: 5112248307662847513}
-  damageAmount: 10
+  damageAmount: 25
   kingDamageAmountOriginal: 0
   kingDamageAmount: 0
   bulletSpeed: 0

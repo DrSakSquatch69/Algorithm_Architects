@@ -9,7 +9,6 @@ public class StrawberryAI : MonoBehaviour, IDamage
 {
     
 
-    [SerializeField] int viewAngle;
     float angleToPlayer;
 
     [SerializeField] Renderer model;
@@ -127,7 +126,7 @@ public class StrawberryAI : MonoBehaviour, IDamage
         RaycastHit hit;
         if (Physics.Raycast(headPosition.position, playerDirection, out hit, 1000, ~ignoreMask))
         {
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            if (hit.collider.CompareTag("Player"))
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
