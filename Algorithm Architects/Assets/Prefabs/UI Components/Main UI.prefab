@@ -13538,9 +13538,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 167160950897431738}
     m_Modifications:
+    - target: {fileID: 1311092874711830373, guid: 44509977b76aaef44be376d0a25bcb51, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1706588081957068737, guid: 44509977b76aaef44be376d0a25bcb51, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397512648657510096, guid: 44509977b76aaef44be376d0a25bcb51, type: 3}
       propertyPath: m_Pivot.x
@@ -13626,9 +13630,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loading Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 3532601464522687656, guid: 44509977b76aaef44be376d0a25bcb51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7330801332749715815, guid: 44509977b76aaef44be376d0a25bcb51, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
