@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3206198504366029}
   - component: {fileID: 8883338042207004692}
+  - component: {fileID: 8392526451112855765}
   - component: {fileID: 2944311102450476679}
   - component: {fileID: 1871792618106487315}
   - component: {fileID: 1907064516956042243}
@@ -81,7 +82,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac01431c1d907247aca2a17414fcf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 8392526451112855765}
+--- !u!95 &8392526451112855765
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132538611687787766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f1670fc3b7c13240bc6b63506ac1e87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &2944311102450476679
 MeshFilter:
   m_ObjectHideFlags: 0
