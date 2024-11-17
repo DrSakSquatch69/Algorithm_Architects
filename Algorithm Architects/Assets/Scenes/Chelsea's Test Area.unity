@@ -694,6 +694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pumpkin_Fruit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7087042360035327037, guid: 7ae9e6f3c54af554aae3a660ce36b5ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -946,6 +950,10 @@ PrefabInstance:
     - target: {fileID: 3012269284952407355, guid: b285f70a9deb4454f801e8bf101f1a75, type: 3}
       propertyPath: m_Name
       value: Mushroom_Small_Wide (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012269284952407355, guid: b285f70a9deb4454f801e8bf101f1a75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7555563467977283465, guid: b285f70a9deb4454f801e8bf101f1a75, type: 3}
       propertyPath: anim
@@ -1256,6 +1264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7121243243535118444, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1309,6 +1321,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4025770399814443551, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025770399814443551, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025770399814443551, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025770399814443551, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5088845534347849156, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
       propertyPath: anim
       value: 
@@ -1316,6 +1344,10 @@ PrefabInstance:
     - target: {fileID: 7805400273273032439, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
       propertyPath: m_Name
       value: Mushroom Low (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805400273273032439, guid: d6f2c48e9f2936040be2966e1ecf2267, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1501,6 +1533,10 @@ PrefabInstance:
     - target: {fileID: 1876438054574536666, guid: ed4574045d62bd743a57afe4db363e4a, type: 3}
       propertyPath: m_Name
       value: Tomato_Fruit 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876438054574536666, guid: ed4574045d62bd743a57afe4db363e4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2252169078726976462, guid: ed4574045d62bd743a57afe4db363e4a, type: 3}
       propertyPath: anim
@@ -1849,6 +1885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sack (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3021057993697230994, guid: a283b57903a8fc440bb5577e03078dd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2118,7 +2158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &860800310
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2589,6 +2629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mashroom 001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 229824986063565871, guid: 66bdfe20359cfec4fbb064090c04bf02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 611170375692430997, guid: 66bdfe20359cfec4fbb064090c04bf02, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.54959
@@ -2907,6 +2951,10 @@ PrefabInstance:
     - target: {fileID: 6396037905350351251, guid: 7ac2a992382f8e943968e346a402e75c, type: 3}
       propertyPath: m_Name
       value: Mashroom 004 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396037905350351251, guid: 7ac2a992382f8e943968e346a402e75c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7292257507549486871, guid: 7ac2a992382f8e943968e346a402e75c, type: 3}
       propertyPath: anim
@@ -3444,63 +3492,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1335988882
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 532631501621993153, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_Name
-      value: MG - AQUA
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.325
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628139673899491847, guid: 127719efed25ab144b865e497cc45516, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 127719efed25ab144b865e497cc45516, type: 3}
 --- !u!1001 &1437170430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4050,6 +4041,10 @@ PrefabInstance:
     - target: {fileID: 2715949174333995930, guid: 5b8b853b15d4d6d4398af081877974c3, type: 3}
       propertyPath: m_Name
       value: Tomato_Fruit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715949174333995930, guid: 5b8b853b15d4d6d4398af081877974c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16430,7 +16425,7 @@ RectTransform:
   m_Father: {fileID: 7466727828285917842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.63, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17044,7 +17039,7 @@ MonoBehaviour:
   firerate: 0.4
   rotateSpeed: 32
   burrowedPos: -1
-  burrowSpeed: 1
+  burrowSpeed: 13
   HP: 80
   enemyPrefab: {fileID: 2514469933649856281, guid: b5172cea73966ba44bca39dd0a9f0049, type: 3}
   maxRespawns: 0
@@ -17896,7 +17891,6 @@ SceneRoots:
   - {fileID: 2073978713}
   - {fileID: 23256644}
   - {fileID: 5403684249753505549}
-  - {fileID: 1335988882}
   - {fileID: 1143304259}
   - {fileID: 858981690}
   - {fileID: 2037505260}
