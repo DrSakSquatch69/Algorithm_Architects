@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 4072220555173883778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 2.3, z: 15}
+  m_LocalPosition: {x: 25, y: 0.5, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -89,14 +89,14 @@ MonoBehaviour:
   agent: {fileID: 756219433363736469}
   headPosition: {fileID: 446135343979498183}
   shootPosition: {fileID: 3806357384633397936}
-  bullet: {fileID: 4948551250625824269, guid: 044f4b02e15fd2c42afedd9c0aba0dd1, type: 3}
+  bullet: {fileID: 1785077805390358179, guid: aa87e39d4678f67498b312357061ff50, type: 3}
   firerate: 0.1
-  projectileSpeed: 60
-  rotateSpeed: 32
+  projectileSpeed: 20
+  rotateSpeed: 360
   maxBullets: 200
   cooldownDuration: 3
   HP: 125
-  enemyPrefab: {fileID: 2514469933649856281, guid: b5172cea73966ba44bca39dd0a9f0049, type: 3}
+  enemyPrefab: {fileID: 4072220555173883778}
   maxRespawns: 0
   minHPSize: 0.1
   maxHPSize: 1
@@ -131,7 +131,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 4496843174274597451, guid: b0b7f9e021488cd4babc040a9193b0e5, type: 3}
   - {fileID: 8480348011181965998, guid: b0b7f9e021488cd4babc040a9193b0e5, type: 3}
+  - {fileID: -5574874628388244744, guid: b0b7f9e021488cd4babc040a9193b0e5, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
