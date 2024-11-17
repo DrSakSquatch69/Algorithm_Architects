@@ -1139,6 +1139,8 @@ public class PlayerController : MonoBehaviour, IDamage
             gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGunPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
         }
 
+        muzzleFlash.transform.localPosition = gunList[selectedGunPos].Muzzleplacement;
+
         updatePlayerUI();
         MainManager.Instance.SetSelectedGunPos(selectedGunPos);
         //gunModel.transform.position = gunList[selectedGunPos].placement;
