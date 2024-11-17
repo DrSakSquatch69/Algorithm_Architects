@@ -105,9 +105,9 @@ public class ButtonFns : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void PlayTutorial() //goes to the tutorial
+    public void Credits() //goes to the tutorial
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
     }
 
     public void ReturnToMainMenu()
