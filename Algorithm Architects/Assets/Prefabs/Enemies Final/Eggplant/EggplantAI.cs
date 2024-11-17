@@ -48,7 +48,7 @@ public class EggplantAI : MonoBehaviour, IDamage
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
             if (player == null)
             {
-               // Debug.Log("Player not found! Ensure the player has the 'Player' tag.");
+                Debug.LogWarning("Player not found! Ensure the player has the 'Player' tag.");
             }
         }
 
@@ -56,33 +56,53 @@ public class EggplantAI : MonoBehaviour, IDamage
         colorOrig = model.material.color;
         hpOrig = HP;
 
-        // Scaling the mesh size using the MeshFilter (adjust the vertices of the mesh)
-        float scaleMultiplier = 3f;  // Change this value to make the mesh bigger (e.g., 3x size)
-
-        // Get the MeshFilter component and modify its mesh vertices
+        // Get the MeshFilter and MeshRenderer components
         MeshFilter meshFilter = GetComponent<MeshFilter>();
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        float scaleMultiplier = 3f;  // Adjust this value to change the size
+
         if (meshFilter != null)
         {
             Mesh mesh = meshFilter.mesh;
-            Vector3[] vertices = mesh.vertices;
-
-            // Scale the vertices
-            for (int i = 0; i < vertices.Length; i++)
+            if (mesh != null)
             {
-                vertices[i] *= scaleMultiplier;  // Scale each vertex by the multiplier
-            }
+                Vector3[] vertices = mesh.vertices;
 
-            // Apply the new vertices back to the mesh
-            mesh.vertices = vertices;
-            mesh.RecalculateBounds();  // Recalculate mesh bounds after changing vertices
-            mesh.RecalculateNormals(); // Recalculate normals for lighting/shading
+                // Scale the vertices of the mesh
+                for (int i = 0; i < vertices.Length; i++)
+                {
+                    vertices[i] *= scaleMultiplier;
+                }
+
+                // Apply changes and recalculate the mesh properties
+                mesh.vertices = vertices;
+                mesh.RecalculateBounds();
+                mesh.RecalculateNormals();
+                mesh.RecalculateTangents();
+            }
+            else
+            {
+                Debug.LogError("Mesh is null. Ensure the MeshFilter has a valid mesh assigned.");
+            }
+        }
+        else
+        {
+            Debug.LogError("MeshFilter component is missing on the GameObject.");
         }
 
-        // Scale the transform to apply to all child objects and keep relative proportions
-        transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
+        // Update the MeshRenderer properties
+        if (meshRenderer != null)
+        {
+            // Optionally, update material properties if needed
+            meshRenderer.material.mainTextureScale = new Vector2(materialScale.x / scaleMultiplier, materialScale.y / scaleMultiplier);
+        }
+        else
+        {
+            Debug.LogError("MeshRenderer component is missing on the GameObject.");
+        }
 
-        // Adjust the texture scale so it looks right with the new size
-        model.material.mainTextureScale = new Vector2(materialScale.x / scaleMultiplier, materialScale.y / scaleMultiplier);
+        // Apply uniform scaling to the transform
+        transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
 
         gameManager.instance.updateGameGoal(1);
         updateEnemyUI();
@@ -90,7 +110,7 @@ public class EggplantAI : MonoBehaviour, IDamage
         // Ensure the gas effect is stopped when the enemy starts
         if (gasEffect != null && gasEffect.isPlaying)
         {
-            gasEffect.Stop();  // Stop the gas effect at the start to prevent it from playing automatically
+            gasEffect.Stop();
         }
     }
 
