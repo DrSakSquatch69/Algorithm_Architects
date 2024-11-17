@@ -192,13 +192,16 @@ public class CarrotAI : MonoBehaviour, IDamage
     {
         if (inGround)
         {
-            transform.position = new Vector3(transform.position.x, burrowedPos, transform.position.z);
-            anim.SetBool("Burrowed", true);
+            Vector3 burrow = new Vector3(transform.position.x, burrowedPos, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, burrow, Time.deltaTime * burrowSpeed);
+            //anim.SetBool("Burrowed", true);
         }
         else if (!inGround && agent.remainingDistance <= agent.stoppingDistance)
         {
-            transform.position = new Vector3(transform.position.x, origPos, transform.position.z);
-            anim.SetBool("Burrowed", false);
+
+            Vector3 resurface = new Vector3(transform.position.x, origPos, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, resurface, Time.deltaTime * burrowSpeed);
+            //anim.SetBool("Burrowed", false);
         }
     }
 }
