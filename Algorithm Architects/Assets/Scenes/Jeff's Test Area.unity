@@ -967,15 +967,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624236929643424425, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2644752563334186951, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 2644752563334186951, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7591850520130611323, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -987,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591850520130611323, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 42.422363
+      value: -119.6
       objectReference: {fileID: 0}
     - target: {fileID: 7591850520130611323, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1017,15 +1017,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6706251147767262770, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1624236929643424425, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2010885828}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
+--- !u!1 &951208392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7263623146951188175, guid: 982d86a08033e3e4c81b96929131a643, type: 3}
+  m_PrefabInstance: {fileID: 1606032540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &962776543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1394,6 +1395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mud
       objectReference: {fileID: 0}
+    - target: {fileID: 7263623146951188175, guid: 982d86a08033e3e4c81b96929131a643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1414,18 +1419,6 @@ PrefabInstance:
     - target: {fileID: 1070490769117470721, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4977342788718585518, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
-      propertyPath: HP
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 4977342788718585518, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
-      propertyPath: gasRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4977342788718585518, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
-      propertyPath: poisonDamage
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5299549669266989912, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1476,8 +1469,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3066623964421770768, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1403345fe6fbbf24e925fa572fa71fe9, type: 3}
@@ -2036,31 +2028,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1609871810703855677, guid: 25aa382c40c51c6459345c8c06ff828d, type: 3}
   m_PrefabInstance: {fileID: 1559512368}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2010885821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1624236929643424425, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
-  m_PrefabInstance: {fileID: 759222009}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &2010885827 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 3030766590194629421, guid: adc2342a5fa28b249aedbc99f02b91d9, type: 3}
-  m_PrefabInstance: {fileID: 759222009}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2010885828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010885821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d215e672ed88e3c47920e540b2004a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceHeight: 0.2
-  bounceSpeed: 20
-  agent: {fileID: 2010885827}
 --- !u!1 &2073978712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,14 +2074,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain Controller
       objectReference: {fileID: 0}
-    - target: {fileID: 3241160878078584034, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241160878078584034, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: f414f86f8de9c60409adda9e115c4823, type: 2}
     - target: {fileID: 6680663587558512244, guid: c91873994015adc4b9fb742ec7384311, type: 3}
       propertyPath: m_LocalPosition.x
       value: 111.67212
@@ -2155,42 +2114,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.ratio
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.worldSpace
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.textureScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.textureScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxColor.b
-      value: 0.8497241
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxColor.g
-      value: 0.8962264
-      objectReference: {fileID: 0}
-    - target: {fileID: 7864785228697624358, guid: c91873994015adc4b9fb742ec7384311, type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxColor.r
-      value: 0.8937702
-      objectReference: {fileID: 0}
+    - target: {fileID: 7686073996583354285, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+      propertyPath: mudPrefab
+      value: 
+      objectReference: {fileID: 951208392}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

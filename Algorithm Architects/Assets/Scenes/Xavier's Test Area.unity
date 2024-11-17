@@ -940,6 +940,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jump Power-Up
       objectReference: {fileID: 0}
+    - target: {fileID: 8415248498332601849, guid: 836d7ac5b25afc746ac6cd6b74c295d0, type: 3}
+      propertyPath: m_TagString
+      value: Jump
+      objectReference: {fileID: 0}
     - target: {fileID: 9188230823909873475, guid: 836d7ac5b25afc746ac6cd6b74c295d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.6
@@ -1216,6 +1220,10 @@ PrefabInstance:
     - target: {fileID: 7495854542567655959, guid: 77c2108e75a6da04b8a9c2d5f73fc910, type: 3}
       propertyPath: m_Name
       value: Speed Power-Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495854542567655959, guid: 77c2108e75a6da04b8a9c2d5f73fc910, type: 3}
+      propertyPath: m_TagString
+      value: Speed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1525,5 +1533,5 @@ SceneRoots:
   - {fileID: 1408211681}
   - {fileID: 779577826}
   - {fileID: 881461478}
-  - {fileID: 953122582}
   - {fileID: 1739254184}
+  - {fileID: 953122582}

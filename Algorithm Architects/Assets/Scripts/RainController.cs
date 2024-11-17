@@ -5,6 +5,7 @@ using UnityEngine;
 public class RainController : MonoBehaviour
 {
     public ParticleSystem rainParticleSystem; // Drag the Particle System here in the Inspector
+    public GameObject mudPrefab; // Drag the Mud Prefab here in the Inspector
     public float minRainInterval = 10f; // Minimum time between rains
     public float maxRainInterval = 30f; // Maximum time between rains
     public float rainDuration = 15f; // Duration of each rain event
@@ -12,6 +13,7 @@ public class RainController : MonoBehaviour
     public float maxRainIntensity = 1000f; // Maximum emission rate
 
     private ParticleSystem.EmissionModule emissionModule;
+    private bool isRaining = false;
 
     void Start()
     {
@@ -21,10 +23,21 @@ public class RainController : MonoBehaviour
             return;
         }
 
-        // Get the Emission Module from the Particle System
+        // Initialize mud prefab state
+        if (mudPrefab != null)
+        {
+            //Debug.Log("Mud prefab found and initialized.");
+            mudPrefab.SetActive(false);
+        }
+        else
+        {
+            //Debug.LogError("Mud prefab is not assigned!");
+        }
+
         emissionModule = rainParticleSystem.emission;
-        emissionModule.enabled = true; // Ensure the emission module is enabled
-        rainParticleSystem.Stop();  // Makes sure the partical system is set to false on Awake
+        emissionModule.enabled = true;
+        rainParticleSystem.Stop();
+
         StartCoroutine(RainCycle());
     }
 
@@ -32,30 +45,32 @@ public class RainController : MonoBehaviour
     {
         while (true)
         {
-            // Randomize the time until it rains
             float waitTime = Random.Range(minRainInterval, maxRainInterval);
-            //Debug.Log("Waiting for " + waitTime + " seconds before rain."); // Debug log
             yield return new WaitForSeconds(waitTime);
 
-            // Set a random intensity for the rain
             float rainIntensity = Random.Range(minRainIntensity, maxRainIntensity);
-            //Debug.Log("Starting rain with intensity: " + rainIntensity); // Debug log
-            StartCoroutine(FadeRainIntensity(rainIntensity, 2f)); // Fade to the new intensity over 2 seconds
+            StartCoroutine(FadeRainIntensity(rainIntensity, 2f));
 
-            // Enable the rain
-            if (!rainParticleSystem.isPlaying)
+            if (!isRaining)
             {
                 rainParticleSystem.Play();
-                //Debug.Log("Rain started.");
+                isRaining = true;
+                //Debug.Log("Rain started. Enabling mud effect.");
+                EnableMudEffect();
             }
-            
-            // Wait for the rain duration, then stop the rain
+
             yield return new WaitForSeconds(rainDuration);
 
-            
-            StartCoroutine(FadeRainIntensity(0f, 2f)); // Fade out the intensity over 2 seconds
-            //Debug.Log("Stopping rain."); // Debug log
-            yield return new WaitForSeconds(2f); // Wait for fade out to complete
+            StartCoroutine(FadeRainIntensity(0f, 2f));
+            yield return new WaitForSeconds(2f);
+
+            // Stop rain and disable mud effect
+            if (isRaining)
+            {
+                rainParticleSystem.Stop();
+                isRaining = false;
+                DisableMudEffect();
+            }
         }
     }
 
@@ -72,6 +87,35 @@ public class RainController : MonoBehaviour
             yield return null;
         }
 
-        emissionModule.rateOverTime = targetIntensity; // Ensure it sets to the target at the end
+        emissionModule.rateOverTime = targetIntensity;
+    }
+
+    private void EnableMudEffect()
+    {
+        if (mudPrefab != null)
+        {
+            if (!mudPrefab.activeSelf)
+            {
+                mudPrefab.SetActive(true);
+                //Debug.Log("Mud prefab activated.");
+            }
+            else
+            {
+                //Debug.LogWarning("Mud prefab was already active.");
+            }
+        }
+    }
+
+    private void DisableMudEffect()
+    {
+        if (mudPrefab != null && mudPrefab.activeSelf)
+        {
+            mudPrefab.SetActive(false);
+            //Debug.Log("Mud prefab deactivated.");
+        }
+        else
+        {
+            //Debug.Log("Mud prefab is already inactive or not assigned.");
+        }
     }
 }
