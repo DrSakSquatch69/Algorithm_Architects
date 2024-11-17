@@ -210,7 +210,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7394375105046903982}
   - component: {fileID: 5449202067822484484}
-  m_Layer: 0
+  - component: {fileID: 3039319556727829233}
+  - component: {fileID: 112279874088007096}
+  - component: {fileID: 8302217593059164121}
+  m_Layer: 7
   m_Name: Beet 3.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,6 +263,77 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3039319556727829233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340881980539997757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075fbdfc78c603244bab3c31b67f805f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAngle: 90
+  Beetimator: {fileID: 5449202067822484484}
+  model: {fileID: 4953010943116890783, guid: 28851b703a7801d419e4bbb600e4d6b6, type: 3}
+  agent: {fileID: 8557116487635871593}
+  headPosition: {fileID: 5249219272024803795}
+  shootPosition: {fileID: 4692702858055151427}
+  bullet: {fileID: 1418239608108822308, guid: 7c4ae80e2aee2b74691685b3e8c8d3e9, type: 3}
+  firerate: 0.2
+  rotateSpeed: 800
+  HP: 100
+  enemyPrefab: {fileID: 2514469933649856281, guid: b5172cea73966ba44bca39dd0a9f0049, type: 3}
+  maxRespawns: 0
+  minHPSize: 0.1
+  maxHPSize: 1
+  renderDistance: 35
+  enemyHpBar: {fileID: 4419656179076547909}
+  isSliderOn: 0
+--- !u!65 &112279874088007096
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340881980539997757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 20, z: 2}
+  m_Center: {x: 0, y: 10, z: 0}
+--- !u!135 &8302217593059164121
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340881980539997757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1968152895871564041
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,10 +940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2163381976572287096}
   - component: {fileID: 8557116487635871593}
-  - component: {fileID: 1849313510246714159}
-  - component: {fileID: 6998466081573692317}
-  - component: {fileID: 1554938643897122459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +957,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -33.48, y: 0.99, z: 39.08}
-  m_LocalScale: {x: 0.6818, y: 0.6818, z: 0.6818}
+  m_LocalScale: {x: 0.2961194, y: 0.2961194, z: 0.2961194}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7394375105046903982}
@@ -907,85 +978,14 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 4
+  m_StoppingDistance: 6
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 12
   m_BaseOffset: 1.4
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1849313510246714159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412139570915663046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075fbdfc78c603244bab3c31b67f805f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewAngle: 90
-  Beetimator: {fileID: 5449202067822484484}
-  model: {fileID: 4953010943116890783, guid: 28851b703a7801d419e4bbb600e4d6b6, type: 3}
-  agent: {fileID: 8557116487635871593}
-  headPosition: {fileID: 5249219272024803795}
-  shootPosition: {fileID: 4692702858055151427}
-  bullet: {fileID: 1418239608108822308, guid: 7c4ae80e2aee2b74691685b3e8c8d3e9, type: 3}
-  firerate: 0.2
-  rotateSpeed: 800
-  HP: 75
-  enemyPrefab: {fileID: 2514469933649856281, guid: b5172cea73966ba44bca39dd0a9f0049, type: 3}
-  maxRespawns: 0
-  minHPSize: 0.1
-  maxHPSize: 1
-  renderDistance: 35
-  enemyHpBar: {fileID: 4419656179076547909}
-  isSliderOn: 0
---- !u!65 &6998466081573692317
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412139570915663046}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 10, z: 2}
-  m_Center: {x: 0, y: 4, z: 0}
---- !u!135 &1554938643897122459
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412139570915663046}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 7
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4575465090612784985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1877884440885482004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,7 +1655,7 @@ Transform:
   m_GameObject: {fileID: 7733407611211999327}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 15.38, z: 0}
+  m_LocalPosition: {x: 0, y: 24.7, z: 0}
   m_LocalScale: {x: 10.266941, y: 10.266941, z: 10.266941}
   m_ConstrainProportionsScale: 1
   m_Children: []

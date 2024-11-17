@@ -45,7 +45,17 @@ public class TomatoAI : MonoBehaviour, IDamage
     [SerializeField] Slider enemyHpBar;
     public bool isSliderOn;
 
-
+    void Animate()
+    {
+        if(agent.velocity.magnitude > 0)
+        {
+            tomAnimator.SetBool("isMoving", true);
+        }
+        else
+        {
+            tomAnimator.SetBool("isMoving", false);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +75,7 @@ public class TomatoAI : MonoBehaviour, IDamage
         updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
-        tomAnimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
+        Animate();
         
         if(playerSighted && canSeePlayer())
         {
@@ -200,11 +210,10 @@ public class TomatoAI : MonoBehaviour, IDamage
 
     IEnumerator Shoot()
     {
-        tomAnimator.SetTrigger("PreShoot");
+        
         isShooting = true;
         Debug.Log("Shooting bullet: " + bullet.name);
         Instantiate(bullet, shootPosition.position, transform.rotation);
-        tomAnimator.SetTrigger("PostShoot");
         yield return new WaitForSeconds(firerate);
         isShooting = false;
     }

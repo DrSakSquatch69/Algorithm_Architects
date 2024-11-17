@@ -21,6 +21,8 @@ public class ButtonFns : MonoBehaviour
     [SerializeField] MenuMusicManager mMusicManager;
     private void Start()
     {
+        //mMusicManager.OnResumeFinished += ExecuteResume;
+
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             if (MainManager.Instance.GetSensitivity() != 0.0f && MainManager.Instance.GetSFXVolume() != -1 && MainManager.Instance.GetMusicsVolume() != -1)
@@ -46,18 +48,34 @@ public class ButtonFns : MonoBehaviour
     
     public void resume() // resume fn
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.PlayResume();
-        gameManager.instance.stateUnpause(); //just call gamemanager and call our unpause state fn
-        
+        StartCoroutine(mMusicManager.PlayResume(resumeFns));
+        //gameManager.instance.stateUnpause();
     }
+    private void resumeFns()
+    {
+        gameManager.instance.stateUnpause();
+        mMusicManager.PlayAmbient();
+    }
+    
     public void Winrestart() // restart fn
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.PlayWinRestart();
+        StartCoroutine(mMusicManager.PlayWinRestart(WinRestartFns));
+    }
+    private void WinRestartFns()
+    {
+        mMusicManager.PlayAmbient();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
         resume(); // unpause
-        
+    }
+    public void loseRestart() // restart fn
+    {
+        StartCoroutine(mMusicManager.PlayLoseRestart(loseRestartFns));
+    }
+    private void loseRestartFns()
+    {
+        mMusicManager.PlayAmbient();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
+        resume(); // unpause
     }
     public void settings() //Tells gameManager the settings menu is up and brings the menu up
     {
@@ -92,44 +110,48 @@ public class ButtonFns : MonoBehaviour
 
     public void NextLevelBtn()
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.PlayNextLevel();
+        StartCoroutine(mMusicManager.PlayNextLevel(NxtLvlFns));
+    }
+    private void NxtLvlFns()
+    {
+        mMusicManager.PlayAmbient();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Gets the index of the current level and loads the next scene after it
         resume();
     }
 
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.PlayButtonSound();
+        StartCoroutine(mMusicManager.PlayButtonSound(PlayFns));
+    }
+    private void PlayFns()
+    {
+        mMusicManager.PlayAmbient();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
     public void Credits() //goes to the tutorial
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
     }
-
     public void ReturnToMainMenu()
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.PlayWinMainMenu();
-        SceneManager.LoadScene(0);
-        gameManager.instance.stateUnpauseMainMenu();
+        StartCoroutine(mMusicManager.PlayWinMainMenu(ReturnMMFns));  
     }
-    public void LoseRestart()
+    private void ReturnMMFns()
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.PlayLoseRestart();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
-        resume(); // unpause
+        mMusicManager.PlayAmbient();
+        SceneManager.LoadScene(0);
+        mMusicManager.PlayAmbient();
+        gameManager.instance.stateUnpauseMainMenu();
     }
     public void quit() // quit Fn
     {
-        mMusicManager.StopAmbientSound();
-        mMusicManager.QuitButtonSound();
+        StartCoroutine(mMusicManager.QuitButtonSound(QuitFns));
+    }
+    private void QuitFns()
+    {
+        mMusicManager.PlayAmbient();
 #if UNITY_EDITOR //C sharp if statement
-            UnityEditor.EditorApplication.isPlaying = false; // if in the editor we need to access the editor application and quit the game through here
+        UnityEditor.EditorApplication.isPlaying = false; // if in the editor we need to access the editor application and quit the game through here
 #else
         Application.Quit(); //if not in editor just quit application
 #endif

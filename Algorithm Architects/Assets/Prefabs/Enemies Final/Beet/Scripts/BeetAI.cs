@@ -49,7 +49,7 @@ public class BeetAI : MonoBehaviour, IDamage
     void Start()
     {
         //stores the original color
-        colorOrig = model.material.color;
+        colorOrig = model.sharedMaterial.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
         gameManager.instance.updateGameGoal(1);
@@ -61,18 +61,14 @@ public class BeetAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        Beetimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        Beetimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         
         if(playerSighted && canSeePlayer())
         {
-            Beetimator.SetBool("IsAttacking", true);
-        }
-        else
-        {
-            Beetimator.SetBool("IsAttacking", false);
+            Beetimator.SetTrigger("Attack");
         }
     }
     bool canSeePlayer()
@@ -176,7 +172,7 @@ public class BeetAI : MonoBehaviour, IDamage
     {
         model.sharedMaterial.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        model.sharedMaterial.color = colorOrig;
     }
 
     void faceTarget()

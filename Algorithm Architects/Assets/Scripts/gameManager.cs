@@ -92,7 +92,7 @@ public class gameManager : MonoBehaviour
     public bool getIsCabbaged() { return isCabbaged; }
     public PlayerSoundManager GetSoundManager() { return soundManager; }
     public int getDaikonCount() { return daikonCount; }
-
+    public MenuMusicManager GetMenuMusicManager() { return menuMusicManager; }
     //SETTERS
     public void setIsPaused(bool paused) { isPaused = paused; }           // setter for is paused bool 
     public void setIsButtered(bool butter) { IsButtered = butter; }
@@ -248,7 +248,7 @@ public class gameManager : MonoBehaviour
             }
             else if (!isFinalLevel && lastWave)
             {
-                PlayerSoundManager.Instance.PlayWinningSound();
+                MenuMusicManager.Instance.PlayNextLevelMenUp();
                 statePause();
                 menuActive = menuNextLevel;
                 menuActive.SetActive(isPaused);

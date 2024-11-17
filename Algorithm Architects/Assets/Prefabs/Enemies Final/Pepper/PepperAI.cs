@@ -58,13 +58,24 @@ public class PepperAI : MonoBehaviour, IDamage
         updateEnemyUI();
     }
 
+    void walkAnim()
+    {
+        if(agent.velocity.magnitude > 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
        // updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
-        animator.SetFloat("Speed", agent.velocity.normalized.magnitude);
+        walkAnim();
 
         if(playerSighted && canSeePlayer())
         {

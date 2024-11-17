@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage
@@ -124,6 +123,8 @@ public class PlayerController : MonoBehaviour, IDamage
     int origGrav;
     bool isWallRunning;
     bool isSpawnProtection;
+
+
 
     //Particles
     [SerializeField] Transform particleSource;
@@ -587,7 +588,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             if (HealthPoints <= 0)
             {
-                soundManager.PlayDeathSound();
+                gameManager.instance.GetMenuMusicManager().PlayLoseUp();
                 gameManager.instance.youLose();
             }
         }
@@ -971,7 +972,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         if (!isTakingDamage && HealthPoints != maxHP) //if the player is not taking damage and is not at full health, then heal player
         {
-            HealthPoints++;
+            HealthPoints += 10;
             yield return new WaitForSeconds(healRate); //used to slowly heal the player
             StartCoroutine(healPlayer()); //restart function call
             updatePlayerUI(); //updates player ui

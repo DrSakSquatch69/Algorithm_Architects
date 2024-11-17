@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class MenuMusicManager : MonoBehaviour
 {
+    //public delegate void SoundFinishedHandler();
+    //public event SoundFinishedHandler OnResumeFinished;
+
     public static MenuMusicManager Instance;
     [SerializeField] AudioSource Ambient;
 
     [SerializeField] public AudioSource PlayButtonClick;
     [SerializeField] public AudioClip playButtonClip;
+    private Action OnPlayButtonFinished;
 
     [SerializeField] public AudioSource QuitButtonClick;
     [SerializeField] List<AudioClip> QuitQuips;
     public AudioClip curQuitQuip;
+    private Action OnQuitFinished;
 
     [SerializeField] public AudioSource LoseMenuUp;
     [SerializeField] List<AudioClip> LoseMenuUpClips;
@@ -23,6 +30,7 @@ public class MenuMusicManager : MonoBehaviour
     [SerializeField] public AudioSource NextLevelButton;
     [SerializeField] List<AudioClip> NextLevelClips;
     public AudioClip curNextLevelClip;
+    private Action OnNxtLvlFinished;
 
     [SerializeField] public AudioSource OnPauseButton;
     [SerializeField] List<AudioClip> OnPauseQuips;
@@ -31,12 +39,15 @@ public class MenuMusicManager : MonoBehaviour
     [SerializeField] public AudioSource ResumeButtons;
     [SerializeField] List<AudioClip> ResumeClips;
     public AudioClip curResumeClip;
+    public AudioClip getCurResumeClip() { return curResumeClip; }
+    private Action onResumeFinished;
 
     [SerializeField] public AudioSource FinalWin;
     [SerializeField] AudioClip FinalWinClip;
 
     [SerializeField] public AudioSource LoseRestart;
     [SerializeField] public AudioClip LoseRestartClip;
+    private Action OnLoseRestartFinished;
 
     [SerializeField] public AudioSource NextLevMenuUp;
     [SerializeField] AudioClip NextLevMenUpClip;
@@ -46,9 +57,11 @@ public class MenuMusicManager : MonoBehaviour
 
     [SerializeField] public AudioSource WinMMBtn;
     [SerializeField] public AudioClip WinMMbtnClip;
+    private Action OnWinMMFinished;
 
     [SerializeField] public AudioSource WinRestart;
     [SerializeField] public AudioClip WinRestartClip;
+    private Action onWinRestartFinished;
     void Start()
     {
         if (Instance == null)
@@ -88,8 +101,9 @@ public class MenuMusicManager : MonoBehaviour
             NextLevelButton.Stop();
             LoseMenuUp.Stop();
         }
-       
+        StopAmbientSound();
         SettingsUp.Play();
+        PlayAmbient(); 
     }
 
     public void PlayNextLevelMenUp()
@@ -140,22 +154,34 @@ public class MenuMusicManager : MonoBehaviour
 
         LoseMenuUp.Play();
     }
-    public void PlayWinMainMenu()
+    public IEnumerator PlayWinMainMenu(Action callback)
     {
+        OnWinMMFinished = callback;
+        StopAmbientSound();
         WinMMBtn.Play();
+        while(WinMMBtn.isPlaying) { yield return null; }
+        OnWinMMFinished?.Invoke();
     }
-    public void PlayLoseRestart()
+    public IEnumerator PlayLoseRestart(Action callback)
     {
+        OnLoseRestartFinished = callback;
+        StopAmbientSound();
         LoseRestart.Play();
+        while(LoseRestart.isPlaying) { yield return null; }
+        OnLoseRestartFinished?.Invoke();
     }
-
-    public void PlayButtonSound()
+    public IEnumerator PlayButtonSound(Action callback)
     {
+        OnPlayButtonFinished = callback;
+        StopAmbientSound();
         PlayButtonClick.Play();
+        while(PlayButtonClick.isPlaying) { yield return null; }
+        OnPlayButtonFinished?.Invoke();
     }
 
-    public void PlayNextLevel()
+    public IEnumerator PlayNextLevel(Action callback)
     {
+        OnNxtLvlFinished = callback;
         int randomIndex = Random.Range(0, NextLevelClips.Count - 1);
         NextLevelButton.clip = NextLevelClips[randomIndex];
 
@@ -166,11 +192,14 @@ public class MenuMusicManager : MonoBehaviour
             QuitButtonClick.Stop();
             SettingsUp.Stop();
         }
-
+        StopAmbientSound();
         NextLevelButton.Play();
+        while(NextLevelButton.isPlaying) { yield return null; }
+        OnNxtLvlFinished?.Invoke();
     }
-    public void QuitButtonSound()
+    public IEnumerator QuitButtonSound(Action callback)
     {
+        OnQuitFinished = callback;
         int randomIndex = Random.Range(0, QuitQuips.Count - 1);
         QuitButtonClick.clip = QuitQuips[randomIndex];
 
@@ -182,19 +211,26 @@ public class MenuMusicManager : MonoBehaviour
             NextLevelButton.Stop();
             LoseMenuUp.Stop();
         }
-
+        StopAmbientSound();
         QuitButtonClick.Play();
+        while(QuitButtonClick.isPlaying) { yield return null; }
+        OnQuitFinished?.Invoke();
     }
-    public void PlayWinRestart()
+    public IEnumerator PlayWinRestart(Action callback)
     {
+        onWinRestartFinished = callback;
+        StopAmbientSound();
         WinRestart.Play();
+        while(WinRestart.isPlaying) { yield return null; }
+        onWinRestartFinished?.Invoke();
 
     }
-    public void PlayResume()
+    public IEnumerator PlayResume(Action callback)
     {
-
+        onResumeFinished = callback;
         int randomIndex = Random.Range(0, ResumeClips.Count - 1);
         ResumeButtons.clip = ResumeClips[randomIndex];
+        curResumeClip = ResumeButtons.clip;
 
         if (OnPauseButton.isPlaying || SettingsUp.isPlaying || QuitButtonClick.isPlaying || LoseMenuUp.isPlaying)
         {
@@ -203,8 +239,13 @@ public class MenuMusicManager : MonoBehaviour
             QuitButtonClick.Stop();
             SettingsUp.Stop();
         }
-
+        StopAmbientSound();
         ResumeButtons.Play();
-
+        while(ResumeButtons.isPlaying) { yield return null; }
+        Debug.Log("Yield Finished");
+        onResumeFinished?.Invoke();
+        //yield return new WaitForSeconds(curResumeClip.length);
+        //OnResumeFinished?.Invoke();
+        //PlayAmbient();
     }
 }
