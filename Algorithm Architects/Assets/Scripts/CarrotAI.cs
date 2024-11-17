@@ -28,7 +28,7 @@ public class CarrotAI : MonoBehaviour, IDamage
     int hpOrig;                                 //Original HP
     [SerializeField] int HP;
     [SerializeField] GameObject enemyPrefab;    //Refrence to the enemy prefab
-    [SerializeField] int maxRespawns = 0;       //limit the amound of respawns the enemy has
+    //[SerializeField] int maxRespawns = 0;       //limit the amound of respawns the enemy has
 
     [SerializeField] float minHPSize;
     [SerializeField] float maxHPSize;

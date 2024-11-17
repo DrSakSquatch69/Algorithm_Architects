@@ -2468,8 +2468,8 @@ MonoBehaviour:
   ignoreMask:
     serializedVersion: 2
     m_Bits: 8
-  HealthPoints: 100
-  maxHP: 100
+  HealthPoints: 250
+  maxHP: 250
   flashLight: {fileID: 106072757039905958}
   speed: 10
   sprintMod: 1.7
@@ -2477,7 +2477,7 @@ MonoBehaviour:
   jumpMax: 2
   gravity: 28
   butterSlowTimer: 2
-  fireDotDamage: 2
+  fireDotDamage: 10
   bleedDotDamage: 5
   fireDotTimer: 1
   bleedDotTimer: 3

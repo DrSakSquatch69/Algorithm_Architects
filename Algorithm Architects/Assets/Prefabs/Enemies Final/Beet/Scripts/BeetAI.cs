@@ -174,7 +174,7 @@ public class BeetAI : MonoBehaviour, IDamage
     //Sends feedback to the user that they are doing damage
     IEnumerator flashColor()
     {
-        model.material.color = Color.red;
+        model.sharedMaterial.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BouncePad : MonoBehaviour
 {
-    bool playerInRange;
+    //bool playerInRange;
     [SerializeField] Animator anim;
 
     private void Update()
@@ -17,7 +17,7 @@ public class BouncePad : MonoBehaviour
         if (other.CompareTag("Player") && !gameManager.instance.isPaused)
         {
             gameManager.instance.playerScript.CheckForBouncePad();
-            playerInRange = true;
+            //playerInRange = true;
 
             //Place animation code here
 
@@ -32,7 +32,7 @@ public class BouncePad : MonoBehaviour
     {
         if (other.CompareTag("Player") && !gameManager.instance.isPaused)
         {
-            playerInRange = false;
+            //playerInRange = false;
         }
     }
 

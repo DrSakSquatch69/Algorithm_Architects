@@ -43,7 +43,7 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] private Volume postProcessingVolume;
     private UnityEngine.Rendering.Universal.DepthOfField depthOfFieldEffect;
-    private bool isBlurred;
+    //private bool isBlurred;
 
     [SerializeField] bool isFinalLevel;
     bool inCredits;
@@ -401,7 +401,7 @@ public class gameManager : MonoBehaviour
     {
         if (depthOfFieldEffect == null) return;
 
-        isBlurred = true;
+        //isBlurred = true;
         depthOfFieldEffect.active = true;
         depthOfFieldEffect.focusDistance.value = 0.1f; // High blur effect
         StartCoroutine(DisableBlurAfterTime(duration));
@@ -415,7 +415,7 @@ public class gameManager : MonoBehaviour
         {
             depthOfFieldEffect.focusDistance.value = 10f; // Reset to normal
             depthOfFieldEffect.active = false;
-            isBlurred = false;
+            //isBlurred = false;
         }
     }
 
@@ -425,7 +425,7 @@ public class gameManager : MonoBehaviour
         {
             depthOfFieldEffect.focusDistance.value = 10f; // Reset to normal
             depthOfFieldEffect.active = false;
-            isBlurred = false;
+            //isBlurred = false;
         }
     }
 

@@ -35,8 +35,7 @@ public class DaikonAI : MonoBehaviour, IDamage
     GameObject playerObj;
     Renderer render;
 
-    bool isShooting;
-    bool playerSighted;
+    //bool isShooting;
 
     int currentRespawnCount = 1;
     //int activeEnemiesAI; //Used for tracking the active enemies 
@@ -206,15 +205,15 @@ public class DaikonAI : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
-            playerSighted = false;
+            //playerSighted = false;
         }
     }
 
     IEnumerator Shoot()
     {
-        isShooting = true;
+        //isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(firerate);
-        isShooting = false;
+        //isShooting = false;
     }
 }
