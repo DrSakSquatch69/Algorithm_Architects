@@ -10,6 +10,13 @@ public class PowerupPickUp : MonoBehaviour
 
     bool inRange;
     bool itemIsPickedUp;
+    bool speedInteracted;
+    bool jumpInteracted;
+    bool protectInteracted;
+
+    IEnumerator speedTrack;
+    IEnumerator jumpTrack;
+    IEnumerator protectTrack;
     private void Start()
     {
 
@@ -55,36 +62,64 @@ public class PowerupPickUp : MonoBehaviour
 
             if (gameObject.CompareTag("Speed"))
             {
-                StartCoroutine(gameManager.instance.playerScript.SpeedBoost());
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
-               
-                if (!gameManager.instance.playerScript.speedBoosting)
+                if(speedTrack != null)
                 {
-                    Destroy(gameObject);
+                    StopCoroutine(speedTrack);
                 }
+
+                speedTrack = gameManager.instance.playerScript.SpeedBoost();
+                StartCoroutine(speedTrack);
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                speedInteracted = true;
             }
 
             if (gameObject.CompareTag("Protect"))
             {
-                //StartCoroutine(Protection());
-
-                if (!gameManager.instance.playerScript.isProtected)
+                if(protectTrack != null)
                 {
-                    Destroy(gameObject);
+                    StopCoroutine(protectTrack);
                 }
+
+                protectTrack = gameManager.instance.playerScript.Protection();
+                StartCoroutine(protectTrack);
+                gameObject.GetComponent <MeshRenderer>().enabled = false;
+                protectInteracted = true;
             }
 
             if (gameObject.CompareTag("Jump"))
             {
-                StartCoroutine(gameManager.instance.playerScript.JumpBoost());
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
-
-                if (!gameManager.instance.playerScript.jumpBoosting)
+                if(jumpTrack != null)
                 {
-                    Destroy(gameObject);
+                    StopCoroutine(jumpTrack);
                 }
+
+                jumpTrack = gameManager.instance.playerScript.JumpBoost();
+                StartCoroutine(jumpTrack);
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                jumpInteracted = true;
             }
 
+        }
+
+        if (!gameManager.instance.playerScript.speedBoosting && gameObject.CompareTag("Speed") && speedInteracted)
+        {
+            StopCoroutine(speedTrack);
+            speedInteracted = false;
+            Destroy(gameObject);
+        }
+
+        if (!gameManager.instance.playerScript.jumpBoosting && gameObject.CompareTag("Jump") && jumpInteracted)
+        {
+            StopCoroutine(jumpTrack);
+            jumpInteracted = false;
+            Destroy(gameObject);
+        }
+
+        if (!gameManager.instance.playerScript.isProtected && gameObject.CompareTag("Protect") && protectInteracted)
+        {
+            StopCoroutine(protectTrack);
+            protectInteracted = false;
+            Destroy(gameObject);
         }
 
     }

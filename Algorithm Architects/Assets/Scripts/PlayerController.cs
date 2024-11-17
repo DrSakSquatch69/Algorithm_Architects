@@ -562,7 +562,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int amount, Vector3 dir, damageType type)
     {
 
-        if (!isSpawnProtection && type != damageType.fire && type != damageType.cabbage || !isProtected)
+        if (!isSpawnProtection && type != damageType.fire && type != damageType.cabbage && !isProtected)
         {
             if (type == damageType.bullet) { soundManager.PlayBulletDMG(); }
             else if (type == damageType.chaser) { soundManager.PlayChaserDMG(); }
@@ -643,10 +643,14 @@ public class PlayerController : MonoBehaviour, IDamage
                 yield break;
             }
 
-            HealthPoints -= fireDotDamage;
-            StartCoroutine(gameManager.instance.hitFlash());
-            updatePlayerUI();
-            isTakingDamage = true;
+            if (!isProtected)
+            {
+                HealthPoints -= fireDotDamage;
+                StartCoroutine(gameManager.instance.hitFlash());
+                updatePlayerUI();
+                isTakingDamage = true;
+            }
+           
             ++fireDotTracker;
 
             //Waits until the timer is up to do another instance of damage
@@ -679,12 +683,15 @@ public class PlayerController : MonoBehaviour, IDamage
                 yield break;
             }
 
-            HealthPoints -= bleedDotDamage;
-            StartCoroutine(gameManager.instance.hitFlash());
-            updatePlayerUI();
-            isTakingDamage = true;
-            ++bleedDotTracker;
+            if (!isProtected)
+            {
+                HealthPoints -= bleedDotDamage;
+                StartCoroutine(gameManager.instance.hitFlash());
+                updatePlayerUI();
+                isTakingDamage = true;
+            }
 
+            ++bleedDotTracker;
             yield return new WaitForSeconds(bleedDotTimer);
         }
 
@@ -1179,7 +1186,11 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         while (isInToxicGas && Time.time < toxicGasEndTime)
         {
-            HealthPoints -= poisonDamage;
+            if (!isProtected)
+            {
+                HealthPoints -= poisonDamage;
+            }
+
             gameManager.instance.EnableBlur(visionBlurIntensity); // Apply blur while in toxic gas
             updatePlayerUI();
             yield return new WaitForSeconds(poisonDamageInterval);
@@ -1191,7 +1202,11 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         while (isInToxicGas)
         {
-            HealthPoints -= 1; // Apply poison damage over time
+            if (!isProtected)
+            {
+                HealthPoints -= 1; // Apply poison damage over time
+            }
+
             updatePlayerUI();
             yield return new WaitForSeconds(1f); // Adjust interval as needed
             if (HealthPoints <= 0)
@@ -1248,11 +1263,11 @@ public class PlayerController : MonoBehaviour, IDamage
         speedBoosting = false;
     }
 
-    IEnumerator Protection()
+    public IEnumerator Protection()
     {
-        //gameManager.instance.setIsProtected(true);
+        isProtected = true;
         yield return new WaitForSeconds(protectionTime);
-        //gameManager.instance.setIsProtected(false);
+        isProtected = false;
     }
 
 
