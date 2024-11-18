@@ -62,7 +62,9 @@ public class PowerupPickUp : MonoBehaviour
 
             if (gameObject.CompareTag("Speed"))
             {
-                if(speedTrack != null)
+                speedInteracted = true;
+
+                if (speedTrack != null)
                 {
                     StopCoroutine(speedTrack);
                 }
@@ -70,25 +72,28 @@ public class PowerupPickUp : MonoBehaviour
                 speedTrack = gameManager.instance.playerScript.SpeedBoost();
                 StartCoroutine(speedTrack);
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-                speedInteracted = true;
             }
 
             if (gameObject.CompareTag("Protect"))
             {
-                if(protectTrack != null)
+                protectInteracted = true;
+                
+                if (protectTrack != null)
                 {
                     StopCoroutine(protectTrack);
                 }
 
                 protectTrack = gameManager.instance.playerScript.Protection();
                 StartCoroutine(protectTrack);
-                gameObject.GetComponent <MeshRenderer>().enabled = false;
-                protectInteracted = true;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
 
             if (gameObject.CompareTag("Jump"))
             {
-                if(jumpTrack != null)
+                jumpInteracted = true;
+                //Debug.Log("Jump Check");
+
+                if (jumpTrack != null)
                 {
                     StopCoroutine(jumpTrack);
                 }
@@ -96,7 +101,6 @@ public class PowerupPickUp : MonoBehaviour
                 jumpTrack = gameManager.instance.playerScript.JumpBoost();
                 StartCoroutine(jumpTrack);
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-                jumpInteracted = true;
             }
 
         }

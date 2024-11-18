@@ -1238,6 +1238,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public IEnumerator SpeedBoost()
     {
+        if(speedBoosting)
+        {
+            speed = originalSpeed;
+        }
+
         speedBoosting = true;
         speed *= speedBoost;
         speedBoostSpeed = speed;
