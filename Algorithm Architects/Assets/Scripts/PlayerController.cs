@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canSlide;
     bool crouching;
     bool inMotion;
+    bool cantStand;
     public bool isAmmoPickup;
     public bool isInteract;
     public bool isInteractable;
@@ -233,7 +234,7 @@ public class PlayerController : MonoBehaviour, IDamage
         RayTextUpdate();
         PickupAmmo();
         checkForAmmoLimit();
-        
+        checkToStand();
 
         if (inMotion && (isGrounded || controller.isGrounded))
         {
@@ -377,7 +378,7 @@ public class PlayerController : MonoBehaviour, IDamage
             }
         }
 
-        if (Input.GetButtonDown("Crouch") && (isGrounded || controller.isGrounded))
+        if (Input.GetButtonDown("Crouch") && (isGrounded || controller.isGrounded) && !cantStand)
         {
             isCrouching = !isCrouching;
             crouch();
@@ -411,10 +412,21 @@ public class PlayerController : MonoBehaviour, IDamage
             controller.Move(moveDir * (speed * slideSpeedMod) * Time.deltaTime);
             //slide duration
             yield return new WaitForSeconds(slideDistance);
-            isCrouching = false;
-            isSliding = false;
+
+            if (cantStand)
+            {
+                isCrouching = true;
+                isSliding = false;
+                crouch();
+            }
+            else
+            {
+                isCrouching = false;
+                isSliding = false;
+                crouch();
+            }
+
             //calls crouch to bring player back to normal size
-            crouch();
             holdingSprintTime = 0;
             soundManager.stopSliding();
         }
@@ -499,6 +511,18 @@ public class PlayerController : MonoBehaviour, IDamage
             //changes the player Y size to the normal size
             controller.radius = normalHeight;
             crouching = false;
+        }
+    }
+
+    void checkToStand()
+    {
+        if (isCrouching || isSliding)
+        {
+            cantStand = Physics.Raycast(transform.position, orientation.up, 1.7f);
+        }
+        else
+        {
+            cantStand = false;
         }
     }
 
