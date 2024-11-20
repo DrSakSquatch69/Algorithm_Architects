@@ -69,12 +69,12 @@ public class ButtonFns : MonoBehaviour
         }
     }
     
-    public void resume() // resume fn
+    public void Resume() // resume fn
     {
-        //StartCoroutine(mMusicManager.PlayResume(resumeFns));
-        gameManager.instance.stateUnpause();
+        StartCoroutine(mMusicManager.PlayResume(ResumeFns));
+        //gameManager.instance.stateUnpause();
     }
-    private void resumeFns()
+    private void ResumeFns()
     {
         gameManager.instance.stateUnpause();
         mMusicManager.PlayAmbient();
@@ -86,28 +86,28 @@ public class ButtonFns : MonoBehaviour
     }
     private void WinRestartFns()
     {
+        LoadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
         mMusicManager.PlayAmbient();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
-        resume(); // unpause
+        ResumeFns(); // unpause
     }
-    public void loseRestart() // restart fn
+    public void LoseRestart() // restart fn
     {
-        StartCoroutine(mMusicManager.PlayLoseRestart(loseRestartFns));
+        StartCoroutine(mMusicManager.PlayLoseRestart(LoseRestartFns));
     }
-    private void loseRestartFns()
+    private void LoseRestartFns()
     {
+        LoadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
         mMusicManager.PlayAmbient();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //we have to access scene manager and load scene. have to call scenemanager to also get active scene
-        resume(); // unpause
+        ResumeFns(); // unpause
     }
-    public void settings() //Tells gameManager the settings menu is up and brings the menu up
+    public void Settings() //Tells gameManager the settings menu is up and brings the menu up
     {
         mMusicManager.PlaySettings();
         gameManager.instance.setInSettings(true);
         gameManager.instance.settingsMenuUp();
     }
 
-    public void sensitivitySlider(float sensitivity) //Gets the slider info to send to gameManager which sends it to camera controller
+    public void SensitivitySlider(float sensitivity) //Gets the slider info to send to gameManager which sends it to camera controller
     {
         //Debug.Log(sensitivity);
         MainManager.Instance.SetSensitivity(sensitivity);
@@ -137,9 +137,9 @@ public class ButtonFns : MonoBehaviour
     }
     private void NxtLvlFns()
     {
-        mMusicManager.PlayAmbient();
         LoadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        resume();
+        mMusicManager.PlayAmbient();
+        ResumeFns();
     }
 
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
@@ -148,8 +148,8 @@ public class ButtonFns : MonoBehaviour
     }
     private void PlayFns()
     {
-        mMusicManager.PlayAmbient();
         LoadingScreen.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        mMusicManager.PlayAmbient();
     }
     public void Credits() //goes to the tutorial
     {
@@ -161,12 +161,11 @@ public class ButtonFns : MonoBehaviour
     }
     private void ReturnMMFns()
     {
-        mMusicManager.PlayAmbient();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         mMusicManager.PlayAmbient();
         gameManager.instance.stateUnpauseMainMenu();
     }
-    public void quit() // quit Fn
+    public void Quit() // quit Fn
     {
         StartCoroutine(mMusicManager.QuitButtonSound(QuitFns));
     }
