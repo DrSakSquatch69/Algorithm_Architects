@@ -25,6 +25,27 @@ public class ButtonFns : MonoBehaviour
     {
         //mMusicManager.OnResumeFinished += ExecuteResume;
 
+        if(SceneManager.GetActiveScene().buildIndex == 2 && MainManager.Instance.GetSensitivity() == 0.0f || MainManager.Instance.GetSFXVolume() == -1 || MainManager.Instance.GetMusicsVolume() == -1)
+        {
+            if(MainManager.Instance.GetSensitivity() == 0.0f)
+            {
+                sensSlider.value = 400;
+                MainManager.Instance.SetSensitivity(400);
+            }
+
+            if (MainManager.Instance.GetSFXVolume() == -1)
+            {
+                SFXSliderSlide.value = 0.5f;
+                MainManager.Instance.SetSFXVolume(0.5f);
+            }
+
+            if (MainManager.Instance.GetMusicsVolume() == -1)
+            {
+                MusicSliderSlide.value = 0.8f;
+                MainManager.Instance.SetMusicVolume(0.8f);
+            }
+        }
+
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             if (MainManager.Instance.GetSensitivity() != 0.0f && MainManager.Instance.GetSFXVolume() != -1 && MainManager.Instance.GetMusicsVolume() != -1)
