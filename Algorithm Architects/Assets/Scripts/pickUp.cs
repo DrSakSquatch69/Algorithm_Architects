@@ -47,13 +47,23 @@ public class pickUp : MonoBehaviour
             }
         }
 
+        if (inRange)
+        {
+            gameManager.instance.playerScript.Interact(gun);
+        }
+
         if (gameManager.instance.playerScript.isInteract && inRange)
         {
             itemIsPickedUp = true;
             gameManager.instance.playerScript.isInteract = false;
             gameManager.instance.playerScript.isInteractable = false;
             gameManager.instance.turnOnOffInteract.SetActive(false);
-            gameManager.instance.playerScript.getGunStats(gun);
+
+            if (gameManager.instance.playerScript.getGun)
+            {
+                gameManager.instance.playerScript.getGunStats(gun);
+                gameManager.instance.playerScript.getGun = false;
+            }
             Destroy(gameObject);
         }
 

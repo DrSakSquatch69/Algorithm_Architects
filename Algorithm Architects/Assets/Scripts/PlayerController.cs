@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public bool isAmmoPickup;
     public bool isInteract;
     public bool isInteractable;
+    public bool getGun;
 
     //bouncepad fields
     public LayerMask bouncePad;
@@ -232,11 +233,7 @@ public class PlayerController : MonoBehaviour, IDamage
         RayTextUpdate();
         PickupAmmo();
         checkForAmmoLimit();
-
-        if (isInteractable == true)
-        {
-            Interact();
-        }
+        
 
         if (inMotion && (isGrounded || controller.isGrounded))
         {
@@ -1228,11 +1225,35 @@ public class PlayerController : MonoBehaviour, IDamage
         isAmmoPickup = false;
     }
 
-    void Interact()
+    public void Interact(gunStats stats)
     {
-        if (Input.GetButtonDown("Interact"))
+        if (isInteractable)
         {
-            isInteract = true;
+            bool sameGun = false;
+            int i = 0;
+
+            for ( i = 0; i < gunList.Count; i++)
+            {
+                if (gunList[i] == stats)
+                {
+                    sameGun = true;
+                    break;
+                }
+            }
+
+            if (Input.GetButtonDown("Interact") && !sameGun)
+            {
+                isInteract = true;
+                getGun = true;
+
+            }else if (Input.GetButtonDown("Interact"))
+            {
+                gunList[i].ammoremaining += (gunList[i].magSize * 3);
+                isInteract = true;
+                getGun = false;
+            }
+
+            updatePlayerUI();
         }
     }
 
