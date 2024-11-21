@@ -1462,6 +1462,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3878e63ff162db43a919b8285deee46, type: 3}
+--- !u!114 &2083443735 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1980610125759323589, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+  m_PrefabInstance: {fileID: 3285048516548185592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e845547a950ac7f43a5d14aac80676a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3285048516548185592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1549,6 +1560,42 @@ PrefabInstance:
     - target: {fileID: 167160950897431738, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_Value
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2083443735}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SensitivitySlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074112080573532416, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ButtonFns, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6660780393547195776, guid: 8dc02cc2f55458049addc9cdad10c65c, type: 3}
       propertyPath: m_Name
