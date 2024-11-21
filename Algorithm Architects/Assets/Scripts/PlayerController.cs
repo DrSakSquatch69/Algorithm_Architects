@@ -1000,7 +1000,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         if (!isTakingDamage && HealthPoints != maxHP) //if the player is not taking damage and is not at full health, then heal player
         {
-            HealthPoints += 10;
+            HealthPoints += 2;
             yield return new WaitForSeconds(healRate); //used to slowly heal the player
             StartCoroutine(healPlayer()); //restart function call
             updatePlayerUI(); //updates player ui
