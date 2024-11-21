@@ -21,11 +21,25 @@ public class ButtonFns : MonoBehaviour
     [SerializeField] MenuMusicManager mMusicManager;
     [SerializeField] LoadingScreen LoadingScreen;
 
+    //buttons
+    [SerializeField] List<Button> mainMenuButtons;
+
     private void Start()
     {
         //mMusicManager.OnResumeFinished += ExecuteResume;
-
-        if(SceneManager.GetActiveScene().buildIndex == 2 && MainManager.Instance.GetSensitivity() == 0.0f || MainManager.Instance.GetSFXVolume() == -1 || MainManager.Instance.GetMusicsVolume() == -1)
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            for(int i = 0; i < mainMenuButtons.Count - 1; i++)
+            {
+                if(mainMenuButtons[i].interactable != true)
+                {
+                    mainMenuButtons[i].interactable = true;
+                }
+            }
+        }
+        
+        
+        if(SceneManager.GetActiveScene().buildIndex == 2 && MainManager.Instance.GetSensitivity() == -1 || MainManager.Instance.GetSFXVolume() == -1 || MainManager.Instance.GetMusicsVolume() == -1)
         {
             if(MainManager.Instance.GetSensitivity() == 0.0f)
             {
@@ -144,6 +158,10 @@ public class ButtonFns : MonoBehaviour
 
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
+        for(int i = 0; i < mainMenuButtons.Count -1; i++)
+        {
+            mainMenuButtons[i].interactable = false;
+        }
         StartCoroutine(mMusicManager.PlayButtonSound(PlayFns));
     }
     private void PlayFns()
@@ -153,6 +171,10 @@ public class ButtonFns : MonoBehaviour
     }
     public void Credits() //goes to the tutorial
     {
+        for(int i = 0; i < mainMenuButtons.Count -1;i++)
+        {
+            mainMenuButtons[i].interactable=false;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
     }
     public void ReturnToMainMenu()
@@ -167,11 +189,17 @@ public class ButtonFns : MonoBehaviour
     }
     public void Quit() // quit Fn
     {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            for (int i = 0;i < mainMenuButtons.Count -1; i++)
+            {
+                mainMenuButtons[i].interactable = false;
+            }
+        }
         StartCoroutine(mMusicManager.QuitButtonSound(QuitFns));
     }
     private void QuitFns()
     {
-        mMusicManager.PlayAmbient();
 #if UNITY_EDITOR //C sharp if statement
         UnityEditor.EditorApplication.isPlaying = false; // if in the editor we need to access the editor application and quit the game through here
 #else

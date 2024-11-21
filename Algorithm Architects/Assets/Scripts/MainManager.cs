@@ -13,7 +13,7 @@ public class MainManager : MonoBehaviour
     int selectedGunPOS;
 
     //Setting Fields
-    float sensitivity;
+    float sensitivity = -1;
     float musicVolume = -1;
     float SFXVolume = -1;
 
