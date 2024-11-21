@@ -6536,10 +6536,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4412139570915663046, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
-      propertyPath: m_Name
-      value: Beet (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 2163381976572287096, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.164635
@@ -6579,6 +6575,10 @@ PrefabInstance:
     - target: {fileID: 2163381976572287096, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412139570915663046, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
+      propertyPath: m_Name
+      value: Beet (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8739,6 +8739,63 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1228497304
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.34746
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -41.044796
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252313042904374290, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706801729802609972, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
+      propertyPath: m_Name
+      value: LMG
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd584cb4bb428e049b397a298eb3b820, type: 3}
 --- !u!1001 &1268649043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9947,10 +10004,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4412139570915663046, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
-      propertyPath: m_Name
-      value: Beet (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 2163381976572287096, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.895657
@@ -9990,6 +10043,10 @@ PrefabInstance:
     - target: {fileID: 2163381976572287096, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412139570915663046, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
+      propertyPath: m_Name
+      value: Beet (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11998,10 +12055,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4412139570915663046, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
-      propertyPath: m_Name
-      value: Beet (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 2163381976572287096, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.625832
@@ -12041,6 +12094,10 @@ PrefabInstance:
     - target: {fileID: 2163381976572287096, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412139570915663046, guid: 9ba7ce751e3b3704f8cb45a169b0b880, type: 3}
+      propertyPath: m_Name
+      value: Beet (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14886,3 +14943,4 @@ SceneRoots:
   - {fileID: 1268649043}
   - {fileID: 204979035}
   - {fileID: 1156925288}
+  - {fileID: 1228497304}
