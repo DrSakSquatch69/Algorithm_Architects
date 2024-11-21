@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2683142496904901255}
   - component: {fileID: 9001154689278201420}
   - component: {fileID: 6004969395785741263}
+  - component: {fileID: 9038723342603758417}
   m_Layer: 11
   m_Name: Tomato_Fruit
   m_TagString: Untagged
@@ -165,6 +166,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: -0.0026634, y: 0.1, z: -0.082375735}
+--- !u!65 &9038723342603758417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715949174333995930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 0.2, z: 0.25}
+  m_Center: {x: -0.0026634, y: 0.0012631342, z: -0.082375735}
 --- !u!1001 &5470505617576984596
 PrefabInstance:
   m_ObjectHideFlags: 0
