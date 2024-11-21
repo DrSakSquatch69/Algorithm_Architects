@@ -37,28 +37,7 @@ public class ButtonFns : MonoBehaviour
                 }
             }
         }
-        
-        
-        if(SceneManager.GetActiveScene().buildIndex == 2 && MainManager.Instance.GetSensitivity() == -1 || MainManager.Instance.GetSFXVolume() == -1 || MainManager.Instance.GetMusicsVolume() == -1)
-        {
-            if(MainManager.Instance.GetSensitivity() == 0.0f)
-            {
-                sensSlider.value = 400;
-                MainManager.Instance.SetSensitivity(400);
-            }
 
-            if (MainManager.Instance.GetSFXVolume() == -1)
-            {
-                SFXSliderSlide.value = 0.5f;
-                MainManager.Instance.SetSFXVolume(0.5f);
-            }
-
-            if (MainManager.Instance.GetMusicsVolume() == -1)
-            {
-                MusicSliderSlide.value = 0.8f;
-                MainManager.Instance.SetMusicVolume(0.8f);
-            }
-        }
 
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
@@ -73,11 +52,11 @@ public class ButtonFns : MonoBehaviour
             else
             {
                 //Debug.Log("Went through else statement");
-                sensSlider.value = 800;
+                sensSlider.value = 400;
                 MainManager.Instance.SetSensitivity(sensSlider.value);
-                SFXSliderSlide.value = 1;
+                SFXSliderSlide.value = 0.6f;
                 MainManager.Instance.SetSFXVolume(SFXSliderSlide.value);
-                MusicSliderSlide.value = 1;
+                MusicSliderSlide.value = 0.8f;
                 MainManager.Instance.SetMusicVolume(MusicSliderSlide.value);
             }
         }
@@ -85,8 +64,8 @@ public class ButtonFns : MonoBehaviour
     
     public void Resume() // resume fn
     {
-        StartCoroutine(mMusicManager.PlayResume(ResumeFns));
-        //gameManager.instance.stateUnpause();
+        //StartCoroutine(mMusicManager.PlayResume(ResumeFns));
+        gameManager.instance.stateUnpause();
     }
     private void ResumeFns()
     {
