@@ -217,7 +217,7 @@ public class RadishAI : MonoBehaviour, IDamage
             gameManager.instance.playerScript.soundManager.playExplosion(explosionSound);
         }
         yield return new WaitForSeconds(explodingTime);
-        gameManager.instance.cameraController.startShake(0.8f, 2f);
+        gameManager.instance.cameraController.startShake(0.5f, 1.25f);
         if (playerInRange)
         {
             gameManager.instance.playerScript.takeDamage(explodingDamage, -(transform.position - playerCollider.transform.position).normalized * (explodingDamage * 2), damageType.melee);
