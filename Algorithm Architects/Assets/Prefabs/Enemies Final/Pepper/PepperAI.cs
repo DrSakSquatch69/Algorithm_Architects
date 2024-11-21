@@ -72,7 +72,7 @@ public class PepperAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-       // updateEnemyUI();
+        updateEnemyUI();
        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
         agent.SetDestination(gameManager.instance.getPlayer().transform.position);
         walkAnim();
