@@ -10069,6 +10069,25 @@ MonoBehaviour:
   mMusicManager: {fileID: 8842501686945462911}
   LoadingScreen: {fileID: 483575469101292857}
   mainMenuButtons: []
+  NextLevelButtons:
+  - {fileID: 3579284073932760655}
+  - {fileID: 8227281997195288118}
+  - {fileID: 5322870614786222802}
+  - {fileID: 6597663210324537217}
+  LoseButtons:
+  - {fileID: 8452324061345018510}
+  - {fileID: 8960157186393044664}
+  - {fileID: 1482422680213484598}
+  WonGameButtons:
+  - {fileID: 965707912603467489}
+  - {fileID: 8638332437272647501}
+  - {fileID: 365647806126016874}
+  PauseButtons:
+  - {fileID: 7991803401718931817}
+  - {fileID: 3911173975407113402}
+  - {fileID: 2094553086978721743}
+  - {fileID: 2776629966741514260}
+  - {fileID: 6049944865925974772}
 --- !u!1 &6837407574355616822
 GameObject:
   m_ObjectHideFlags: 0

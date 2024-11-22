@@ -23,17 +23,53 @@ public class ButtonFns : MonoBehaviour
 
     //buttons
     [SerializeField] List<Button> mainMenuButtons;
-
+    [SerializeField] List<Button> NextLevelButtons;
+    [SerializeField] List<Button> LoseButtons;
+    [SerializeField] List<Button> WonGameButtons;
+    [SerializeField] List<Button> PauseButtons;
     private void Start()
     {
         //mMusicManager.OnResumeFinished += ExecuteResume;
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            for(int i = 0; i < mainMenuButtons.Count - 1; i++)
+            for(int i = 0; i < mainMenuButtons.Count; i++)
             {
                 if(mainMenuButtons[i].interactable != true)
                 {
                     mainMenuButtons[i].interactable = true;
+                }
+            }
+        }
+        else if(SceneManager.GetActiveScene().buildIndex < 1)
+        {
+            for(int i = 0; i < NextLevelButtons.Count; i++)
+            {
+                if(NextLevelButtons[i].interactable != true)
+                {
+                    NextLevelButtons[i].interactable = true;
+                }
+            }
+            
+            for(int i = 0; i < LoseButtons.Count; i++)
+            {
+                if(LoseButtons[i].interactable != true)
+                {
+                    LoseButtons[i].interactable = true;
+                }
+            }
+
+            for(int i = 0; i < WonGameButtons.Count; i++)
+            {
+                if(WonGameButtons[i].interactable != true)
+                {
+                    WonGameButtons[i].interactable = true;
+                }
+            }
+            for(int i = 0; i < PauseButtons.Count; i++)
+            {
+                if(PauseButtons[i].interactable != true)
+                {
+                    PauseButtons[i].interactable = true;
                 }
             }
         }
@@ -64,6 +100,10 @@ public class ButtonFns : MonoBehaviour
     
     public void Resume() // resume fn
     {
+        for(int i = 0; i < PauseButtons.Count; i++)
+        {
+            PauseButtons[i].interactable = false;
+        }
         StartCoroutine(mMusicManager.PlayResume(ResumeFns));
         //gameManager.instance.stateUnpause();
     }
@@ -71,10 +111,25 @@ public class ButtonFns : MonoBehaviour
     {
         gameManager.instance.stateUnpause();
         mMusicManager.PlayAmbient();
+        for(int i = 0; i < PauseButtons.Count; i++)
+        {
+            if(PauseButtons[i].interactable != true)
+            {
+                PauseButtons[i].interactable = true;
+            }
+        }
     }
     
     public void Winrestart() // restart fn
     {
+        for (int i = 0; i < WonGameButtons.Count; i++)
+        {
+            WonGameButtons[i].interactable = false;
+        }
+        for(int i = 0; i < NextLevelButtons.Count; i++)
+        {
+            NextLevelButtons[i].interactable = false;
+        }
         StartCoroutine(mMusicManager.PlayWinRestart(WinRestartFns));
     }
     private void WinRestartFns()
@@ -85,6 +140,14 @@ public class ButtonFns : MonoBehaviour
     }
     public void LoseRestart() // restart fn
     {
+        for(int i = 0; i < LoseButtons.Count; i++)
+        {
+            LoseButtons[i].interactable = false;
+        }
+        for(int i = 0; i < PauseButtons.Count; i++)
+        {
+            PauseButtons[i].interactable = false;
+        }
         StartCoroutine(mMusicManager.PlayLoseRestart(LoseRestartFns));
     }
     private void LoseRestartFns()
@@ -95,9 +158,20 @@ public class ButtonFns : MonoBehaviour
     }
     public void Settings() //Tells gameManager the settings menu is up and brings the menu up
     {
+        for(int i = 0; i < PauseButtons.Count; i++)
+        {
+            PauseButtons[i].interactable = false;
+        }
         mMusicManager.PlaySettings();
         gameManager.instance.setInSettings(true);
         gameManager.instance.settingsMenuUp();
+        for(int i = 0; i < PauseButtons.Count; i++)
+        {
+            if(PauseButtons[i].interactable != true)
+            {
+                PauseButtons[i].interactable = true;
+            }
+        }
     }
 
     public void SensitivitySlider(float sensitivity) //Gets the slider info to send to gameManager which sends it to camera controller
@@ -125,7 +199,10 @@ public class ButtonFns : MonoBehaviour
     }
 
     public void NextLevelBtn()
-    {
+    {   for(int i = 0; i < NextLevelButtons.Count; i++)
+        {
+            NextLevelButtons[i].interactable = false;
+        }
         StartCoroutine(mMusicManager.PlayNextLevel(NxtLvlFns));
     }
     private void NxtLvlFns()
@@ -137,7 +214,7 @@ public class ButtonFns : MonoBehaviour
 
     public void PlayGame() //i had to make this for the main menu, because the nextlevel function would crash the game, due to resume being called
     {
-        for(int i = 0; i < mainMenuButtons.Count -1; i++)
+        for(int i = 0; i < mainMenuButtons.Count; i++)
         {
             mainMenuButtons[i].interactable = false;
         }
@@ -150,7 +227,7 @@ public class ButtonFns : MonoBehaviour
     }
     public void Credits() //goes to the tutorial
     {
-        for(int i = 0; i < mainMenuButtons.Count -1;i++)
+        for(int i = 0; i < mainMenuButtons.Count;i++)
         {
             mainMenuButtons[i].interactable=false;
         }
@@ -158,6 +235,22 @@ public class ButtonFns : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
+        for(int i = 0; i < LoseButtons.Count; i++)
+        {
+            LoseButtons[i].interactable=false;
+        }
+        for(int i = 0; i < WonGameButtons.Count; i++)
+        {
+            WonGameButtons[i].interactable=false;
+        }
+        for(int i = 0; i < NextLevelButtons.Count; i++)
+        {
+            NextLevelButtons[i].interactable=false;
+        }
+        for(int i = 0; i < PauseButtons.Count; i++)
+        {
+            PauseButtons[i].interactable=false;
+        }
         StartCoroutine(mMusicManager.PlayWinMainMenu(ReturnMMFns));  
     }
     private void ReturnMMFns()
@@ -170,9 +263,28 @@ public class ButtonFns : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            for (int i = 0;i < mainMenuButtons.Count -1; i++)
+            for (int i = 0;i < mainMenuButtons.Count; i++)
             {
                 mainMenuButtons[i].interactable = false;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < LoseButtons.Count; i++)
+            {
+                LoseButtons[i].interactable = false;
+            }
+            for (int i = 0; i < WonGameButtons.Count; i++)
+            {
+                WonGameButtons[i].interactable = false;
+            }
+            for (int i = 0; i < NextLevelButtons.Count; i++)
+            {
+                NextLevelButtons[i].interactable = false;
+            }
+            for (int i = 0; i < PauseButtons.Count; i++)
+            {
+                PauseButtons[i].interactable = false;
             }
         }
         StartCoroutine(mMusicManager.QuitButtonSound(QuitFns));
