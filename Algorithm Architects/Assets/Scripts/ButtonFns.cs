@@ -64,8 +64,8 @@ public class ButtonFns : MonoBehaviour
     
     public void Resume() // resume fn
     {
-        //StartCoroutine(mMusicManager.PlayResume(ResumeFns));
-        gameManager.instance.stateUnpause();
+        StartCoroutine(mMusicManager.PlayResume(ResumeFns));
+        //gameManager.instance.stateUnpause();
     }
     private void ResumeFns()
     {
