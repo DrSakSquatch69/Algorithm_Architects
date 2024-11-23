@@ -62,7 +62,7 @@ MonoBehaviour:
   firerate: 0.5
   rotateSpeed: 32
   animator: {fileID: 7392990670349868051}
-  HP: 75
+  HP: 125
   enemyPrefab: {fileID: 6882669144682233763}
   maxRespawns: 0
   minHPSize: 0.1
@@ -514,7 +514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6605230962299044520
 Transform:
   m_ObjectHideFlags: 0

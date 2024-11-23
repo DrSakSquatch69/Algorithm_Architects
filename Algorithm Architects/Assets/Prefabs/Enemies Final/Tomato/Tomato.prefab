@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3717387478723138802
 Transform:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   bullet: {fileID: 8346530349689674458, guid: c46e1fb3198e8b6408213d70a7a6cdc1, type: 3}
   firerate: 1
   rotateSpeed: 32
-  HP: 80
+  HP: 75
   enemyPrefab: {fileID: 4839620223173670112}
   maxRespawns: 0
   minHPSize: 0.1
