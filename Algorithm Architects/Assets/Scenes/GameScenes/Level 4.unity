@@ -179,10 +179,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90540400659de044c8ab710f74ed9c73, type: 3}
---- !u!4 &74812798 stripped
+--- !u!1001 &51818067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 470886419}
+    m_Modifications:
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.92142
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5054679
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.68964
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247476546327169525, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+      propertyPath: m_Name
+      value: Daikon King
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+--- !u!4 &51818068 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-  m_PrefabInstance: {fileID: 1079962062}
+  m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+  m_PrefabInstance: {fileID: 51818067}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &126432038
 PrefabInstance:
@@ -655,71 +720,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2121895124424872597, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
   m_PrefabInstance: {fileID: 1020443792}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &380438956
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 470886419}
-    m_Modifications:
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 86.42534
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -20.830435
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5247476546327169525, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_Name
-      value: Daikon For King (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
 --- !u!1 &384880577
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,13 +855,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1911511392}
   - {fileID: 2092308781}
   - {fileID: 615119910}
   - {fileID: 899280888}
-  - {fileID: 74812798}
-  - {fileID: 1137653191}
-  - {fileID: 1008754455}
+  - {fileID: 51818068}
+  - {fileID: 1487230209}
+  - {fileID: 1984588355}
+  - {fileID: 1115250261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &475890730
@@ -1261,71 +1261,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3867482188237991602, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
   m_PrefabInstance: {fileID: 1020443792}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &741788840
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 470886419}
-    m_Modifications:
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 84.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 71.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5247476546327169525, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_Name
-      value: Daikon For King (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
 --- !u!4 &822238764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9061381176365607412, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
@@ -1576,11 +1511,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf36da14ea4cbf419a6073bda6f6500, type: 3}
---- !u!4 &1008754455 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-  m_PrefabInstance: {fileID: 741788840}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1020443792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2024,71 +1954,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069183594}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1079962062
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 470886419}
-    m_Modifications:
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 73.4009
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 65.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5247476546327169525, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-      propertyPath: m_Name
-      value: Daikon For King
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
 --- !u!1001 &1080687774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2146,10 +2011,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90540400659de044c8ab710f74ed9c73, type: 3}
---- !u!4 &1137653191 stripped
+--- !u!1001 &1115250260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 470886419}
+    m_Modifications:
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 87.642
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.29934645
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.870342
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247476546327169525, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_Name
+      value: Daikon For King (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+--- !u!4 &1115250261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
-  m_PrefabInstance: {fileID: 380438956}
+  m_PrefabInstance: {fileID: 1115250260}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1171621687
 GameObject:
@@ -2371,6 +2301,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c91873994015adc4b9fb742ec7384311, type: 3}
+--- !u!1001 &1487230208
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 470886419}
+    m_Modifications:
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 74.77216
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2993455
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 66.136116
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247476546327169525, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+      propertyPath: m_Name
+      value: Daikon For King
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+--- !u!4 &1487230209 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+  m_PrefabInstance: {fileID: 1487230208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1533931337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2914,7 +2914,12 @@ Light:
   m_CorrespondingSourceObject: {fileID: 8396579000668785189, guid: 600ba0e53736c5146b08e5092d3c180e, type: 3}
   m_PrefabInstance: {fileID: 159230700}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1911511391
+--- !u!4 &1927716082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8756939221791604364, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
+  m_PrefabInstance: {fileID: 1020443792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1984588354
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2922,72 +2927,67 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 470886419}
     m_Modifications:
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.89
+      value: 84.07581
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73
+      value: 0.2993455
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.3
+      value: 72.46767
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 564725971792349504, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 564725971792349504, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5247476546327169525, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
+    - target: {fileID: 5247476546327169525, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
       propertyPath: m_Name
-      value: Daikon King
+      value: Daikon For King (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
---- !u!4 &1911511392 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+--- !u!4 &1984588355 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: b2c0bc8a14d043741ad8aea5bc6d6683, type: 3}
-  m_PrefabInstance: {fileID: 1911511391}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1927716082 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8756939221791604364, guid: 0b7109b7ff62fbe4290bd3fd379af1f5, type: 3}
-  m_PrefabInstance: {fileID: 1020443792}
+  m_CorrespondingSourceObject: {fileID: 323725007476418989, guid: 37e9ea5d86f88b549862869f93f3835c, type: 3}
+  m_PrefabInstance: {fileID: 1984588354}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2041224441 stripped
 Transform:

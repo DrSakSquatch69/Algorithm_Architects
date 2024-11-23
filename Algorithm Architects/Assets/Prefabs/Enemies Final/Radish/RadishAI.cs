@@ -159,7 +159,7 @@ public class RadishAI : MonoBehaviour, IDamage
     {
         float dist = Vector3.Distance(transform.position, gameManager.instance.getPlayer().transform.position);  //get the distance between the player and enemy
 
-        if (dist <= renderDistance)
+        if (dist <= renderDistance && HP > 0)
         {
             enemyHpBar.gameObject.SetActive(true);
             enemyHpBar.value = (float)HP / hpOrig;
@@ -214,6 +214,7 @@ public class RadishAI : MonoBehaviour, IDamage
     IEnumerator Explode()
     {
         isExploding = true;
+        HP = 0;
         StartCoroutine(scaleUp());
         if (explosionSound != null)
         {
@@ -229,7 +230,6 @@ public class RadishAI : MonoBehaviour, IDamage
         {
             Instantiate(explodeEffect, transform.position, Quaternion.identity);
         }
-        HP = 0;
         gameManager.instance.updateGameGoal(-1);
         Destroy(parent);
         Destroy(gameObject);
