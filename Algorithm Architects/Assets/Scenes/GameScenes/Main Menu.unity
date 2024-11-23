@@ -1465,6 +1465,10 @@ MonoBehaviour:
   - {fileID: 1697951382}
   - {fileID: 471642554}
   - {fileID: 1946929264}
+  NextLevelButtons: []
+  LoseButtons: []
+  WonGameButtons: []
+  PauseButtons: []
 --- !u!224 &1629416417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1969,7 +1973,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1629416416}
         m_TargetAssemblyTypeName: ButtonFns, Assembly-CSharp
-        m_MethodName: quit
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
