@@ -48,6 +48,7 @@ public class TuntUP : MonoBehaviour, IDamage
     void Start()
     {
         //stores the original color
+        playerObj = gameManager.instance.getPlayer();
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
@@ -62,10 +63,12 @@ public class TuntUP : MonoBehaviour, IDamage
     {
         //wBeetimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         updateEnemyUI();
-       // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
-        
-        if(playerSighted && canSeePlayer())
+        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+        Vector3 PlayerPos = playerObj.transform.position;
+        PlayerPos.y = 0;
+        agent.SetDestination(PlayerPos);
+
+        if (playerSighted && canSeePlayer())
         {
 
         }

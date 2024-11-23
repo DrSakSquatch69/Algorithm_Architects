@@ -49,6 +49,7 @@ public class PepperAI : MonoBehaviour, IDamage
     void Start()
     {
         //stores the original color
+        playerObj = gameManager.instance.getPlayer();
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
@@ -73,8 +74,10 @@ public class PepperAI : MonoBehaviour, IDamage
     void Update()
     {
         updateEnemyUI();
-       // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+        Vector3 PlayerPos = playerObj.transform.position;
+        PlayerPos.y = 0;
+        agent.SetDestination(PlayerPos);
         walkAnim();
 
         if(playerSighted && canSeePlayer())

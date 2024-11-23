@@ -59,6 +59,7 @@ public class DaikonKing : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        playerObj = gameManager.instance.getPlayer();
         //stores the original color
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
@@ -81,7 +82,9 @@ public class DaikonKing : MonoBehaviour, IDamage
 
         if (gameManager.instance.getDaikonCount() <= 0)
         {
-            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+            Vector3 PlayerPos = playerObj.transform.position;
+            PlayerPos.y = 0;
+            agent.SetDestination(PlayerPos);
         }
     }
     bool canSeePlayer()

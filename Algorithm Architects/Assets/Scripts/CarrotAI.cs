@@ -37,6 +37,7 @@ public class CarrotAI : MonoBehaviour, IDamage
 
     Color colorOrig;
     Vector3 playerDirection;
+    GameObject playerObj;
     Renderer render;
 
     public bool isShooting;
@@ -52,6 +53,7 @@ public class CarrotAI : MonoBehaviour, IDamage
     void Start()
     {
         //stores the original color
+        playerObj = gameManager.instance.getPlayer();
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
@@ -70,7 +72,9 @@ public class CarrotAI : MonoBehaviour, IDamage
     {
         updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        Vector3 PlayerPos = playerObj.transform.position;
+        PlayerPos.y = 0;
+        agent.SetDestination(PlayerPos);
         anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
         
         if (playerSighted && canSeePlayer())

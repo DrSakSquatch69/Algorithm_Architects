@@ -52,6 +52,7 @@ public class BananaAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        playerObj = gameManager.instance.getPlayer();
         //stores the original color
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
@@ -67,7 +68,9 @@ public class BananaAI : MonoBehaviour, IDamage
     {
         updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        Vector3 PlayerPos = playerObj.transform.position;
+        PlayerPos.y = 0;
+        agent.SetDestination(PlayerPos);
 
         if (playerSighted && canSeePlayer())
         {

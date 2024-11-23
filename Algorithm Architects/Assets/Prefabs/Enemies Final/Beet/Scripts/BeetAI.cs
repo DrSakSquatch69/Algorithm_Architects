@@ -48,6 +48,7 @@ public class BeetAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        playerObj = gameManager.instance.getPlayer();
         //stores the original color
         colorOrig = model.sharedMaterial.color;
         hpOrig = HP;                                //set original hp
@@ -62,8 +63,10 @@ public class BeetAI : MonoBehaviour, IDamage
     void Update()
     {
         updateEnemyUI();
-       // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
-        agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+        // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
+        Vector3 PlayerPos = playerObj.transform.position;
+        PlayerPos.y = 0;
+        agent.SetDestination(PlayerPos);
         Beetimator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         
         if(playerSighted && canSeePlayer())

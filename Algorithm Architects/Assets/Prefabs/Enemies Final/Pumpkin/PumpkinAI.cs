@@ -51,6 +51,7 @@ public class PumpkinAI : MonoBehaviour, IDamage
 
     void Start()
     {
+        playerObj = gameManager.instance.getPlayer();
         colorOrig = model.material.color;
         hpOrig = HP;
         render = GetComponent<Renderer>();
@@ -76,7 +77,9 @@ public class PumpkinAI : MonoBehaviour, IDamage
         else
         {
             agent.isStopped = false;
-            agent.SetDestination(gameManager.instance.getPlayer().transform.position);
+            Vector3 PlayerPos = playerObj.transform.position;
+            PlayerPos.y = 0;
+            agent.SetDestination(PlayerPos);
         }
 
         // Engage the player if sighted and not on cooldown

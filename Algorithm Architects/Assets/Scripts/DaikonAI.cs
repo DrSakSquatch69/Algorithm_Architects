@@ -62,6 +62,7 @@ public class DaikonAI : MonoBehaviour, IDamage
 
 
         //stores the original color
+        playerObj = gameManager.instance.getPlayer();
         colorOrig = model.material.color;
         hpOrig = HP;                                //set original hp
         render = GetComponent<Renderer>();        //getting the renderer of the game object
@@ -77,9 +78,11 @@ public class DaikonAI : MonoBehaviour, IDamage
         //updateEnemyUI();
         // activeEnemiesAI = GameObject.FindGameObjectsWithTag("Enemy").Length; //Checks for the current amount of remaining active enemies
 
-      
-            agent.SetDestination(gameManager.instance.getDaikonKing().transform.position);
-      
+
+        Vector3 PlayerPos = playerObj.transform.position;
+        PlayerPos.y = 0;
+        agent.SetDestination(PlayerPos);
+
     }
     //bool canSeePlayer()
     //{
