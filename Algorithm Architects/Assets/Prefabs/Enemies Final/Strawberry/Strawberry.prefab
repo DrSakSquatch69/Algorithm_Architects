@@ -532,7 +532,7 @@ MonoBehaviour:
   rotateSpeed: 32
   burstDuration: 1
   randomMoveRange: 50
-  HP: 150
+  HP: 100
   enemyPrefab: {fileID: 5661651392466127480}
   maxRespawns: 0
   minHPSize: 0.1
@@ -631,7 +631,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 7
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &2197985645459723898
 NavMeshAgent:
