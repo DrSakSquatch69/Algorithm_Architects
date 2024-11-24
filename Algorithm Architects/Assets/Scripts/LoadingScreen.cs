@@ -26,5 +26,7 @@ public class LoadingScreen : MonoBehaviour
             progressBar.value = progress;
             yield return null;
         }
+
+        gameManager.instance.stateUnpause();
     }
 }
